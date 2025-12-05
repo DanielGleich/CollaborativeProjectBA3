@@ -7,7 +7,7 @@ public class SwitchInteraction : Interactable
     [SerializeField] private SwitchType switchType = SwitchType.Up;
 
     [Header("Unity Events")]
-    [SerializeField] private UnityEvent[] OnInteracEvents;
+    [SerializeField] private UnityEvent[] OnInteractEvents;
     
     private int currentIndex = 0;
     public override void Interact()
@@ -15,18 +15,18 @@ public class SwitchInteraction : Interactable
         switch (switchType)
         {
             case SwitchType.Up:
-                OnInteracEvents[currentIndex]?.Invoke();
-                currentIndex = (currentIndex +1) % OnInteracEvents.Length;
+                OnInteractEvents[currentIndex]?.Invoke();
+                currentIndex = (currentIndex +1) % OnInteractEvents.Length;
                 break;
 
             case SwitchType.Down:
-                OnInteracEvents[currentIndex]?.Invoke();
-                currentIndex = (currentIndex -1) % OnInteracEvents.Length;
+                OnInteractEvents[currentIndex]?.Invoke();
+                currentIndex = (currentIndex -1) % OnInteractEvents.Length;
                 break;
 
             case SwitchType.Random:
-            currentIndex = Random.Range(0,OnInteracEvents.Length);
-                OnInteracEvents[currentIndex]?.Invoke();
+            currentIndex = Random.Range(0,OnInteractEvents.Length);
+                OnInteractEvents[currentIndex]?.Invoke();
                 break;
         }
 
