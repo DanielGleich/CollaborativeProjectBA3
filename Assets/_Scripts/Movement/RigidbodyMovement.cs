@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RigidbodyMovement : Movement
+public class RigidbodyMovement : BaseMovement
 {
     [Header("References")]
     [SerializeField] new private Rigidbody rigidbody;

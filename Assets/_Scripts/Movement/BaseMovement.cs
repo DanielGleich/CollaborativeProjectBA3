@@ -1,7 +1,7 @@
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-public abstract class Movement : MonoBehaviour
+public abstract class BaseMovement : MonoBehaviour
 {
     [SerializeField] protected Camera cam;
 

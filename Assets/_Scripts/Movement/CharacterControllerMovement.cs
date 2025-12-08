@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterControllerMovement : Movement
+public class CharacterControllerMovement : BaseMovement
 {
     [Header("References")]
     [SerializeField] private CharacterController characterController;

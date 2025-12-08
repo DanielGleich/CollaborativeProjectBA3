@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 public class InputController : Singleton<InputController>
 {
+    
     Movement _playerMovement;
     PlayerLook _playerLook;
     private InputSystem_Actions _inputActions;
