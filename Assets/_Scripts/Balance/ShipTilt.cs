@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShipTilt : MonoBehaviour {
@@ -14,6 +13,6 @@ public class ShipTilt : MonoBehaviour {
     void Update()
     {
         float newAngle = Mathf.SmoothDampAngle(transform.localEulerAngles.z, Mathf.Clamp(ballastScale.WeigthBalance * ballastMultiplier,-MaxTilt, MaxTilt), ref currentVelocity, smoothTime);
-        transform.localRotation = Quaternion.Euler(new(0,0,newAngle));
+        transform.localRotation = Quaternion.Euler(new(transform.localEulerAngles.x,transform.localEulerAngles.y,newAngle));
     }
 }

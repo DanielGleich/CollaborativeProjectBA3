@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour {
     [Header("References")]
     [SerializeField] private BallastScale ballastScale;
+    [SerializeField] private Rigidbody rb;
 
     [Header("Settings")]
     [SerializeField] private float baseSpeed = 5f;
@@ -25,13 +26,12 @@ public class ShipMovement : MonoBehaviour {
         if(!ballastScale)
             ballastScale = GetComponent<BallastScale>();
     }
-    void Update()
+    void FixedUpdate()
     {
-        CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, Mathf.Max((boostActive? baseSpeed * boostMultiplier : baseSpeed) - ballastScale.TotalWeight * ballastSpeedCost, 0), Time.deltaTime / accelerationTime * baseSpeed);
-        transform.position += transform.forward * CurrentSpeed * Time.deltaTime;
+        rb.AddForce(transform.forward * Mathf.Max((boostActive? baseSpeed * boostMultiplier : baseSpeed) - ballastScale.TotalWeight * ballastSpeedCost, 0),ForceMode.Acceleration);
         transform.localEulerAngles += Vector3.up * Mathf.Clamp(rotationAmount * ballastScale.WeigthBalance, -maxRotationAmount, maxRotationAmount) * Time.deltaTime;
+        Debug.Log($"Current Speed = {rb.linearVelocity.magnitude}");
     }
-
     public void Boost()
     {
         StopAllCoroutines();
