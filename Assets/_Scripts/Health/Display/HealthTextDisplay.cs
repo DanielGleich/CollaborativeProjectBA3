@@ -17,6 +17,6 @@ public class HealthTextDisplay : HealthDisplay
     }
     protected override void UpdateHealthDisplay(float currentHealth)
     {
-        healthText.SetText(string.Format(format,currentHealth,health.MaxHealth));
+        healthText.SetText(string.Format(format,Mathf.RoundToInt(currentHealth),health.MaxHealth));
     }
 }
