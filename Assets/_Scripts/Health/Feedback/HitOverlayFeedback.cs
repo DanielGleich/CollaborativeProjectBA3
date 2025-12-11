@@ -3,10 +3,10 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
-public class InteractableOverlayMaterialFeedback : MonoBehaviour
+public class HitOverlayFeedback : MonoBehaviour
 {
-    [Header("Refernces")]
-    [SerializeField] private Interactable interactable;
+    [Header("References")]
+    [SerializeField] private Health health;
     [SerializeField] private MeshRenderer meshRenderer;
 
     [Header("Material Settings")]
@@ -14,18 +14,20 @@ public class InteractableOverlayMaterialFeedback : MonoBehaviour
     [SerializeField] private string effectName = "_Overlay_Alpha";
 
     [Header("Feedback Settings")]
-    [SerializeField] private float duration = 0.25f;
+    [SerializeField] private float duration = 0.1f;
     [SerializeField] private Ease ease = Ease.InOutSine;
 
     private Material material;
+    private float prevoiusHealth;
 
     void OnValidate()
     {
-        if (interactable == null)
-            interactable = GetComponent<Interactable>();
+        if (!health)
+            health = GetComponent<Health>();
         if (!meshRenderer)
             meshRenderer = GetComponent<MeshRenderer>();
     }
+
     void Start()
     {
         List<Material> materials = meshRenderer.materials.ToList();
@@ -36,21 +38,18 @@ public class InteractableOverlayMaterialFeedback : MonoBehaviour
     }
     void OnEnable()
     {
-        interactable.OnSelected += InteractableSelected;
+        health.OnUpdateHealth += TriggerHitFeedback;
+        prevoiusHealth = health.CurrentHealth;
     }
     void OnDisable()
     {
-        interactable.OnSelected -= InteractableSelected;
+        health.OnUpdateHealth-= TriggerHitFeedback;
     }
-    public void InteractableSelected(bool isSelected)
+
+    private void TriggerHitFeedback(float health)
     {
-        if (isSelected)
-        {
-            material.DOFloat(1, effectName, duration).SetEase(ease);
-        }
-        else
-        {
-            material.DOFloat(0, effectName, duration).SetEase(ease);
-        }
+        if(health < prevoiusHealth)
+            material.DOFloat(0, effectName, duration).ChangeStartValue(1).SetEase(ease);
+        prevoiusHealth = health;
     }
 }
