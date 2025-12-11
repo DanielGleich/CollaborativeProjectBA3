@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-// using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 
 public class InteractableOverlayMaterialFeedback : MonoBehaviour
@@ -13,9 +13,9 @@ public class InteractableOverlayMaterialFeedback : MonoBehaviour
     [SerializeField] private Material overlayMaterialReference;
     [SerializeField] private string effectName = "_Overlay_Alpha";
 
-    // [Header("Feedback Settings")]
-    // [SerializeField] private float duration = 0.25f;
-    // [SerializeField] private Ease ease = Ease.InOutSine;
+    [Header("Feedback Settings")]
+    [SerializeField] private float duration = 0.25f;
+    [SerializeField] private Ease ease = Ease.InOutSine;
 
     private Material material;
 
@@ -46,13 +46,11 @@ public class InteractableOverlayMaterialFeedback : MonoBehaviour
     {
         if (isSelected)
         {
-            // material.DOFloat(1, effectName, duration).SetEase(ease);
-            material.SetFloat(effectName,1);
+            material.DOFloat(1, effectName, duration).SetEase(ease);
         }
         else
         {
-            // material.DOFloat(0, effectName, duration).SetEase(ease);
-            material.SetFloat(effectName,0);
+            material.DOFloat(0, effectName, duration).SetEase(ease);
         }
     }
 }
