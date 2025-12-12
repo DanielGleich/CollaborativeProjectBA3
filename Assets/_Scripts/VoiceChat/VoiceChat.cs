@@ -48,16 +48,17 @@ public class VoiceChat : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (!IsOwner)
-            return;
 
         fmodSystem = RuntimeManager.CoreSystem;
 
-        recordDeviceId = MicrophoneManager.Instance.GetCurrentDeviceId();
+        if (IsOwner)
+        { 
+            recordDeviceId = MicrophoneManager.Instance.GetCurrentDeviceId();
 
-        audioBuffer = new float[bufferSize];
-        sampleData = new float[bufferSize];
-        micDataBuffer = new float[bufferSize];
+            audioBuffer = new float[bufferSize];
+            sampleData = new float[bufferSize];
+            micDataBuffer = new float[bufferSize];
+        }
         
         fmodSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterGroup);
         fmodSystem.createChannelGroup("VoiceChat", out voiceChatGroup);
@@ -339,23 +340,28 @@ public class VoiceChat : NetworkBehaviour
 
     private void CreateFmodVoiceSound(float[] audioData, int validSamples, out FMOD.Sound sound)
     {
+        short[] pcm16Data = new short[validSamples];
+        for (int i = 0; i < validSamples; i++)
+            pcm16Data[i] = (short)(Mathf.Clamp(audioData[i], -1f, 1f) * 32767f);
+
         CREATESOUNDEXINFO exInfo = new CREATESOUNDEXINFO();
         exInfo.cbsize = Marshal.SizeOf(typeof(CREATESOUNDEXINFO));
         exInfo.numchannels = 1;
-        exInfo.format = SOUND_FORMAT.PCMFLOAT;
+        exInfo.format = SOUND_FORMAT.PCM16;
         exInfo.defaultfrequency = sampleRate;
-        exInfo.length = (uint)(validSamples * sizeof(float));
+        exInfo.length = (uint)(validSamples * sizeof(short));
 
         RESULT result = fmodSystem.createSound("", MODE.DEFAULT, ref exInfo, out sound);
         if (result != RESULT.OK)
         {
-            UnityEngine.Debug.LogError("[VOICE] FMOD createSound failed: " + result);
+            UnityEngine.Debug.LogError($"[VOICE] FMOD createSound failed: {result}");
+            sound.clearHandle();
             return;
         }
 
-        sound.@lock(0, exInfo.length, out IntPtr ptr, out _, out uint len, out _);
-        Marshal.Copy(audioData, 0, ptr, validSamples);
-        sound.unlock(ptr, IntPtr.Zero, len, 0);
+        sound.@lock(0, exInfo.length, out IntPtr ptr1, out IntPtr ptr2, out uint len1, out uint len2);
+        Marshal.Copy(pcm16Data, 0, ptr1, validSamples);
+        sound.unlock(ptr1, ptr2, len1, len2);
     }
 
     private void StopVoiceChannel(int clientId)
@@ -401,6 +407,7 @@ public class VoiceChat : NetworkBehaviour
 
         playerVoiceChannels.Clear();
         playerVoiceSounds.Clear();
+        voiceChatGroup.release();
     }
 
 }
