@@ -220,32 +220,20 @@ public class VoiceChat : NetworkBehaviour
                 yield return null; continue;
             }
 
-            int sampleCount1 = (int)(len1 / 2u);
-
-            // CRITICAL: Clear buffer before reading to avoid stale zeros
-            Array.Clear(audioBuffer, 0, audioBuffer.Length);
+            int sampleCount1 = (int)(len1 / 2u);   // actual valid samples we read
 
             ReadFmodBuffer(ptr1, sampleCount1, audioBuffer);
 
             microphoneClip.unlock(ptr1, ptr2, len1, len2);
             position = (position + (uint)bufferSize) % microphoneClipLength;
 
-            // Double-check we have data before sending
-            bool hasAudioData = false;
-            for (int i = 0; i < Mathf.Min(100, sampleCount1); i++)
-            {
-                if (Mathf.Abs(audioBuffer[i]) > 0.001f)
-                {
-                    hasAudioData = true; break;
-                }
-            }
-
-            if (hasAudioData)
-                TransmitAudioServerRpc(audioBuffer);
+            if (sampleCount1 > 0)
+                TransmitAudioServerRpc(audioBuffer, sampleCount1);
 
             yield return new WaitForSeconds(bufferSize / (float)sampleRate);
         }
     }
+
 
 
     private bool IsVoiceActivated()
@@ -290,23 +278,22 @@ public class VoiceChat : NetworkBehaviour
 
 
     [ServerRpc(RequireOwnership = false)]
-    private void TransmitAudioServerRpc(float[] audioData, NetworkConnection sender = null)
+    private void TransmitAudioServerRpc(float[] audioData, int validSamples, NetworkConnection sender = null)
     {
-        UnityEngine.Debug.Log($"length: {audioData.Length}");
-        TransmitAudioObserversRpc(audioData, sender.ClientId);
+        TransmitAudioObserversRpc(audioData, validSamples, sender.ClientId);
     }
 
     [ObserversRpc]
-    private void TransmitAudioObserversRpc(float[] audioData, int senderClientId)
+    private void TransmitAudioObserversRpc(float[] audioData, int validSamples, int senderClientId)
     {
-        // Ensure we do not play our own voice
         if (senderClientId == NetworkManager.ClientManager.Connection.ClientId)
             return;
 
-        PlayReceivedAudio(audioData, senderClientId);
+        PlayReceivedAudio(audioData, validSamples, senderClientId);
     }
 
-    private void PlayReceivedAudio(float[] audioData, int senderClientId)
+
+    private void PlayReceivedAudio(float[] audioData, int validSamples, int senderClientId)
     {
         if (source == null)
         {
@@ -332,7 +319,10 @@ public class VoiceChat : NetworkBehaviour
             source.spatialBlend = 0.0f; // Make the audio 2D for global chat
         }
 
-        AudioClip clip = AudioClip.Create("ReceivedVoice", audioData.Length, 1, sampleRate, false);
+        if (validSamples <= 0)
+            return;
+
+        AudioClip clip = AudioClip.Create("ReceivedVoice", validSamples, 1, sampleRate, false);
         clip.SetData(audioData, 0);
 
         source.clip = clip;
