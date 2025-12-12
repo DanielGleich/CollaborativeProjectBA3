@@ -193,16 +193,13 @@ public class VoiceChat : NetworkBehaviour
     {
         while (canTalk)
         {
-            if (!microphoneClip.hasHandle())
-                yield break;
-
+            if (!microphoneClip.hasHandle()) yield break;
             fmodSystem.update();
 
             uint recordPos;
             if (fmodSystem.getRecordPosition(recordDeviceId, out recordPos) != RESULT.OK)
             {
-                yield return null;
-                continue;
+                yield return null; continue;
             }
 
             uint recordDelta = (recordPos >= position)
@@ -211,34 +208,45 @@ public class VoiceChat : NetworkBehaviour
 
             if (recordDelta < bufferSize)
             {
-                yield return null;
-                continue;
+                yield return null; continue;
             }
 
-            uint byteOffset = position * 2u;           // sizeof(short)
+            uint byteOffset = position * 2u;
             uint byteLength = (uint)bufferSize * 2u;
 
-            IntPtr ptr1, ptr2;
-            uint len1, len2;
-
+            IntPtr ptr1, ptr2; uint len1, len2;
             if (microphoneClip.@lock(byteOffset, byteLength, out ptr1, out ptr2, out len1, out len2) != RESULT.OK)
             {
-                yield return null;
-                continue;
+                yield return null; continue;
             }
 
             int sampleCount1 = (int)(len1 / 2u);
+
+            // CRITICAL: Clear buffer before reading to avoid stale zeros
+            Array.Clear(audioBuffer, 0, audioBuffer.Length);
+
             ReadFmodBuffer(ptr1, sampleCount1, audioBuffer);
 
             microphoneClip.unlock(ptr1, ptr2, len1, len2);
-
             position = (position + (uint)bufferSize) % microphoneClipLength;
 
-            TransmitAudioServerRpc(audioBuffer);
+            // Double-check we have data before sending
+            bool hasAudioData = false;
+            for (int i = 0; i < Mathf.Min(100, sampleCount1); i++)
+            {
+                if (Mathf.Abs(audioBuffer[i]) > 0.001f)
+                {
+                    hasAudioData = true; break;
+                }
+            }
+
+            if (hasAudioData)
+                TransmitAudioServerRpc(audioBuffer);
 
             yield return new WaitForSeconds(bufferSize / (float)sampleRate);
         }
     }
+
 
     private bool IsVoiceActivated()
     {
@@ -284,6 +292,7 @@ public class VoiceChat : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void TransmitAudioServerRpc(float[] audioData, NetworkConnection sender = null)
     {
+        UnityEngine.Debug.Log($"length: {audioData.Length}");
         TransmitAudioObserversRpc(audioData, sender.ClientId);
     }
 
