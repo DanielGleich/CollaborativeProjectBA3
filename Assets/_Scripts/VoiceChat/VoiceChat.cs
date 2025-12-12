@@ -28,7 +28,7 @@ public class VoiceChat : NetworkBehaviour
     private bool previousCanTalk = false;
 
     private const int sampleRate = 48000;
-    private const int bufferSize = 16384;
+    private const int bufferSize = 960;
 
     private float[] audioBuffer;
     private float[] sampleData;
@@ -202,49 +202,40 @@ public class VoiceChat : NetworkBehaviour
     {
         while (canTalk)
         {
-            if (!microphoneClip.hasHandle()) yield break;
             fmodSystem.update();
 
             uint recordPos;
             if (fmodSystem.getRecordPosition(recordDeviceId, out recordPos) != RESULT.OK)
-            {
-                yield return null; continue;
-            }
+                yield return null;
 
             uint recordDelta = (recordPos >= position)
                 ? (recordPos - position)
                 : (recordPos + microphoneClipLength - position);
 
-            if (recordDelta < bufferSize)
+            if (recordDelta >= bufferSize)
             {
-                yield return null; continue;
+                uint samplesToRead = Math.Min(bufferSize, recordDelta);
+                uint byteOffset = position * 2u;
+                uint byteLength = samplesToRead * 2u;
+
+                IntPtr ptr1, ptr2; uint len1, len2;
+                if (microphoneClip.@lock(byteOffset, byteLength, out ptr1, out ptr2, out len1, out len2) == RESULT.OK)
+                {
+                    int sampleCount = (int)(len1 / 2);
+                    Array.Clear(audioBuffer, 0, sampleCount);
+                    ReadFmodBuffer(ptr1, sampleCount, audioBuffer);
+                    microphoneClip.unlock(ptr1, ptr2, len1, len2);
+
+                    if (sampleCount > 0)
+                        TransmitAudioServerRpc(audioBuffer, sampleCount);
+
+                    position = (position + samplesToRead) % microphoneClipLength;
+                }
             }
 
-            uint byteOffset = position * 2u;
-            uint byteLength = (uint)bufferSize * 2u;
-
-            IntPtr ptr1, ptr2; uint len1, len2;
-            if (microphoneClip.@lock(byteOffset, byteLength, out ptr1, out ptr2, out len1, out len2) != RESULT.OK)
-            {
-                yield return null; continue;
-            }
-
-            int sampleCount1 = (int)(len1 / 2u);
-
-            Array.Clear(audioBuffer, 0, sampleCount1);
-            ReadFmodBuffer(ptr1, sampleCount1, audioBuffer);
-
-            microphoneClip.unlock(ptr1, ptr2, len1, len2);
-            position = (position + (uint)bufferSize) % microphoneClipLength;
-
-            if (sampleCount1 > 0)
-                TransmitAudioServerRpc(audioBuffer, sampleCount1);
-
-            yield return new WaitForSeconds(bufferSize / (float)sampleRate);
+            yield return null;
         }
     }
-
-
 
     private bool IsVoiceActivated()
     {
