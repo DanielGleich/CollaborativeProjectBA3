@@ -351,7 +351,7 @@ public class VoiceChat : NetworkBehaviour
         exInfo.defaultfrequency = sampleRate;
         exInfo.length = (uint)(validSamples * sizeof(short));
 
-        RESULT result = fmodSystem.createSound("", MODE.DEFAULT, ref exInfo, out sound);
+        RESULT result = fmodSystem.createSound("",MODE.OPENUSER | MODE.LOOP_OFF,ref exInfo,out sound);
         if (result != RESULT.OK)
         {
             UnityEngine.Debug.LogError($"[VOICE] FMOD createSound failed: {result}");
