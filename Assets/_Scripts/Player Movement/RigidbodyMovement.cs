@@ -6,7 +6,7 @@ public class RigidbodyMovement : PlayerMovement
     [SerializeField] new private Rigidbody rigidbody;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float jumpHight = 2;
+    [SerializeField] private float jumpHeight = 2;
 
     void OnValidate()
     {
@@ -20,6 +20,6 @@ public class RigidbodyMovement : PlayerMovement
     }
     public override void Jump()
     {
-        rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, Mathf.Sqrt(jumpHight * -2f * Physics.gravity.y), rigidbody.linearVelocity.z);
+        rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), rigidbody.linearVelocity.z);
     }
 }
