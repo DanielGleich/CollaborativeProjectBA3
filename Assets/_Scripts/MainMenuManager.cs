@@ -3,6 +3,7 @@ using Steamworks;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,7 +72,10 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void ClearTeamCards()
     {
-        teamCardContainer.transform.DestroyChildren();
+        foreach (Transform t in teamCardContainer.transform)
+        { 
+            Destroy(t);
+        }
     }
 
     private void OnLobbyJoined()
