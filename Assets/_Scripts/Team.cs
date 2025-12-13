@@ -11,7 +11,8 @@ public enum TeamRole
 
 public class Team
 {
-    public static List<Team> allTeams = new List<Team>();
+    public static Dictionary<int, Team> allTeams = new Dictionary<int, Team>();
+    public static HashSet<CSteamID> allPlayers = new HashSet<CSteamID>();
     public int id;
     public CSteamID scientistPlayer;
     public CSteamID ratPlayer;
@@ -19,34 +20,25 @@ public class Team
 
     public static event Action OnTeamUpdate;
 
-    public Team()
+    public Team(int id)
     {
-        id = allTeams.Count;
+        this.id = id;
         scientistPlayer = CSteamID.Nil;
         ratPlayer = CSteamID.Nil;
-        allTeams.Add(this);
-    }
-
-    ~Team()
-    {
-        allTeams.Remove(this);
+        allTeams.Add(id, this);
     }
 
     public static bool IsSlotAvailable(int teamId, TeamRole role, CSteamID playerId)
     {
-        foreach (Team team in allTeams)
+        if (allTeams.ContainsKey(teamId))
         {
-            if (teamId == team.id)
+            switch (role) 
             {
-                if (role == TeamRole.SCIENTIST && team.scientistPlayer == CSteamID.Nil)
-                {
-                    return true;
-                }
+                case TeamRole.SCIENTIST:
+                    return allTeams[teamId].scientistPlayer == CSteamID.Nil;
 
-                if (role == TeamRole.RAT && team.ratPlayer == CSteamID.Nil)
-                {
-                    return true;
-                }
+                case TeamRole.RAT:
+                    return allTeams[teamId].ratPlayer == CSteamID.Nil;
             }
         }
 
@@ -55,47 +47,45 @@ public class Team
 
     public static bool IsPlayerOwningSlot(CSteamID playerId)
     {
-        foreach (Team t in allTeams)
+        return allPlayers.Contains(playerId);
+    }
+
+    public static void RemovePlayer(CSteamID playerId)
+    {
+        if (IsPlayerOwningSlot(playerId))
         {
-            if (t.scientistPlayer == playerId || t.ratPlayer == playerId)
+            foreach (var team in allTeams)
             {
-                return true;
+                if (team.Value.scientistPlayer == playerId)
+                    team.Value.scientistPlayer = CSteamID.Nil;
+
+                if (team.Value.ratPlayer == playerId)
+                    team.Value.ratPlayer = CSteamID.Nil;
             }
+
+            allPlayers.Remove(playerId);
         }
-        return false;
     }
 
     public static void AssignPlayerToSlot(int teamId, TeamRole role, CSteamID playerId)
     {
-        foreach (Team team in allTeams)
+        if (!allTeams.ContainsKey(teamId)) return;
+
+        RemovePlayer(playerId);
+
+        switch (role)
         {
-            if (team.scientistPlayer == playerId)
-            {
-                team.scientistPlayer = CSteamID.Nil;
-                OnTeamUpdate?.Invoke();
-            }
-
-            if (team.ratPlayer == playerId)
-            {
-                team.ratPlayer = CSteamID.Nil;
-                OnTeamUpdate?.Invoke();
-            }
-
-            if (team.id == teamId)
-            {
-                switch (role)
-                {
-                    case TeamRole.SCIENTIST:
-                        team.scientistPlayer = playerId;
-                        OnTeamUpdate?.Invoke();
-                        break;
-
-                    case TeamRole.RAT:
-                        team.ratPlayer = playerId;
-                        OnTeamUpdate?.Invoke();
-                        break;
-                }
-            }
+            case TeamRole.SCIENTIST:
+                allTeams[teamId].scientistPlayer = playerId;
+            break;
+            case TeamRole.RAT:
+                allTeams[teamId].ratPlayer = playerId;
+            break;
         }
+
+        if (!allPlayers.Contains(playerId))
+            allPlayers.Add(playerId);
+
+        OnTeamUpdate?.Invoke();
     }
 }
