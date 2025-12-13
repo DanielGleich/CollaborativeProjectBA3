@@ -1,4 +1,6 @@
 using FishNet;
+using FishNet.Managing.Server;
+using FishNet.Object;
 using Steamworks;
 using System;
 using System.Collections.Generic;
@@ -8,10 +10,14 @@ using UnityEngine.UI;
 
 public class MainMenuManager : Singleton<MainMenuManager>
 {
-    [SerializeField] private TMP_Text _title, _id;
-    [SerializeField] private GameObject _joinContainer, _lobbyContainer;
     [SerializeField] private Button _startLobbyButton;
-    [SerializeField] private List<GameObject> _lobbyProfiles;
+    [SerializeField] private GameObject _joinContainer, _lobbyContainer;
+    [SerializeField] private TMP_Text _title, _id;
+    [SerializeField] private List<UISteamProfile> _lobbyIcons;
+
+    [SerializeField] int maxTeamCount = 2;
+    [SerializeField] GameObject teamCardPrefab;
+    [SerializeField] Transform teamCardContainer;
 
 
     private void OnEnable()
@@ -19,10 +25,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
         _joinContainer.SetActive(true);
         _lobbyContainer.SetActive(false);
 
-        LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;
+        LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
-
         LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
     }
 
@@ -31,7 +36,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined -= OnLobbyJoined;
         LobbyConnectionManager.OnLobbyExited -= OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves -= OnClientJoined;
-
         LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
     }
 
@@ -44,22 +48,44 @@ public class MainMenuManager : Singleton<MainMenuManager>
             players.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i));
         }
 
-        for (int i = 0; i < _lobbyProfiles.Count; i++)
+        for (int i = 0; i < _lobbyIcons.Count; i++)
         {
             CSteamID playerId = i < players.Count ? players[i] : CSteamID.Nil;
-            _lobbyProfiles[i].GetComponent<UILobbyProfile>().SetSteamId(playerId);
+            _lobbyIcons[i].CurrentSteamId = playerId;
         }
+    }
+
+    private void CreateTeamCards()
+    {
+        for (int i = 0; i < maxTeamCount; i++)
+        {
+            GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
+            Team t = new Team() { teamCard = tCard };
+            UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
+            teamCard.currentTeam = t;
+            TeamMakingManager.allTeams.Add(teamCard, t);
+        }
+    }
+
+    private void ClearTeamCards()
+    {
+        foreach (var t in TeamMakingManager.allTeams)
+        {
+            t.Key.UpdateTeamSlotProfile(TeamRole.SCIENTIST, CSteamID.Nil);
+            t.Key.UpdateTeamSlotProfile(TeamRole.RAT, CSteamID.Nil);
+        }
+        TeamMakingManager.allTeams.Clear();
     }
 
     private void OnLobbyJoined()
     {
         _joinContainer.SetActive(false);
         _lobbyContainer.SetActive(true);
-
         _id.text = LobbyConnectionManager.CurrentLobbyID.ToString();
         _title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
         _startLobbyButton.interactable = InstanceFinder.IsServerStarted;
         UpdateLobbyProfiles();
+        CreateTeamCards();
     }
 
     private void OnClientJoined(CSteamID playerId)
@@ -70,6 +96,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     private void OnLobbyExited()
     {
         UpdateLobbyProfiles();
+        ClearTeamCards();
     }
 
     public void CreateLobby()

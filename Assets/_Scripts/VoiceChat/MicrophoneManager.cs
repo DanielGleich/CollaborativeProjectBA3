@@ -36,8 +36,6 @@ public class MicrophoneManager : Singleton<MicrophoneManager>
             // Skip  loopback devices
             if (inputName != null && inputName.Contains("[loopback]"))
                 continue;
-
-            Debug.Log($"id: {i}, input: {inputName}");
             AvailableDevices.Add(i, inputName);
         }
 
