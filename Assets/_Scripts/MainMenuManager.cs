@@ -60,7 +60,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < maxTeamCount; i++)
         {
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
-            Team t = new Team() { teamCard = tCard };
+            Team t = new Team() { id = i, teamCard = tCard };
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
             teamCard.currentTeam = t;
             TeamMakingManager.allTeams.Add(teamCard, t);

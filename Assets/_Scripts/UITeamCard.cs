@@ -12,6 +12,12 @@ public class UITeamCard : MonoBehaviour
 
     public event Action<int, TeamRole, ulong> OnRequestProfile;
 
+    private void Start()
+    {
+        scientistProfile.CurrentSteamId = CSteamID.Nil;
+        ratProfile.CurrentSteamId = CSteamID.Nil;
+    }
+
     public void RequestRatSlotClick()
     {
         OnRequestProfile?.Invoke(currentTeam.id, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);

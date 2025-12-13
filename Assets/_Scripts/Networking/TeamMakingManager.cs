@@ -19,15 +19,14 @@ public struct Team
     public GameObject teamCard;
 }
 
-public class TeamMakingManager : NetworkBehaviour//NetworkSingleton<TeamMakingManager>
+public class TeamMakingManager : NetworkSingleton<TeamMakingManager>
 {
-    //protected override bool _perClient { get; } = false;
+    protected override bool _perClient { get; } = false;
     public static Dictionary<UITeamCard, Team> allTeams = new Dictionary<UITeamCard, Team>();
 
     public override void OnStartServer()
     {
         base.OnStartServer();
-        Debug.Log("Start Server");
     }
 
     public override void OnStartClient()
@@ -39,7 +38,6 @@ public class TeamMakingManager : NetworkBehaviour//NetworkSingleton<TeamMakingMa
 
     public void InitTeams() 
     {
-        Debug.Log(allTeams.Count);
         foreach (KeyValuePair<UITeamCard, Team> t in allTeams)
         {
             t.Key.OnRequestProfile += RequestSlot;
