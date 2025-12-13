@@ -1,6 +1,4 @@
 using FishNet;
-using FishNet.Managing.Server;
-using FishNet.Object;
 using Steamworks;
 using System;
 using System.Collections.Generic;
@@ -14,6 +12,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] private GameObject _joinContainer, _lobbyContainer;
     [SerializeField] private TMP_Text _title, _id;
     [SerializeField] private List<UISteamProfile> _lobbyIcons;
+    private List<CSteamID> playersInTeam = new List<CSteamID>();
 
     [SerializeField] int maxTeamCount = 2;
     [SerializeField] GameObject teamCardPrefab;
@@ -39,13 +38,15 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
     }
 
-    void UpdateLobbyProfiles()
+    public void UpdateLobbyProfiles()
     {
         CSteamID lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
         List<CSteamID> players = new List<CSteamID>();
         for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
         {
-            players.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i));
+            CSteamID playerId = SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i);
+            if (Team.IsPlayerOwningSlot(playerId) == false)
+                players.Add(playerId);
         }
 
         for (int i = 0; i < _lobbyIcons.Count; i++)
@@ -60,21 +61,17 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < maxTeamCount; i++)
         {
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
-            Team t = new Team() { id = i, teamCard = tCard };
+            Team t = new Team();
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
             teamCard.currentTeam = t;
-            TeamMakingManager.allTeams.Add(teamCard, t);
+            teamCard.Init();
+            TeamManager.allTeams.Add(teamCard);
         }
     }
 
     private void ClearTeamCards()
     {
-        foreach (var t in TeamMakingManager.allTeams)
-        {
-            t.Key.UpdateTeamSlotProfile(TeamRole.SCIENTIST, CSteamID.Nil);
-            t.Key.UpdateTeamSlotProfile(TeamRole.RAT, CSteamID.Nil);
-        }
-        TeamMakingManager.allTeams.Clear();
+
     }
 
     private void OnLobbyJoined()

@@ -1,9 +1,7 @@
 using FishNet.Connection;
 using FishNet.Managing;
-using FishNet.Object;
 using Steamworks;
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
