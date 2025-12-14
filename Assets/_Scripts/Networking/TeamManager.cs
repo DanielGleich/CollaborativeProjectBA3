@@ -1,37 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using Steamworks;
-using UnityEngine;
 
 public class TeamManager : NetworkSingleton<TeamManager>
 {
     protected override bool _perClient { get; } = false;
     public static List<UITeamCard> allTeamCards = new List<UITeamCard>();
 
-    public static Dictionary<int, Team> allTeams = new Dictionary<int, Team>();
-    public static HashSet<CSteamID> allPlayers = new HashSet<CSteamID>();
+    public readonly SyncDictionary<int, Team> allTeams = new SyncDictionary<int, Team>();
+    public readonly SyncHashSet<CSteamID> allPlayers = new SyncHashSet<CSteamID>();
     public static event Action OnTeamUpdate;
-
-    private void Awake()
-    {
-        ClearStaticLists();
-    }
-
-    public static void ClearStaticLists()
-    {
-        allTeams.Clear();
-        allPlayers.Clear();
-        foreach (UITeamCard card in allTeamCards)
-        { 
-            Destroy(card);
-        }
-        allTeamCards.Clear();
-    }
 
     public override void OnStartServer()
     {
         base.OnStartServer();
+
     }
 
     public override void OnStartClient()
@@ -112,6 +98,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
         foreach (UITeamCard t in allTeamCards)
         {
             t.OnRequestProfile += RequestSlot;
+            allTeams.Add(t.currentTeam.id, t.currentTeam);
         }
     }
 

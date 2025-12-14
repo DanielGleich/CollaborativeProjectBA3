@@ -65,7 +65,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
         {
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
             Team t = new Team() { id = i };
-            TeamManager.allTeams.Add(i, t);
 
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
             teamCard.SetCurrentTeam(t);

@@ -10,7 +10,7 @@ public class UITeamCard : MonoBehaviour
     [SerializeField] UISteamProfile ratProfile;
     [SerializeField] TextMeshProUGUI teamTitle;
 
-    private Team currentTeam;
+    public Team currentTeam { get; private set; }
 
     public event Action<int, TeamRole, ulong> OnRequestProfile;
 
