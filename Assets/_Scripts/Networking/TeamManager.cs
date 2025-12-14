@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
@@ -23,7 +22,8 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public override void OnStartClient()
     {
         base.OnStartClient();
-        InitTeams();
+        InitTeamsServerRpc();
+
         allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
 
         foreach (UITeamCard t in allTeamCards)
@@ -116,6 +116,11 @@ public class TeamManager : NetworkSingleton<TeamManager>
         OnTeamUpdate?.Invoke();
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void InitTeamsServerRpc()
+    {
+        InitTeams();
+    }
 
     public void InitTeams()
     {
@@ -150,15 +155,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
         {
             UnityEngine.Debug.Log("Request Slot D");
             AssignPlayerToTeamSlot(teamId, slot, playerId);  
-            UpdateTeamSlotObservers(teamId, slot, steamId);  
         }
-    }
-
-    [ObserversRpc]
-    private void UpdateTeamSlotObservers(int teamId, TeamRole slot, ulong steamId)
-    {
-        UnityEngine.Debug.Log("Request Slot G");
-        MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 
     [ServerRpc(RequireOwnership = false)]
