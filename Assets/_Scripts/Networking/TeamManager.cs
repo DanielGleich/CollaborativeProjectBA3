@@ -24,6 +24,12 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         base.OnStartClient();
         InitTeams();
+        allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
+
+        foreach (UITeamCard t in allTeamCards)
+        {
+            t.OnRequestProfile += RequestSlot;
+        }
 
         allTeams.OnChange += AllTeams_OnChange;
         allPlayers.OnChange += AllPlayers_OnChange;
@@ -115,14 +121,10 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (!IsServerInitialized) return;
 
-        allTeams.Clear();
-        allTeamCards.Clear();
-
         allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
-
+        allTeams.Clear();
         foreach (UITeamCard t in allTeamCards)
         {
-            t.OnRequestProfile += RequestSlot;
             if (!allTeams.ContainsKey(t.currentTeam.id))
                 allTeams.Add(t.currentTeam.id, t.currentTeam);
         }
