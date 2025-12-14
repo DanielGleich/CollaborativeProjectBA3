@@ -18,18 +18,55 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public override void OnStartServer()
     {
         base.OnStartServer();
+        InitTeams();
+        LobbyConnectionManager.OnClientJoinOrLeaves += ClientJoinOrLeave;
+    }
+
+    public override void OnStopServer()
+    {
+        base.OnStopServer();
+        LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SyncTeamTemplateServerRpc(int teamId, Team template)
+    {
+        if (!allTeams.ContainsKey(teamId))
+            allTeams.Add(teamId, template); 
+    }
+
+    [Server]
+    private void ClientJoinOrLeave(CSteamID obj)
+    {
+        List<ulong> activePlayers = new List<ulong>();
+        CSteamID lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
+        for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
+        {
+            activePlayers.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i).m_SteamID);
+        }
+
+        List<CSteamID> playersToRemove = new List<CSteamID>();
+        foreach (ulong playerId in allPlayers)
+        {
+            if (activePlayers.Contains(playerId) == false)
+            {
+                playersToRemove.Add(new CSteamID(playerId));
+            }
+        }
+
+        foreach(CSteamID id in playersToRemove)
+            RemovePlayerFromAllTeams(id);
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        InitTeamsServerRpc();
-
         allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
 
         foreach (UITeamCard t in allTeamCards)
         {
             t.OnRequestProfile += RequestSlot;
+            SyncTeamTemplateServerRpc(t.currentTeamId, t.teamTemplate);
         }
 
         allTeams.OnChange += AllTeams_OnChange;
@@ -68,7 +105,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public bool IsPlayerOwningSlot(CSteamID playerId)
     {
-        return IsServerInitialized && allPlayers.Contains(playerId.m_SteamID);
+        return allPlayers.Contains(playerId.m_SteamID);
     }
 
     public void RemovePlayerFromAllTeams(CSteamID playerId)
@@ -101,9 +138,10 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
     {
-        if (!allTeams.TryGetValue(teamId, out Team team)) return;
 
-        // RemovePlayerFromAllTeams bereits in RPC aufgerufen!
+        UnityEngine.Debug.Log("Request Slot D");
+        if (!allTeams.TryGetValue(teamId, out Team team)) return;
+        UnityEngine.Debug.Log("Request Slot E");
 
         switch (role)
         {
@@ -152,30 +190,24 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, ulong steamId)
     {
-        Debug.Log("Request Slot C");
+        UnityEngine.Debug.Log("Request Slot C");
+        UnityEngine.Debug.Log(allTeams.Count());
         CSteamID playerId = new CSteamID(steamId);
 
-        // 1. ZURÜCKSETZEN (alte Slots leeren)
         RemovePlayerFromAllTeams(playerId);
 
-        // 2. JETZT lokalen Slot prüfen (ist jetzt frei)
         if (!allTeams.ContainsKey(teamId) ||
             (slot == TeamRole.SCIENTIST && allTeams[teamId].scientistPlayer != CSteamID.Nil) ||
             (slot == TeamRole.RAT && allTeams[teamId].ratPlayer != CSteamID.Nil))
         {
-            Debug.Log("Slot nicht verfügbar nach Reset");
             return;
         }
-
-        // 3. NEU ZUWEISEN
-        Debug.Log("Request Slot D");
         AssignPlayerToTeamSlot(teamId, slot, playerId);
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void RequestLeaveTeamServerRPC(ulong steamId)
     {
-        UnityEngine.Debug.Log("Request Team A");
         RemovePlayerFromAllTeams(new CSteamID(steamId));
         NotifyPlayerLeftObservers(steamId);              
     }
@@ -183,7 +215,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ObserversRpc]
     private void NotifyPlayerLeftObservers(ulong steamId)
     {
-        UnityEngine.Debug.Log("Request Team B");
         MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 }
