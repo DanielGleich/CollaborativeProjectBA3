@@ -10,7 +10,8 @@ public class UITeamCard : MonoBehaviour
     [SerializeField] UISteamProfile ratProfile;
     [SerializeField] TextMeshProUGUI teamTitle;
 
-    public Team currentTeam { get; private set; }
+    public Team teamTemplate;
+    public int currentTeamId;
 
     public event Action<int, TeamRole, ulong> OnRequestProfile;
 
@@ -27,25 +28,26 @@ public class UITeamCard : MonoBehaviour
 
     public void SetCurrentTeam(Team team)
     {
-        currentTeam = team;
-        teamTitle.text = "Team " + (currentTeam.id + 1);
+        teamTemplate = team;
+        currentTeamId = team.id;
+        teamTitle.text = "Team " + (team.id + 1);
         UpdateTeamSlotProfiles();
     }
 
     public void RequestRatSlotClick()
     {
-        OnRequestProfile?.Invoke(currentTeam.id, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);
+        OnRequestProfile?.Invoke(currentTeamId, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);
     }
 
     public void RequestScientistSlotClick()
     { 
-        OnRequestProfile?.Invoke(currentTeam.id, TeamRole.SCIENTIST, SteamUser.GetSteamID().m_SteamID);
+        OnRequestProfile?.Invoke(currentTeamId, TeamRole.SCIENTIST, SteamUser.GetSteamID().m_SteamID);
     }
 
     void UpdateTeamSlotProfiles()
     {
-        if (currentTeam == null) return;
-        scientistProfile.CurrentSteamId = currentTeam.scientistPlayer;
-        ratProfile.CurrentSteamId = currentTeam.ratPlayer;
+        if (TeamManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
+        scientistProfile.CurrentSteamId = t.scientistPlayer;
+        ratProfile.CurrentSteamId = t.ratPlayer;
     }
 }

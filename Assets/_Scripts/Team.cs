@@ -1,5 +1,5 @@
-using UnityEngine;
 using Steamworks;
+using UnityEngine;
 
 public enum TeamRole
 {
@@ -8,10 +8,9 @@ public enum TeamRole
 }
 
 [System.Serializable]
-public class Team
+public struct Team
 {    
     public int id;
     public CSteamID scientistPlayer;
     public CSteamID ratPlayer;
-    public GameObject teamCard;
 }

@@ -1,8 +1,9 @@
-using System;
-using System.Collections.Generic;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TeamManager : NetworkSingleton<TeamManager>
@@ -72,43 +73,45 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public void RemovePlayerFromAllTeams(CSteamID playerId)
     {
-        if (IsPlayerOwningSlot(playerId))
+        if (!IsPlayerOwningSlot(playerId)) return;
+
+        foreach (int teamId in allTeams.Keys.ToArray())  
         {
-            foreach (KeyValuePair<int, Team> team in allTeams)
+            if (allTeams.TryGetValue(teamId, out Team team))
             {
-                if (team.Value.scientistPlayer == playerId)
+                Team temp = new Team() { id = team.id, ratPlayer = team.ratPlayer, scientistPlayer = team.scientistPlayer };
+
+                if (team.scientistPlayer == playerId)
                 {
-                    team.Value.scientistPlayer = CSteamID.Nil;
+                    temp.scientistPlayer = CSteamID.Nil;
                 }
 
-                if (team.Value.ratPlayer == playerId)
+                if (team.ratPlayer == playerId)
                 {
-                    team.Value.ratPlayer = CSteamID.Nil;
+                    temp.ratPlayer = CSteamID.Nil;
                 }
+
+                allTeams[teamId] = temp;
             }
-
-            allPlayers.Remove(playerId.m_SteamID);
-            TeamManager.OnTeamUpdate?.Invoke();
         }
+
+        allPlayers.Remove(playerId.m_SteamID);
     }
+
 
     public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
     {
-        UnityEngine.Debug.Log("Request Slot E");
-        if (!allTeams.ContainsKey(teamId)) return;
+        if (!allTeams.TryGetValue(teamId, out Team team)) return;
 
-        UnityEngine.Debug.Log("Request Slot F");
-        RemovePlayerFromAllTeams(playerId);
+        // RemovePlayerFromAllTeams bereits in RPC aufgerufen!
 
         switch (role)
         {
-            case TeamRole.SCIENTIST:
-                allTeams[teamId].scientistPlayer = playerId;
-                break;
-            case TeamRole.RAT:
-                allTeams[teamId].ratPlayer = playerId;
-                break;
+            case TeamRole.SCIENTIST: team.scientistPlayer = playerId; break;
+            case TeamRole.RAT: team.ratPlayer = playerId; break;
         }
+
+        allTeams[teamId] = team;
 
         if (!allPlayers.Contains(playerId.m_SteamID))
             allPlayers.Add(playerId.m_SteamID);
@@ -130,8 +133,8 @@ public class TeamManager : NetworkSingleton<TeamManager>
         allTeams.Clear();
         foreach (UITeamCard t in allTeamCards)
         {
-            if (!allTeams.ContainsKey(t.currentTeam.id))
-                allTeams.Add(t.currentTeam.id, t.currentTeam);
+            if (!allTeams.ContainsKey(t.currentTeamId))
+                allTeams.Add(t.currentTeamId, t.teamTemplate);
         }
     }
 
@@ -149,13 +152,24 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, ulong steamId)
     {
-        UnityEngine.Debug.Log("Request Slot C");
+        Debug.Log("Request Slot C");
         CSteamID playerId = new CSteamID(steamId);
-        if (IsTeamSlotAvailable(teamId, slot, playerId))
+
+        // 1. ZURÜCKSETZEN (alte Slots leeren)
+        RemovePlayerFromAllTeams(playerId);
+
+        // 2. JETZT lokalen Slot prüfen (ist jetzt frei)
+        if (!allTeams.ContainsKey(teamId) ||
+            (slot == TeamRole.SCIENTIST && allTeams[teamId].scientistPlayer != CSteamID.Nil) ||
+            (slot == TeamRole.RAT && allTeams[teamId].ratPlayer != CSteamID.Nil))
         {
-            UnityEngine.Debug.Log("Request Slot D");
-            AssignPlayerToTeamSlot(teamId, slot, playerId);  
+            Debug.Log("Slot nicht verfügbar nach Reset");
+            return;
         }
+
+        // 3. NEU ZUWEISEN
+        Debug.Log("Request Slot D");
+        AssignPlayerToTeamSlot(teamId, slot, playerId);
     }
 
     [ServerRpc(RequireOwnership = false)]
