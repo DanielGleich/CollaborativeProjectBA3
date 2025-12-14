@@ -117,15 +117,14 @@ public class TeamManager : NetworkSingleton<TeamManager>
         CSteamID playerId = new CSteamID(steamId);
         if (IsTeamSlotAvailable(teamId, slot, playerId))
         {
-            AssignPlayerToTeamSlot(teamId, slot, playerId);
-            UpdateTeamSlot(teamId, slot, steamId);
+            AssignPlayerToTeamSlot(teamId, slot, playerId);  
+            UpdateTeamSlotObservers(teamId, slot, steamId);  
         }
     }
 
     [ObserversRpc]
-    private void UpdateTeamSlot(int teamId, TeamRole slot, ulong steamId)
+    private void UpdateTeamSlotObservers(int teamId, TeamRole slot, ulong steamId)
     {
-        AssignPlayerToTeamSlot(teamId, slot, new CSteamID(steamId));
         MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 
@@ -133,13 +132,12 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public void RequestLeaveTeamServerRPC(ulong steamId)
     {
         RemovePlayerFromAllTeams(new CSteamID(steamId));
-        RemovePlayerFromTeam(steamId);
+        NotifyPlayerLeftObservers(steamId);              
     }
 
     [ObserversRpc]
-    private void RemovePlayerFromTeam(ulong steamId)
-    { 
-        RemovePlayerFromAllTeams(new CSteamID(steamId));
+    private void NotifyPlayerLeftObservers(ulong steamId)
+    {
         MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 }
