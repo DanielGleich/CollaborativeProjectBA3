@@ -4,6 +4,7 @@ using System.Diagnostics;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
+using UnityEngine;
 
 public class TeamManager : NetworkSingleton<TeamManager>
 {
@@ -95,10 +96,18 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public void InitTeams()
     {
+        if (!IsServerInitialized) return;
+
+        allTeams.Clear();
+        allTeamCards.Clear();
+
+        allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
+
         foreach (UITeamCard t in allTeamCards)
         {
             t.OnRequestProfile += RequestSlot;
-            allTeams.Add(t.currentTeam.id, t.currentTeam);
+            if (!allTeams.ContainsKey(t.currentTeam.id))
+                allTeams.Add(t.currentTeam.id, t.currentTeam);
         }
     }
 

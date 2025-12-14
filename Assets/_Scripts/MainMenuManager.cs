@@ -68,7 +68,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
             teamCard.SetCurrentTeam(t);
-            TeamManager.allTeamCards.Add(teamCard);
         }
     }
 
