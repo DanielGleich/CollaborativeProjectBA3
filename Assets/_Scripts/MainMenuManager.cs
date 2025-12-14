@@ -3,7 +3,6 @@ using Steamworks;
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +17,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] int maxTeamCount = 2;
     [SerializeField] GameObject teamCardPrefab;
     [SerializeField] Transform teamCardContainer;
+    [SerializeField] GameObject leaveTeamButton;
 
 
     private void OnEnable()
@@ -46,7 +46,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
         {
             CSteamID playerId = SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i);
-            if (Team.IsPlayerOwningSlot(playerId) == false)
+            if (TeamManager.Instance == null || TeamManager.Instance.IsPlayerOwningSlot(playerId) == false)
                 players.Add(playerId);
         }
 
@@ -55,6 +55,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
             CSteamID playerId = i < players.Count ? players[i] : CSteamID.Nil;
             _lobbyIcons[i].CurrentSteamId = playerId;
         }
+
+        leaveTeamButton.SetActive(TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(SteamUser.GetSteamID()));
     }
 
     private void CreateTeamCards()
@@ -62,11 +64,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
         for (int i = 0; i < maxTeamCount; i++)
         {
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
-            Team t = new Team(i);
+            Team t = new Team() { id = i };
+            TeamManager.allTeams.Add(i, t);
+
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
-            teamCard.currentTeam = t;
-            teamCard.Init();
-            TeamManager.allTeams.Add(teamCard);
+            teamCard.SetCurrentTeam(t);
+            TeamManager.allTeamCards.Add(teamCard);
         }
     }
 
@@ -74,7 +77,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
     {
         foreach (Transform t in teamCardContainer.transform)
         { 
-            Destroy(t);
+            Destroy(t.gameObject);
         }
     }
 
@@ -96,8 +99,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void OnLobbyExited()
     {
-        UpdateLobbyProfiles();
         ClearTeamCards();
+        UpdateLobbyProfiles();
     }
 
     public void CreateLobby()
@@ -123,6 +126,11 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.LeaveLobby();
         _joinContainer.SetActive(true);
         _lobbyContainer.SetActive(false);
+    }
+
+    public void LeaveTeamRequest()
+    {
+        TeamManager.Instance.RequestLeaveTeamServerRPC(SteamUser.GetSteamID().m_SteamID);
     }
 
     public void SaveLobbyIdToClipboard()

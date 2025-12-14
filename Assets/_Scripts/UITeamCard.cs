@@ -10,25 +10,26 @@ public class UITeamCard : MonoBehaviour
     [SerializeField] UISteamProfile ratProfile;
     [SerializeField] TextMeshProUGUI teamTitle;
 
-    public Team currentTeam;
+    private Team currentTeam;
 
     public event Action<int, TeamRole, ulong> OnRequestProfile;
 
     private void OnEnable()
     {
-        Team.OnTeamUpdate += UpdateTeamSlotProfiles;
+        TeamManager.OnTeamUpdate += UpdateTeamSlotProfiles;
+        UpdateTeamSlotProfiles();
     }
 
     private void OnDisable()
     {
-        Team.OnTeamUpdate -= UpdateTeamSlotProfiles;
+        TeamManager.OnTeamUpdate -= UpdateTeamSlotProfiles;
     }
 
-    public void Init()
+    public void SetCurrentTeam(Team team)
     {
-        scientistProfile.CurrentSteamId = CSteamID.Nil;
-        ratProfile.CurrentSteamId = CSteamID.Nil;
+        currentTeam = team;
         teamTitle.text = "Team " + (currentTeam.id + 1);
+        UpdateTeamSlotProfiles();
     }
 
     public void RequestRatSlotClick()
@@ -43,6 +44,7 @@ public class UITeamCard : MonoBehaviour
 
     void UpdateTeamSlotProfiles()
     {
+        if (currentTeam == null) return;
         scientistProfile.CurrentSteamId = currentTeam.scientistPlayer;
         ratProfile.CurrentSteamId = currentTeam.ratPlayer;
     }
