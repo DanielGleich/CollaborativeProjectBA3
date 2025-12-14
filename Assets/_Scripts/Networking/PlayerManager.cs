@@ -1,11 +1,13 @@
 using FishNet;
 using FishNet.Connection;
-using FishNet.Transporting;
 using FishNet.Object;
+using FishNet.Transporting;
+using FishySteamworks;
+using Steamworks;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
 
 public class PlayerManager : NetworkSingleton<PlayerManager>
 {
@@ -57,6 +59,19 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         allPlayers.Add(connection.ClientId, player);
         Spawn(player, connection);
         PlayerConnectedClientRpc(player);
+    }
+
+    [Server]
+    public void SetPlayerToSpawnPoint(NetworkObject player)
+    {
+        Debug.Log("A");
+        if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
+        {
+            Debug.Log("B");
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.id, playerAssignment.CurrentRole);
+            Debug.Log(spawnPoint == null);
+            player.transform.position = spawnPoint == null ? Vector3.zero : spawnPoint.position;
+        }
     }
 
     [ObserversRpc]

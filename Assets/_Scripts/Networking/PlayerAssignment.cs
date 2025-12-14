@@ -8,11 +8,11 @@ using UnityEngine;
 
 public class PlayerAssignment : NetworkBehaviour
 {
-    public Team currentTeam = new Team() { id = -1, ratPlayer = CSteamID.Nil, scientistPlayer = CSteamID.Nil };
-    public TeamRole currentRole = TeamRole.INVALID;
+    public Team CurrentTeam = new Team() { id = -1, ratPlayer = CSteamID.Nil, scientistPlayer = CSteamID.Nil };
+    public TeamRole CurrentRole = TeamRole.INVALID;
+    public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
 
     [SerializeField] CinemachineCamera playerCam;
-    private readonly SyncVar<CSteamID> ownerSteamId = new SyncVar<CSteamID>();
 
     public override void OnStartServer()
     {
@@ -20,33 +20,26 @@ public class PlayerAssignment : NetworkBehaviour
         if (OwnerId != -1)
         {
             NetworkConnection conn = ServerManager.Clients[OwnerId];
-            ownerSteamId.Value = SteamUser.GetSteamID();
+            OwnerSteamId.Value = SteamUser.GetSteamID();
         }
 
-        if (ownerSteamId.Value != CSteamID.Nil)
+        if (OwnerSteamId.Value != CSteamID.Nil)
         {
             foreach (KeyValuePair<int, Team> t in TeamManager.Instance.allTeams)
             {
-                if (t.Value.scientistPlayer == ownerSteamId.Value)
+                if (t.Value.scientistPlayer == OwnerSteamId.Value)
                 {
-                    currentTeam = t.Value;
-                    currentRole = TeamRole.SCIENTIST;
+                    CurrentTeam = t.Value;
+                    CurrentRole = TeamRole.SCIENTIST;
                 }
-                else if (t.Value.ratPlayer == ownerSteamId.Value)
+                else if (t.Value.ratPlayer == OwnerSteamId.Value)
                 { 
-                    currentTeam = t.Value;
-                    currentRole = TeamRole.RAT;                    
+                    CurrentTeam = t.Value;
+                    CurrentRole = TeamRole.RAT;                    
                 }
             }
+            PlayerManager.Instance.SetPlayerToSpawnPoint(NetworkObject);
         }
-
-        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(currentTeam.id, currentRole);
-        if (spawnPoint == null) 
-        {
-            Debug.LogWarning($"No SpawnPoint found for {gameObject.name}");
-            return;
-        }
-        transform.position = spawnPoint.position;
     }
 
     public override void OnStartClient()
@@ -65,5 +58,8 @@ public class PlayerAssignment : NetworkBehaviour
         {
             playerCam.Priority = 1;
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
