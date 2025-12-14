@@ -38,7 +38,6 @@ public class PlayerAssignment : NetworkBehaviour
                     CurrentRole = TeamRole.RAT;                    
                 }
             }
-            PlayerManager.Instance.SetPlayerToSpawnPoint(NetworkObject);
         }
     }
 
@@ -56,10 +55,18 @@ public class PlayerAssignment : NetworkBehaviour
 
         if (IsOwner)
         {
+            SetToSpawnPointClient();
             playerCam.Priority = 1;
         }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    [Client]
+    private void SetToSpawnPointClient()
+    {
+        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(CurrentTeam.id, CurrentRole);
+        transform.position = spawnPoint?.position ?? Vector3.zero;
     }
 }

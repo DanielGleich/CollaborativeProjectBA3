@@ -64,12 +64,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [Server]
     public void SetPlayerToSpawnPoint(NetworkObject player)
     {
-        Debug.Log("A");
         if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
         {
-            Debug.Log("B");
             Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.id, playerAssignment.CurrentRole);
-            Debug.Log(spawnPoint == null);
             player.transform.position = spawnPoint == null ? Vector3.zero : spawnPoint.position;
         }
     }
