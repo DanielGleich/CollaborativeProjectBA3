@@ -17,7 +17,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public override void OnStartServer()
     {
         base.OnStartServer();
-
     }
 
     public override void OnStartClient()
@@ -28,6 +27,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     
     public bool IsTeamSlotAvailable(int teamId, TeamRole role, CSteamID playerId)
     {
+        if (!IsServerInitialized || !allTeams.ContainsKey(teamId)) return false;
         if (allTeams.ContainsKey(teamId))
         {
             switch (role)
@@ -45,7 +45,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public bool IsPlayerOwningSlot(CSteamID playerId)
     {
-        return allPlayers.Contains(playerId.m_SteamID);
+        return IsServerInitialized && allPlayers.Contains(playerId.m_SteamID);
     }
 
     public void RemovePlayerFromAllTeams(CSteamID playerId)
