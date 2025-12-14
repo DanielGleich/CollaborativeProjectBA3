@@ -5,11 +5,12 @@ using Steamworks;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAssignment : NetworkBehaviour
 {
-    public Team CurrentTeam = new Team() { id = -1, ratPlayer = CSteamID.Nil, scientistPlayer = CSteamID.Nil };
-    public TeamRole CurrentRole = TeamRole.INVALID;
+    public readonly SyncVar<Team> CurrentTeam = new SyncVar<Team>();
+    public readonly SyncVar<TeamRole> CurrentRole = new SyncVar<TeamRole>();
     public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
 
     [SerializeField] CinemachineCamera playerCam;
@@ -29,13 +30,13 @@ public class PlayerAssignment : NetworkBehaviour
             {
                 if (t.Value.scientistPlayer == OwnerSteamId.Value)
                 {
-                    CurrentTeam = t.Value;
-                    CurrentRole = TeamRole.SCIENTIST;
+                    CurrentTeam.Value = t.Value;
+                    CurrentRole.Value = TeamRole.SCIENTIST;
                 }
                 else if (t.Value.ratPlayer == OwnerSteamId.Value)
                 { 
-                    CurrentTeam = t.Value;
-                    CurrentRole = TeamRole.RAT;                    
+                    CurrentTeam.Value = t.Value;
+                    CurrentRole.Value = TeamRole.RAT;                    
                 }
             }
         }
@@ -66,7 +67,7 @@ public class PlayerAssignment : NetworkBehaviour
     [Client]
     private void SetToSpawnPointClient()
     {
-        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(CurrentTeam.id, CurrentRole);
+        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(CurrentTeam.Value.id, CurrentRole.Value);
         transform.position = spawnPoint?.position ?? Vector3.zero;
     }
 }

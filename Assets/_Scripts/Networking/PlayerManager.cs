@@ -66,7 +66,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     {
         if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
         {
-            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.id, playerAssignment.CurrentRole);
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
             player.transform.position = spawnPoint == null ? Vector3.zero : spawnPoint.position;
         }
     }
