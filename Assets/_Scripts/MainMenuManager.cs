@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class MainMenuManager : Singleton<MainMenuManager>
 {
-    [SerializeField] private Button _startLobbyButton;
-    [SerializeField] private GameObject _joinContainer, _lobbyContainer;
-    [SerializeField] private TMP_Text _title, _id;
-    [SerializeField] private List<UISteamProfile> _lobbyIcons;
+    [SerializeField] private Button startLobbyButton;
+    [SerializeField] private GameObject joinContainer, lobbyContainer;
+    [SerializeField] private TMP_Text title, id;
+    [SerializeField] private List<UISteamProfile> lobbyIcons;
 
     [SerializeField] int maxTeamCount = 2;
     [SerializeField] GameObject teamCardPrefab;
@@ -21,8 +21,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void OnEnable()
     {
-        _joinContainer.SetActive(true);
-        _lobbyContainer.SetActive(false);
+        joinContainer.SetActive(true);
+        lobbyContainer.SetActive(false);
 
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
@@ -42,19 +42,21 @@ public class MainMenuManager : Singleton<MainMenuManager>
     {
         CSteamID lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
         List<CSteamID> players = new List<CSteamID>();
-        for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
+        int lobbyMemberCount = SteamMatchmaking.GetNumLobbyMembers(lobbyId);
+        for (int i = 0; i < lobbyMemberCount; i++)
         {
             CSteamID playerId = SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i);
             if (TeamManager.Instance == null || TeamManager.Instance.IsPlayerOwningSlot(playerId) == false)
                 players.Add(playerId);
         }
 
-        for (int i = 0; i < _lobbyIcons.Count; i++)
+        for (int i = 0; i < lobbyIcons.Count; i++)
         {
             CSteamID playerId = i < players.Count ? players[i] : CSteamID.Nil;
-            _lobbyIcons[i].CurrentSteamId = playerId;
+            lobbyIcons[i].CurrentSteamId = playerId;
         }
 
+        startLobbyButton.interactable = InstanceFinder.IsServerStarted && players.Count == 0;
         leaveTeamButton.SetActive(TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(SteamUser.GetSteamID()));
     }
 
@@ -80,11 +82,11 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void OnLobbyJoined()
     {
-        _joinContainer.SetActive(false);
-        _lobbyContainer.SetActive(true);
-        _id.text = LobbyConnectionManager.CurrentLobbyID.ToString();
-        _title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
-        _startLobbyButton.interactable = InstanceFinder.IsServerStarted;
+        joinContainer.SetActive(false);
+        lobbyContainer.SetActive(true);
+        id.text = LobbyConnectionManager.CurrentLobbyID.ToString();
+        title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
+        startLobbyButton.interactable = InstanceFinder.IsServerStarted;
         UpdateLobbyProfiles();
         CreateTeamCards();
     }
@@ -121,8 +123,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public void LeaveLobby()
     {
         LobbyConnectionManager.LeaveLobby();
-        _joinContainer.SetActive(true);
-        _lobbyContainer.SetActive(false);
+        joinContainer.SetActive(true);
+        lobbyContainer.SetActive(false);
     }
 
     public void LeaveTeamRequest()

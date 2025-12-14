@@ -11,21 +11,18 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 {
     protected override bool _perClient => false;
 
-    private Dictionary<int, NetworkObject> _allPlayers = new Dictionary<int, NetworkObject>();
-    public static NetworkObject LocalPlayer;
+    private Dictionary<int, NetworkObject> allPlayers = new Dictionary<int, NetworkObject>();
     public static NetworkObject[] AllPlayers { get { return s_instance.GetAllPlayers(); } }
-    SpawnPointManager spawnPointManager;
+    
+    public static NetworkObject LocalPlayer;
     
     public static UnityEvent<NetworkObject> OnPlayerDisconnected = new UnityEvent<NetworkObject>();
     public static UnityEvent<NetworkObject> OnPlayerConnected = new UnityEvent<NetworkObject>();
     public static UnityEvent<NetworkObject> OnLocalPlayerConnected = new UnityEvent<NetworkObject>();
 
-
-
     private void Start()
     {
         if (!IsServerInitialized) { return; }
-        spawnPointManager = GetComponent<SpawnPointManager>();
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
@@ -40,24 +37,24 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
         if (c != null && args.ConnectionState == RemoteConnectionState.Stopped)
         {
-            if (_allPlayers.ContainsKey(c.ClientId))
+            if (allPlayers.ContainsKey(c.ClientId))
             { 
-                OnPlayerDisconnected?.Invoke(_allPlayers[c.ClientId]);
-                _allPlayers.Remove(c.ClientId);
+                OnPlayerDisconnected?.Invoke(allPlayers[c.ClientId]);
+                allPlayers.Remove(c.ClientId);
             }
         }
     }
 
     public NetworkObject[] GetAllPlayers()
     {
-        return _allPlayers.Values.ToArray();
+        return allPlayers.Values.ToArray();
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void ConnectToServerRPC(NetworkConnection connection = null)
     {
-        NetworkObject player = PlayerSpawnController.SpawnPlayer(spawnPointManager.GetFreeRandomSpawnPoint().position);
-        _allPlayers.Add(connection.ClientId, player);
+        NetworkObject player = PlayerSpawnController.SpawnPlayer(Vector3.zero);
+        allPlayers.Add(connection.ClientId, player);
         Spawn(player, connection);
         PlayerConnectedClientRpc(player);
     }

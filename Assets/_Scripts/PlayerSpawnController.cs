@@ -4,15 +4,21 @@ using UnityEngine;
 public class PlayerSpawnController : Singleton<PlayerSpawnController>
 
 {
-    [SerializeField] private NetworkObject _playerPrefab;
+    [SerializeField] private NetworkObject playerPrefab;
+    static int i;
 
-    static int _i = 1;
+    private void Awake()
+    {
+        base.Awake();
+        i = 1;
+    }
+
 
     public static NetworkObject SpawnPlayer(Vector3 position)
     { 
-        NetworkObject p = Instantiate(s_instance._playerPrefab, position, Quaternion.identity);
-        p.gameObject.name = "Player " + _i.ToString();
-        _i++;
+        NetworkObject p = Instantiate(s_instance.playerPrefab, position, Quaternion.identity);
+        p.gameObject.name = "Player " + i.ToString();
+        i++;
         return p;
     }
 }

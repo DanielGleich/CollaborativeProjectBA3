@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum TeamRole
 {
+    INVALID = -1,
     SCIENTIST = 0,
     RAT = 1
 }

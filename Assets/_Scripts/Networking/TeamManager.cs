@@ -138,10 +138,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
     {
-
-        UnityEngine.Debug.Log("Request Slot D");
         if (!allTeams.TryGetValue(teamId, out Team team)) return;
-        UnityEngine.Debug.Log("Request Slot E");
 
         switch (role)
         {
@@ -178,20 +175,16 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     private void RequestSlot(int teamId, TeamRole slot, ulong steamId)
     {
-        UnityEngine.Debug.Log("Request Slot A");
         if (!IsClientInitialized)
         {
             return;
         }
-        UnityEngine.Debug.Log("Request Slot B");
         RequestTeamSlotServerRPC(teamId, slot, steamId);
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, ulong steamId)
     {
-        UnityEngine.Debug.Log("Request Slot C");
-        UnityEngine.Debug.Log(allTeams.Count());
         CSteamID playerId = new CSteamID(steamId);
 
         RemovePlayerFromAllTeams(playerId);

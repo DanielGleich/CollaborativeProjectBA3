@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5658853903384382255}
   - component: {fileID: 5832172494069141447}
+  - component: {fileID: 3264958378058333737}
   m_Layer: 7
   m_Name: PlayerSpawnPoint2
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1629638024024155876}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: 0.6}
+  m_LocalPosition: {x: 5.87, y: 2, z: -6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,6 +54,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3264958378058333737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629638024024155876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e04b240f6dacc44b51dcc9ed7bfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPoint
+  teamId: 0
+  spawnPointType: 1
 --- !u!1 &4396134681280972751
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4496954410268647816}
   - component: {fileID: 9166933487227810854}
+  - component: {fileID: 3147334470356762871}
   m_Layer: 7
   m_Name: PlayerSpawnPoint3
   m_TagString: Untagged
@@ -79,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 4396134681280972751}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: -1.9}
+  m_LocalPosition: {x: 6.13, y: 2, z: 7.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,6 +122,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3147334470356762871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396134681280972751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e04b240f6dacc44b51dcc9ed7bfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPoint
+  teamId: 1
+  spawnPointType: 1
 --- !u!1 &6119324147622355920
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654473295118067580}
   - component: {fileID: 1834017337287148368}
+  - component: {fileID: 5791167083975695507}
   m_Layer: 7
   m_Name: PlayerSpawnPoint4
   m_TagString: Untagged
@@ -132,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 6119324147622355920}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 2, z: -1.9}
+  m_LocalPosition: {x: -8.384, y: 2, z: 7.873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,6 +190,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5791167083975695507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119324147622355920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e04b240f6dacc44b51dcc9ed7bfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnPoint
+  teamId: 1
+  spawnPointType: 0
 --- !u!1 &6636332704464284400
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3270287351876767534}
   - component: {fileID: 682642268068884851}
+  - component: {fileID: 7835596451631752416}
   m_Layer: 7
   m_Name: PlayerSpawnPoint1
   m_TagString: Untagged
@@ -185,7 +231,7 @@ Transform:
   m_GameObject: {fileID: 6636332704464284400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 2, z: 0.6}
+  m_LocalPosition: {x: -8.02, y: 2, z: -6.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -212,6 +258,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7835596451631752416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636332704464284400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e04b240f6dacc44b51dcc9ed7bfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  teamId: 0
+  spawnPointType: 0
 --- !u!1 &7020857267009756977
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +283,7 @@ GameObject:
   - component: {fileID: 4349513844196454872}
   - component: {fileID: 8452263380649631436}
   - component: {fileID: 7436516354064210678}
-  - component: {fileID: 6088224691562169316}
+  - component: {fileID: 1806317258330089415}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -239,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7020857267009756977}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -318,7 +378,7 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 8452263380649631436}
   _networkObjectCache: {fileID: 0}
---- !u!114 &6088224691562169316
+--- !u!114 &1806317258330089415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -327,13 +387,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7020857267009756977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1496e3ac139c44c91dc369aa26e8e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5108c2c2088f5424484afc27ffc3b56f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: '::'
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 8452263380649631436}
   _networkObjectCache: {fileID: 0}
-  _spawnPointParent: {fileID: 4349513844196454872}
-  _hitLayer:
+  spawnPointParent: {fileID: 4349513844196454872}
+  hitLayer:
     serializedVersion: 2
     m_Bits: 0

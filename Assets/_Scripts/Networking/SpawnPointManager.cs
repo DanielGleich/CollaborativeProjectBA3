@@ -1,37 +1,41 @@
 using FishNet.Object;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SpawnPointManager : NetworkBehaviour
 {
 
-    [SerializeField] Transform _spawnPointParent;
-    [SerializeField] LayerMask _hitLayer;
-    List<BoxCollider> _spawnBoxes = new List<BoxCollider>();
+    [SerializeField] protected Transform spawnPointParent;
+    [SerializeField] protected LayerMask hitLayer;
+    protected List<BoxCollider> spawnBoxes = new List<BoxCollider>();
     void Awake()
     {
-        foreach (Transform t in _spawnPointParent)
+        Init();
+    }
+
+    protected void Init()
+    {
+        foreach (Transform t in spawnPointParent)
         { 
             BoxCollider collider = t.GetComponent<BoxCollider>();
             if (collider != null)
             {
-                _spawnBoxes.Add(collider);
+                spawnBoxes.Add(collider);
             }
             else
             {
                 Debug.Log($"{t.gameObject} has no BoxCollider");
             }
-        }
+        }        
     }
 
-    public Transform GetFreeRandomSpawnPoint()
+    public virtual Transform GetFreeRandomSpawnPoint()
     {
         List<Transform> freeSpawnpoints = new List<Transform>();
-        foreach (BoxCollider c in _spawnBoxes)
+        foreach (BoxCollider c in spawnBoxes)
         {
             Vector3 worldCenter = c.transform.position + c.center;
-            Collider[] hits = Physics.OverlapBox(worldCenter, c.size / 2, c.transform.rotation, _hitLayer);
+            Collider[] hits = Physics.OverlapBox(worldCenter, c.size / 2, c.transform.rotation, hitLayer);
             if (hits.Length == 0)
             {
                 freeSpawnpoints.Add(c.transform);
@@ -45,7 +49,7 @@ public class SpawnPointManager : NetworkBehaviour
         else
         {
             Debug.Log($"No Spawnpoint found for {gameObject.name}");
-            return _spawnPointParent.GetChild(0);
+            return spawnPointParent.GetChild(0);
         } 
     }
 }

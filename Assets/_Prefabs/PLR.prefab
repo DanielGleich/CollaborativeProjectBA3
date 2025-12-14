@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7796941814525352688}
   - component: {fileID: -4609860660912046944}
   - component: {fileID: 5640201686091075007}
+  - component: {fileID: 7682361635520763111}
   - component: {fileID: 514637196852418507}
   - component: {fileID: 326358938979877891}
   - component: {fileID: 8571642672143249282}
@@ -138,6 +139,28 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 0}
     Scale: {x: 0, y: 0, z: 0}
     IsValid: 0
+--- !u!114 &7682361635520763111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763102462875464336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee10215abae816449d91959508937a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5640201686091075007}
+  _networkObjectCache: {fileID: 0}
+  currentTeam:
+    id: 0
+    scientistPlayer:
+      m_SteamID: 0
+    ratPlayer:
+      m_SteamID: 0
+  currentRole: 0
 --- !u!54 &514637196852418507
 Rigidbody:
   m_ObjectHideFlags: 0
