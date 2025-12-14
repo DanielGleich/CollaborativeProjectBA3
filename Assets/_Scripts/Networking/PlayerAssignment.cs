@@ -11,6 +11,7 @@ public class PlayerAssignment : NetworkBehaviour
     public Team currentTeam = new Team() { id = -1, ratPlayer = CSteamID.Nil, scientistPlayer = CSteamID.Nil };
     public TeamRole currentRole = TeamRole.INVALID;
 
+    [SerializeField] CinemachineCamera playerCam;
     private readonly SyncVar<CSteamID> ownerSteamId = new SyncVar<CSteamID>();
 
     public override void OnStartServer()
@@ -57,10 +58,16 @@ public class PlayerAssignment : NetworkBehaviour
                 input.enabled = false;
             }
 
-            if (TryGetComponent<FPSLook>(out  FPSLook look))
+            if (TryGetComponent<FPSLook>(out FPSLook look))
             {
                 look.enabled = false;
             }
+        }
+        else
+        {
+            playerCam.Priority = 1;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
