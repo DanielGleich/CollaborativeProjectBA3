@@ -3,6 +3,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerAssignment : NetworkBehaviour
@@ -10,6 +11,7 @@ public class PlayerAssignment : NetworkBehaviour
     public Team currentTeam = new Team() { id = -1, ratPlayer = CSteamID.Nil, scientistPlayer = CSteamID.Nil };
     public TeamRole currentRole = TeamRole.INVALID;
 
+    [SerializeField] CinemachineCamera playerCamera;
     private readonly SyncVar<CSteamID> ownerSteamId = new SyncVar<CSteamID>();
 
     public override void OnStartServer()
@@ -52,9 +54,13 @@ public class PlayerAssignment : NetworkBehaviour
         if (!IsOwner)
         {
             if (TryGetComponent<RatInputHandler>(out RatInputHandler input))
-            { 
+            {
                 input.enabled = false;
             }
+        }
+        else
+        { 
+            playerCamera.Prioritize();
         }
     }
 }
