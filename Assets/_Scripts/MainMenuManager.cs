@@ -12,7 +12,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] private GameObject _joinContainer, _lobbyContainer;
     [SerializeField] private TMP_Text _title, _id;
     [SerializeField] private List<UISteamProfile> _lobbyIcons;
-    private List<CSteamID> playersInTeam = new List<CSteamID>();
 
     [SerializeField] int maxTeamCount = 2;
     [SerializeField] GameObject teamCardPrefab;

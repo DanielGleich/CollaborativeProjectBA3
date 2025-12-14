@@ -24,8 +24,23 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         base.OnStartClient();
         InitTeams();
+
+        allTeams.OnChange += AllTeams_OnChange;
+        allPlayers.OnChange += AllPlayers_OnChange;
     }
-    
+
+    private void AllPlayers_OnChange(SyncHashSetOperation op, ulong item, bool asServer)
+    {
+        MainMenuManager.Instance.UpdateLobbyProfiles();
+        OnTeamUpdate?.Invoke();
+    }
+
+    private void AllTeams_OnChange(SyncDictionaryOperation op, int key, Team value, bool asServer)
+    {
+        MainMenuManager.Instance.UpdateLobbyProfiles();
+        OnTeamUpdate?.Invoke();
+    }
+
     public bool IsTeamSlotAvailable(int teamId, TeamRole role, CSteamID playerId)
     {
         if (!IsServerInitialized || !allTeams.ContainsKey(teamId)) return false;
@@ -73,8 +88,10 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
     {
+        UnityEngine.Debug.Log("Request Slot E");
         if (!allTeams.ContainsKey(teamId)) return;
 
+        UnityEngine.Debug.Log("Request Slot F");
         RemovePlayerFromAllTeams(playerId);
 
         switch (role)
@@ -113,19 +130,23 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     private void RequestSlot(int teamId, TeamRole slot, ulong steamId)
     {
+        UnityEngine.Debug.Log("Request Slot A");
         if (!IsClientInitialized)
         {
             return;
         }
+        UnityEngine.Debug.Log("Request Slot B");
         RequestTeamSlotServerRPC(teamId, slot, steamId);
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, ulong steamId)
     {
+        UnityEngine.Debug.Log("Request Slot C");
         CSteamID playerId = new CSteamID(steamId);
         if (IsTeamSlotAvailable(teamId, slot, playerId))
         {
+            UnityEngine.Debug.Log("Request Slot D");
             AssignPlayerToTeamSlot(teamId, slot, playerId);  
             UpdateTeamSlotObservers(teamId, slot, steamId);  
         }
@@ -134,12 +155,14 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ObserversRpc]
     private void UpdateTeamSlotObservers(int teamId, TeamRole slot, ulong steamId)
     {
+        UnityEngine.Debug.Log("Request Slot G");
         MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void RequestLeaveTeamServerRPC(ulong steamId)
     {
+        UnityEngine.Debug.Log("Request Team A");
         RemovePlayerFromAllTeams(new CSteamID(steamId));
         NotifyPlayerLeftObservers(steamId);              
     }
@@ -147,6 +170,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ObserversRpc]
     private void NotifyPlayerLeftObservers(ulong steamId)
     {
+        UnityEngine.Debug.Log("Request Team B");
         MainMenuManager.Instance.UpdateLobbyProfiles();
     }
 }
