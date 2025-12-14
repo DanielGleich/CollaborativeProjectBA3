@@ -51,23 +51,19 @@ public class PlayerAssignment : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        if (!IsOwner)
+        if (TryGetComponent<RatInputHandler>(out RatInputHandler input))
         {
-            if (TryGetComponent<RatInputHandler>(out RatInputHandler input))
-            {
-                input.enabled = false;
-            }
-
-            if (TryGetComponent<FPSLook>(out FPSLook look))
-            {
-                look.enabled = false;
-            }
+            input.enabled = IsOwner;
         }
-        else
+
+        if (TryGetComponent<FPSLook>(out FPSLook look))
+        {
+            look.enabled = IsOwner;
+        }
+
+        if (IsOwner)
         {
             playerCam.Priority = 1;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
