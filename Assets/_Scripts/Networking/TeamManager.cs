@@ -11,7 +11,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public static List<UITeamCard> allTeamCards = new List<UITeamCard>();
 
     public readonly SyncDictionary<int, Team> allTeams = new SyncDictionary<int, Team>();
-    public readonly SyncHashSet<CSteamID> allPlayers = new SyncHashSet<CSteamID>();
+    public readonly SyncHashSet<ulong> allPlayers = new SyncHashSet<ulong>();
     public static event Action OnTeamUpdate;
 
     public override void OnStartServer()
@@ -45,7 +45,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public bool IsPlayerOwningSlot(CSteamID playerId)
     {
-        return allPlayers.Contains(playerId);
+        return allPlayers.Contains(playerId.m_SteamID);
     }
 
     public void RemovePlayerFromAllTeams(CSteamID playerId)
@@ -65,7 +65,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
                 }
             }
 
-            allPlayers.Remove(playerId);
+            allPlayers.Remove(playerId.m_SteamID);
             TeamManager.OnTeamUpdate?.Invoke();
         }
     }
@@ -86,8 +86,8 @@ public class TeamManager : NetworkSingleton<TeamManager>
                 break;
         }
 
-        if (!allPlayers.Contains(playerId))
-            allPlayers.Add(playerId);
+        if (!allPlayers.Contains(playerId.m_SteamID))
+            allPlayers.Add(playerId.m_SteamID);
 
         OnTeamUpdate?.Invoke();
     }

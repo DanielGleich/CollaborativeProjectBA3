@@ -7,6 +7,7 @@ public enum TeamRole
     RAT = 1
 }
 
+[System.Serializable]
 public class Team
 {    
     public int id;
