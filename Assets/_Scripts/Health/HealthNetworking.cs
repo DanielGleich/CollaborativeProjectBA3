@@ -32,9 +32,10 @@ public class HealthNetworking : NetworkBehaviour
         healthScript.OnDeath -= OnDeathServerRPC;
     }
 
+    [ServerRpc(RequireOwnership = false)]
     private void ChangeNetworkedHealth(float newValue)
     {
-        if (CurrentHealth.Value != newValue)
+        if (!IsServerInitialized && CurrentHealth.Value != newValue)
         {
             Debug.Log($"{gameObject.name} - local => network new value {newValue}");
             CurrentHealth.Value = newValue;
