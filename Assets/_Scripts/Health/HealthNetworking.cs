@@ -20,28 +20,29 @@ public class HealthNetworking : NetworkBehaviour
 
     private void OnEnable()
     {
-        healthScript.OnUpdateHealth += ChangeNetworkedHealth;
-        CurrentHealth.OnChange += ChangeLocalHealth;
-        healthScript.OnDeath += OnDeathServerRPC;
+        healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
+        CurrentHealth.OnChange += UpdateLocalHealth;
+        healthScript.OnDeath += OnDeathServerRpc;
     }
 
     private void OnDisable()
     {
-        healthScript.OnUpdateHealth -= ChangeNetworkedHealth;    
-        CurrentHealth.OnChange -= ChangeLocalHealth;
-        healthScript.OnDeath -= OnDeathServerRPC;
+        healthScript.OnUpdateHealth -= RequestHealthUpdateServerRpc;    
+        CurrentHealth.OnChange -= UpdateLocalHealth;
+        healthScript.OnDeath -= OnDeathServerRpc;
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void ChangeNetworkedHealth(float newValue)
+    private void RequestHealthUpdateServerRpc(float newValue)
     {
-        if (!IsServerInitialized && CurrentHealth.Value != newValue)
+        if (CurrentHealth.Value != newValue)
         {
             Debug.Log($"{gameObject.name} - local => network new value {newValue}");
             CurrentHealth.Value = newValue;
         }
     }
-    private void ChangeLocalHealth(float oldValue, float newValue, bool asServer)
+
+    private void UpdateLocalHealth(float oldValue, float newValue, bool asServer)
     {
         if (healthScript.CurrentHealth != newValue)
         { 
@@ -51,7 +52,7 @@ public class HealthNetworking : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void OnDeathServerRPC()
+    private void OnDeathServerRpc()
     {
         HandleNetworkedDeath();
     }
