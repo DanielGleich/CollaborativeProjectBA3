@@ -18,11 +18,21 @@ public class HealthNetworking : NetworkBehaviour
         CurrentHealth.Value = healthScript.CurrentHealth;
     }
 
-    private void OnEnable()
+    public override void OnStartNetwork()
     {
         healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
         CurrentHealth.OnChange += UpdateLocalHealth;
         healthScript.OnDeath += OnDeathServerRpc;
+    }
+
+    private void OnEnable()
+    {
+        if (NetworkManager != null && (base.IsServerInitialized || base.IsClientInitialized))
+        { 
+            healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
+            CurrentHealth.OnChange += UpdateLocalHealth;
+            healthScript.OnDeath += OnDeathServerRpc;
+        }
     }
 
     private void OnDisable()
