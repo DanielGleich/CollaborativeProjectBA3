@@ -23,7 +23,6 @@ public class HealthNetworking : NetworkBehaviour
         healthScript.OnUpdateHealth += ChangeNetworkedHealth;
         CurrentHealth.OnChange += ChangeLocalHealth;
         healthScript.OnDeath += OnDeathServerRPC;
-        OnNetworkedDeath += TestToBeRemoved;
     }
 
     private void OnDisable()
@@ -31,7 +30,6 @@ public class HealthNetworking : NetworkBehaviour
         healthScript.OnUpdateHealth -= ChangeNetworkedHealth;    
         CurrentHealth.OnChange -= ChangeLocalHealth;
         healthScript.OnDeath -= OnDeathServerRPC;
-        OnNetworkedDeath -= TestToBeRemoved;
     }
 
     private void ChangeNetworkedHealth(float newValue)
@@ -54,13 +52,13 @@ public class HealthNetworking : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void OnDeathServerRPC()
     {
-        Debug.Log("Local Death");
-        OnNetworkedDeath?.Invoke();
+        HandleNetworkedDeath();
     }
 
-    private void TestToBeRemoved()
+    [ObserversRpc]
+    private void HandleNetworkedDeath()
     { 
-        Debug.Log("Networked Death");
+        OnNetworkedDeath?.Invoke();
         gameObject.SetActive(false);
     }
 }
