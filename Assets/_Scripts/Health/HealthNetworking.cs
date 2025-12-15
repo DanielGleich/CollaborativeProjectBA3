@@ -1,6 +1,7 @@
-using System;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
@@ -16,25 +17,42 @@ public class HealthNetworking : NetworkBehaviour
         CurrentHealth.Value = healthScript.CurrentHealth;
     }
 
-    public override void OnStartNetwork()
+    private void SubscribeEvents()
     {
         healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
         healthScript.OnDeath += OnDeathServerRpc;
+        CurrentHealth.OnChange += UpdateLocalHealth;
+    }
+
+    private void UnsubscribeEvents()
+    {
+        healthScript.OnUpdateHealth -= RequestHealthUpdateServerRpc;
+        healthScript.OnDeath -= OnDeathServerRpc;
+    }
+
+    public override void OnStartNetwork()
+    {
+        base.OnStartNetwork();
+        SubscribeEvents();
     }
 
     private void OnEnable()
     {
         if (NetworkManager != null && (base.IsServerInitialized || base.IsClientInitialized))
-        { 
-            healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
-            healthScript.OnDeath += OnDeathServerRpc;
+        {
+            SubscribeEvents();
         }
+    }
+
+    public override void OnStopNetwork()
+    {
+        base.OnStopNetwork();
+        UnsubscribeEvents();
     }
 
     private void OnDisable()
     {
-        healthScript.OnUpdateHealth -= RequestHealthUpdateServerRpc;
-        healthScript.OnDeath -= OnDeathServerRpc;
+        UnsubscribeEvents();
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -44,15 +62,12 @@ public class HealthNetworking : NetworkBehaviour
         {
             Debug.Log($"{gameObject.name} - local => network new value {newValue}");
             CurrentHealth.Value = newValue;
-            UpdateLocalHealth(CurrentHealth.Value);
         }
     }
-
-    [ObserversRpc]
-    private void UpdateLocalHealth(float newValue)
+    private void UpdateLocalHealth(float oldVal, float newValue, bool asServer)
     {
         if (healthScript.CurrentHealth != newValue)
-        { 
+        {
             Debug.Log($"{gameObject.name} - network => local new value {newValue}");
             healthScript.CurrentHealth = newValue;
         }
