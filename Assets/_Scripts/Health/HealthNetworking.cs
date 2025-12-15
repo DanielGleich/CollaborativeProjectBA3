@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class HealthNetworking : NetworkBehaviour
 {
-    public readonly SyncVar<float> MaxHealth = new SyncVar<float>();
     public readonly SyncVar<float> CurrentHealth = new SyncVar<float>();
     private Health healthScript;
     public event Action OnNetworkedDeath;
@@ -14,14 +13,12 @@ public class HealthNetworking : NetworkBehaviour
     private void Awake()
     {
         healthScript = GetComponent<Health>();
-        MaxHealth.Value = healthScript.MaxHealth;
         CurrentHealth.Value = healthScript.CurrentHealth;
     }
 
     public override void OnStartNetwork()
     {
         healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
-        CurrentHealth.OnChange += UpdateLocalHealth;
         healthScript.OnDeath += OnDeathServerRpc;
     }
 
@@ -30,15 +27,13 @@ public class HealthNetworking : NetworkBehaviour
         if (NetworkManager != null && (base.IsServerInitialized || base.IsClientInitialized))
         { 
             healthScript.OnUpdateHealth += RequestHealthUpdateServerRpc;
-            CurrentHealth.OnChange += UpdateLocalHealth;
             healthScript.OnDeath += OnDeathServerRpc;
         }
     }
 
     private void OnDisable()
     {
-        healthScript.OnUpdateHealth -= RequestHealthUpdateServerRpc;    
-        CurrentHealth.OnChange -= UpdateLocalHealth;
+        healthScript.OnUpdateHealth -= RequestHealthUpdateServerRpc;
         healthScript.OnDeath -= OnDeathServerRpc;
     }
 
@@ -49,10 +44,12 @@ public class HealthNetworking : NetworkBehaviour
         {
             Debug.Log($"{gameObject.name} - local => network new value {newValue}");
             CurrentHealth.Value = newValue;
+            UpdateLocalHealth(CurrentHealth.Value);
         }
     }
 
-    private void UpdateLocalHealth(float oldValue, float newValue, bool asServer)
+    [ObserversRpc]
+    private void UpdateLocalHealth(float newValue)
     {
         if (healthScript.CurrentHealth != newValue)
         { 
