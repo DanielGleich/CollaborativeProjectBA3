@@ -24,6 +24,13 @@ public class Health : MonoBehaviour
     public event Action<float> OnUpdateHealth;
     public event Action OnDeath;
 
+    [ContextMenu("DebugTakeDamage")]
+    public void DebugDamage()
+    {
+        CurrentHealth--;
+        Debug.Log($"{gameObject.name} => {CurrentHealth}hp");
+    }
+
     void Awake()
     {
         CurrentHealth = MaxHealth;
