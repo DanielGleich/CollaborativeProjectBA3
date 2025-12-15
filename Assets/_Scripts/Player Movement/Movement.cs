@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -12,6 +13,9 @@ public abstract class PlayerMovement : MonoBehaviour
     public Vector2 InputDirection { get; protected set; }
     public Vector3 Velocity { get; protected set; }
 
+    public event Action<Vector2> OnUpdateInputDirection;
+    public event Action<Vector3> OnUpdateVelocity;
+
     void Awake()
     {
         if (!cam)
@@ -20,14 +24,13 @@ public abstract class PlayerMovement : MonoBehaviour
     public void SetInputDirection(Vector2 inputDirection)
     {
         this.InputDirection = inputDirection;
+        OnUpdateInputDirection?.Invoke(inputDirection);
     }
-    public void SetInputDirection(CallbackContext context)
-    {
-        this.InputDirection = context.ReadValue<Vector2>();
-    }
+    public void SetInputDirection(CallbackContext context) => SetInputDirection(context.ReadValue<Vector2>());
     protected virtual void CalculateNewVelocity()
     {
         Velocity = Vector3.MoveTowards(Velocity, cam.GetFlatDirectionRelativeToView(InputDirection) * Speed, Time.deltaTime / accelerationTime * Speed);
+        OnUpdateVelocity?.Invoke(Velocity);
     }
     /// <summary>
     /// Apply the velocity here

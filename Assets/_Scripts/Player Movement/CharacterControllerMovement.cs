@@ -6,7 +6,7 @@ public class CharacterControllerMovement : PlayerMovement
     [SerializeField] private CharacterController characterController;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float jumpHight = 2;
+    [SerializeField] private float jumpHeight = 2;
     [SerializeField] private float groundedGravity = -0.5f;
     [SerializeField] private float gravityMultiplier = 1;
 
@@ -34,6 +34,6 @@ public class CharacterControllerMovement : PlayerMovement
     }
     public override void Jump()
     {
-        verticalVelocity = Mathf.Sqrt(jumpHight * -2f * Physics.gravity.y * gravityMultiplier);
+        verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y * gravityMultiplier);
     }
 }
