@@ -26,10 +26,7 @@ public abstract class PlayerMovement : MonoBehaviour
         this.InputDirection = inputDirection;
         OnUpdateInputDirection?.Invoke(inputDirection);
     }
-    public void SetInputDirection(CallbackContext context)
-    {
-        this.InputDirection = context.ReadValue<Vector2>();
-    }
+    public void SetInputDirection(CallbackContext context) => SetInputDirection(context.ReadValue<Vector2>());
     protected virtual void CalculateNewVelocity()
     {
         Velocity = Vector3.MoveTowards(Velocity, cam.GetFlatDirectionRelativeToView(InputDirection) * Speed, Time.deltaTime / accelerationTime * Speed);
