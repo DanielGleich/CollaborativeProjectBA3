@@ -5,7 +5,6 @@ using Steamworks;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAssignment : NetworkBehaviour
 {
@@ -14,33 +13,6 @@ public class PlayerAssignment : NetworkBehaviour
     public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
 
     [SerializeField] CinemachineCamera playerCam;
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        if (OwnerId != -1)
-        {
-            NetworkConnection conn = ServerManager.Clients[OwnerId];
-            OwnerSteamId.Value = SteamUser.GetSteamID();
-        }
-
-        if (OwnerSteamId.Value != CSteamID.Nil)
-        {
-            foreach (KeyValuePair<int, Team> t in TeamManager.Instance.allTeams)
-            {
-                if (t.Value.scientistPlayer == OwnerSteamId.Value)
-                {
-                    CurrentTeam.Value = t.Value;
-                    CurrentRole.Value = TeamRole.SCIENTIST;
-                }
-                else if (t.Value.ratPlayer == OwnerSteamId.Value)
-                { 
-                    CurrentTeam.Value = t.Value;
-                    CurrentRole.Value = TeamRole.RAT;                    
-                }
-            }
-        }
-    }
 
     public override void OnStartClient()
     {

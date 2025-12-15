@@ -1,4 +1,5 @@
 using FishNet;
+using FishNet.Object;
 using Steamworks;
 using System;
 using System.Collections.Generic;

@@ -328,18 +328,20 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 7436516354064210678}
+  - {fileID: 1806317258330089415}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
   _isSpawnable: 1
-  _isGlobal: 0
+  _isGlobal: 1
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584357893271466489
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -354,15 +356,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 3121681776391212281
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &7436516354064210678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,9 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ff6227c990f3e498c26a55445e62ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8452263380649631436}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8452263380649631436}
+  playerPrefab: {fileID: 5640201686091075007, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
 --- !u!114 &1806317258330089415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,9 +393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5108c2c2088f5424484afc27ffc3b56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8452263380649631436}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8452263380649631436}
   spawnPointParent: {fileID: 4349513844196454872}
   hitLayer:
     serializedVersion: 2
