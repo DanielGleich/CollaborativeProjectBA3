@@ -1,75 +1,119 @@
 using FishNet;
 using FishNet.Connection;
-using FishNet.Transporting;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
+using FishNet.Transporting;
+using Steamworks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Linq;
 
 public class PlayerManager : NetworkSingleton<PlayerManager>
 {
     protected override bool _perClient => false;
 
-    private Dictionary<int, NetworkObject> _allPlayers = new Dictionary<int, NetworkObject>();
-    public static NetworkObject LocalPlayer;
-    public static NetworkObject[] AllPlayers { get { return s_instance.GetAllPlayers(); } }
-    SpawnPointManager spawnPointManager;
+    [SerializeField] private NetworkObject playerPrefab;
+    int i = 1;
+
+    public readonly SyncDictionary<CSteamID, NetworkConnection> AllPlayerConnections = new SyncDictionary<CSteamID, NetworkConnection>();
+    public readonly SyncDictionary<CSteamID, NetworkObject> AllPlayerObjects = new SyncDictionary<CSteamID, NetworkObject>();
     
-    public static UnityEvent<NetworkObject> OnPlayerDisconnected = new UnityEvent<NetworkObject>();
-    public static UnityEvent<NetworkObject> OnPlayerConnected = new UnityEvent<NetworkObject>();
-    public static UnityEvent<NetworkObject> OnLocalPlayerConnected = new UnityEvent<NetworkObject>();
-
-
+    public static UnityEvent<CSteamID> OnPlayerDisconnected = new UnityEvent<CSteamID>();
+    public static UnityEvent<CSteamID> OnPlayerConnected = new UnityEvent<CSteamID>();
 
     private void Start()
     {
         if (!IsServerInitialized) { return; }
-        spawnPointManager = GetComponent<SpawnPointManager>();
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        ConnectToServerRPC();
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
     }
 
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
     {
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
-        if (c != null && args.ConnectionState == RemoteConnectionState.Stopped)
+        if (c == null) return;
+
+        CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
+
+        if (args.ConnectionState == RemoteConnectionState.Started)
         {
-            if (_allPlayers.ContainsKey(c.ClientId))
-            { 
-                OnPlayerDisconnected?.Invoke(_allPlayers[c.ClientId]);
-                _allPlayers.Remove(c.ClientId);
+            AllPlayerConnections.Add(playerId, c);
+        }
+
+        if (args.ConnectionState == RemoteConnectionState.Stopped)
+        {
+            if (AllPlayerObjects.ContainsKey(playerId))
+            {
+                int clientId = c.ClientId;
+                AllPlayerObjects.Remove(playerId);
+                OnPlayerDisconnected?.Invoke(playerId);
             }
         }
     }
 
-    public NetworkObject[] GetAllPlayers()
+    [ServerRpc(RequireOwnership = false)]
+    public void ConnectToServerRPC(NetworkConnection c = null)
     {
-        return _allPlayers.Values.ToArray();
+        CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
+        NetworkObject player = SpawnPlayer(playerId);
+        AllPlayerObjects.Add(playerId, player);
+        Spawn(player, c);
+        PlayerConnectedClientRpc(playerId);
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void ConnectToServerRPC(NetworkConnection connection = null)
+
+    public NetworkObject SpawnPlayer(CSteamID playerId)
     {
-        NetworkObject player = PlayerSpawnController.SpawnPlayer(spawnPointManager.GetFreeRandomSpawnPoint().position);
-        _allPlayers.Add(connection.ClientId, player);
-        Spawn(player, connection);
-        PlayerConnectedClientRpc(player);
+        NetworkObject p = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+
+        AssignPlayerToTeam(p, playerId);
+
+        p.gameObject.name = "Player " + i.ToString();
+        i++;
+        return p;
+    }
+
+    void AssignPlayerToTeam(NetworkObject playerObject, CSteamID playerId)
+    {
+        if (playerObject.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment) && playerId != CSteamID.Nil)
+        {
+            playerAssignment.OwnerSteamId.Value = playerId;
+
+            foreach (KeyValuePair<int, Team> t in TeamManager.Instance.allTeams)
+            {
+                if (t.Value.scientistPlayer == playerId)
+                {
+                    playerAssignment.CurrentTeam.Value = t.Value;
+                    playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
+                }
+                else if (t.Value.ratPlayer == playerId)
+                {
+                    playerAssignment.CurrentTeam.Value = t.Value;
+                    playerAssignment.CurrentRole.Value = TeamRole.RAT;
+                }
+            }
+
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
+            playerObject.transform.position = spawnPoint == null ? Vector3.zero : spawnPoint.position;
+        }
+        else
+        {
+            Debug.LogWarning($"Team assignment did not work for {playerObject.name} | SteamId: {playerId.m_SteamID}");
+        }
     }
 
     [ObserversRpc]
-    public void PlayerConnectedClientRpc(NetworkObject playerObject)
+    public void PlayerConnectedClientRpc(CSteamID playerId)
     {
-        OnPlayerConnected?.Invoke(playerObject);
-        if (playerObject.IsOwner)
-        {
-            LocalPlayer = playerObject;
-            OnLocalPlayerConnected?.Invoke(playerObject);
-        }
+        OnPlayerConnected?.Invoke(playerId);
     }
 }

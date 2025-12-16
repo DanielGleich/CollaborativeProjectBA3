@@ -11,7 +11,7 @@ public abstract class HealthDisplay : MonoBehaviour {
     }
     void OnDisable()
     {
-        health.OnUpdateHealth += UpdatehealthDisplay;
+        health.OnUpdateHealth -= UpdatehealthDisplay;
     }
     protected abstract void UpdatehealthDisplay(float health);
 }

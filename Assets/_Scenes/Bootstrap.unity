@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 2129230226}
   - component: {fileID: 2129230224}
   - component: {fileID: 2129230223}
+  - component: {fileID: 2129230228}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -317,6 +318,22 @@ MonoBehaviour:
   _persistence: 0
   _logging: {fileID: 0}
   _spawnablePrefabs: {fileID: 11400000, guid: 74ed31d1d3c1a3c4399479f999d00ffd, type: 2}
+--- !u!114 &2129230228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129230221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15895a51081447d46bda466e7e830c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Managing.Scened.SceneManager
+  _sceneProcessor: {fileID: 0}
+  _lightProbeUpdating: 0
+  _moveClientObjects: 1
+  _setActiveScene: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

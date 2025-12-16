@@ -13,6 +13,7 @@ public abstract class NetworkSingleton<T> : NetworkBehaviour where T : Component
     /// The singleton instance of the class
     /// </summary>
     protected static T s_instance { get; private set; }
+    public static T Instance => s_instance;
 
     /// <summary>
     /// When true, ignores singletons of the same type owned by other clients.

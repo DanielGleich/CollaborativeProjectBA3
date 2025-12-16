@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class GameManager : NetworkSingleton<GameManager>
 {
     protected override bool _perClient => false;
-    //private Dictionary<NetworkObject, DamageableController> _allPlayerHealths = new Dictionary<NetworkObject, DamageableController>();
 
     public static UnityEvent OnGameOver = new UnityEvent();
     public static UnityEvent OnGameWin = new UnityEvent();
@@ -14,32 +13,22 @@ public class GameManager : NetworkSingleton<GameManager>
     public static UnityEvent OnLocalPlayerDied = new UnityEvent();
     private void Start()
     {
-        if (IsServerInitialized)
-        { 
-            PlayerManager.OnPlayerConnected.AddListener(RegisterPlayer);
-            PlayerManager.OnPlayerDisconnected.AddListener(UnregisterPlayer);
-        }
+        //if (IsServerInitialized)
+        //{ 
+        //    PlayerManager.OnPlayerConnected.AddListener(RegisterPlayer);
+        //    PlayerManager.OnPlayerDisconnected.AddListener(UnregisterPlayer);
+        //}
     }
 
-    private void RegisterPlayer(NetworkObject player)
-    {
+    //private void RegisterPlayer(NetworkObject player)
+    //{
 
-    }
+    //}
 
-    private void UnregisterPlayer(NetworkObject player)
-    {
+    //private void UnregisterPlayer(NetworkObject player)
+    //{
 
-    }
-
-    private void HandlePlayerDeath(NetworkObject player)
-    {
-        OnPlayerDied?.Invoke(player);
-        if (player == PlayerManager.LocalPlayer)
-        {
-            OnLocalPlayerDied?.Invoke();
-        }
-        CheckLosingCondition();
-    }
+    //}
 
     private void CheckLosingCondition()
     { 

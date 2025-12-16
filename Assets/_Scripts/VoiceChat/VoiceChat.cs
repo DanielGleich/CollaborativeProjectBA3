@@ -1,7 +1,14 @@
-using System.Collections;
-using UnityEngine;
-using FishNet.Object;
 using FishNet.Connection;
+using FishNet.Object;
+using FMOD;
+using FMOD.Studio;
+using FMODUnity;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
+using static UnityEngine.AudioClip;
 
 public class VoiceChat : NetworkBehaviour
 {
@@ -14,43 +21,49 @@ public class VoiceChat : NetworkBehaviour
     public bool Activated = true;
     public KeyCode PushToTalkKey;
 
-    public AudioSource source;
     public float proximityRange = 10f;
     public float voiceActivationThreshold = 0.002f;
 
     private bool canTalk = true;
     private bool previousCanTalk = false;
 
-    private string deviceName;
     private const int sampleRate = 48000;
-    private const int bufferSize = 16384;
+    private const int bufferSize = 960;
 
     private float[] audioBuffer;
-    private int position;
-
-    private AudioClip microphoneClip;
-
     private float[] sampleData;
     private float[] micDataBuffer;
+
+    private FMOD.System fmodSystem;
+    private FMOD.Sound microphoneClip;
+    private uint microphoneClipLength;
+    private uint position;
+    private int recordDeviceId = 0;
+
+    private EventInstance voiceEventTemplate;
+    private Dictionary<int, FMOD.Sound> playerVoiceSounds = new Dictionary<int, FMOD.Sound>();
+    private Dictionary<int, FMOD.Channel> playerVoiceChannels = new Dictionary<int, FMOD.Channel>();
+    ChannelGroup voiceChatGroup;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (!IsOwner)
-            return;
 
-        if (source == null)
-            Debug.LogError("[VOICE] AudioSource not assigned!");
+        fmodSystem = RuntimeManager.CoreSystem;
 
-        deviceName = Microphone.devices.Length > 0 ? Microphone.devices[0] : null;
+        if (IsOwner)
+        { 
+            recordDeviceId = MicrophoneManager.Instance.GetCurrentDeviceId();
 
-        if (string.IsNullOrEmpty(deviceName))
-            Debug.LogError("[VOICE] No microphone device found!");
+            audioBuffer = new float[bufferSize];
+            sampleData = new float[bufferSize];
+            micDataBuffer = new float[bufferSize];
+        }
+        
+        fmodSystem.getMasterChannelGroup(out FMOD.ChannelGroup masterGroup);
+        fmodSystem.createChannelGroup("VoiceChat", out voiceChatGroup);
+        masterGroup.addGroup(voiceChatGroup);
 
-        audioBuffer = new float[bufferSize];
-        sampleData = new float[bufferSize];
-        micDataBuffer = new float[bufferSize];
-        source.playOnAwake = false;
     }
 
     void Update()
@@ -58,8 +71,10 @@ public class VoiceChat : NetworkBehaviour
         if (!Activated || !IsOwner)
             return;
 
-        string selectedDevice = MicrophoneManager.Instance.GetCurrentDeviceName();
-        if (selectedDevice != deviceName)
+        // TODO: Implement Input device change
+        int selectedDevice = recordDeviceId;
+
+        if (selectedDevice != recordDeviceId)
         {
             UpdateMicrophone(selectedDevice);
         }
@@ -68,12 +83,12 @@ public class VoiceChat : NetworkBehaviour
         {
             case DetectionType.PushToTalk:
                 canTalk = Input.GetKey(PushToTalkKey);
-                if (canTalk && microphoneClip == null)
+                if (canTalk && !microphoneClip.hasHandle())
                 {
                     StartMicrophone();
                     StartTalking();
                 }
-                else if (!canTalk && microphoneClip != null)
+                else if (!canTalk && microphoneClip.hasHandle())
                 {
                     StopTalking();
                     StopMicrophone();
@@ -81,7 +96,7 @@ public class VoiceChat : NetworkBehaviour
                 break;
 
             case DetectionType.VoiceActivation:
-                if (microphoneClip == null)
+                if (!microphoneClip.hasHandle())
                 {
                     StartMicrophone();
                 }
@@ -100,37 +115,68 @@ public class VoiceChat : NetworkBehaviour
 
     private void StartMicrophone()
     {
-        if (string.IsNullOrEmpty(deviceName))
-            return;
+        if (microphoneClip.hasHandle())
+            StopMicrophone();
 
+        CREATESOUNDEXINFO exInfo = new CREATESOUNDEXINFO();
+        exInfo.cbsize = Marshal.SizeOf(typeof(CREATESOUNDEXINFO));
+        exInfo.numchannels = 1;
+        exInfo.format = SOUND_FORMAT.PCM16;
+        exInfo.defaultfrequency = sampleRate;
+        exInfo.length = (uint)(sampleRate * sizeof(short) * 10); //Might change length from 10 to sth else?
+
+        RESULT result = fmodSystem.createSound(
+            "",
+            MODE.LOOP_NORMAL | MODE.OPENUSER,
+            ref exInfo,
+            out microphoneClip
+        );
+
+        if (result != RESULT.OK)
+        {
+            UnityEngine.Debug.LogError("[VOICE] FMOD createSound failed: " + result);
+            microphoneClip.clearHandle();
+            return;
+        }
+
+        result = fmodSystem.recordStart(recordDeviceId, microphoneClip, true);
+        if (result != RESULT.OK)
+        {
+            UnityEngine.Debug.LogError("[VOICE] FMOD recordStart failed: " + result);
+            microphoneClip.release();
+            microphoneClip.clearHandle();
+            return;
+        }
+
+        microphoneClip.getLength(out microphoneClipLength, TIMEUNIT.PCM);
         position = 0;
-        microphoneClip = Microphone.Start(deviceName, true, 10, sampleRate);
     }
 
     private void StopMicrophone()
     {
-        if (string.IsNullOrEmpty(deviceName))
+        if (!microphoneClip.hasHandle())
             return;
 
-        Microphone.End(deviceName);
-        microphoneClip = null;
+        fmodSystem.recordStop(recordDeviceId);
+        microphoneClip.release();
+        microphoneClip.clearHandle();
     }
 
-    private void UpdateMicrophone(string newDeviceName)
+    private void UpdateMicrophone(int newDriverId)
     {
-        if (!string.IsNullOrEmpty(deviceName))
-        {
-            Debug.Log($"[VOICE] Switching microphone from '{deviceName}' to '{newDeviceName}'");
+        if (recordDeviceId == newDriverId)
+            return;
 
-            // Stop the current microphone
-            StopTalking();
-            StopMicrophone();
-        }
+        UnityEngine.Debug.Log($"[VOICE] Switching FMOD record driver from {recordDeviceId} to {newDriverId}");
 
-        deviceName = newDeviceName;
+        bool wasTalking = canTalk;
 
-        // If currently talking, restart with the new microphone
-        if (canTalk)
+        StopTalking();
+        StopMicrophone();
+
+        recordDeviceId = newDriverId;
+
+        if (wasTalking)
         {
             StartMicrophone();
             StartTalking();
@@ -139,8 +185,8 @@ public class VoiceChat : NetworkBehaviour
 
     private void StartTalking()
     {
-        Debug.Log("Talk Start");
-        if (string.IsNullOrEmpty(deviceName))
+        UnityEngine.Debug.Log("Talk Start");
+        if (!microphoneClip.hasHandle())
             return;
 
         StartCoroutine(TransmitVoice());
@@ -148,120 +194,185 @@ public class VoiceChat : NetworkBehaviour
 
     private void StopTalking()
     {
-        Debug.Log("Talk Stop");
-        if (string.IsNullOrEmpty(deviceName))
-            return;
-
-        StopCoroutine(TransmitVoice());
+        UnityEngine.Debug.Log("Talk Stop");
+        StopAllCoroutines();
     }
 
     private IEnumerator TransmitVoice()
     {
         while (canTalk)
         {
-            if (microphoneClip == null)
-                yield break;
+            fmodSystem.update();
 
-            int micPosition = Microphone.GetPosition(deviceName);
-
-            if (micPosition < position)
-                position = micPosition;
-
-            if (position + bufferSize > micPosition)
-            {
+            uint recordPos;
+            if (fmodSystem.getRecordPosition(recordDeviceId, out recordPos) != RESULT.OK)
                 yield return null;
-                continue;
+
+            uint recordDelta = (recordPos >= position)
+                ? (recordPos - position)
+                : (recordPos + microphoneClipLength - position);
+
+            if (recordDelta >= bufferSize)
+            {
+                uint samplesToRead = Math.Min(bufferSize, recordDelta);
+                uint byteOffset = position * 2u;
+                uint byteLength = samplesToRead * 2u;
+
+                IntPtr ptr1, ptr2; uint len1, len2;
+                if (microphoneClip.@lock(byteOffset, byteLength, out ptr1, out ptr2, out len1, out len2) == RESULT.OK)
+                {
+                    int sampleCount = (int)(len1 / 2);
+                    Array.Clear(audioBuffer, 0, sampleCount);
+                    ReadFmodBuffer(ptr1, sampleCount, audioBuffer);
+                    microphoneClip.unlock(ptr1, ptr2, len1, len2);
+
+                    if (sampleCount > 0)
+                        TransmitAudioServerRpc(audioBuffer, sampleCount);
+
+                    position = (position + samplesToRead) % microphoneClipLength;
+                }
             }
 
-            microphoneClip.GetData(audioBuffer, position);
-            position = (position + bufferSize) % microphoneClip.samples;
-
-            TransmitAudioServerRpc(audioBuffer);
-
-            yield return new WaitForSeconds(bufferSize / (float)sampleRate);
+            yield return null;
         }
     }
 
     private bool IsVoiceActivated()
     {
-        if (microphoneClip == null)
+        if (!microphoneClip.hasHandle())
             return false;
 
-        int micPosition = Microphone.GetPosition(deviceName);
+        fmodSystem.update();
 
-        int sampleStartPosition = micPosition - bufferSize;
-        if (sampleStartPosition < 0)
-        {
-            // Not enough data yet
+        uint recordPos;
+        if (fmodSystem.getRecordPosition(recordDeviceId, out recordPos) != RESULT.OK)
             return false;
-        }
 
-        microphoneClip.GetData(sampleData, sampleStartPosition);
+        uint recordDelta = (recordPos >= position)
+            ? (recordPos - position)
+            : (recordPos + microphoneClipLength - position);
 
-        float sum = 0;
-        for (int i = 0; i < sampleData.Length; i++)
-        {
+        if (recordDelta < bufferSize)
+            return false;
+
+        uint byteOffset = ((recordPos + microphoneClipLength - (uint)bufferSize) % microphoneClipLength) * 2u;
+        uint byteLength = (uint)bufferSize * 2u;
+
+        IntPtr ptr1, ptr2;
+        uint len1, len2;
+
+        if (microphoneClip.@lock(byteOffset, byteLength, out ptr1, out ptr2, out len1, out len2) != RESULT.OK)
+            return false;
+
+        int sampleCount1 = (int)(len1 / 2u);
+        ReadFmodBuffer(ptr1, sampleCount1, sampleData);
+
+        microphoneClip.unlock(ptr1, ptr2, len1, len2);
+
+        float sum = 0f;
+        for (int i = 0; i < sampleCount1; i++)
             sum += Mathf.Abs(sampleData[i]);
-        }
 
-        float average = sum / sampleData.Length;
+        float average = sum / sampleCount1;
         return average > voiceActivationThreshold;
     }
 
+
     [ServerRpc(RequireOwnership = false)]
-    private void TransmitAudioServerRpc(float[] audioData, NetworkConnection sender = null)
+    private void TransmitAudioServerRpc(float[] audioData, int validSamples, NetworkConnection sender = null)
     {
-        TransmitAudioObserversRpc(audioData, sender.ClientId);
+        TransmitAudioObserversRpc(audioData, validSamples, sender.ClientId);
     }
 
     [ObserversRpc]
-    private void TransmitAudioObserversRpc(float[] audioData, int senderClientId)
+    private void TransmitAudioObserversRpc(float[] audioData, int validSamples, int senderClientId)
     {
-        // Ensure we do not play our own voice
         if (senderClientId == NetworkManager.ClientManager.Connection.ClientId)
             return;
 
-        PlayReceivedAudio(audioData, senderClientId);
+        PlayReceivedAudio(audioData, validSamples, senderClientId);
     }
 
-    private void PlayReceivedAudio(float[] audioData, int senderClientId)
+    private void PlayReceivedAudio(float[] audioData, int validSamples, int senderClientId)
     {
-        if (source == null)
+        if (validSamples <= 0) return;
+
+        if (VoiceChatType == ChatType.Proximity)
         {
-            Debug.LogError("[VOICE] AudioSource not assigned!");
+            Transform senderTransform = GetPlayerTransform(senderClientId);
+            if (senderTransform == null) return;
+
+            float distance = Vector3.Distance(transform.position, senderTransform.position);
+            if (distance > proximityRange)
+            {
+                StopVoiceChannel(senderClientId);
+                return;
+            }
+        }
+
+        FMOD.Sound voiceSound;
+        CreateFmodVoiceSound(audioData, validSamples, out voiceSound);
+
+        FMOD.Channel voiceChannel;
+        fmodSystem.playSound(voiceSound, voiceChatGroup, false, out voiceChannel);
+
+        playerVoiceSounds[senderClientId] = voiceSound;
+        playerVoiceChannels[senderClientId] = voiceChannel;
+
+        if (VoiceChatType == ChatType.Proximity)
+        {
+            Transform senderTransform = GetPlayerTransform(senderClientId);
+            FMOD.VECTOR pos = new FMOD.VECTOR { x = senderTransform.position.x, y = senderTransform.position.y, z = senderTransform.position.z };
+            FMOD.VECTOR vel = new FMOD.VECTOR { x = 0, y = 0, z = 0 };
+            voiceChannel.set3DAttributes(ref pos, ref vel);
+            voiceChannel.set3DMinMaxDistance(1.0f, proximityRange);
+        }
+    }
+
+    private void CreateFmodVoiceSound(float[] audioData, int validSamples, out FMOD.Sound sound)
+    {
+        short[] pcm16Data = new short[validSamples];
+        for (int i = 0; i < validSamples; i++)
+            pcm16Data[i] = (short)(Mathf.Clamp(audioData[i], -1f, 1f) * 32767f);
+
+        CREATESOUNDEXINFO exInfo = new CREATESOUNDEXINFO();
+        exInfo.cbsize = Marshal.SizeOf(typeof(CREATESOUNDEXINFO));
+        exInfo.numchannels = 1;
+        exInfo.format = SOUND_FORMAT.PCM16;
+        exInfo.defaultfrequency = sampleRate;
+        exInfo.length = (uint)(validSamples * sizeof(short));
+
+        RESULT result = fmodSystem.createSound("",MODE.OPENUSER | MODE.LOOP_OFF,ref exInfo,out sound);
+        if (result != RESULT.OK)
+        {
+            UnityEngine.Debug.LogError($"[VOICE] FMOD createSound failed: {result}");
+            sound.clearHandle();
             return;
         }
 
-        // Set spatial blend based on chat type
-        if (VoiceChatType == ChatType.Proximity)
+        sound.@lock(0, exInfo.length, out IntPtr ptr1, out IntPtr ptr2, out uint len1, out uint len2);
+        Marshal.Copy(pcm16Data, 0, ptr1, validSamples);
+        sound.unlock(ptr1, ptr2, len1, len2);
+    }
+
+    private void StopVoiceChannel(int clientId)
+    {
+        if (playerVoiceChannels.TryGetValue(clientId, out FMOD.Channel channel))
         {
-            source.spatialBlend = 1.0f; // Make the audio 3D
-            source.maxDistance = proximityRange;
-            Transform senderTransform = GetPlayerTransform(senderClientId);
-            if (senderTransform != null)
-            {
-                float distance = Vector3.Distance(transform.position, senderTransform.position);
-                if (distance > proximityRange)
-                {
-                    return; // This is to save on bandwidth
-                }
-            }
-        }
-        else
-        {
-            source.spatialBlend = 0.0f; // Make the audio 2D for global chat
+            channel.stop();
+            playerVoiceChannels.Remove(clientId);
         }
 
-        AudioClip clip = AudioClip.Create("ReceivedVoice", audioData.Length, 1, sampleRate, false);
-        clip.SetData(audioData, 0);
-
-        source.clip = clip;
-        source.Play();
+        if (playerVoiceSounds.TryGetValue(clientId, out FMOD.Sound sound))
+        {
+            sound.release();
+            playerVoiceSounds.Remove(clientId);
+        }
     }
 
     private Transform GetPlayerTransform(int clientId)
     {
-        foreach (var obj in FindObjectsOfType<NetworkObject>())
+        foreach (var obj in FindObjectsByType<NetworkObject>(FindObjectsSortMode.None))
         {
             if (obj.Owner.ClientId == clientId)
             {
@@ -271,31 +382,23 @@ public class VoiceChat : NetworkBehaviour
         return null;
     }
 
-    private float GetMicInputVolume()
+    private unsafe void ReadFmodBuffer(IntPtr ptr, int sampleCount, float[] targetBuffer)
     {
-        if (microphoneClip == null || string.IsNullOrEmpty(deviceName))
-            return 0f;
-
-        int micPosition = Microphone.GetPosition(deviceName);
-
-        int sampleStartPosition = micPosition - bufferSize;
-        if (sampleStartPosition < 0)
-        {
-            // Not enough data yet
-            return 0f;
-        }
-
-        microphoneClip.GetData(micDataBuffer, sampleStartPosition);
-
-        float sum = 0;
-        for (int i = 0; i < micDataBuffer.Length; i++)
-        {
-            sum += micDataBuffer[i] * micDataBuffer[i]; // Squared values for RMS
-        }
-
-        float rmsValue = Mathf.Sqrt(sum / micDataBuffer.Length);
-
-        float amplifiedVolume = Mathf.Clamp(rmsValue * 50f, 0f, 1f);
-        return amplifiedVolume;
+        short* src = (short*)ptr.ToPointer();
+        for (int i = 0; i < sampleCount; ++i)
+            targetBuffer[i] = src[i] / 32768.0f;
     }
+
+    void OnDestroy()
+    {
+        foreach (var kvp in playerVoiceChannels)
+            kvp.Value.stop();
+        foreach (var kvp in playerVoiceSounds)
+            kvp.Value.release();
+
+        playerVoiceChannels.Clear();
+        playerVoiceSounds.Clear();
+        voiceChatGroup.release();
+    }
+
 }

@@ -1,35 +1,36 @@
 using Steamworks;
-using TMPro;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class UILobbyProfile : MonoBehaviour
+public class UISteamProfile : MonoBehaviour
 {
-    [SerializeField] RawImage _profilePicture;
-    [SerializeField] TextMeshProUGUI _playerName;
-    [SerializeField] GameObject _emptyProfile;
-    public CSteamID currentSteamId {get; private set;}
+    public event Action<Texture> OnImageChanged;
+    public event Action<string> OnNameChanged;
+    public event Action OnProfileEmpty;
+    public event Action OnProfileFilled;
 
-    private void Start()
-    {
-        currentSteamId = CSteamID.Nil;
+    private CSteamID currentSteamId;
+    public CSteamID CurrentSteamId 
+    {get => currentSteamId;
+        set 
+        {
+            currentSteamId = value;
+            if (value == CSteamID.Nil)
+            {
+                OnProfileEmpty?.Invoke();
+                return;
+            }
+            OnProfileFilled?.Invoke();
+            OnNameChanged?.Invoke(SteamFriends.GetFriendPersonaName(currentSteamId));
+            int imageId = SteamFriends.GetLargeFriendAvatar(currentSteamId);
+            if (imageId == -1) return;
+            OnImageChanged?.Invoke(GetSteamImageAsTexture(imageId));
+        }
     }
 
-    public void SetSteamId(CSteamID playerId)
+    private void Awake()
     {
-        currentSteamId = playerId;
-        if (playerId == CSteamID.Nil)
-        { 
-            _emptyProfile.SetActive(true);
-            return;
-        }
-        _emptyProfile.SetActive(false);
-        _playerName.text = SteamFriends.GetFriendPersonaName(playerId);
-        int imageId = SteamFriends.GetLargeFriendAvatar(playerId);
-
-        if (imageId == -1) return;
-
-        _profilePicture.texture = GetSteamImageAsTexture(imageId);
+        currentSteamId = CSteamID.Nil;
     }
 
     private Texture2D GetSteamImageAsTexture(int iImage)
