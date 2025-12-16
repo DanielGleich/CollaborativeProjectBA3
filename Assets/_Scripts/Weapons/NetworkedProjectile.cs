@@ -2,7 +2,7 @@ using System;
 using FishNet.Object;
 using UnityEngine;
 
-public class Projectile : NetworkBehaviour
+public class NetworkedProjectile : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody rb;

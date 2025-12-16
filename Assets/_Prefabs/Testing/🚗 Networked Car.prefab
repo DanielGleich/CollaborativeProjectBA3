@@ -184,7 +184,6 @@ MonoBehaviour:
   chargeHandler: {fileID: 6376139731976207486}
   spawnPoint: {fileID: 4568380121292102358}
   projectilePrefab: {fileID: 2990580506299518381, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
-  ignoreChargehandler: 1
 --- !u!114 &6376139731976207486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,10 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cffe1b77969c941a5ac596eb749856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootKnockback
-  rangeWeapon: {fileID: 2264495918847417355}
+  weapon: {fileID: 2264495918847417355}
   affectedRigidbody: {fileID: 2970568200549934376}
   canon: {fileID: 4568380121292102358}
-  knockBackForce: 250
+  knockBackForce: 750
 --- !u!1 &8020056654267458157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1146,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2264495918847417355}
         m_TargetAssemblyTypeName: RangeWeapon, Assembly-CSharp
-        m_MethodName: TryShoot
+        m_MethodName: TryActivate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
