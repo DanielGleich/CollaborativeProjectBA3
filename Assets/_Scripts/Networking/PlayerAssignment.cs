@@ -1,8 +1,6 @@
-using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
-using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -16,9 +14,14 @@ public class PlayerAssignment : NetworkBehaviour
 
     public override void OnStartClient()
     {
-        if (TryGetComponent<RatInputHandler>(out RatInputHandler input))
+        if (TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
         {
-            input.enabled = IsOwner;
+            rInput.enabled = IsOwner && CurrentRole.Value == TeamRole.RAT;
+        }
+
+        if (TryGetComponent<ScientistInputHandler>(out ScientistInputHandler sInput))
+        {
+            sInput.enabled = IsOwner && CurrentRole.Value == TeamRole.SCIENTIST;
         }
 
         if (TryGetComponent<FPSLook>(out FPSLook look))

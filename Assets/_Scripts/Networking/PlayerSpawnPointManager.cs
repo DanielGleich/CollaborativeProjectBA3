@@ -29,7 +29,6 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
         foreach (PlayerSpawnPoint spawnPoint in spawnPoints)
         {
             BoxCollider collider = spawnPoint.gameObject.GetComponent<BoxCollider>();
-            Debug.Log("A");
 
             if (collider != null)
             {
@@ -50,7 +49,6 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
             {
                 if (playerSpawn.teamId == teamId && playerSpawn.spawnPointType == role)
                 {
-                    Debug.Log($"{playerSpawn.teamId} - {playerSpawn.spawnPointType}");
                     return spawn.transform;
                 }
             }
