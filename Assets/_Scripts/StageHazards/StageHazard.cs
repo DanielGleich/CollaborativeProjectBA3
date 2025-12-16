@@ -11,7 +11,7 @@ public class StageHazard : MonoBehaviour
     }
 
     [ContextMenu("Debug Trigger")]
-    private void DebugTrigger()
+    public void DebugTrigger()
     {
         TriggerAllHazards();
     }

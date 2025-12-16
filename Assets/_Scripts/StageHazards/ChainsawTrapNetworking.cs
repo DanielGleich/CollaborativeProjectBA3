@@ -18,7 +18,6 @@ public class ChainsawTrapNetworking : NetworkBehaviour
     }
     private void Unsubscribe()
     { 
-        localTrap.Subscribe();
         StageHazardNetworking.OnNetworkedTrigger -= NetworkedTriggerTrap;
     }
 

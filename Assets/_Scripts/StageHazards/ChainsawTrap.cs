@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class ChainsawTrap : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] GameObject hitbox;
+
     [Header("Settings")]
     public float Duration;
     public UnityEvent OnTrapStarting = new UnityEvent();
@@ -24,12 +27,14 @@ public class ChainsawTrap : MonoBehaviour
     }
 
     public void Subscribe()
-    { 
+    {
+        Debug.Log("Subscribed");
         StageHazard.OnTriggered += TriggerTrap;
     }
 
     public void Unsubscribe()
     { 
+        Debug.Log("Unsubscribed");
         StageHazard.OnTriggered -= TriggerTrap;    
     }
 
@@ -40,11 +45,13 @@ public class ChainsawTrap : MonoBehaviour
 
     private void ActivateTrap()
     { 
+        hitbox.SetActive(true);
         OnTrapStarted?.Invoke();
     }
 
     private void DeactivateTrap()
     { 
+        hitbox.SetActive(false);
         OnTrapFinished?.Invoke();
     }
 
