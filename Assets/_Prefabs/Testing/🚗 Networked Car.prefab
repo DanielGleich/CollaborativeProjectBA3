@@ -108,7 +108,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584357931137241882
+  _initializedTimestamp: -8584357292755943137
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -132,6 +132,91 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
+--- !u!1 &6857603945852663860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4568380121292102358}
+  - component: {fileID: 2264495918847417355}
+  - component: {fileID: 6376139731976207486}
+  - component: {fileID: 2697894123170992200}
+  m_Layer: 0
+  m_Name: Range Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4568380121292102358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857603945852663860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 3.77, y: -0, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4820085995036917843}
+  m_LocalEulerAnglesHint: {x: 180, y: -90, z: 0}
+--- !u!114 &2264495918847417355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857603945852663860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 4323587167690600401}
+  _networkObjectCache: {fileID: 0}
+  chargeHandler: {fileID: 6376139731976207486}
+  spawnPoint: {fileID: 4568380121292102358}
+  projectilePrefab: {fileID: 2990580506299518381, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
+  ignoreChargehandler: 1
+--- !u!114 &6376139731976207486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857603945852663860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4389126b4e3faa4e9f1ba7dbfcd40e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeHandler
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 4323587167690600401}
+  _networkObjectCache: {fileID: 0}
+  chargeDuratiuon: 1
+--- !u!114 &2697894123170992200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857603945852663860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cffe1b77969c941a5ac596eb749856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootKnockback
+  rangeWeapon: {fileID: 2264495918847417355}
+  affectedRigidbody: {fileID: 2970568200549934376}
+  canon: {fileID: 4568380121292102358}
+  knockBackForce: 250
 --- !u!1 &8020056654267458157
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +228,7 @@ GameObject:
   - component: {fileID: 5448669449491148155}
   - component: {fileID: 8326365896360716412}
   - component: {fileID: 6144154185185025739}
-  - component: {fileID: 4590482648619247143}
+  - component: {fileID: 4521322841724339332}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -159,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8020056654267458157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23117141, y: 0.000000003968303, z: -9.428984e-10, w: 0.972913}
+  m_LocalRotation: {x: 0.25597158, y: 0.000000007703059, z: -0.0000000020397184, w: 0.96668434}
   m_LocalPosition: {x: 0.026745738, y: 4.76, z: -5.506746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -228,7 +313,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 4.26, z: -5.48}
---- !u!114 &4590482648619247143
+--- !u!114 &4521322841724339332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,10 +322,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8020056654267458157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineHardLookAt
-  LookAtOffset: {x: 0, y: 0, z: 1.5}
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 2, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 1
+    Time: 0.212
+    Smoothing: 0.7
+    IgnoreY: 1
 --- !u!1001 &4029802133593315703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,7 +488,10 @@ PrefabInstance:
     - {fileID: 5852317441645357215, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
     - {fileID: -5954115112562165253, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8433229017589618980, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4568380121292102358}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
       insertIndex: -1
@@ -1040,7 +1144,19 @@ MonoBehaviour:
       m_Calls: []
   onJump:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2264495918847417355}
+        m_TargetAssemblyTypeName: RangeWeapon, Assembly-CSharp
+        m_MethodName: TryShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -1289,6 +1405,11 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!4 &4820085995036917843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8433229017589618980, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
+  m_PrefabInstance: {fileID: 4029802133593315703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5836581576992653826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7427297483762195317, guid: df9dd2a69461b054d8ef9e412f5e23c4, type: 3}
