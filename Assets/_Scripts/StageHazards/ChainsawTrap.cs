@@ -28,13 +28,11 @@ public class ChainsawTrap : MonoBehaviour
 
     public void Subscribe()
     {
-        Debug.Log("Subscribed");
         StageHazard.OnTriggered += TriggerTrap;
     }
 
     public void Unsubscribe()
     { 
-        Debug.Log("Unsubscribed");
         StageHazard.OnTriggered -= TriggerTrap;    
     }
 

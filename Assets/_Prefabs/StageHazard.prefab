@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 7923592124467387863}
   - component: {fileID: 366874344738534935}
   - component: {fileID: 898999481292447678}
+  - component: {fileID: 4311148040444005929}
   m_Layer: 0
   m_Name: DamagezoneHitbox
   m_TagString: Untagged
@@ -274,6 +275,20 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4311148040444005929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794386548474748728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bcba3f3349959439026cacd6207df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
+  damageOnEnter: 1
+  damagePerSecond: 1
 --- !u!1 &5792574720923855870
 GameObject:
   m_ObjectHideFlags: 0
