@@ -37,6 +37,7 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
         }
     }
 
+    [Server]
     public Transform GetSpawnPointForPlayer(int teamId, TeamRole role)
     {
         Debug.LogError($"GetSpawnPointForPlayer on {(IsServer ? "SERVER" : "CLIENT")} | boxes: {spawnBoxes.Count}");
