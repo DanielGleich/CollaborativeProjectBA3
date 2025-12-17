@@ -66,7 +66,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
         NetworkObject player = SpawnPlayer(playerId);
         AllPlayerObjects.Add(playerId, player);
-        Spawn(player, c);
 
         if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
         { 
@@ -75,6 +74,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             player.transform.SetPositionAndRotation(spawnPos, Quaternion.identity);
         }
 
+        Spawn(player, c);
         PlayerConnectedClientRpc(playerId);
     }
 

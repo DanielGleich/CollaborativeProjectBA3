@@ -1,5 +1,3 @@
-using FishNet;
-using FishNet.Managing.Scened;
 using FishNet.Object;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,13 +18,15 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
     public override void OnStopServer()
     {
         base.OnStopServer();
-        NetworkSceneManager.OnNetworkedSceneChanged += LoadSpawnPoints;
+        NetworkSceneManager.OnNetworkedSceneChanged -= LoadSpawnPoints;
     }
 
     [Server]
     public void LoadSpawnPoints(string newScene)
     {
         if (newScene != "Game") return;
+
+        Debug.Log($"[SERVER] LoadSpawnPoints {newScene} | boxes after: {spawnBoxes.Count}");
 
         spawnBoxes.Clear();
         var spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
@@ -39,6 +39,7 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
 
     public Transform GetSpawnPointForPlayer(int teamId, TeamRole role)
     {
+        Debug.LogError($"GetSpawnPointForPlayer on {(IsServer ? "SERVER" : "CLIENT")} | boxes: {spawnBoxes.Count}");
         foreach (BoxCollider spawn in spawnBoxes)
         {
             if (spawn.TryGetComponent<PlayerSpawnPoint>(out PlayerSpawnPoint playerSpawn))
