@@ -65,6 +65,15 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     {
         CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
         NetworkObject player = SpawnPlayer(playerId);
+        AssignPlayerToTeam(player, playerId);
+
+        if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
+        { 
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
+            Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+            player.transform.position = spawnPos;
+        }
+
         AllPlayerObjects.Add(playerId, player);
         Spawn(player, c);
         PlayerConnectedClientRpc(playerId);
@@ -74,9 +83,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     public NetworkObject SpawnPlayer(CSteamID playerId)
     {
         NetworkObject p = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-
-        AssignPlayerToTeam(p, playerId);
-
         p.gameObject.name = "Player " + i.ToString();
         i++;
         return p;
@@ -105,10 +111,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
                 playerAssignment.CurrentRole.Value = TeamRole.RAT;
             }
         }
-
-        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
-        Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
-        playerObject.transform.SetPositionAndRotation(spawnPos, Quaternion.identity);
     }
 
 
