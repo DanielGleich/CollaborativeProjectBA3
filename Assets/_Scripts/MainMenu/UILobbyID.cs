@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class UILobbyID : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _lobbyIdText;
-    [SerializeField] private Texture2D _linkCursorTexture;
-    private Color _defaultColor;
-    [SerializeField] private Color _clickedColor;
+    [SerializeField] private TextMeshProUGUI lobbyIdText;
+    [SerializeField] private Texture2D linkCursorTexture;
+    private Color defaultColor;
+    [SerializeField] private Color clickedColor;
 
     private void Start()
     {
-        _defaultColor = _lobbyIdText.color;
+        defaultColor = lobbyIdText.color;
     }
 
     public void SetCursorToPointer()
     {
-        Cursor.SetCursor(_linkCursorTexture, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(linkCursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     public void SetTextColorToClicked()
     {
-        _lobbyIdText.color = _clickedColor;
+        lobbyIdText.color = clickedColor;
     }
 
     public void ResetCursor()
@@ -32,6 +32,6 @@ public class UILobbyID : MonoBehaviour
 
     public void ResetTextColor()
     {
-        _lobbyIdText.color = _defaultColor;
+        lobbyIdText.color = defaultColor;
     }
 }
