@@ -82,34 +82,36 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         return p;
     }
 
+    [Server]
     void AssignPlayerToTeam(NetworkObject playerObject, CSteamID playerId)
     {
-        if (playerObject.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment) && playerId != CSteamID.Nil)
-        {
-            playerAssignment.OwnerSteamId.Value = playerId;
-
-            foreach (KeyValuePair<int, Team> t in TeamManager.Instance.allTeams)
-            {
-                if (t.Value.scientistPlayer == playerId)
-                {
-                    playerAssignment.CurrentTeam.Value = t.Value;
-                    playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
-                }
-                else if (t.Value.ratPlayer == playerId)
-                {
-                    playerAssignment.CurrentTeam.Value = t.Value;
-                    playerAssignment.CurrentRole.Value = TeamRole.RAT;
-                }
-            }
-
-            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
-            playerObject.transform.position = spawnPoint == null ? Vector3.zero : spawnPoint.position;
-        }
-        else
+        if (!playerObject.TryGetComponent(out PlayerAssignment playerAssignment) || playerId == CSteamID.Nil)
         {
             Debug.LogWarning($"Team assignment did not work for {playerObject.name} | SteamId: {playerId.m_SteamID}");
+            return;
         }
+
+        foreach (var kvp in TeamManager.Instance.allTeams)
+        {
+            Team t = kvp.Value;
+            if (t.scientistPlayer == playerId)
+            {
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
+            }
+            else if (t.ratPlayer == playerId)
+            {
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.RAT;
+            }
+        }
+
+        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
+        Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+
+        playerObject.transform.SetPositionAndRotation(spawnPos, Quaternion.identity);
     }
+
 
     [ObserversRpc]
     public void PlayerConnectedClientRpc(CSteamID playerId)

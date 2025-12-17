@@ -7,37 +7,31 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
 {
     protected override bool _perClient { get; } = false;
 
-    [SerializeField] protected Transform spawnPointParent;
     [SerializeField] protected LayerMask hitLayer;
     protected List<BoxCollider> spawnBoxes = new List<BoxCollider>();
 
-    private void OnEnable()
+    public override void OnStartServer()
     {
+        base.OnStartServer();
         NetworkSceneManager.OnNetworkedSceneChanged += LoadSpawnPoints;
     }
 
-    private void OnDisable()
+    public override void OnStopServer()
     {
-        NetworkSceneManager.OnNetworkedSceneChanged -= LoadSpawnPoints;        
+        base.OnStopServer();
+        NetworkSceneManager.OnNetworkedSceneChanged += LoadSpawnPoints;
     }
 
     public void LoadSpawnPoints(string newScene)
     {
         if (newScene != "Game") return;
 
-        PlayerSpawnPoint[] spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
-        foreach (PlayerSpawnPoint spawnPoint in spawnPoints)
+        spawnBoxes.Clear();
+        var spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
+        foreach (var spawnPoint in spawnPoints)
         {
-            BoxCollider collider = spawnPoint.gameObject.GetComponent<BoxCollider>();
-
-            if (collider != null)
-            {
-                spawnBoxes.Add(collider);
-            }
-            else
-            {
-                Debug.Log($"{spawnPoint.gameObject} has no BoxCollider");
-            }
+            if (spawnPoint.TryGetComponent(out BoxCollider col))
+                spawnBoxes.Add(col);
         }
     }
 
@@ -53,6 +47,7 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
                 }
             }
         }
+        Debug.LogWarning($"No spawn found for team {teamId} role {role}");
         return null;
     }
 }
