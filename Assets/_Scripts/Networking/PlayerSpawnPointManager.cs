@@ -1,5 +1,6 @@
 using FishNet;
 using FishNet.Managing.Scened;
+using FishNet.Object;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
         NetworkSceneManager.OnNetworkedSceneChanged += LoadSpawnPoints;
     }
 
+    [Server]
     public void LoadSpawnPoints(string newScene)
     {
         if (newScene != "Game") return;

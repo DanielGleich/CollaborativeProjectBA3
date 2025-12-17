@@ -26,9 +26,12 @@ public static class NetworkSceneManager
 
     private static void SceneManager_OnLoadEnd(SceneLoadEndEventArgs obj)
     {
-        foreach (Scene s in obj.LoadedScenes)
+        if (InstanceFinder.IsServerStarted)
         { 
-            OnNetworkedSceneChanged?.Invoke(s.name);
+            foreach (Scene s in obj.LoadedScenes)
+            { 
+                OnNetworkedSceneChanged?.Invoke(s.name);
+            }
         }
         InstanceFinder.SceneManager.OnLoadEnd -= SceneManager_OnLoadEnd;
     }
