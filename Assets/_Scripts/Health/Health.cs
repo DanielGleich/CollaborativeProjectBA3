@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
     public void DebugDamage()
     {
         CurrentHealth--;
-        Debug.Log($"{gameObject.name} => {CurrentHealth}hp");
     }
 
     void Awake()

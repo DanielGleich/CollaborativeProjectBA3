@@ -19,7 +19,8 @@ GameObject:
   - component: {fileID: 4123089798770096171}
   - component: {fileID: 5036722285549060483}
   - component: {fileID: 7694076165886902592}
-  m_Layer: 0
+  - component: {fileID: 8540377990492746826}
+  m_Layer: 10
   m_Name: PLR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,6 +334,18 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5640201686091075007}
   _networkObjectCache: {fileID: 5640201686091075007}
   DamageSyncTolerace: 0.05
+--- !u!114 &8540377990492746826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763102462875464336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db4eab0883947740b88a490fe89b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &6021221486638551235
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +357,7 @@ GameObject:
   - component: {fileID: 7368665298964412338}
   - component: {fileID: 4849357505241000983}
   - component: {fileID: 3522189436037074408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cinemachine Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149483748329557346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2160836701507891400}
   - component: {fileID: 722738719087684867}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Movement Camera Sway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,6 +531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLR_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 735780878447525243, guid: e03027b4f77c69c439708deacb65e835, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1409134445099580272, guid: e03027b4f77c69c439708deacb65e835, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -557,6 +574,10 @@ PrefabInstance:
     - target: {fileID: 1409134445099580272, guid: e03027b4f77c69c439708deacb65e835, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860136521476808313, guid: e03027b4f77c69c439708deacb65e835, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
