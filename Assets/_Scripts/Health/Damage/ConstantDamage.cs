@@ -1,0 +1,41 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Applies constant damage to any health component, that is in the triggerzone of this object
+/// Tipp: Use the IgnorCollisions3d component to not damage yourself
+/// </summary>
+public class ConstantDamage : MonoBehaviour {
+    [Header("Settings")]
+    [SerializeField, Min(0)] private float damageOnEnter = 0f;
+    [SerializeField, Min(0)] private float damagePerSecond = 1f;
+    private List<Health> affectedHealthComponents = new();
+    void OnTriggerEnter(Collider other)
+    {
+        Health h = other.GetComponentInParent<Health>();
+        if(h && !affectedHealthComponents.Contains(h))
+        {
+            affectedHealthComponents.Add(h);
+            h.CurrentHealth -= damageOnEnter;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        Health h = other.GetComponentInParent<Health>();
+        if(h && affectedHealthComponents.Contains(h))
+        {
+            affectedHealthComponents.Remove(h);
+        }
+    }
+    void OnDisable()
+    {
+        affectedHealthComponents.Clear();
+    }
+    void Update()
+    {
+        foreach(Health h in affectedHealthComponents)
+        {
+            h.CurrentHealth -= damagePerSecond * Time.deltaTime;
+        }
+    }
+}
