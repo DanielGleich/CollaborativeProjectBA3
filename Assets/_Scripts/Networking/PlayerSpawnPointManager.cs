@@ -47,7 +47,6 @@ public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
                 }
             }
         }
-        Debug.LogWarning($"No spawn found for team {teamId} role {role}");
         return null;
     }
 }

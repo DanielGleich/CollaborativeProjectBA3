@@ -68,8 +68,11 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         AssignPlayerToTeam(player, playerId);
 
         if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
-        { 
-            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(playerAssignment.CurrentTeam.Value.id, playerAssignment.CurrentRole.Value);
+        {
+            var team = playerAssignment.CurrentTeam.Value;
+            var role = playerAssignment.CurrentRole.Value;
+
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(team.id, role);
             Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
             player.transform.position = spawnPos;
         }
@@ -78,7 +81,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         Spawn(player, c);
         PlayerConnectedClientRpc(playerId);
     }
-
 
     public NetworkObject SpawnPlayer(CSteamID playerId)
     {
@@ -91,11 +93,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [Server]
     void AssignPlayerToTeam(NetworkObject playerObject, CSteamID playerId)
     {
-        if (!playerObject.TryGetComponent(out PlayerAssignment playerAssignment) || playerId == CSteamID.Nil)
-        {
-            Debug.LogWarning($"Team assignment did not work for {playerObject.name} | SteamId: {playerId.m_SteamID}");
-            return;
-        }
+        if (!playerObject.TryGetComponent(out PlayerAssignment playerAssignment) || playerId == CSteamID.Nil) return;
 
         foreach (var kvp in TeamManager.Instance.allTeams)
         {

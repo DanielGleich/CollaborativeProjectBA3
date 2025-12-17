@@ -31,18 +31,10 @@ public class PlayerAssignment : NetworkBehaviour
 
         if (IsOwner)
         {
-            SetToSpawnPointClient();
             playerCam.Priority = 1;
         }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    [Client]
-    private void SetToSpawnPointClient()
-    {
-        Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(CurrentTeam.Value.id, CurrentRole.Value);
-        transform.position = spawnPoint?.position ?? Vector3.zero;
     }
 }
