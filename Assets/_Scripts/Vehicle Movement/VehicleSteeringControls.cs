@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VehicleSteeringControls : MonoBehaviour {
     [Header("References")]
-    [SerializeField] private BallastScaleNetworking ballastScaleNetworking;
+    [SerializeField] private NetworkedBallastScaleDummy ballastScaleNetworking;
     [SerializeField] private VehicleSteering vehicleSteering;
 
     [Header ("Settings")]
@@ -15,15 +15,15 @@ public class VehicleSteeringControls : MonoBehaviour {
 
     void OnEnable()
     {
-        ballastScaleNetworking.WeightBalance.OnChange += UpdateWeightBalance;
+        ballastScaleNetworking.OnUpdateWeightBalance += UpdateWeightBalance;
     }
     void OnDisable()
     {
-        ballastScaleNetworking.WeightBalance.OnChange -= UpdateWeightBalance;
+        ballastScaleNetworking.OnUpdateWeightBalance -= UpdateWeightBalance;
     }
-    private void UpdateWeightBalance(Vector2 prev, Vector2 next, bool asServer)
+    private void UpdateWeightBalance(Vector2 vector)
     {
-        weightBalance = next.x;
+        weightBalance = vector.x;
         UpdateSteering();
     }
     public void SetInputDirection(Vector2 inputDirection)
