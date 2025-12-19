@@ -6,14 +6,32 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public struct TeamReadyFlag
+{
+    public bool ratReady;
+    public bool scientistReady;
+}
+
 public class TeamManager : NetworkSingleton<TeamManager>
 {
     protected override bool _perClient { get; } = false;
-    public static List<UITeamCard> allTeamCards = new List<UITeamCard>();
+    
+    [Header("Settings")]
+    [SerializeField] int maxTeamCount = 2;
 
     public readonly SyncDictionary<int, Team> allTeams = new SyncDictionary<int, Team>();
-    public readonly SyncHashSet<ulong> allPlayers = new SyncHashSet<ulong>();
+    public readonly SyncDictionary<Team, TeamReadyFlag> isTeamReady = new SyncDictionary<Team, TeamReadyFlag>();
+
+    public static event Action OnTeamManagerCreated;
     public static event Action OnTeamUpdate;
+    public static event Action<Team> OnTeamReady;
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        OnTeamManagerCreated?.Invoke();
+        allTeams.OnChange += AllTeams_OnChange;
+    }
 
     public override void OnStartServer()
     {
@@ -28,56 +46,37 @@ public class TeamManager : NetworkSingleton<TeamManager>
         LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void SyncTeamTemplateServerRpc(int teamId, Team template)
-    {
-        if (!allTeams.ContainsKey(teamId))
-            allTeams.Add(teamId, template); 
-    }
 
     [Server]
-    private void ClientJoinOrLeave(CSteamID obj)
+    private void ClientJoinOrLeave(CSteamID _)
     {
-        List<ulong> activePlayers = new List<ulong>();
-        CSteamID lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
+        var activeIds = GetActiveLobbyIds();
+
+        foreach (var kvp in allTeams)
+        {
+            var team = kvp.Value;
+            RemoveIfMissing(activeIds, team.scientistPlayer);
+            RemoveIfMissing(activeIds, team.ratPlayer);
+        }
+    }
+
+    private HashSet<ulong> GetActiveLobbyIds()
+    {
+        var ids = new HashSet<ulong>();
+        var lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
+
         for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
-        {
-            activePlayers.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i).m_SteamID);
-        }
+            ids.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i).m_SteamID);
 
-        List<CSteamID> playersToRemove = new List<CSteamID>();
-        foreach (ulong playerId in allPlayers)
-        {
-            if (activePlayers.Contains(playerId) == false)
-            {
-                playersToRemove.Add(new CSteamID(playerId));
-            }
-        }
-
-        foreach(CSteamID id in playersToRemove)
-            RemovePlayerFromAllTeams(id);
+        return ids;
     }
 
-    public override void OnStartClient()
+    private void RemoveIfMissing(HashSet<ulong> activeIds, CSteamID player)
     {
-        base.OnStartClient();
-        allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
-
-        foreach (UITeamCard t in allTeamCards)
-        {
-            t.OnRequestProfile += RequestSlot;
-            SyncTeamTemplateServerRpc(t.currentTeamId, t.teamTemplate);
-        }
-
-        allTeams.OnChange += AllTeams_OnChange;
-        allPlayers.OnChange += AllPlayers_OnChange;
+        if (player != CSteamID.Nil && !activeIds.Contains(player.m_SteamID))
+            RemovePlayerFromAllTeams(player);
     }
 
-    private void AllPlayers_OnChange(SyncHashSetOperation op, ulong item, bool asServer)
-    {
-        MainMenuManager.Instance?.UpdateLobbyProfiles();
-        OnTeamUpdate?.Invoke();
-    }
 
     private void AllTeams_OnChange(SyncDictionaryOperation op, int key, Team value, bool asServer)
     {
@@ -85,56 +84,35 @@ public class TeamManager : NetworkSingleton<TeamManager>
         OnTeamUpdate?.Invoke();
     }
 
-    public bool IsTeamSlotAvailable(int teamId, TeamRole role, CSteamID playerId)
-    {
-        if (!IsServerInitialized || !allTeams.ContainsKey(teamId)) return false;
-        if (allTeams.ContainsKey(teamId))
-        {
-            switch (role)
-            {
-                case TeamRole.SCIENTIST:
-                    return allTeams[teamId].scientistPlayer == CSteamID.Nil;
-
-                case TeamRole.RAT:
-                    return allTeams[teamId].ratPlayer == CSteamID.Nil;
-            }
-        }
-
-        return false;
-    }
-
     public bool IsPlayerOwningSlot(CSteamID playerId)
     {
-        return allPlayers.Contains(playerId.m_SteamID);
+        ulong id = playerId.m_SteamID;
+        foreach (var kvp in allTeams)
+        {
+            var t = kvp.Value;
+            if (t.scientistPlayer.m_SteamID == id || t.ratPlayer.m_SteamID == id)
+                return true;
+        }
+        return false;
     }
 
     public void RemovePlayerFromAllTeams(CSteamID playerId)
     {
-        if (!IsPlayerOwningSlot(playerId)) return;
+        ulong id = playerId.m_SteamID;
 
-        foreach (int teamId in allTeams.Keys.ToArray())  
+        foreach (int teamId in allTeams.Keys.ToArray())
         {
-            if (allTeams.TryGetValue(teamId, out Team team))
-            {
-                Team temp = new Team() { id = team.id, ratPlayer = team.ratPlayer, scientistPlayer = team.scientistPlayer };
+            var team = allTeams[teamId];
 
-                if (team.scientistPlayer == playerId)
-                {
-                    temp.scientistPlayer = CSteamID.Nil;
-                }
+            if (team.scientistPlayer.m_SteamID == id)
+                team.scientistPlayer = CSteamID.Nil;
 
-                if (team.ratPlayer == playerId)
-                {
-                    temp.ratPlayer = CSteamID.Nil;
-                }
+            if (team.ratPlayer.m_SteamID == id)
+                team.ratPlayer = CSteamID.Nil;
 
-                allTeams[teamId] = temp;
-            }
+            allTeams[teamId] = team;
         }
-
-        allPlayers.Remove(playerId.m_SteamID);
     }
-
 
     public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
     {
@@ -148,32 +126,19 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
         allTeams[teamId] = team;
 
-        if (!allPlayers.Contains(playerId.m_SteamID))
-            allPlayers.Add(playerId.m_SteamID);
-
         OnTeamUpdate?.Invoke();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void InitTeamsServerRpc()
-    {
-        InitTeams();
     }
 
     public void InitTeams()
     {
         if (!IsServerInitialized) return;
-
-        allTeamCards = new List<UITeamCard>(FindObjectsByType<UITeamCard>(FindObjectsSortMode.None));
         allTeams.Clear();
-        foreach (UITeamCard t in allTeamCards)
-        {
-            if (!allTeams.ContainsKey(t.currentTeamId))
-                allTeams.Add(t.currentTeamId, t.teamTemplate);
-        }
+
+        for (int i = 0; i < maxTeamCount; i++)
+            allTeams.Add(i, new Team() { id = i });
     }
 
-    private void RequestSlot(int teamId, TeamRole slot, ulong steamId)
+    public void RequestSlot(int teamId, TeamRole slot, ulong steamId)
     {
         if (!IsClientInitialized)
         {
@@ -202,13 +167,69 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public void RequestLeaveTeamServerRPC(ulong steamId)
     {
         RemovePlayerFromAllTeams(new CSteamID(steamId));
-        NotifyPlayerLeftObservers(steamId);              
+        NotifyPlayerLeftObservers(steamId);
     }
 
     [ObserversRpc]
     private void NotifyPlayerLeftObservers(ulong steamId)
     {
         MainMenuManager.Instance?.UpdateLobbyProfiles();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayerReady(Team team, TeamRole teamRole)
+    {
+        if (isTeamReady.TryGetValue(team, out TeamReadyFlag teamReady))
+        {
+            if (teamRole == TeamRole.SCIENTIST)
+            {
+                teamReady.scientistReady = true;
+            }
+            else if (teamRole == TeamRole.RAT)
+            {
+                teamReady.ratReady = true;
+            }
+            if (teamReady.scientistReady && teamReady.ratReady)
+                NotifyTeamReady(team);
+        }
+        else
+        {
+            TeamReadyFlag teamReadyFlag = new TeamReadyFlag();
+            if (teamRole == TeamRole.SCIENTIST)
+            {
+                teamReadyFlag.scientistReady = true;
+            }
+            else if (teamRole == TeamRole.RAT)
+            {
+                teamReadyFlag.ratReady = true;
+            }
+            isTeamReady.Add(team, teamReadyFlag);
+        }
+    }
+
+    [ObserversRpc]
+    private void NotifyTeamReady(Team team)
+    {
+        Debug.Log($"Team {team.id} ready");
+        OnTeamReady?.Invoke(team);
+    }
+
+    public bool IsTeamReady(Team team)
+    {
+        if (isTeamReady.TryGetValue(team, out TeamReadyFlag teamReadyFlag))
+            return teamReadyFlag.scientistReady && teamReadyFlag.ratReady;
+
+        Debug.LogError($"Team {team} not found!");
+        return false;
+    }
+
+    public bool IsTeamReady(int teamId)
+    {
+        if (allTeams.TryGetValue(teamId, out Team team))
+            return IsTeamReady(team);
+
+        Debug.LogError($"Team with id {teamId} not found!");
+        return false;
     }
 }
 

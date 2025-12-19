@@ -321,6 +321,8 @@ MonoBehaviour:
   scientistProfile: {fileID: 5266185365642050166}
   ratProfile: {fileID: 9111204798610303924}
   teamTitle: {fileID: 6691325585279081851}
+  JoinRatButton: {fileID: 4348756973243685218}
+  JoinScientistButton: {fileID: 809905353981773984}
   teamTemplate:
     id: 0
     scientistPlayer:
@@ -517,6 +519,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &809905353981773984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+  m_PrefabInstance: {fileID: 4628201119606469259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4202367538453923687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1570755591025019328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6194381909036120907, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
@@ -758,6 +771,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4627621145306823299, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
   m_PrefabInstance: {fileID: 8601333951979676489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4348756973243685218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+  m_PrefabInstance: {fileID: 8601333951979676489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951790931296245413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &4399633014704936441 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5354974858093590192, guid: b21681f08e6e93440a69e517352aaf47, type: 3}

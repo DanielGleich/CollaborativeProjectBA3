@@ -14,7 +14,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] private TMP_Text title, id;
     [SerializeField] private List<UISteamProfile> lobbyIcons;
 
-    [SerializeField] int maxTeamCount = 2;
     [SerializeField] GameObject teamCardPrefab;
     [SerializeField] Transform teamCardContainer;
     [SerializeField] GameObject leaveTeamButton;
@@ -29,6 +28,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
         LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
+
+        TeamManager.OnTeamManagerCreated += CreateTeamCards;
     }
 
     private void OnDisable()
@@ -37,6 +38,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyExited -= OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves -= OnClientJoined;
         LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
+
+        TeamManager.OnTeamManagerCreated -= CreateTeamCards;
     }
 
     public void UpdateLobbyProfiles()
@@ -63,13 +66,11 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void CreateTeamCards()
     {
-        for (int i = 0; i < maxTeamCount; i++)
-        {
+        foreach(var kvp in TeamManager.Instance.allTeams)
+        { 
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
-            Team t = new Team() { id = i };
-
             UITeamCard teamCard = tCard.GetComponent<UITeamCard>();
-            teamCard.SetCurrentTeam(t);
+            teamCard.SetCurrentTeam(kvp.Value);
         }
     }
 
@@ -89,7 +90,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
         title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
         startLobbyButton.interactable = InstanceFinder.IsServerStarted;
         UpdateLobbyProfiles();
-        CreateTeamCards();
     }
 
     private void OnClientJoined(CSteamID playerId)
