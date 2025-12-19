@@ -125,33 +125,27 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     {
         if (!playerObject.TryGetComponent(out TeamMember playerAssignment) || playerId == CSteamID.Nil) return;
 
-        int lastTeamId = -1;
-        bool assignedToTeam = false;
-
         foreach (var kvp in TeamManager.Instance.allTeams)
         {
             Team t = kvp.Value;
-            lastTeamId = kvp.Value.id;
 
-            if (t.ratPlayer == CSteamID.Nil)
+            if (t.scientistPlayer == CSteamID.Nil)
+            { 
+                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.SCIENTIST, playerId);
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
+                return;
+            } 
+            else if (t.ratPlayer == CSteamID.Nil)
             {
                 TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.RAT, playerId);
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.RAT;
-                assignedToTeam = true;
-                break;
+                return;
             }
         }
 
-        if (assignedToTeam == false)
-        {
-            int newId = lastTeamId + 1;
-            Team newTeam = new Team() { id = newId, scientistPlayer = playerId };
-            TeamManager.Instance.allTeams.Add(newId, newTeam);
-
-            playerAssignment.CurrentTeam.Value = newTeam;
-            playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
-        }
+        Debug.LogWarning($"No Team found for dummy {playerObject}");
     }
 
     [Server]

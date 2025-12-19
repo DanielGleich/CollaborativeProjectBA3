@@ -28,13 +28,14 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public static event Action<Team> OnTeamReady;
     public static event Action OnAllTeamsReady;
 
-    public bool AllTeamsReady { get; private set; } = false;
+    public readonly SyncVar<bool> AllTeamsReady = new SyncVar<bool>();
 
     public override void OnStartClient()
     {
         base.OnStartClient();
         OnTeamManagerCreated?.Invoke();
         allTeams.OnChange += TeamUpdate;
+        isTeamReady.OnChange += OnPlayerReady;
     }
 
     public override void OnStartServer()
@@ -182,6 +183,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ServerRpc(RequireOwnership = false)]
     public void SetPlayerReady(Team team, TeamRole teamRole)
     {
+        Debug.Log($"Request Team {team.id} - {teamRole}");
         if (isTeamReady.TryGetValue(team.id, out TeamReadyFlag teamReady))
         {
             if (teamRole == TeamRole.SCIENTIST)
@@ -192,17 +194,22 @@ public class TeamManager : NetworkSingleton<TeamManager>
             {
                 teamReady.ratReady = true;
             }
-            if (teamReady.scientistReady && teamReady.ratReady)
-                NotifyTeamReady(team);
+            isTeamReady[team.id] = teamReady;
         }
     }
 
-    [ObserversRpc]
-    private void NotifyTeamReady(Team team)
+    private void OnPlayerReady(SyncDictionaryOperation op, int key, TeamReadyFlag value, bool asServer)
     {
-        Debug.Log($"Team {team.id} ready");
-        OnTeamReady?.Invoke(team);
+        if (value.scientistReady && value.ratReady)
+        {
+            OnTeamReady?.Invoke(allTeams[key]);
+            if (asServer)
+                CheckAllTeamsReady();
+        }
+    }
 
+    private void CheckAllTeamsReady()
+    {
         int i = 0;
         foreach (var kvp in isTeamReady)
         {
@@ -214,9 +221,15 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
         if (isTeamReady.Count == i)
         {
-            AllTeamsReady = true;
-            OnAllTeamsReady?.Invoke();
+            AllTeamsReady.Value = true;
+            NotifyAllTeamsReady();
         }
+    }
+
+    [ObserversRpc]
+    private void NotifyAllTeamsReady()
+    {
+        OnAllTeamsReady?.Invoke();
     }
 
     public bool IsTeamReady(Team team)
@@ -228,8 +241,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (isTeamReady.TryGetValue(teamId, out TeamReadyFlag teamReadyFlag))
             return (teamReadyFlag.scientistReady && teamReadyFlag.ratReady);
-            
-
         Debug.LogError(IsServerInitialized ? "[Server]" : "[Client]" + $"Team with id {teamId} not found!");
         return false;
     }
