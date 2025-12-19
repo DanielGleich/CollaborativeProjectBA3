@@ -28,6 +28,8 @@ public class TeamManager : NetworkSingleton<TeamManager>
     public static event Action<Team> OnTeamReady;
     public static event Action OnAllTeamsReady;
 
+    public bool AllTeamsReady { get; private set; } = false;
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -132,7 +134,11 @@ public class TeamManager : NetworkSingleton<TeamManager>
         allTeams.Clear();
 
         for (int i = 0; i < maxTeamCount; i++)
-            allTeams.Add(i, new Team() { id = i });
+        {
+            Team newTeam = new Team() { id = i };
+            allTeams.Add(i, newTeam);
+            isTeamReady.Add(newTeam, new TeamReadyFlag() { ratReady = false, scientistReady = false });
+        }
     }
 
     public void RequestSlot(int teamId, TeamRole slot, ulong steamId)
@@ -189,19 +195,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
             if (teamReady.scientistReady && teamReady.ratReady)
                 NotifyTeamReady(team);
         }
-        else
-        {
-            TeamReadyFlag teamReadyFlag = new TeamReadyFlag();
-            if (teamRole == TeamRole.SCIENTIST)
-            {
-                teamReadyFlag.scientistReady = true;
-            }
-            else if (teamRole == TeamRole.RAT)
-            {
-                teamReadyFlag.ratReady = true;
-            }
-            isTeamReady.Add(team, teamReadyFlag);
-        }
     }
 
     [ObserversRpc]
@@ -209,6 +202,21 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         Debug.Log($"Team {team.id} ready");
         OnTeamReady?.Invoke(team);
+
+        int i = 0;
+        foreach (var kvp in isTeamReady)
+        {
+            if (kvp.Value.scientistReady && kvp.Value.ratReady)
+                i++;
+            else
+                break;
+        }
+
+        if (isTeamReady.Count == i)
+        {
+            AllTeamsReady = true;
+            OnAllTeamsReady?.Invoke();
+        }
     }
 
     public bool IsTeamReady(Team team)
@@ -216,7 +224,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
         if (isTeamReady.TryGetValue(team, out TeamReadyFlag teamReadyFlag))
             return teamReadyFlag.scientistReady && teamReadyFlag.ratReady;
 
-        Debug.LogError($"Team {team} not found!");
+        Debug.LogError($"Team {team.id} not found!");
         return false;
     }
 
