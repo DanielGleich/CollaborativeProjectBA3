@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4349513844196454872}
   - component: {fileID: 8452263380649631436}
   - component: {fileID: 7436516354064210678}
-  - component: {fileID: 1806317258330089415}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -54,7 +53,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 7436516354064210678}
-  - {fileID: 1806317258330089415}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -65,7 +64,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584357893271466489
+  _initializedTimestamp: -8584355119081027936
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -80,7 +79,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 1
+  <PrefabId>k__BackingField: 2
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 3121681776391212281
   SceneId: 0
@@ -105,22 +104,3 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 8452263380649631436}
   _networkObjectCache: {fileID: 8452263380649631436}
   playerPrefab: {fileID: 5640201686091075007, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
---- !u!114 &1806317258330089415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020857267009756977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5108c2c2088f5424484afc27ffc3b56f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 8452263380649631436}
-  _networkObjectCache: {fileID: 8452263380649631436}
-  spawnPointParent: {fileID: 4349513844196454872}
-  hitLayer:
-    serializedVersion: 2
-    m_Bits: 0

@@ -75,13 +75,13 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     private void AllPlayers_OnChange(SyncHashSetOperation op, ulong item, bool asServer)
     {
-        MainMenuManager.Instance.UpdateLobbyProfiles();
+        MainMenuManager.Instance?.UpdateLobbyProfiles();
         OnTeamUpdate?.Invoke();
     }
 
     private void AllTeams_OnChange(SyncDictionaryOperation op, int key, Team value, bool asServer)
     {
-        MainMenuManager.Instance.UpdateLobbyProfiles();
+        MainMenuManager.Instance?.UpdateLobbyProfiles();
         OnTeamUpdate?.Invoke();
     }
 
@@ -208,7 +208,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ObserversRpc]
     private void NotifyPlayerLeftObservers(ulong steamId)
     {
-        MainMenuManager.Instance.UpdateLobbyProfiles();
+        MainMenuManager.Instance?.UpdateLobbyProfiles();
     }
 }
 

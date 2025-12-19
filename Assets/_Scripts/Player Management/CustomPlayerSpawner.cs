@@ -1,9 +1,8 @@
-using FishNet.Object;
 using UnityEngine;
 
-public class PlayerSpawnController : NetworkBehaviour
-
+public class CustomPlayerSpawner : NetworkSingleton<CustomPlayerSpawner>
 {
+    protected override bool _perClient { get; } = false;
     public override void OnStartClient()
     {
         base.OnStartClient();

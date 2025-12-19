@@ -4,11 +4,11 @@ using Steamworks;
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class PlayerAssignment : NetworkBehaviour
+public class TeamMember : NetworkBehaviour
 {
+    public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
     public readonly SyncVar<Team> CurrentTeam = new SyncVar<Team>();
     public readonly SyncVar<TeamRole> CurrentRole = new SyncVar<TeamRole>();
-    public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
 
     [SerializeField] CinemachineCamera playerCam;
 
@@ -23,18 +23,5 @@ public class PlayerAssignment : NetworkBehaviour
         {
             sInput.enabled = IsOwner && CurrentRole.Value == TeamRole.SCIENTIST;
         }
-
-        if (TryGetComponent<FPSLook>(out FPSLook look))
-        {
-            look.enabled = IsOwner;
-        }
-
-        if (IsOwner)
-        {
-            playerCam.Priority = 1;
-        }
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 }
