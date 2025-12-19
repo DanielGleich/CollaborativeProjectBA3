@@ -23,5 +23,13 @@ public class TeamMember : NetworkBehaviour
         {
             sInput.enabled = IsOwner && CurrentRole.Value == TeamRole.SCIENTIST;
         }
+        if (IsOwner)
+            SetPlayerReadyServerRpc();
+    }
+
+    [ServerRpc]
+    private void SetPlayerReadyServerRpc()
+    { 
+        TeamManager.Instance.SetPlayerReady(CurrentTeam.Value, CurrentRole.Value);
     }
 }

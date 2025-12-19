@@ -2,6 +2,7 @@ using Steamworks;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UITeamCard : MonoBehaviour
 {
@@ -9,11 +10,11 @@ public class UITeamCard : MonoBehaviour
     [SerializeField] UISteamProfile scientistProfile;
     [SerializeField] UISteamProfile ratProfile;
     [SerializeField] TextMeshProUGUI teamTitle;
+    [SerializeField] Button JoinRatButton;
+    [SerializeField] Button JoinScientistButton;
 
     public Team teamTemplate;
     public int currentTeamId;
-
-    public event Action<int, TeamRole, ulong> OnRequestProfile;
 
     private void OnEnable()
     {
@@ -32,16 +33,9 @@ public class UITeamCard : MonoBehaviour
         currentTeamId = team.id;
         teamTitle.text = "Team " + (team.id + 1);
         UpdateTeamSlotProfiles();
-    }
 
-    public void RequestRatSlotClick()
-    {
-        OnRequestProfile?.Invoke(currentTeamId, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);
-    }
-
-    public void RequestScientistSlotClick()
-    { 
-        OnRequestProfile?.Invoke(currentTeamId, TeamRole.SCIENTIST, SteamUser.GetSteamID().m_SteamID);
+        JoinRatButton.onClick.AddListener(RequestRatTeamSlot);
+        JoinScientistButton.onClick.AddListener(RequestScientistTeamSlot);
     }
 
     void UpdateTeamSlotProfiles()
@@ -49,5 +43,21 @@ public class UITeamCard : MonoBehaviour
         if (TeamManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
         scientistProfile.CurrentSteamId = t.scientistPlayer;
         ratProfile.CurrentSteamId = t.ratPlayer;
+    }
+
+    private void RequestRatTeamSlot()
+    {
+        if (TeamManager.Instance != null)
+        {
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);
+        }
+    }
+
+    private void RequestScientistTeamSlot()
+    { 
+        if (TeamManager.Instance != null)
+        {
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.SCIENTIST, SteamUser.GetSteamID().m_SteamID);
+        }    
     }
 }
