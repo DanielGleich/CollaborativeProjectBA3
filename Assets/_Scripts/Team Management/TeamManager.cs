@@ -20,7 +20,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [SerializeField] int maxTeamCount = 2;
 
     public readonly SyncDictionary<int, Team> allTeams = new SyncDictionary<int, Team>();
-    public readonly SyncDictionary<Team, TeamReadyFlag> isTeamReady = new SyncDictionary<Team, TeamReadyFlag>();
+    public readonly SyncDictionary<int, TeamReadyFlag> isTeamReady = new SyncDictionary<int, TeamReadyFlag>();
 
     public static event Action OnTeamManagerCreated;
     public static event Action OnTeamUpdate;
@@ -137,7 +137,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
         {
             Team newTeam = new Team() { id = i };
             allTeams.Add(i, newTeam);
-            isTeamReady.Add(newTeam, new TeamReadyFlag() { ratReady = false, scientistReady = false });
+            isTeamReady.Add(i, new TeamReadyFlag() { ratReady = false, scientistReady = false });
         }
     }
 
@@ -182,7 +182,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ServerRpc(RequireOwnership = false)]
     public void SetPlayerReady(Team team, TeamRole teamRole)
     {
-        if (isTeamReady.TryGetValue(team, out TeamReadyFlag teamReady))
+        if (isTeamReady.TryGetValue(team.id, out TeamReadyFlag teamReady))
         {
             if (teamRole == TeamRole.SCIENTIST)
             {
@@ -221,19 +221,16 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public bool IsTeamReady(Team team)
     {
-        if (isTeamReady.TryGetValue(team, out TeamReadyFlag teamReadyFlag))
-            return teamReadyFlag.scientistReady && teamReadyFlag.ratReady;
-
-        Debug.LogError($"Team {team.id} not found!");
-        return false;
+        return IsTeamReady(team.id);
     }
 
     public bool IsTeamReady(int teamId)
     {
-        if (allTeams.TryGetValue(teamId, out Team team))
-            return IsTeamReady(team);
+        if (isTeamReady.TryGetValue(teamId, out TeamReadyFlag teamReadyFlag))
+            return (teamReadyFlag.scientistReady && teamReadyFlag.ratReady);
+            
 
-        Debug.LogError($"Team with id {teamId} not found!");
+        Debug.LogError(IsServerInitialized ? "[Server]" : "[Client]" + $"Team with id {teamId} not found!");
         return false;
     }
 }
