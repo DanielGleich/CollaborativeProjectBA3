@@ -161,7 +161,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         {
             var team = playerAssignment.CurrentTeam.Value;
             var role = playerAssignment.CurrentRole.Value;
-            Debug.Log($"{PlayerSpawnPointManager.Instance} - {IsServerInitialized}");
             Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(team.id, role);
             Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
             player.transform.position = spawnPos;

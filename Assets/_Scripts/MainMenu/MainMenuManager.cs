@@ -30,6 +30,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
         TeamManager.OnTeamManagerCreated += CreateTeamCards;
+        TeamManager.OnTeamUpdate += UpdateLobbyProfiles;
     }
 
     private void OnDisable()
@@ -40,6 +41,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
 
         TeamManager.OnTeamManagerCreated -= CreateTeamCards;
+        TeamManager.OnTeamUpdate -= UpdateLobbyProfiles;
     }
 
     public void UpdateLobbyProfiles()

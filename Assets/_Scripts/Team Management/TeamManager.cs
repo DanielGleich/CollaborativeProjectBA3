@@ -24,13 +24,14 @@ public class TeamManager : NetworkSingleton<TeamManager>
 
     public static event Action OnTeamManagerCreated;
     public static event Action OnTeamUpdate;
+
     public static event Action<Team> OnTeamReady;
+    public static event Action OnAllTeamsReady;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
         OnTeamManagerCreated?.Invoke();
-        allTeams.OnChange += AllTeams_OnChange;
     }
 
     public override void OnStartServer()
@@ -75,13 +76,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (player != CSteamID.Nil && !activeIds.Contains(player.m_SteamID))
             RemovePlayerFromAllTeams(player);
-    }
-
-
-    private void AllTeams_OnChange(SyncDictionaryOperation op, int key, Team value, bool asServer)
-    {
-        MainMenuManager.Instance?.UpdateLobbyProfiles();
-        OnTeamUpdate?.Invoke();
     }
 
     public bool IsPlayerOwningSlot(CSteamID playerId)
