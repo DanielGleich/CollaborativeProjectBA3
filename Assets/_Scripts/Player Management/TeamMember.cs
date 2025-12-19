@@ -23,7 +23,8 @@ public class TeamMember : NetworkBehaviour
         {
             sInput.enabled = IsOwner && CurrentRole.Value == TeamRole.SCIENTIST;
         }
-        SetPlayerReadyServerRpc();
+        if (IsOwner)
+            SetPlayerReadyServerRpc();
     }
 
     [ServerRpc]
