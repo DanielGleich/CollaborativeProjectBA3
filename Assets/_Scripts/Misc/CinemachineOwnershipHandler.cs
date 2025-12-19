@@ -13,8 +13,8 @@ public class CinemachineOwnershipHandler : NetworkBehaviour
     protected override void OnValidate()
     {
         base.OnValidate();
-        if (cameras.Length == 0)
-            cameras = GetComponentsInChildren<CinemachineCamera>();
+        if (cameras == null)
+            cameras = GetComponentsInChildren<CinemachineCamera>(true);
     }
 
     public override void OnStartClient()

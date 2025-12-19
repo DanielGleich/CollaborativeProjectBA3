@@ -9,14 +9,13 @@ using UnityEngine;
 /// </summary>
 public class CinemachineViewSwitch : MonoBehaviour
 {
-
     [Header("References")]
     [SerializeField] private CinemachineCamera[] availableViews;
 
     void OnValidate()
     {
-        if (availableViews.Length == 0)
-            availableViews = GetComponentsInChildren<CinemachineCamera>();
+        if (availableViews == null)
+            availableViews = GetComponentsInChildren<CinemachineCamera>(true);
     }
     public void SelectAvailableView(int index)
     {
