@@ -4,7 +4,6 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using FishNet.Transporting;
 using Steamworks;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,20 +20,12 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     public static UnityEvent<CSteamID> OnPlayerDisconnected = new UnityEvent<CSteamID>();
     public static UnityEvent<CSteamID> OnPlayerConnected = new UnityEvent<CSteamID>();
 
+    private int dummyOffset = 100;
+
     private void Start()
     {
         if (!IsServerInitialized) { return; }
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
-    }
-
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-    }
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
     }
 
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
@@ -42,7 +33,16 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
         if (c == null) return;
 
-        CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
+        CSteamID playerId;
+
+        if (c.GetAddress() == "127.0.0.1")
+        {
+            playerId = new CSteamID((ulong) (c.ClientId + dummyOffset));
+        }
+        else
+        {
+            playerId = new CSteamID(ulong.Parse(c.GetAddress()));
+        }
 
         if (args.ConnectionState == RemoteConnectionState.Started)
         {
@@ -63,20 +63,29 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [ServerRpc(RequireOwnership = false)]
     public void ConnectToServerRPC(NetworkConnection c = null)
     {
-        CSteamID playerId = new CSteamID(ulong.Parse(c.GetAddress()));
-        NetworkObject player = SpawnPlayer(playerId);
-        AssignPlayerToTeam(player, playerId);
-
-        if (player.TryGetComponent<PlayerAssignment>(out PlayerAssignment playerAssignment))
+        CSteamID playerId = CSteamID.Nil;
+        bool isDummy = false;
+        foreach (var kvp in AllPlayerConnections)
         {
-            var team = playerAssignment.CurrentTeam.Value;
-            var role = playerAssignment.CurrentRole.Value;
-
-            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(team.id, role);
-            Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
-            player.transform.position = spawnPos;
+            if (kvp.Value == c)
+            { 
+                playerId = kvp.Key;
+                if (kvp.Key == new CSteamID((ulong)(c.ClientId + dummyOffset)))
+                    isDummy = true;
+                break;
+            }
         }
 
+        if (playerId == CSteamID.Nil) return;
+
+        NetworkObject player = SpawnPlayer(playerId);
+
+        if (isDummy)
+            AutoAssignDummyToTeam(player, playerId);
+        else 
+            AssignPlayerToTeam(player, playerId);
+
+        MovePlayerToSpawnPoint(player);
         AllPlayerObjects.Add(playerId, player);
         Spawn(player, c);
         PlayerConnectedClientRpc(playerId);
@@ -93,7 +102,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [Server]
     void AssignPlayerToTeam(NetworkObject playerObject, CSteamID playerId)
     {
-        if (!playerObject.TryGetComponent(out PlayerAssignment playerAssignment) || playerId == CSteamID.Nil) return;
+        if (!playerObject.TryGetComponent(out TeamMember playerAssignment) || playerId == CSteamID.Nil) return;
 
         foreach (var kvp in TeamManager.Instance.allTeams)
         {
@@ -111,6 +120,52 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         }
     }
 
+    [Server]
+    void AutoAssignDummyToTeam(NetworkObject playerObject, CSteamID playerId)
+    {
+        if (!playerObject.TryGetComponent(out TeamMember playerAssignment) || playerId == CSteamID.Nil) return;
+
+        int lastTeamId = -1;
+        bool assignedToTeam = false;
+
+        foreach (var kvp in TeamManager.Instance.allTeams)
+        {
+            Team t = kvp.Value;
+            lastTeamId = kvp.Value.id;
+
+            if (t.ratPlayer == CSteamID.Nil)
+            {
+                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.RAT, playerId);
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.RAT;
+                assignedToTeam = true;
+                break;
+            }
+        }
+
+        if (assignedToTeam == false)
+        {
+            int newId = lastTeamId + 1;
+            Team newTeam = new Team() { id = newId, scientistPlayer = playerId };
+            TeamManager.Instance.allTeams.Add(newId, newTeam);
+
+            playerAssignment.CurrentTeam.Value = newTeam;
+            playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
+        }
+    }
+
+    [Server]
+    void MovePlayerToSpawnPoint(NetworkObject player)
+    {
+        if (player.TryGetComponent<TeamMember>(out TeamMember playerAssignment))
+        {
+            var team = playerAssignment.CurrentTeam.Value;
+            var role = playerAssignment.CurrentRole.Value;
+            Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(team.id, role);
+            Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+            player.transform.position = spawnPos;
+        }
+    }
 
     [ObserversRpc]
     public void PlayerConnectedClientRpc(CSteamID playerId)

@@ -1,30 +1,23 @@
 using FishNet.Object;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawnPointManager : NetworkSingleton<PlayerSpawnPointManager>
 {
     protected override bool _perClient { get; } = false;
-
     [SerializeField] protected LayerMask hitLayer;
     protected List<BoxCollider> spawnBoxes = new List<BoxCollider>();
 
     public override void OnStartServer()
     {
         base.OnStartServer();
-        NetworkSceneManager.OnNetworkedSceneChanged += LoadSpawnPoints;
-    }
-
-    public override void OnStopServer()
-    {
-        base.OnStopServer();
-        NetworkSceneManager.OnNetworkedSceneChanged -= LoadSpawnPoints;
+        LoadSpawnPoints();
     }
 
     [Server]
-    public void LoadSpawnPoints(string newScene)
+    public void LoadSpawnPoints()
     {
-        if (newScene != "Game") return;
         spawnBoxes.Clear();
         var spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
         foreach (var spawnPoint in spawnPoints)

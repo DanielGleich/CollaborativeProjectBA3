@@ -17,9 +17,8 @@ GameObject:
   - component: {fileID: 326358938979877891}
   - component: {fileID: 8571642672143249282}
   - component: {fileID: 4123089798770096171}
-  - component: {fileID: 5036722285549060483}
-  - component: {fileID: 7694076165886902592}
-  m_Layer: 0
+  - component: {fileID: 4966060159643814364}
+  m_Layer: 10
   m_Name: PLR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +109,7 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: -4609860660912046944}
   - {fileID: 7682361635520763111}
-  - {fileID: 7694076165886902592}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -130,9 +129,9 @@ MonoBehaviour:
   _enableStateForwarding: 1
   _networkTransform: {fileID: 0}
   _ownerInterpolation: 1
-  _ownerSmoothedProperties: 255
+  _ownerSmoothedProperties: 4294967295
   _adaptiveInterpolation: 3
-  _spectatorSmoothedProperties: 255
+  _spectatorSmoothedProperties: 4294967295
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
@@ -304,7 +303,7 @@ MonoBehaviour:
   player: {fileID: 7796941814525352688}
   sensitivity: {x: 0.1, y: 0.1}
   maxLookAngle: 60
---- !u!114 &5036722285549060483
+--- !u!114 &4966060159643814364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,26 +312,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 763102462875464336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e7d4cbf4e2e7940bf63df2192949a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 93cae35d286dee44ebac947c663b1735, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  <MaxHealth>k__BackingField: 3
---- !u!114 &7694076165886902592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763102462875464336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390c36d1477f7e04989a296fd212a1d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthNetworking
-  _componentIndexCache: 2
+  m_EditorClassIdentifier: '::'
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 5640201686091075007}
-  _networkObjectCache: {fileID: 5640201686091075007}
-  DamageSyncTolerace: 0.05
+  _networkObjectCache: {fileID: 0}
+  playerCam: {fileID: 4849357505241000983}
 --- !u!1 &6021221486638551235
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +330,7 @@ GameObject:
   - component: {fileID: 7368665298964412338}
   - component: {fileID: 4849357505241000983}
   - component: {fileID: 3522189436037074408}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cinemachine Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +424,7 @@ GameObject:
   - component: {fileID: 5551896119819551748}
   - component: {fileID: 537068176766081012}
   - component: {fileID: 7425563266186713203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6265633007534259675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -549,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8149483748329557346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2160836701507891400}
   - component: {fileID: 722738719087684867}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Movement Camera Sway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
