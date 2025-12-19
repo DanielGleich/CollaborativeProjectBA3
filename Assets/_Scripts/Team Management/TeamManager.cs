@@ -32,6 +32,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         base.OnStartClient();
         OnTeamManagerCreated?.Invoke();
+        allTeams.OnChange += TeamUpdate;
     }
 
     public override void OnStartServer()
@@ -47,6 +48,10 @@ public class TeamManager : NetworkSingleton<TeamManager>
         LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
     }
 
+    private void TeamUpdate(SyncDictionaryOperation op, int key, Team value, bool asServer)
+    {
+        OnTeamUpdate?.Invoke();
+    }
 
     [Server]
     private void ClientJoinOrLeave(CSteamID _)
@@ -105,7 +110,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
                 team.ratPlayer = CSteamID.Nil;
 
             allTeams[teamId] = team;
-            OnTeamUpdate?.Invoke();
         }
     }
 
@@ -120,8 +124,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
         }
 
         allTeams[teamId] = team;
-
-        OnTeamUpdate?.Invoke();
     }
 
     public void InitTeams()
