@@ -105,6 +105,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
                 team.ratPlayer = CSteamID.Nil;
 
             allTeams[teamId] = team;
+            OnTeamUpdate?.Invoke();
         }
     }
 
