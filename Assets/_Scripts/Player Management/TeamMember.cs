@@ -10,8 +10,6 @@ public class TeamMember : NetworkBehaviour
     public readonly SyncVar<Team> CurrentTeam = new SyncVar<Team>();
     public readonly SyncVar<TeamRole> CurrentRole = new SyncVar<TeamRole>();
 
-    [SerializeField] CinemachineCamera playerCam;
-
     public override void OnStartClient()
     {
         if (TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
@@ -25,6 +23,8 @@ public class TeamMember : NetworkBehaviour
         }
         if (IsOwner)
             SetPlayerReadyServerRpc();
+
+        GetComponent<OverchargedStatus>().teamId = CurrentTeam.Value.id;
     }
 
     [ServerRpc]

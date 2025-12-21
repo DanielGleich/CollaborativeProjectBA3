@@ -3,20 +3,58 @@ using UnityEngine;
 
 public class OverchargedStatus : MonoBehaviour
 {
-    [SerializeField] private bool isOvercharged = false;
-    public bool IsOvercharged
-    { 
-        get => isOvercharged;
-        set 
-        { 
-            bool oldValue = isOvercharged;
-            isOvercharged = value;
-            if (oldValue != value)
-            {
-                OnOverchargedChanged?.Invoke(value);
-            }
-        }
+    public int teamId = -1;
+
+    public static event Action<int, bool> OnOvercharged;
+    public event Action<int> OnOverchargeRequest;
+    public static event Action<int> OnUseOverchargeRequest;
+
+    public bool IsOvercharged { get; set; }
+
+    private void OnEnable()
+    {
+        Subscribe(); 
     }
 
-    public event Action<bool> OnOverchargedChanged;
+    private void OnDisable()
+    {
+        Unsubscribe();
+    }
+
+    public void Subscribe()
+    {
+        OnOverchargeRequest += HandleLocalOverchargeRequest;
+        OnUseOverchargeRequest += HandleLocalUseOverchargeRequest;
+    }
+
+    public void Unsubscribe()
+    {
+        OnOverchargeRequest -= HandleLocalOverchargeRequest;
+        OnUseOverchargeRequest -= HandleLocalUseOverchargeRequest;
+    }
+
+    public void RequestOvercharge()
+    {
+        OnOverchargeRequest?.Invoke(teamId);
+    }
+
+    public static void RequestUseOvercharge(int teamId)
+    {
+        OnUseOverchargeRequest?.Invoke(teamId);
+    }
+
+    private void HandleLocalOverchargeRequest(int teamId)
+    {
+        ApplyOvercharge(teamId, true);
+    }
+
+    private static void HandleLocalUseOverchargeRequest(int teamId)
+    {
+        ApplyOvercharge(teamId, false);
+    }
+
+    public static void ApplyOvercharge(int teamId, bool value)
+    {
+        OnOvercharged?.Invoke(teamId, value);
+    }
 }

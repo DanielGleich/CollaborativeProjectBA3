@@ -183,7 +183,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [ServerRpc(RequireOwnership = false)]
     public void SetPlayerReady(Team team, TeamRole teamRole)
     {
-        Debug.Log($"Request Team {team.id} - {teamRole}");
         if (isTeamReady.TryGetValue(team.id, out TeamReadyFlag teamReady))
         {
             if (teamRole == TeamRole.SCIENTIST)

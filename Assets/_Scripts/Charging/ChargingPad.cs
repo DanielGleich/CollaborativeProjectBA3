@@ -1,19 +1,32 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ChargingPad : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] ChargingPadTrigger trigger;
-    private bool isActive;
+    [field: SerializeField] public ChargingPadTrigger Trigger { private set; get; }
+
+    [Header("Options")]
+    [field: SerializeField] public float Cooldown { private set; get; } = 0f;
+    [field: SerializeField] public bool TriggerOnce { private set; get; } = false;
+
+    public bool IsActive { private set; get; }
+    public bool IsCooldown { private set; get; }
+
+    public static event Action<ChargingPad> OnPadActivated;
+    public static event Action<ChargingPad> OnPadDeactivated;
 
     public UnityEvent OnActivate = new UnityEvent();
     public UnityEvent OnDeactivate = new UnityEvent();
+    public UnityEvent OnCooldownStart = new UnityEvent();
+    public UnityEvent OnCooldownStop = new UnityEvent();
 
     private void OnEnable()
     {
         Subscribe();
-        Activate(); //TODO: REMOVE
+        Deactivate();
     }
 
     private void OnDisable()
@@ -21,36 +34,68 @@ public class ChargingPad : MonoBehaviour
         Unsubscribe();
     }
 
-    private void Subscribe()
+    public void Subscribe()
     {
-        trigger.OnChargeStart += ChargeVehicle;
+        Trigger.OnCharging += OverchargeVehicle;
     }
 
-    private void Unsubscribe()
-    { 
-        trigger.OnChargeStart -= ChargeVehicle;
+    public void Unsubscribe()
+    {
+        Trigger.OnCharging -= OverchargeVehicle;
     }
 
     public void Activate()
-    { 
-        isActive = true;
+    {
+        if (IsActive == true) return;
+        IsActive = true;
         OnActivate?.Invoke();
+        OnPadActivated?.Invoke(this);
     }
 
     public void Deactivate()
     {
-        isActive = false;
+        if (IsActive == false) return;
+        IsActive = false;
         OnDeactivate?.Invoke();
+        OnPadDeactivated?.Invoke(this);
     }
 
-    private void ChargeVehicle(GameObject vehicle)
+    public void StartCooldown()
     {
-        if (isActive)
+        StartCoroutine(CooldownProcess());
+    }
+
+        IEnumerator CooldownProcess()
+    {
+        if (Cooldown <= 0) yield break;
+
+        IsCooldown = true;
+        OnCooldownStart?.Invoke();
+        
+        yield return new WaitForSeconds(Cooldown);
+        
+        IsCooldown = false;
+        if (IsActive)
+            OnCooldownStop?.Invoke();
+    }
+
+    private void OverchargeVehicle(GameObject vehicle)
+    {
+        if (IsActive && IsCooldown == false)
         {
             OverchargedStatus[] chargingStatuses = vehicle.transform.root.GetComponentsInChildren<OverchargedStatus>();
             foreach (OverchargedStatus chargingStatus in chargingStatuses)
-            { 
-                chargingStatus.IsOvercharged = true;
+            {
+                if (chargingStatus.IsOvercharged == false)
+                {
+                    chargingStatus.RequestOvercharge();
+                    StartCooldown();
+                    if (TriggerOnce)
+                    {
+                        Deactivate();
+                        return;
+                    }
+                }
             }
         }
     }
