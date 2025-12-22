@@ -1,5 +1,156 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2382847909764614269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4884054835545564801}
+  m_Layer: 0
+  m_Name: Weapon Left Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4884054835545564801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382847909764614269}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000018469509, y: 0.707107, z: -0.00000007093754, w: 0.7071066}
+  m_LocalPosition: {x: 0.00585, y: -0.00244, z: -0.00022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1385607767923097176}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &3249515327585985415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3919714130502515608}
+  m_Layer: 0
+  m_Name: Weapon Right Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3919714130502515608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249515327585985415}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000007093752, y: -0.7071066, z: 0.000000018469507, w: 0.70710695}
+  m_LocalPosition: {x: -0.00516, y: -0.00247, z: -0.00086}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 395331569291597922}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &6875810565311135710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3850792732131510533}
+  - component: {fileID: 7492324537578571734}
+  - component: {fileID: 4543931608220937660}
+  - component: {fileID: 4092409647031105244}
+  m_Layer: 0
+  m_Name: Front Weapon Hurt Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3850792732131510533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875810565311135710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6567512496939025573}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7492324537578571734
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875810565311135710}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0010316506
+  m_Height: 0.0064751706
+  m_Direction: 1
+  m_Center: {x: 5.4008634e-17, y: 0.0033464194, z: -0.0019296057}
+--- !u!114 &4543931608220937660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875810565311135710}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bcba3f3349959439026cacd6207df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
+  damageOnEnter: 0
+  damagePerSecond: 1
+--- !u!114 &4092409647031105244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875810565311135710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d360966b900ec864ebdfff33631ab435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IgnoreCollisions3d
+  myCollider: {fileID: 7492324537578571734}
+  otherColliders:
+  - {fileID: 1967084317293758007}
+  - {fileID: 8985203039667621872}
+  - {fileID: 6129700320862724015}
+  - {fileID: 3921835254988541443}
 --- !u!1001 &7942235783290338750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,17 +225,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3826934387414923547, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3593646224626955561}
+      addedObject: {fileID: 3850792732131510533}
+    - targetCorrespondingSourceObject: {fileID: 9007999360112870374, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4884054835545564801}
+    - targetCorrespondingSourceObject: {fileID: -1494066243899677220, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3919714130502515608}
+    m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4645123444373290340}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3401226020852860089}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5607037410786639857}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8007387252414159824}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1657840696044281464}
@@ -103,15 +266,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2861826292062753996, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 527571339582847523}
+    - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8299134870069633189}
+    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8098446815312290814}
     - targetCorrespondingSourceObject: {fileID: -8199005351108037487, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6028766016764389863}
+    - targetCorrespondingSourceObject: {fileID: -8199005351108037487, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1736394960479325595}
     - targetCorrespondingSourceObject: {fileID: 156130507383607734, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6636414527624201775}
     - targetCorrespondingSourceObject: {fileID: 156130507383607734, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1982039459891537268}
+    - targetCorrespondingSourceObject: {fileID: 156130507383607734, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6026062333545028756}
     - targetCorrespondingSourceObject: {fileID: -5328162000034428748, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8985203039667621872}
@@ -121,6 +296,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5328162000034428748, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8491422322252078937}
+    - targetCorrespondingSourceObject: {fileID: -5328162000034428748, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1028936660600228598}
     - targetCorrespondingSourceObject: {fileID: -3873333385571784529, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6129700320862724015}
@@ -130,6 +308,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3873333385571784529, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9103657468870749182}
+    - targetCorrespondingSourceObject: {fileID: -3873333385571784529, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2485860674817397115}
     - targetCorrespondingSourceObject: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3921835254988541443}
@@ -139,7 +320,20 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8031598630779400605}
+    - targetCorrespondingSourceObject: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4705399026923109913}
   m_SourcePrefab: {fileID: 100100000, guid: d0b36822ba99e53458669ec992765942, type: 3}
+--- !u!4 &395331569291597922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1494066243899677220, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1385607767923097176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9007999360112870374, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2511605872656321944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3682966588746780634, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -239,6 +433,52 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2485860674817397115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2596143300717024529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  _componentConfiguration: 2
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _useScaledTime: 1
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 0
+  _positionSensitivity: 0.001
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSensitivity: 0.001
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1 &2886258379609698488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -333,6 +573,52 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4705399026923109913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886258379609698488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  _componentConfiguration: 2
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _useScaledTime: 1
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 0
+  _positionSensitivity: 0.001
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSensitivity: 0.001
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
 --- !u!1 &3922843611918718602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2861826292062753996, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -381,6 +667,28 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &5121156719385623760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8299134870069633189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121156719385623760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
+  spawnPoint: {fileID: 4884054835545564801}
+  projectilePrefab: {fileID: 0}
 --- !u!1 &6356529304840189194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5328162000034428748, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -475,6 +783,79 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1028936660600228598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356529304840189194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+  _componentIndexCache: 5
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  _componentConfiguration: 2
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _useScaledTime: 1
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 0
+  _positionSensitivity: 0.001
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSensitivity: 0.001
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+--- !u!1 &6522786063078361925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8098446815312290814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522786063078361925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
+  spawnPoint: {fileID: 3919714130502515608}
+  projectilePrefab: {fileID: 0}
+--- !u!4 &6567512496939025573 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3826934387414923547, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6921809768911145263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8199005351108037487, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -507,59 +888,57 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &7131754079086674159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
-  m_PrefabInstance: {fileID: 7942235783290338750}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3593646224626955561
+--- !u!114 &1736394960479325595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7131754079086674159}
+  m_GameObject: {fileID: 6921809768911145263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6905d75ce6c19e242926323ab04dbd84, type: 3}
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RatInputHandler
-  onMove:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4645123444373290340}
-        m_TargetAssemblyTypeName: VehicleMovement, Assembly-CSharp
-        m_MethodName: SetInputDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3401226020852860089}
-        m_TargetAssemblyTypeName: VehicleSteering, Assembly-CSharp
-        m_MethodName: SetInputDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onLook:
-    m_PersistentCalls:
-      m_Calls: []
-  onJump:
-    m_PersistentCalls:
-      m_Calls: []
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  _componentConfiguration: 2
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _useScaledTime: 1
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 1
+  _positionSensitivity: 0.001
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSensitivity: 0.001
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+--- !u!1 &7131754079086674159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4645123444373290340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +955,7 @@ MonoBehaviour:
   - {fileID: 8491422322252078937}
   - {fileID: 9103657468870749182}
   - {fileID: 8031598630779400605}
-  motorSpeed: {x: 600, y: 600}
+  motorSpeed: {x: 1200, y: 900}
   motorForce: {x: 10, y: 25}
 --- !u!114 &3401226020852860089
 MonoBehaviour:
@@ -595,6 +974,80 @@ MonoBehaviour:
   rotationAxis: {x: 0, y: 0, z: 1}
   rotationAmount: 60
   smoothTime: 0.1
+--- !u!114 &5607037410786639857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131754079086674159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
+  <IsNested>k__BackingField: 0
+  WasActiveDuringEdit: 0
+  WasActiveDuringEdit_Set1: 1
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
+  NetworkBehaviours:
+  - {fileID: -8007387252414159824}
+  - {fileID: 1736394960479325595}
+  - {fileID: 6026062333545028756}
+  - {fileID: 2485860674817397115}
+  - {fileID: 4705399026923109913}
+  - {fileID: 1028936660600228598}
+  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedNestedNetworkObjects: []
+  RuntimeParentNetworkBehaviour: {fileID: 0}
+  RuntimeChildNetworkBehaviours: []
+  _isNetworked: 1
+  _isSpawnable: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _preventDespawnOnDisconnect: 0
+  _defaultDespawnType: 0
+  _initializedTimestamp: -8584351958320902229
+  NetworkObserver: {fileID: 0}
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _detachGraphicalObject: 0
+  _enableStateForwarding: 1
+  _networkTransform: {fileID: 0}
+  _ownerInterpolation: 1
+  _ownerSmoothedProperties: 255
+  _adaptiveInterpolation: 3
+  _spectatorSmoothedProperties: 255
+  _spectatorInterpolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  <PrefabId>k__BackingField: 2
+  <SpawnableCollectionId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 5918673326528417147
+  SceneId: 0
+  SerializedTransformProperties:
+    Position: {x: 0, y: 0.113, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
+--- !u!114 &-8007387252414159824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131754079086674159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1 &7415623634265430486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -817,3 +1270,49 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6026062333545028756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787518170026814472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  _componentConfiguration: 2
+  _synchronizeParent: 0
+  _packing:
+    Position: 1
+    Rotation: 1
+    Scale: 0
+  _useScaledTime: 1
+  _interpolation: 2
+  _extrapolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  _clientAuthoritative: 1
+  _sendToOwner: 1
+  _interval: 1
+  _synchronizePosition: 0
+  _positionSensitivity: 0.001
+  _positionSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeRotation: 1
+  _rotationSnapping:
+    X: 0
+    Y: 0
+    Z: 0
+  _synchronizeScale: 0
+  _scaleSensitivity: 0.001
+  _scaleSnapping:
+    X: 0
+    Y: 0
+    Z: 0
