@@ -2,10 +2,11 @@ using FishNet.Object;
 using UnityEngine;
 
 /// <summary>
-/// Weapons that spawn projectiles
+/// Weapon that spawns projectile prefabs when activated
 /// </summary>
 public class RangeWeapon : Weapon 
 {
+    [Header("Refererences")]
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private NetworkObject projectilePrefab;
 
