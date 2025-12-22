@@ -11,11 +11,22 @@ public class CinemachineViewSwitch : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private CinemachineCamera[] availableViews;
+    [SerializeField] private CinemachineCamera startView;
 
     void OnValidate()
     {
         if (availableViews == null)
-            availableViews = GetComponentsInChildren<CinemachineCamera>(true);
+            GetViewsInChildren();
+    }
+    [ContextMenu("Get all avialable views in children")]
+    private void GetViewsInChildren()
+    {
+        availableViews = GetComponentsInChildren<CinemachineCamera>(true);
+    }
+    void Start()
+    {
+        if(startView)
+            SelectAvailableView(startView);
     }
     public void SelectAvailableView(int index)
     {
