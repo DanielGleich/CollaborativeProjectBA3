@@ -10,13 +10,11 @@ public class CinemachineOwnershipHandler : NetworkBehaviour
     [Header("References")]
     [SerializeField] private CinemachineCamera[] cameras;
 
-    protected override void OnValidate()
+    [ContextMenu("Get all Cinamchine Cameras in Children")]
+    private void GetCinamchineCamerasInChildren()
     {
-        base.OnValidate();
-        if (cameras == null)
-            cameras = GetComponentsInChildren<CinemachineCamera>(true);
+        cameras = GetComponentsInChildren<CinemachineCamera>(true);
     }
-
     public override void OnStartClient()
     {
         base.OnStartClient();
