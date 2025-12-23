@@ -5,18 +5,16 @@ using UnityEngine;
 /// Applies constant damage to any health component, that is in the triggerzone of this object
 /// Tipp: Use the IgnorCollisions3d component to not damage yourself
 /// </summary>
-public class ConstantDamage : MonoBehaviour {
-    [Header("Settings")]
-    [SerializeField, Min(0)] private float damageOnEnter = 0f;
+public class ConstantDamage : SimpleDamage {
     [SerializeField, Min(0)] private float damagePerSecond = 1f;
     private List<Health> affectedHealthComponents = new();
-    void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         Health h = other.GetComponentInParent<Health>();
         if(h && !affectedHealthComponents.Contains(h))
         {
             affectedHealthComponents.Add(h);
-            h.CurrentHealth -= damageOnEnter;
+            TakeDamage(h);
         }
     }
     void OnTriggerExit(Collider other)
