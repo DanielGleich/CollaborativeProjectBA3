@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +7,11 @@ public class ChargeStatus : MonoBehaviour
     [Header("References")]
     [SerializeField] OverchargedStatus vehicleOverchargedStatus;
     private WeaponTrigger trigger;
-
-    private bool isPowered
+    private bool isPowered;
+    public bool IsPowered
     {
         get => isPowered;
-        set 
+        private set 
         {
             if (value != isPowered)
             {
@@ -65,7 +63,7 @@ public class ChargeStatus : MonoBehaviour
         bool oldChargedState = isPowered || isOvercharged;
         bool newChargedState = newPoweredValue || newOverchargedValue;
 
-        isPowered = newPoweredValue;
+        IsPowered = newPoweredValue;
         isOvercharged = newOverchargedValue;
 
         if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
