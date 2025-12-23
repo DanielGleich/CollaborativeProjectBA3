@@ -10,6 +10,7 @@ public class HealthNetworking : NetworkBehaviour
     /*<summary>Many networked damage calls in a short time result into small health increases because the calls are triggered 
      * in the wrong order. The DamageSyncTolerance is the allowed health difference between two damage calls.</summary> */
     [SerializeField] float DamageSyncTolerace = 1f;
+    public float MaxHealth {get; private set;}
     public readonly SyncVar<float> CurrentHealth = new SyncVar<float>();
     private Health healthScript;
     public event Action OnNetworkedDeath;
@@ -20,7 +21,6 @@ public class HealthNetworking : NetworkBehaviour
     private void Awake()
     {
         healthScript = GetComponent<Health>();
-        CurrentHealth.Value = healthScript.CurrentHealth;
     }
 
     private void SubscribeEvents()
@@ -49,6 +49,8 @@ public class HealthNetworking : NetworkBehaviour
         {
             SubscribeEvents();
         }
+        MaxHealth = healthScript.MaxHealth;
+        CurrentHealth.Value = healthScript.CurrentHealth;
     }
 
     public override void OnStopNetwork()
