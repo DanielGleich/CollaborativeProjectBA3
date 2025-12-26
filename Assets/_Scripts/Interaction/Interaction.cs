@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField, Min(0f)] protected float maxDistance = 2f;
-    [SerializeReference] protected LayerMask interactableLayers;
+    [SerializeReference] protected LayerMask interactableLayers = Physics.DefaultRaycastLayers;
 
     private Interactable currentInteractable;
     public event Action<Interactable> OnSelectInteractable;
