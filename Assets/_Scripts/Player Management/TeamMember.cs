@@ -1,7 +1,6 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class TeamMember : NetworkBehaviour
@@ -10,26 +9,24 @@ public class TeamMember : NetworkBehaviour
     public readonly SyncVar<Team> CurrentTeam = new SyncVar<Team>();
     public readonly SyncVar<TeamRole> CurrentRole = new SyncVar<TeamRole>();
 
+    [Header("References")]
+    [SerializeField] private GameObject scientistPlayerPackage;
+    [SerializeField] private GameObject ratPlayerPackage;
+
     public override void OnStartClient()
     {
-        if (TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
-        {
-            rInput.enabled = IsOwner && CurrentRole.Value == TeamRole.RAT;
-        }
+        scientistPlayerPackage.SetActive(CurrentRole.Value == TeamRole.SCIENTIST);
+        ratPlayerPackage.SetActive(CurrentRole.Value == TeamRole.RAT);
 
-        if (TryGetComponent<ScientistInputHandler>(out ScientistInputHandler sInput))
-        {
-            sInput.enabled = IsOwner && CurrentRole.Value == TeamRole.SCIENTIST;
-        }
         if (IsOwner)
             SetPlayerReadyServerRpc();
-
+        
         GetComponent<OverchargedStatus>().teamId = CurrentTeam.Value.id;
     }
 
     [ServerRpc]
     private void SetPlayerReadyServerRpc()
-    { 
+    {
         TeamManager.Instance.SetPlayerReady(CurrentTeam.Value, CurrentRole.Value);
     }
 }
