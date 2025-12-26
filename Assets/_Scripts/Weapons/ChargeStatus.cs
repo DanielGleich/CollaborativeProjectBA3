@@ -5,66 +5,62 @@ using UnityEngine.Events;
 public class ChargeStatus : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] OverchargedStatus vehicleOverchargedStatus;
+    [SerializeField] private VehicleControlRoom controlRoom;
     private WeaponTrigger trigger;
-    private bool isPowered;
-    public bool IsPowered
-    {
-        get => isPowered;
-        private set 
-        {
-            if (value != isPowered)
-            {
-                SetChargeStatus(value, isOvercharged);
-            }
-        }
-    }
-
-    private bool isOvercharged;
-
-    public bool IsCharged
-    {
-        get => isPowered || isOvercharged;    
-    }
+    private int teamId;
 
     public UnityEvent OnCharge = new UnityEvent();
     public UnityEvent OnUncharge = new UnityEvent();
 
+    private bool isPowered;
+    public bool IsPowered
+    {
+        get => isPowered;
+        set 
+        {
+            if (value != isPowered)
+            {
+                SetChargeStatus(value, IsOvercharged);
+            }
+        }
+    }
+
+    public bool IsOvercharged { get; private set; } = false;
+
+    public bool IsCharged
+    {
+        get => isPowered || IsOvercharged;    
+    }
+
     private void Awake()
     {
         trigger = GetComponent<WeaponTrigger>();
+        teamId = controlRoom.teamId;
     }
 
     private void OnEnable()
     {
-        vehicleOverchargedStatus.OnOverchargedChanged += OnOverchargedChanged;
-        trigger.OnTriggered += UseOvercharge;
+        OverchargedStatus.OnOvercharged += OnOverchargedChanged;
     }
 
     private void OnDisable()
     {
-        vehicleOverchargedStatus.OnOverchargedChanged -= OnOverchargedChanged;
-        trigger.OnTriggered -= UseOvercharge;
+        OverchargedStatus.OnOvercharged -= OnOverchargedChanged;
     }
 
-    private void OnOverchargedChanged(bool isOvercharging)
+    private void OnOverchargedChanged(int team, bool newValue)
     {
-        if (isOvercharging)
-            SetChargeStatus(isPowered, isOvercharging);
-    }
-
-    private void UseOvercharge()
-    {
-        SetChargeStatus(isPowered, false);
+        if (teamId == team)
+            SetChargeStatus(isPowered, newValue);
     }
 
     private void SetChargeStatus(bool newPoweredValue, bool newOverchargedValue)
     {
-        bool oldChargedState = isPowered || isOvercharged;
+        bool oldChargedState = isPowered || IsOvercharged;
         bool newChargedState = newPoweredValue || newOverchargedValue;
 
-        IsPowered = newPoweredValue;
-        isOvercharged = newOverchargedValue;
+        isPowered = newPoweredValue;
+        IsOvercharged = newOverchargedValue;
 
         if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
         {
