@@ -166,4 +166,11 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     {
         OnPlayerConnected?.Invoke(playerId);
     }
+    public NetworkObject GetNetworkObjectBySteamID(CSteamID steamId)
+    { 
+        if (AllPlayerObjects.ContainsKey(steamId))
+            return AllPlayerObjects[steamId];
+        else 
+            return null;
+    }
 }

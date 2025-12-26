@@ -243,5 +243,16 @@ public class TeamManager : NetworkSingleton<TeamManager>
         Debug.LogError(IsServerInitialized ? "[Server]" : "[Client]" + $"Team with id {teamId} not found!");
         return false;
     }
+    public NetworkObject GetOtherTeamMemeber(CSteamID steamId)
+    {
+        foreach (var team in allTeams)
+        {
+            if (team.Value.scientistPlayer == steamId)
+                return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.ratPlayer);
+            else if (team.Value.ratPlayer == steamId)
+                return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.scientistPlayer);
+        }
+        return null;
+    }
 }
 
