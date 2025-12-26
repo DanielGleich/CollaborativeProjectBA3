@@ -156,8 +156,8 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             var team = playerAssignment.CurrentTeam.Value;
             var role = playerAssignment.CurrentRole.Value;
             Transform spawnPoint = PlayerSpawnPointManager.Instance.GetSpawnPointForPlayer(team.id, role);
-            Vector3 spawnPos = spawnPoint != null ? spawnPoint.position : Vector3.zero;
-            player.transform.position = spawnPos;
+            player.transform.position = spawnPoint? spawnPoint.position : Vector3.zero;
+            player.transform.rotation = spawnPoint? spawnPoint.rotation : Quaternion.identity;
         }
     }
 
