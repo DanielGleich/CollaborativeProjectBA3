@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -5,32 +6,41 @@ using UnityEngine;
 /// </summary>
 public abstract class NetworkedDummy : MonoBehaviour
 {
-    // [Header("References")]
-    // [SerializeField] private TeamMember teamMember;
+    [Header("References")]
+    [SerializeField] private TeamMember teamMember;
 
     void OnValidate()
     {
-        // if(!teamMember)
-            // teamMember = GetComponentInParent<TeamMember>();
+        if(!teamMember)
+            teamMember = GetComponentInParent<TeamMember>();
     }
     void OnEnable()
     {
-        // teamMember.OnAssign += TeamAssigned();
-        // TeamManager.OnTeamReady += TeamIsReady();
+        teamMember.CurrentTeam.OnChange += TeamAssigned;
+        TeamManager.OnTeamReady += TeamIsReady;
     }
     void OnDisable()
     {
-        // teamMember.OnAssign -= TeamAssigned();
-        // TeamManager.OnTeamReady -= TeamIsReady();
+        teamMember.CurrentTeam.OnChange -= TeamAssigned;
+        TeamManager.OnTeamReady -= TeamIsReady;
     }
-    private void TeamAssigned()
+    private void TeamAssigned(Team prev, Team next, bool asServer)
     {
-        // Check if team is complete => if it is trigger GetNetworkedComponent
+        if(TeamManager.Instance.IsTeamReady(next))
+        {
+            GetNetworkedComponent(GetOppositeTeamMember().gameObject);
+        }
     }
-    private void TeamIsReady()
+    private TeamMember GetOppositeTeamMember()
     {
-        // Check if TeamMember is already assigned => if not return
-        // Check if your Team is ready => if it is trigger GetNetworkedComponent
+        return FindObjectsByType<TeamMember>(sortMode: FindObjectsSortMode.None).ToList().Find(x => x.CurrentTeam.Value.id == teamMember.CurrentTeam.Value.id && x.CurrentRole.Value != teamMember.CurrentRole.Value);
+    }
+    private void TeamIsReady(Team team)
+    {
+        if(team.id == teamMember.CurrentTeam.Value.id)
+        {
+            GetNetworkedComponent(GetOppositeTeamMember().gameObject);
+        }
     }
     protected abstract void GetNetworkedComponent(GameObject other);
 }
