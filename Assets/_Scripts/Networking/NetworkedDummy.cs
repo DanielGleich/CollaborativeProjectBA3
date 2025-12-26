@@ -27,20 +27,12 @@ public abstract class NetworkedDummy : MonoBehaviour
     private void TeamAssigned(Team prev, Team next, bool asServer)
     {
         if(TeamManager.Instance.IsTeamReady(next))
-        {
-            GetNetworkedComponent(GetOppositeTeamMember().gameObject);
-        }
-    }
-    private TeamMember GetOppositeTeamMember()
-    {
-        return FindObjectsByType<TeamMember>(sortMode: FindObjectsSortMode.None).ToList().Find(x => x.CurrentTeam.Value.id == teamMember.CurrentTeam.Value.id && x.CurrentRole.Value != teamMember.CurrentRole.Value);
+            GetNetworkedComponent(TeamManager.Instance.GetOtherTeamMemeber(teamMember.OwnerSteamId.Value).gameObject);
     }
     private void TeamIsReady(Team team)
     {
         if(team.id == teamMember.CurrentTeam.Value.id)
-        {
-            GetNetworkedComponent(GetOppositeTeamMember().gameObject);
-        }
+            GetNetworkedComponent(TeamManager.Instance.GetOtherTeamMemeber(teamMember.OwnerSteamId.Value).gameObject);
     }
     protected abstract void GetNetworkedComponent(GameObject other);
 }
