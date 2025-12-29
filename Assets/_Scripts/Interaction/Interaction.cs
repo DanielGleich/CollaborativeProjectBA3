@@ -75,6 +75,8 @@ public class Interaction : MonoBehaviour
     }
     protected virtual void OnDrawGizmos()
     {
+        if(!cam)
+            return;
         // Show the maxDistance of the Interactable
         Gizmos.color = new Color(1, 1, 0.5f, 0.1f);
         Gizmos.DrawWireSphere(cam.transform.position, maxDistance);
