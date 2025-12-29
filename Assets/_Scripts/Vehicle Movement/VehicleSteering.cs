@@ -19,10 +19,7 @@ public class VehicleSteering : MonoBehaviour {
         targetRotation = rotationAxis * inputDirection.x * rotationAmount;
     }
     void Update()
-    {
-        if(currentRotation == targetRotation)
-            return;
-        
+    {        
         currentRotation = Vector3.SmoothDamp(currentRotation,targetRotation,ref currentVelocity,smoothTime);
         foreach(var t in wheelRotationPoints)
         {
