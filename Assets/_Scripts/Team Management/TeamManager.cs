@@ -243,7 +243,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
         Debug.LogError(IsServerInitialized ? "[Server]" : "[Client]" + $"Team with id {teamId} not found!");
         return false;
     }
-    public NetworkObject GetOtherTeamMemeber(CSteamID steamId)
+    public NetworkObject GetOtherTeamMember(CSteamID steamId)
     {
         foreach (var team in allTeams)
         {

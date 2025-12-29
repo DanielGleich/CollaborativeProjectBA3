@@ -16,6 +16,7 @@ public class NetworkedBallastScaleDummy : NetworkedDummy
     }
     private void UpdateWeightBalance(Vector2 prev, Vector2 next, bool asServer)
     {
+        Debug.Log("Updated Weigth Balance: " + next);
         OnUpdateWeightBalance?.Invoke(next);
     }
     void OnDestroy()
