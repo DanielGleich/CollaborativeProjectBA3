@@ -31,7 +31,8 @@ public class WeaponTriggerNetworking : NetworkBehaviour
     [ServerRpc]
     private void OnLocalTriggerRequest(int teamId)
     {
-        if (isCooldown == false && (networkedChargeStatus.IsPowered.Value || networkedChargeStatus.IsOvercharged.Value))
+
+        if ( networkedChargeStatus.IsOvercharged.Value || (isCooldown == false && networkedChargeStatus.IsPowered.Value))
         {
             TriggerWeapon();
             StartCoroutine(Cooldown());

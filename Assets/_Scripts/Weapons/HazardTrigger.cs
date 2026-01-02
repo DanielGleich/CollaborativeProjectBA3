@@ -5,7 +5,7 @@ public class HazardTrigger : Weapon
     protected override void Activate() => TriggerHazards();
 
     void TriggerHazards()
-    { 
-        StageHazard.TriggerAllHazards();
+    {
+        StageHazardManager.Instance.RequestTrigger();
     }
 }

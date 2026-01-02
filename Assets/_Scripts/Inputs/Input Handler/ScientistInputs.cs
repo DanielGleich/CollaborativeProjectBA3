@@ -31,6 +31,7 @@ public class ScientistInputsHandler : InputHandler, PlayerInputs.IScientistContr
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        onTryAttack?.Invoke();
+        if (context.phase == InputActionPhase.Started)
+            onTryAttack?.Invoke();
     }
 }

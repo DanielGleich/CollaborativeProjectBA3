@@ -43,12 +43,14 @@ public class ChainsawTrap : MonoBehaviour
 
     private void ActivateTrap()
     { 
+        OnTrapStarting?.Invoke();
         hitbox.SetActive(true);
         OnTrapStarted?.Invoke();
     }
 
     private void DeactivateTrap()
     { 
+        OnTrapFinishing?.Invoke();
         hitbox.SetActive(false);
         OnTrapFinished?.Invoke();
     }

@@ -20,15 +20,11 @@ public class GameManager : NetworkSingleton<GameManager>
         //}
     }
 
-    //private void RegisterPlayer(NetworkObject player)
-    //{
-
-    //}
-
-    //private void UnregisterPlayer(NetworkObject player)
-    //{
-
-    //}
+    [ServerRpc(RequireOwnership = false)]
+    public void StartGame()
+    { 
+        ChargingPadManagerNetworking.Instance?.InitializeManager();
+    }
 
     private void CheckLosingCondition()
     { 
