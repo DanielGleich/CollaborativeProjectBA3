@@ -7,7 +7,6 @@ public class WeaponTrigger : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Weapon targetWeapon;
-    [field: SerializeField] public VehicleControlRoom ControlRoom { private set; get; }
 
     [Header("Settings")]
     [field: SerializeField] public float WeaponCooldown { private set; get; } = 0;
@@ -38,13 +37,13 @@ public class WeaponTrigger : MonoBehaviour
     public void Subscribe()
     {
         OnTriggerRequest += TriggerWeapon;
-        ControlRoom.OnForceAllWeaponsTrigger += ForceTriggerWeapon;
+        WeaponManager.OnWeaponTrigger += TriggerChargedWeapons;
     }
 
     public void Unsubscribe()
-    { 
+    {
         OnTriggerRequest -= TriggerWeapon;
-        ControlRoom.OnForceAllWeaponsTrigger -= ForceTriggerWeapon;
+        WeaponManager.OnWeaponTrigger -= TriggerChargedWeapons;
     }
 
     private void TriggerWeapon()
@@ -58,8 +57,9 @@ public class WeaponTrigger : MonoBehaviour
         }
     }
 
-    public void ForceTriggerWeapon()
+    public void ForceTriggerWeapon(int teamId)
     {
+        if (TeamMember.localTeamId != teamId) return;
         StopAllCoroutines();
         OnCooldownCancelled?.Invoke();
         targetWeapon.TryActivate();
@@ -68,13 +68,22 @@ public class WeaponTrigger : MonoBehaviour
         Debug.Log(targetWeapon.name + " successfully force-triggered");
     }
 
-    public void TryTriggerWeapon()
+    public void ForceTriggerWeapon()
     {
-        if (chargeStatus.IsOvercharged)
-        {
-            ControlRoom.RequestForceAllWeaponsTrigger();
-        }
-        else if (chargeStatus.IsCharged)
+        ForceTriggerWeapon(TeamMember.localTeamId);
+    }
+
+    public void ForceTriggerWeaponAnimation()
+    {
+        Debug.Log("Method not Implemented yet");
+    }
+
+    private void TriggerChargedWeapons(int teamId)
+    {
+        Debug.Log($"{gameObject.name} - Team {teamId} triggered");
+        if (TeamMember.localTeamId != teamId) return;
+
+        if (chargeStatus.IsCharged)
         {
             OnTriggerRequest?.Invoke();
         }

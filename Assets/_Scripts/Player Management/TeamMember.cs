@@ -8,6 +8,7 @@ public class TeamMember : NetworkBehaviour
     public readonly SyncVar<CSteamID> OwnerSteamId = new SyncVar<CSteamID>();
     public readonly SyncVar<Team> CurrentTeam = new SyncVar<Team>();
     public readonly SyncVar<TeamRole> CurrentRole = new SyncVar<TeamRole>();
+    public static int localTeamId = -1;
 
     [Header("References")]
     [SerializeField] private GameObject scientistPlayerPackage;
@@ -18,10 +19,11 @@ public class TeamMember : NetworkBehaviour
         scientistPlayerPackage.SetActive(CurrentRole.Value == TeamRole.SCIENTIST);
         ratPlayerPackage.SetActive(CurrentRole.Value == TeamRole.RAT);
 
-        if (IsOwner)
+        if (IsOwner) 
+        {
+            localTeamId = CurrentTeam.Value.id;
             SetPlayerReadyServerRpc();
-        
-        GetComponent<OverchargedStatus>().teamId = CurrentTeam.Value.id;
+        }
     }
 
     [ServerRpc]

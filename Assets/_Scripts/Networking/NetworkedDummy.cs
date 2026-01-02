@@ -36,14 +36,10 @@ public abstract class NetworkedDummy : MonoBehaviour
     }
     private void TryGetNetworkedComponent()
     {
-        Debug.Log($"Owner SteamId {teamMember.OwnerSteamId.Value}");
         var otherTeamMember = TeamManager.Instance.GetOtherTeamMember(teamMember.OwnerSteamId.Value);
-        Debug.Log($"Other Team Member Found: {otherTeamMember != null}");
-        // Different Method for finding the other team member in case getting it trough the team manager didn't work
         if(!otherTeamMember)
         {
             otherTeamMember = FindObjectsByType<TeamMember>(FindObjectsSortMode.None).ToList().Find(x => x.CurrentTeam.Value.id == teamMember.CurrentTeam.Value.id && x.CurrentRole.Value != teamMember.CurrentRole.Value);
-            Debug.Log($"Other Team Member Found: {otherTeamMember != null}");
         }
         if(otherTeamMember)
             GetNetworkedComponent(otherTeamMember.gameObject);

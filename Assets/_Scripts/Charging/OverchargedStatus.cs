@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class OverchargedStatus : MonoBehaviour
 {
-    public int teamId = -1;
-
     public static event Action<int, bool> OnOvercharged;
     public event Action<int> OnOverchargeRequest;
     public static event Action<int> OnUseOverchargeRequest;
@@ -35,7 +33,7 @@ public class OverchargedStatus : MonoBehaviour
 
     public void RequestOvercharge()
     {
-        OnOverchargeRequest?.Invoke(teamId);
+        OnOverchargeRequest?.Invoke(TeamMember.localTeamId);
     }
 
     public static void RequestUseOvercharge(int teamId)

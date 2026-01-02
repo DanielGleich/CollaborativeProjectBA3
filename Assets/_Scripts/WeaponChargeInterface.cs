@@ -1,18 +1,24 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponChargeInterface : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] ChargeStatus weaponCharge;
+    [SerializeField] int weaponId = -1;
 
     [Header("Settings")]
     [SerializeField] LayerMask chargeTrigger;
+
+    [Header("Events")]
+    public UnityEvent OnChargeTrigger = new UnityEvent();
+    public UnityEvent OnUnchargeTrigger = new UnityEvent();
 
     private void OnTriggerEnter(Collider other)
     {
         if ((chargeTrigger & (1 << other.gameObject.layer)) != 0)
         {
-            weaponCharge.IsPowered = true;
+            ChargeStatus.ChargeWeapon(TeamMember.localTeamId, weaponId);
+            OnChargeTrigger?.Invoke();
         }
     }
 
@@ -20,7 +26,8 @@ public class WeaponChargeInterface : MonoBehaviour
     {
         if ((chargeTrigger & (1 << other.gameObject.layer)) != 0)
         {
-            weaponCharge.IsPowered = false;
+            ChargeStatus.UnchargeWeapon(TeamMember.localTeamId, weaponId);
+            OnUnchargeTrigger?.Invoke();
         }
     }
 }
