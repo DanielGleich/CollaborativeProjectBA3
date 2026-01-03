@@ -1,12 +1,12 @@
 using FishNet.Object;
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(ChargingPad))]
 public class ChargingPadNetworking : NetworkBehaviour
 {
     ChargingPad localPad;
-    public static event Action<GameObject> OnChargingPadInitialized;
 
     private void Awake()
     {
@@ -16,7 +16,23 @@ public class ChargingPadNetworking : NetworkBehaviour
     public override void OnStartServer()
     {
         base.OnStartServer();
-        OnChargingPadInitialized.Invoke(gameObject);
+        StartCoroutine(AddPadWhenReady(gameObject));
+    }
+
+    [System.Diagnostics.DebuggerHidden] // Für Performance
+    private IEnumerator AddPadWhenReady(GameObject pad)
+    {
+        int attempts = 0;
+        while (attempts++ < 10)
+        {
+            if (ChargingPadManagerNetworking.Instance != null)
+            {
+                ChargingPadManagerNetworking.Instance.AddChargingPad(pad);
+                yield break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        Debug.LogError("Manager nicht verfügbar!", this);
     }
 
     public override void OnStartClient()

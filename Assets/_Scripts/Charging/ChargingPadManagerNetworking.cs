@@ -16,12 +16,6 @@ public class ChargingPadManagerNetworking : NetworkSingleton<ChargingPadManagerN
     public readonly SyncList<GameObject> deactivatedChargingPads = new SyncList<GameObject>();
     public readonly SyncList<GameObject> activatedChargingPads = new SyncList<GameObject>();
 
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        ChargingPadNetworking.OnChargingPadInitialized += AddChargingPad;
-    }
-
     [Server]
     public void AddChargingPad(GameObject chargingPad)
     {
