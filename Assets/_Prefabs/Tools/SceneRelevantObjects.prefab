@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f6564906c12684fb6f13f4e052713e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -3159026803964900308}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -3159026803964900308}
 --- !u!1 &2450741242274948665
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501d63506633e0e498197fa63384d895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageHazardManager
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: -3159026803964900308}
   _networkObjectCache: {fileID: -3159026803964900308}
 --- !u!1 &7074011944584568979
@@ -257,7 +257,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 9110816635963259344}
-  InitializedParentNetworkBehaviour: {fileID: 2566165208657166030}
+  InitializedParentNetworkBehaviour: {fileID: -5270537606694620293}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -267,7 +267,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584342156457393132
+  _initializedTimestamp: -8584341411802274828
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 5184971189650645713}
-  InitializedParentNetworkBehaviour: {fileID: 2566165208657166030}
+  InitializedParentNetworkBehaviour: {fileID: -5270537606694620293}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -354,7 +354,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584342156457393132
+  _initializedTimestamp: -8584341411802274828
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -403,7 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8876480186818199003}
   - component: {fileID: -3159026803964900308}
-  - component: {fileID: 2566165208657166030}
+  - component: {fileID: -5270537606694620293}
   m_Layer: 0
   m_Name: SceneRelevantObjects
   m_TagString: Untagged
@@ -452,7 +452,8 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 2566165208657166030}
+  - {fileID: -5270537606694620293}
+  - {fileID: 4226237611507376428}
   - {fileID: 1279957803389923008}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects:
@@ -467,7 +468,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584342156457393132
+  _initializedTimestamp: -8584341411802274828
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -491,7 +492,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
---- !u!114 &2566165208657166030
+--- !u!114 &-5270537606694620293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,7 +525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584342156457393132
+      value: -8584341411802274828
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _ownerSmoothedProperties
@@ -545,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: InitializedParentNetworkBehaviour
       value: 
-      objectReference: {fileID: 2566165208657166030}
+      objectReference: {fileID: -5270537606694620293}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: SerializedTransformProperties.Position.x
       value: 0

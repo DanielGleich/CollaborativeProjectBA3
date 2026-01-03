@@ -13,28 +13,6 @@ public class ChargingPadNetworking : NetworkBehaviour
         localPad = GetComponent<ChargingPad>();
     }
 
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        StartCoroutine(AddPadWhenReady(gameObject));
-    }
-
-    [System.Diagnostics.DebuggerHidden] // Für Performance
-    private IEnumerator AddPadWhenReady(GameObject pad)
-    {
-        int attempts = 0;
-        while (attempts++ < 10)
-        {
-            if (ChargingPadManagerNetworking.Instance != null)
-            {
-                ChargingPadManagerNetworking.Instance.AddChargingPad(pad);
-                yield break;
-            }
-            yield return new WaitForSeconds(0.1f);
-        }
-        Debug.LogError("Manager nicht verfügbar!", this);
-    }
-
     public override void OnStartClient()
     {
         base.OnStartClient();

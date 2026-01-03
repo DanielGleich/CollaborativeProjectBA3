@@ -25,6 +25,14 @@ public class ChargingPadManagerNetworking : NetworkSingleton<ChargingPadManagerN
     [Server, ContextMenu("Start")]
     public void InitializeManager()
     {
+        if (deactivatedChargingPads.Count + activatedChargingPads.Count == 0)
+        {
+            ChargingPadNetworking[] pads = FindObjectsByType<ChargingPadNetworking>(FindObjectsSortMode.None);
+            foreach (var pad in pads)
+            {
+                deactivatedChargingPads.Add(pad.gameObject);
+            }
+        }
         StartCoroutine(WaitPhase(InitialWaitTime));
     }
 
