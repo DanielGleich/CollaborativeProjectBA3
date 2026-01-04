@@ -5,7 +5,27 @@ using UnityEngine;
 /// </summary>
 public abstract class NetworkedHealthDisplay : MonoBehaviour {
     [Header("References")]
-    [SerializeField] protected HealthNetworking networkedHealth;
+    [field: SerializeField] private HealthNetworking networkedHealth;
+
+    public HealthNetworking NetworkedHealth
+    {
+        get => networkedHealth;
+        protected set
+        {
+            if (networkedHealth?.CurrentHealth != null)
+            {
+                networkedHealth.CurrentHealth.OnChange -= UpdateHealth;
+            }
+
+            networkedHealth = value;
+
+            if (networkedHealth?.CurrentHealth != null)
+            {
+                networkedHealth.CurrentHealth.OnChange += UpdateHealth;
+                UpdateHealth(networkedHealth.CurrentHealth.Value, networkedHealth.CurrentHealth.Value, true);
+            }
+        }
+    }
 
     void OnEnable()
     {

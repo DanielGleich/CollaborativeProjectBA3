@@ -1,12 +1,11 @@
 using FishNet.Object;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : NetworkSingleton<GameManager>
 {
     protected override bool _perClient => false;
 
+    public static UnityEvent OnGameStart = new UnityEvent();
     public static UnityEvent OnGameOver = new UnityEvent();
     public static UnityEvent OnGameWin = new UnityEvent();
     public static UnityEvent<NetworkObject> OnPlayerDied = new UnityEvent<NetworkObject>();
@@ -22,8 +21,15 @@ public class GameManager : NetworkSingleton<GameManager>
 
     [ServerRpc(RequireOwnership = false)]
     public void StartGame()
-    { 
+    {
         ChargingPadManagerNetworking.Instance?.InitializeManager();
+        NotifyGameStart();
+    }
+
+    [ObserversRpc]
+    private void NotifyGameStart()
+    { 
+        OnGameStart?.Invoke();
     }
 
     private void CheckLosingCondition()

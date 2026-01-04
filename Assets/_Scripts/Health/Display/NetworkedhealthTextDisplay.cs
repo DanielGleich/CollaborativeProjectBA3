@@ -18,6 +18,6 @@ public class NetworkedhealthTextDisplay : NetworkedHealthDisplay
     }
     protected override void UpdateHealth(float prev, float next, bool asServer)
     {
-        healthText.SetText(string.Format(format,Mathf.RoundToInt(networkedHealth.CurrentHealth.Value),networkedHealth.MaxHealth));
+        healthText.SetText(string.Format(format,Mathf.RoundToInt(NetworkedHealth.CurrentHealth.Value), NetworkedHealth.MaxHealth));
     }
 }

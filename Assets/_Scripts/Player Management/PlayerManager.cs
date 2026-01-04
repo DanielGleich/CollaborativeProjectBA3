@@ -14,8 +14,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [SerializeField] private NetworkObject playerPrefab;
     int i = 1;
 
-    public readonly SyncDictionary<CSteamID, NetworkConnection> AllPlayerConnections = new SyncDictionary<CSteamID, NetworkConnection>();
-    public readonly SyncDictionary<CSteamID, NetworkObject> AllPlayerObjects = new SyncDictionary<CSteamID, NetworkObject>();
+    public readonly SyncDictionary<CSteamID, NetworkConnection> AllPlayerConnections = new();
     
     public static UnityEvent<CSteamID> OnPlayerDisconnected = new UnityEvent<CSteamID>();
     public static UnityEvent<CSteamID> OnPlayerConnected = new UnityEvent<CSteamID>();
@@ -51,12 +50,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         if (args.ConnectionState == RemoteConnectionState.Stopped)
         {
-            if (AllPlayerObjects.ContainsKey(playerId))
-            {
-                int clientId = c.ClientId;
-                AllPlayerObjects.Remove(playerId);
-                OnPlayerDisconnected?.Invoke(playerId);
-            }
+            AllPlayerConnections.Remove(playerId);
+            int clientId = c.ClientId;
+            OnPlayerDisconnected?.Invoke(playerId);
         }
     }
 
@@ -86,9 +82,8 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             AssignPlayerToTeam(player, playerId);
 
         MovePlayerToSpawnPoint(player);
-        AllPlayerObjects.Add(playerId, player);
         Spawn(player, c);
-        PlayerConnectedClientRpc(playerId);
+        PlayerConnectedClientRpc(playerId, c.ClientId);
     }
 
     public NetworkObject SpawnPlayer(CSteamID playerId)
@@ -162,15 +157,20 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [ObserversRpc]
-    public void PlayerConnectedClientRpc(CSteamID playerId)
+    public void PlayerConnectedClientRpc(CSteamID playerId, int objectId)
     {
         OnPlayerConnected?.Invoke(playerId);
     }
+
     public NetworkObject GetNetworkObjectBySteamID(CSteamID steamId)
-    { 
-        if (AllPlayerObjects.ContainsKey(steamId))
-            return AllPlayerObjects[steamId];
-        else 
-            return null;
+    {
+        if (AllPlayerConnections.TryGetValue(steamId, out NetworkConnection c))
+        {
+            if (base.IsServerInitialized && InstanceFinder.ServerManager.Clients.TryGetValue(c.ClientId, out NetworkConnection serverConn))
+                return serverConn.FirstObject;
+
+            return c.FirstObject;
+        }
+        return null;
     }
 }

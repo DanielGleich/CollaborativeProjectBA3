@@ -2,6 +2,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -201,10 +202,28 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (value.scientistReady && value.ratReady)
         {
-            OnTeamReady?.Invoke(allTeams[key]);
             if (asServer)
-                CheckAllTeamsReady();
+            {
+                StartCoroutine(DelayedTeamReady(allTeams[key]));
+            }
+            else
+            {
+                OnTeamReady?.Invoke(allTeams[key]);
+            }
         }
+    }
+
+    [Server]
+    private IEnumerator DelayedTeamReady(Team team)
+    {
+        while (PlayerManager.Instance.GetNetworkObjectBySteamID(team.scientistPlayer) == null ||
+               PlayerManager.Instance.GetNetworkObjectBySteamID(team.ratPlayer) == null)
+        {
+            yield return null;
+        }
+
+        OnTeamReady?.Invoke(team); 
+        CheckAllTeamsReady();
     }
 
     private void CheckAllTeamsReady()
@@ -251,6 +270,16 @@ public class TeamManager : NetworkSingleton<TeamManager>
                 return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.ratPlayer);
             else if (team.Value.ratPlayer == steamId)
                 return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.scientistPlayer);
+        }
+        return null;
+    }
+
+    public NetworkObject GetTeamMember(int teamId, TeamRole role)
+    {
+        if (allTeams.TryGetValue(teamId, out Team t))
+        {
+            Debug.Log($"Team {t.id} - Rat {t.ratPlayer} & Scientist {t.scientistPlayer}");
+            return PlayerManager.Instance.GetNetworkObjectBySteamID(role == TeamRole.SCIENTIST ? t.scientistPlayer : t.ratPlayer);
         }
         return null;
     }
