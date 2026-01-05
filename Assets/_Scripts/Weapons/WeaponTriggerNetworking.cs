@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponTriggerNetworking : NetworkBehaviour
 {
     private WeaponTrigger localTrigger;
+    private ChargeStatusNetworking networkedChargeStatus;
     private bool isCooldown = false;
 
     public override void OnStartClient()
@@ -13,31 +14,43 @@ public class WeaponTriggerNetworking : NetworkBehaviour
         base.OnStartClient();
         localTrigger = GetComponent<WeaponTrigger>();
         localTrigger.Unsubscribe();
+        networkedChargeStatus = GetComponent<ChargeStatusNetworking>();
 
-        localTrigger.OnTriggerRequest += OnLocalTriggerRequest;
-        localTrigger.ControlRoom.OnForceAllWeaponsTrigger += ControlRoom_OnForceAllWeaponsTrigger;
+        if (IsOwner)
+            WeaponManager.OnWeaponTrigger += HandleLocalTriggerRequest;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void ControlRoom_OnForceAllWeaponsTrigger()
+    void HandleLocalTriggerRequest(int teamId)
     {
-        TriggerWeapon();
+        if (TeamMember.localTeamId == teamId && IsOwner)
+        { 
+            OnLocalTriggerRequest(teamId);
+        }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void OnLocalTriggerRequest()
+    [ServerRpc]
+    private void OnLocalTriggerRequest(int teamId)
     {
-        if (isCooldown == false)
+
+        if ( networkedChargeStatus.IsOvercharged.Value || (isCooldown == false && networkedChargeStatus.IsPowered.Value))
         {
             TriggerWeapon();
             StartCoroutine(Cooldown());
+            OverchargedStatus.RequestUseOvercharge(teamId);
         }
     }
 
     [ObserversRpc]
     private void TriggerWeapon()
     {
-        localTrigger.ForceTriggerWeapon();
+        if (IsOwner)
+        {
+            localTrigger.ForceTriggerWeapon();
+        }
+        else
+        {
+            localTrigger.ForceTriggerWeaponAnimation();
+        }
     }
 
     [Server]

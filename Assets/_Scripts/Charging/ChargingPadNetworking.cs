@@ -1,22 +1,16 @@
 using FishNet.Object;
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(ChargingPad))]
 public class ChargingPadNetworking : NetworkBehaviour
 {
     ChargingPad localPad;
-    public static event Action<GameObject> OnChargingPadInitialized;
 
     private void Awake()
     {
         localPad = GetComponent<ChargingPad>();
-    }
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        OnChargingPadInitialized.Invoke(gameObject);
     }
 
     public override void OnStartClient()

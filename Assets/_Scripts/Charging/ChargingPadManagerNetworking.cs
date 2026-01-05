@@ -16,12 +16,6 @@ public class ChargingPadManagerNetworking : NetworkSingleton<ChargingPadManagerN
     public readonly SyncList<GameObject> deactivatedChargingPads = new SyncList<GameObject>();
     public readonly SyncList<GameObject> activatedChargingPads = new SyncList<GameObject>();
 
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
-        ChargingPadNetworking.OnChargingPadInitialized += AddChargingPad;
-    }
-
     [Server]
     public void AddChargingPad(GameObject chargingPad)
     {
@@ -31,6 +25,14 @@ public class ChargingPadManagerNetworking : NetworkSingleton<ChargingPadManagerN
     [Server, ContextMenu("Start")]
     public void InitializeManager()
     {
+        if (deactivatedChargingPads.Count + activatedChargingPads.Count == 0)
+        {
+            ChargingPadNetworking[] pads = FindObjectsByType<ChargingPadNetworking>(FindObjectsSortMode.None);
+            foreach (var pad in pads)
+            {
+                deactivatedChargingPads.Add(pad.gameObject);
+            }
+        }
         StartCoroutine(WaitPhase(InitialWaitTime));
     }
 

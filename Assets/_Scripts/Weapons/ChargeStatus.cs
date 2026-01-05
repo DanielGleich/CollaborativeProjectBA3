@@ -1,74 +1,94 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(WeaponTrigger))]
 public class ChargeStatus : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private VehicleControlRoom controlRoom;
-    private WeaponTrigger trigger;
-    private int teamId;
+    [Header("Settings")]
+    [field: SerializeField] public int WeaponId { private set; get; } = -1;
 
-    public UnityEvent OnCharge = new UnityEvent();
-    public UnityEvent OnUncharge = new UnityEvent();
+    public static event Action<int,int> OnCharge;
+    public static event Action<int,int> OnUncharge;
 
-    private bool isPowered;
-    public bool IsPowered
-    {
-        get => isPowered;
-        set 
-        {
-            if (value != isPowered)
-            {
-                SetChargeStatus(value, IsOvercharged);
-            }
-        }
-    }
+    public UnityEvent OnChargeActive = new UnityEvent();
+    public UnityEvent OnChargeInactive = new UnityEvent();
 
+    public bool IsPowered { get; private set; } = false;
     public bool IsOvercharged { get; private set; } = false;
 
     public bool IsCharged
     {
-        get => isPowered || IsOvercharged;    
-    }
-
-    private void Awake()
-    {
-        trigger = GetComponent<WeaponTrigger>();
-        teamId = controlRoom.teamId;
+        get => IsPowered || IsOvercharged;    
     }
 
     private void OnEnable()
     {
-        OverchargedStatus.OnOvercharged += OnOverchargedChanged;
+        Subscribe();
     }
 
     private void OnDisable()
     {
-        OverchargedStatus.OnOvercharged -= OnOverchargedChanged;
+        Unsubscribe();
     }
 
-    private void OnOverchargedChanged(int team, bool newValue)
+    public void Subscribe()
+    { 
+        OverchargedStatus.OnOvercharged += OnOverchargedChanged;
+        ChargeStatus.OnCharge += OnCharged;
+        ChargeStatus.OnUncharge += OnUncharged;        
+    }
+
+    public void Unsubscribe()
+    { 
+        OverchargedStatus.OnOvercharged -= OnOverchargedChanged;
+        ChargeStatus.OnCharge -= OnCharged;
+        ChargeStatus.OnUncharge -= OnUncharged;        
+    }
+
+    public static void ChargeWeapon(int teamId, int weaponId)
     {
-        if (teamId == team)
-            SetChargeStatus(isPowered, newValue);
+        OnCharge?.Invoke(teamId, weaponId);
+    }
+
+    public static void UnchargeWeapon(int teamId, int weaponId)
+    {
+        OnUncharge?.Invoke(teamId, weaponId);
+    }
+
+    private void OnCharged(int teamId, int weaponId)
+    {
+        if (TeamMember.localTeamId == teamId && this.WeaponId == weaponId)
+            SetChargeStatus(true, IsOvercharged);
+    }
+
+    private void OnUncharged(int teamId, int weaponId)
+    {
+        if (TeamMember.localTeamId == teamId && this.WeaponId == weaponId)
+            SetChargeStatus(false, IsOvercharged);
+    }
+
+    private void OnOverchargedChanged(int teamId, bool newValue)
+    {
+        if (TeamMember.localTeamId == teamId)
+            SetChargeStatus(IsPowered, newValue);
     }
 
     private void SetChargeStatus(bool newPoweredValue, bool newOverchargedValue)
     {
-        bool oldChargedState = isPowered || IsOvercharged;
+        bool oldChargedState = IsPowered || IsOvercharged;
         bool newChargedState = newPoweredValue || newOverchargedValue;
 
-        isPowered = newPoweredValue;
+        IsPowered = newPoweredValue;
         IsOvercharged = newOverchargedValue;
 
         if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
         {
-            OnCharge?.Invoke();
+            OnChargeActive?.Invoke();
         }
         else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
-        { 
-            OnUncharge?.Invoke();
+        {
+            OnChargeInactive?.Invoke();
         }
     }
 }

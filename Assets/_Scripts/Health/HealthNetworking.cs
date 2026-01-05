@@ -90,6 +90,7 @@ public class HealthNetworking : NetworkBehaviour
             CurrentHealth.Value = newValue;
         }
     }
+
     private void UpdateLocalHealth(float oldVal, float newValue, bool asServer)
     {
         if (predictLocally && Mathf.Abs(newValue - health.CurrentHealth) < DamageSyncTolerace)
@@ -98,7 +99,7 @@ public class HealthNetworking : NetworkBehaviour
         if (Mathf.Approximately(health.CurrentHealth, newValue))
             return;
 
-        Debug.Log($"{gameObject.name} - network => local new value {newValue}");
+        //Debug.Log($"{gameObject.name} - network => local new value {newValue}");
         loopProtection = true;
         health.CurrentHealth = newValue;
 

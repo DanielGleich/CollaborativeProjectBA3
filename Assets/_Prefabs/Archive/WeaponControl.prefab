@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
   targetWeapon: {fileID: 0}
-  <ControlRoom>k__BackingField: {fileID: 0}
   <WeaponCooldown>k__BackingField: 5
 --- !u!114 &3609141314417507009
 MonoBehaviour:
@@ -81,37 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  controlRoom: {fileID: 0}
-  OnCharge:
+  <WeaponId>k__BackingField: -1
+  OnChargeActive:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5056314885436582236}
-        m_TargetAssemblyTypeName: UnityEngine.MeshRenderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 793abfa449f0e8e429e2e649ebfc498d, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnUncharge:
+      m_Calls: []
+  OnChargeInactive:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5056314885436582236}
-        m_TargetAssemblyTypeName: UnityEngine.MeshRenderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 3a6841ef24c484f42b287332b903d143, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5763643757865886548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +181,7 @@ MonoBehaviour:
   _teleportThreshold: 1
   <PrefabId>k__BackingField: 65535
   <SpawnableCollectionId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 741485791784054739
+  <AssetPathHash>k__BackingField: 355954872638126979
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
@@ -397,7 +372,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e24e4ebfccba3d4bb95b632fba5acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  weaponCharge: {fileID: 5189328726308637952}
+  weaponId: -1
   chargeTrigger:
     serializedVersion: 2
     m_Bits: 128
+  OnChargeTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnchargeTrigger:
+    m_PersistentCalls:
+      m_Calls: []

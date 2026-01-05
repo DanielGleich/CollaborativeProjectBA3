@@ -18,6 +18,7 @@ public class OverchargedStatusNetworking : NetworkSingleton<OverchargedStatusNet
 
     public void RequestOvercharge(int teamId)
     {
+        Debug.Log($"Team {teamId} Overcharged");
         SetOverchargeServerRpc(teamId);
     }
 
@@ -42,7 +43,7 @@ public class OverchargedStatusNetworking : NetworkSingleton<OverchargedStatusNet
     private void NotifySetOvercharge(int teamId, bool value)
     {
         OverchargedStatus.ApplyOvercharge(teamId, value);
-        if (overchargedStatus.teamId == teamId)
+        if (TeamMember.localTeamId == teamId)
         { 
             overchargedStatus.IsOvercharged = value;
         }
