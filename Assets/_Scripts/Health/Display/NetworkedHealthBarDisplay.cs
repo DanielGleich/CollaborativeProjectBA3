@@ -26,7 +26,6 @@ public class NetworkedHealthBarDisplay : NetworkedHealthDisplay
     {
         if (t.id != TeamMember.localTeamId && TeamMember.localTeamId == -1) return;
         NetworkObject player = TeamManager.Instance.GetTeamMember(TeamMember.localTeamId, TeamRole.SCIENTIST);
-        Debug.Log(player + " -- " + TeamMember.localTeamId);
         if (player != null)
         {
             NetworkedHealth = player.transform.GetComponentInChildren<HealthNetworking>();

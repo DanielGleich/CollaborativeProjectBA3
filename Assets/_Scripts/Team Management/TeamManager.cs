@@ -278,7 +278,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (allTeams.TryGetValue(teamId, out Team t))
         {
-            Debug.Log($"Team {t.id} - Rat {t.ratPlayer} & Scientist {t.scientistPlayer}");
             return PlayerManager.Instance.GetNetworkObjectBySteamID(role == TeamRole.SCIENTIST ? t.scientistPlayer : t.ratPlayer);
         }
         return null;
