@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(WeaponTrigger))]
 public class WeaponTriggerNetworking : NetworkBehaviour
 {
+    [Header("Options")]
+    [field: SerializeField] public bool GodMode { private set; get; } = false;
     private WeaponTrigger localTrigger;
     private ChargeStatusNetworking networkedChargeStatus;
     private bool isCooldown = false;
@@ -32,7 +34,7 @@ public class WeaponTriggerNetworking : NetworkBehaviour
     private void OnLocalTriggerRequest(int teamId)
     {
 
-        if ( networkedChargeStatus.IsOvercharged.Value || (isCooldown == false && networkedChargeStatus.IsPowered.Value))
+        if ( GodMode || networkedChargeStatus.IsOvercharged.Value || (isCooldown == false && networkedChargeStatus.IsPowered.Value))
         {
             TriggerWeapon();
             StartCoroutine(Cooldown());
