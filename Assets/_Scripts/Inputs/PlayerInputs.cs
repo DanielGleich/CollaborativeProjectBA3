@@ -441,6 +441,45 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu Inputs"",
+            ""id"": ""a836b278-7bdc-418a-885c-93bd2f9e1076"",
+            ""actions"": [
+                {
+                    ""name"": ""Toggle Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac94d781-2030-45af-bbb4-2dd7ae932b74"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b2b7d6fd-4382-4bdd-8a91-1bc8c29316a7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cbfe7c1-bdcc-431b-92c5-12582b4ac1eb"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -456,12 +495,16 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_ScientistControlls_Move = m_ScientistControlls.FindAction("Move", throwIfNotFound: true);
         m_ScientistControlls_SwitchCamera = m_ScientistControlls.FindAction("Switch Camera", throwIfNotFound: true);
         m_ScientistControlls_Attack = m_ScientistControlls.FindAction("Attack", throwIfNotFound: true);
+        // Menu Inputs
+        m_MenuInputs = asset.FindActionMap("Menu Inputs", throwIfNotFound: true);
+        m_MenuInputs_ToggleMenu = m_MenuInputs.FindAction("Toggle Menu", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
     {
         UnityEngine.Debug.Assert(!m_FPSControlls.enabled, "This will cause a leak and performance issues, PlayerInputs.FPSControlls.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_ScientistControlls.enabled, "This will cause a leak and performance issues, PlayerInputs.ScientistControlls.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_MenuInputs.enabled, "This will cause a leak and performance issues, PlayerInputs.MenuInputs.Disable() has not been called.");
     }
 
     /// <summary>
@@ -780,6 +823,102 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="ScientistControllsActions" /> instance referencing this action map.
     /// </summary>
     public ScientistControllsActions @ScientistControlls => new ScientistControllsActions(this);
+
+    // Menu Inputs
+    private readonly InputActionMap m_MenuInputs;
+    private List<IMenuInputsActions> m_MenuInputsActionsCallbackInterfaces = new List<IMenuInputsActions>();
+    private readonly InputAction m_MenuInputs_ToggleMenu;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Menu Inputs".
+    /// </summary>
+    public struct MenuInputsActions
+    {
+        private @PlayerInputs m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public MenuInputsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "MenuInputs/ToggleMenu".
+        /// </summary>
+        public InputAction @ToggleMenu => m_Wrapper.m_MenuInputs_ToggleMenu;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_MenuInputs; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="MenuInputsActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(MenuInputsActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="MenuInputsActions" />
+        public void AddCallbacks(IMenuInputsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuInputsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuInputsActionsCallbackInterfaces.Add(instance);
+            @ToggleMenu.started += instance.OnToggleMenu;
+            @ToggleMenu.performed += instance.OnToggleMenu;
+            @ToggleMenu.canceled += instance.OnToggleMenu;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="MenuInputsActions" />
+        private void UnregisterCallbacks(IMenuInputsActions instance)
+        {
+            @ToggleMenu.started -= instance.OnToggleMenu;
+            @ToggleMenu.performed -= instance.OnToggleMenu;
+            @ToggleMenu.canceled -= instance.OnToggleMenu;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MenuInputsActions.UnregisterCallbacks(IMenuInputsActions)" />.
+        /// </summary>
+        /// <seealso cref="MenuInputsActions.UnregisterCallbacks(IMenuInputsActions)" />
+        public void RemoveCallbacks(IMenuInputsActions instance)
+        {
+            if (m_Wrapper.m_MenuInputsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="MenuInputsActions.AddCallbacks(IMenuInputsActions)" />
+        /// <seealso cref="MenuInputsActions.RemoveCallbacks(IMenuInputsActions)" />
+        /// <seealso cref="MenuInputsActions.UnregisterCallbacks(IMenuInputsActions)" />
+        public void SetCallbacks(IMenuInputsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuInputsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuInputsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="MenuInputsActions" /> instance referencing this action map.
+    /// </summary>
+    public MenuInputsActions @MenuInputs => new MenuInputsActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "FPS Controlls" which allows adding and removing callbacks.
     /// </summary>
@@ -844,5 +983,20 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Menu Inputs" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="MenuInputsActions.AddCallbacks(IMenuInputsActions)" />
+    /// <seealso cref="MenuInputsActions.RemoveCallbacks(IMenuInputsActions)" />
+    public interface IMenuInputsActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Toggle Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleMenu(InputAction.CallbackContext context);
     }
 }
