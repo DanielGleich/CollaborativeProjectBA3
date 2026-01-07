@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7355934828709389034}
   - component: {fileID: 5640201686091075007}
   - component: {fileID: 7682361635520763111}
-  - component: {fileID: 6039199396519549494}
-  - component: {fileID: 831856598679369764}
   - component: {fileID: 4173827825991586151}
   m_Layer: 3
   m_Name: PLR
@@ -75,7 +73,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 7682361635520763111}
   - {fileID: 0}
-  - {fileID: 831856598679369764}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -127,33 +125,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5640201686091075007}
   scientistPlayerPackage: {fileID: 7464248597896186437}
   ratPlayerPackage: {fileID: 7224412582850829221}
---- !u!114 &6039199396519549494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763102462875464336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db4eab0883947740b88a490fe89b64c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatus
---- !u!114 &831856598679369764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763102462875464336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455c400aecccbb0429b2f0bdaf4006be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatusNetworking
-  _componentIndexCache: 3
-  _addedNetworkObject: {fileID: 5640201686091075007}
-  _networkObjectCache: {fileID: 5640201686091075007}
 --- !u!114 &4173827825991586151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584339628962386204
       objectReference: {fileID: 0}
     - target: {fileID: 3229270047589638291, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: maxTilt.x
@@ -352,6 +327,10 @@ PrefabInstance:
       propertyPath: _initializedTimestamp
       value: -8584346035009917221
       objectReference: {fileID: 0}
+    - target: {fileID: 1185381369708860789, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: NetworkBehaviours.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1364421130579321681, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
       value: 4
@@ -440,10 +419,24 @@ PrefabInstance:
       propertyPath: <WeaponId>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6570028330303530853, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: _networkObjectCache
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570028330303530853, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: _componentIndexCache
+      value: 255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2252303840007402122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3649594176133154209}
+    - targetCorrespondingSourceObject: {fileID: 2252303840007402122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 721003700658670868}
     - targetCorrespondingSourceObject: {fileID: 5412942526090882290, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5850644884569264519}
@@ -558,3 +551,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2252303840007402122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
   m_PrefabInstance: {fileID: 8707600914945210575}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3649594176133154209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464248597896186437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db4eab0883947740b88a490fe89b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatus
+--- !u!114 &721003700658670868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464248597896186437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455c400aecccbb0429b2f0bdaf4006be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatusNetworking
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 7540379236342705594}
+  _networkObjectCache: {fileID: 0}
+--- !u!114 &7540379236342705594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1185381369708860789, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464248597896186437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject

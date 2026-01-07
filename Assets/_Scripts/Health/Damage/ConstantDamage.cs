@@ -10,8 +10,18 @@ public class ConstantDamage : SimpleDamage {
     private List<Health> affectedHealthComponents = new();
     protected override void OnTriggerEnter(Collider other)
     {
+        CheckNewContacts(other);
+    }
+
+    protected void OnTriggerStay(Collider other)
+    {
+        CheckNewContacts(other);
+    }
+
+    void CheckNewContacts(Collider other)
+    {
         Health h = other.GetComponentInParent<Health>();
-        if(h && !affectedHealthComponents.Contains(h))
+        if (h && !affectedHealthComponents.Contains(h))
         {
             affectedHealthComponents.Add(h);
             TakeDamage(h);
