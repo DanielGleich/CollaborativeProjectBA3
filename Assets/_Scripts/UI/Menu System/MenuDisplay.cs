@@ -9,7 +9,7 @@ public abstract class MenuDisplayHandler : MonoBehaviour
     [SerializeField] protected MenuStateManager menuStateManager;
 
     [Header("Settings")]
-    [SerializeField, Tooltip("Relevant for transitions. Keep active if ")] private bool clearOnDeactivateMenu = true;
+    [SerializeField, Tooltip("Relevant for transitions. Keep active if unsure")] private bool clearOnDeactivateMenu = true;
 
     protected SubMenu currentSubMenu;
     protected SubMenu previousSubMenu;
@@ -24,6 +24,11 @@ public abstract class MenuDisplayHandler : MonoBehaviour
     {
         menuStateManager.OnUpdateCurrentSubMenu -= UpdateCurrentSubMenu;
         menuStateManager.OnUpdateMenuIsActive -= UpdateMenuActive;
+    }
+    protected virtual void OnValidate()
+    {
+        if(!menuStateManager)
+            menuStateManager = GetComponent<MenuStateManager>();
     }
 
     private void UpdateMenuActive(bool isActive)

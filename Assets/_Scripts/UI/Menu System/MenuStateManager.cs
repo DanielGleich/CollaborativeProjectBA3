@@ -12,7 +12,7 @@ public class MenuStateManager : MonoBehaviour
     [field: SerializeField] public SubMenu[] SubMenus {get; private set;}
 
     [Header("Settings")] 
-    [SerializeField, Tooltip("When disabled the menu gets set back to the start menu")] private bool resetOnDisableMenu;
+    [SerializeField] private bool resetOnDisableMenu = true;
 
     private SubMenu currentSubMenu;
     public event Action<SubMenu> OnUpdateCurrentSubMenu;
@@ -42,7 +42,7 @@ public class MenuStateManager : MonoBehaviour
     }
 
     [ContextMenu("Get all sub-menus in children")]
-    private void GetSubMenusInChildren() => SubMenus = GetComponentsInChildren<SubMenu>();
+    private void GetSubMenusInChildren() => SubMenus = GetComponentsInChildren<SubMenu>(true);
 
     void OnValidate()
     {
