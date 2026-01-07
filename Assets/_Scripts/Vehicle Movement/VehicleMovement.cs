@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
@@ -8,6 +9,10 @@ public class VehicleMovement : MonoBehaviour
     [Header("Motor Settings (x = forward, y = backwards)")]
     [SerializeField, Min(0), Tooltip("x = forward, y = backwards")] private Vector2 motorSpeed = new(600f, 300f);
     [SerializeField, Tooltip("x = forward, y = backwards")] private Vector2 motorForce = new(25f, 25f);
+
+    [Header("Extra Boost")]
+    [SerializeField] private HingeJoint[] extaBoostJoints;
+    [SerializeField, Min(1)] private float boostMultiplier = 2;
 
     [Header("Settings")]
     [SerializeField, Tooltip("Decides if the vehicle stops, when the input direction (y) is 0")] private bool stopOnNoInput = true;
@@ -32,6 +37,7 @@ public class VehicleMovement : MonoBehaviour
     {
         // Handle velocity
         int newDirection = Mathf.RoundToInt(inputDirection.y);
+        Debug.Log($"InputDirection");
         float newTargetVelocity = newDirection >= 0 ? motorSpeed.x : -motorSpeed.y;
         float newMotorForce = newDirection >= 0? motorForce.x : motorForce.y;
 
@@ -42,8 +48,9 @@ public class VehicleMovement : MonoBehaviour
         foreach(HingeJoint h in hingeJoints)
         {
             JointMotor motor = h.motor;
-            motor.targetVelocity = newTargetVelocity;
-            motor.force = newMotorForce;
+            bool extraBoost = extaBoostJoints.Contains(h);
+            motor.targetVelocity = extraBoost? newTargetVelocity * boostMultiplier : newTargetVelocity;
+            motor.force = extraBoost? newMotorForce * boostMultiplier : newMotorForce;
             h.motor = motor;
         }
     }
