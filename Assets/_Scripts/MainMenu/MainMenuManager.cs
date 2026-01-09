@@ -48,12 +48,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public void UpdateLobbyProfiles()
     {
         List<CSteamID> players = new List<CSteamID>();
-        foreach (var kvp in InstanceFinder.NetworkManager.ClientManager.Clients)
+        foreach (NetworkConnection player in PlayerManager.Instance.AllPlayerConnections)
         {
-            if (TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(kvp.Value) == false)
+            if (TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(player) == false)
             {
-                if (PlayerManager.Instance != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(kvp.Value))
-                    players.Add(new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[kvp.Value]));
+                if (PlayerManager.Instance != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(player))
+                    players.Add(new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[player]));
             }
         }
 
