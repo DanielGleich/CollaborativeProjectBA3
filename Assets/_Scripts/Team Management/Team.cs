@@ -1,5 +1,4 @@
-using Steamworks;
-using UnityEngine;
+using FishNet.Connection;
 
 public enum TeamRole
 {
@@ -12,6 +11,6 @@ public enum TeamRole
 public struct Team
 {    
     public int id;
-    public CSteamID scientistPlayer;
-    public CSteamID ratPlayer;
+    public NetworkConnection scientistPlayer;
+    public NetworkConnection ratPlayer;
 }

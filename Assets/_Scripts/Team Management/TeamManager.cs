@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using Steamworks;
@@ -60,71 +61,61 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [Server]
     private void ClientJoinOrLeave(CSteamID _)
     {
-        var activeIds = GetActiveLobbyIds();
+        HashSet<NetworkConnection> connections = new();
+        foreach (var kvp in ServerManager.Clients)
+        { 
+            connections.Add(kvp.Value);
+        }
 
         foreach (var kvp in allTeams)
         {
             var team = kvp.Value;
-            RemoveIfMissing(activeIds, team.scientistPlayer);
-            RemoveIfMissing(activeIds, team.ratPlayer);
+            RemoveIfMissing(connections, team.scientistPlayer);
+            RemoveIfMissing(connections, team.ratPlayer);
         }
     }
 
-    private HashSet<ulong> GetActiveLobbyIds()
+    private void RemoveIfMissing(HashSet<NetworkConnection> activeIds, NetworkConnection playerConnection)
     {
-        var ids = new HashSet<ulong>();
-        var lobbyId = new CSteamID(LobbyConnectionManager.CurrentLobbyID);
-
-        for (int i = 0; i < SteamMatchmaking.GetNumLobbyMembers(lobbyId); i++)
-            ids.Add(SteamMatchmaking.GetLobbyMemberByIndex(lobbyId, i).m_SteamID);
-
-        return ids;
+        if (playerConnection != null && !activeIds.Contains(playerConnection))
+            RemovePlayerFromAllTeams(playerConnection);
     }
 
-    private void RemoveIfMissing(HashSet<ulong> activeIds, CSteamID player)
+    public bool IsPlayerOwningSlot(NetworkConnection playerConnection)
     {
-        if (player != CSteamID.Nil && !activeIds.Contains(player.m_SteamID))
-            RemovePlayerFromAllTeams(player);
-    }
-
-    public bool IsPlayerOwningSlot(CSteamID playerId)
-    {
-        ulong id = playerId.m_SteamID;
         foreach (var kvp in allTeams)
         {
             var t = kvp.Value;
-            if (t.scientistPlayer.m_SteamID == id || t.ratPlayer.m_SteamID == id)
+            if (t.scientistPlayer == playerConnection || t.ratPlayer == playerConnection)
                 return true;
         }
         return false;
     }
 
-    public void RemovePlayerFromAllTeams(CSteamID playerId)
+    public void RemovePlayerFromAllTeams(NetworkConnection playerConnection)
     {
-        ulong id = playerId.m_SteamID;
-
         foreach (int teamId in allTeams.Keys.ToArray())
         {
             var team = allTeams[teamId];
 
-            if (team.scientistPlayer.m_SteamID == id)
-                team.scientistPlayer = CSteamID.Nil;
+            if (team.scientistPlayer == playerConnection)
+                team.scientistPlayer = null;
 
-            if (team.ratPlayer.m_SteamID == id)
-                team.ratPlayer = CSteamID.Nil;
+            if (team.ratPlayer == playerConnection)
+                team.ratPlayer = null;
 
             allTeams[teamId] = team;
         }
     }
 
-    public void AssignPlayerToTeamSlot(int teamId, TeamRole role, CSteamID playerId)
+    public void AssignPlayerToTeamSlot(int teamId, TeamRole role, NetworkConnection playerConnection)
     {
         if (!allTeams.TryGetValue(teamId, out Team team)) return;
 
         switch (role)
         {
-            case TeamRole.SCIENTIST: team.scientistPlayer = playerId; break;
-            case TeamRole.RAT: team.ratPlayer = playerId; break;
+            case TeamRole.SCIENTIST: team.scientistPlayer = playerConnection; break;
+            case TeamRole.RAT: team.ratPlayer = playerConnection; break;
         }
 
         allTeams[teamId] = team;
@@ -143,40 +134,43 @@ public class TeamManager : NetworkSingleton<TeamManager>
         }
     }
 
-    public void RequestSlot(int teamId, TeamRole slot, ulong steamId)
+    public void RequestSlot(int teamId, TeamRole slot, NetworkConnection playerConnection)
     {
         if (!IsClientInitialized)
         {
             return;
         }
-        RequestTeamSlotServerRPC(teamId, slot, steamId);
+        RequestTeamSlotServerRPC(teamId, slot, playerConnection);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, ulong steamId)
+    private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, NetworkConnection playerConnection)
     {
-        CSteamID playerId = new CSteamID(steamId);
+        RemovePlayerFromAllTeams(playerConnection);
 
-        RemovePlayerFromAllTeams(playerId);
 
         if (!allTeams.ContainsKey(teamId) ||
-            (slot == TeamRole.SCIENTIST && allTeams[teamId].scientistPlayer != CSteamID.Nil) ||
-            (slot == TeamRole.RAT && allTeams[teamId].ratPlayer != CSteamID.Nil))
+            (slot == TeamRole.SCIENTIST && allTeams[teamId].scientistPlayer != null) ||
+            (slot == TeamRole.RAT && allTeams[teamId].ratPlayer != null))
         {
             return;
         }
-        AssignPlayerToTeamSlot(teamId, slot, playerId);
+        AssignPlayerToTeamSlot(teamId, slot, playerConnection);
+        foreach (Team t in allTeams.Values)
+        {
+            Debug.Log($"Team {t.id} - S: {(t.scientistPlayer == null ? 0 : t.scientistPlayer.ClientId)} & R: {(t.ratPlayer == null ? 0 : t.ratPlayer.ClientId)}");
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void RequestLeaveTeamServerRPC(ulong steamId)
+    public void RequestLeaveTeamServerRPC(NetworkConnection playerConnection)
     {
-        RemovePlayerFromAllTeams(new CSteamID(steamId));
-        NotifyPlayerLeftObservers(steamId);
+        RemovePlayerFromAllTeams(playerConnection);
+        NotifyPlayerLeftObservers(playerConnection);
     }
 
     [ObserversRpc]
-    private void NotifyPlayerLeftObservers(ulong steamId)
+    private void NotifyPlayerLeftObservers(NetworkConnection playerConnection)
     {
         MainMenuManager.Instance?.UpdateLobbyProfiles();
     }
@@ -262,13 +256,13 @@ public class TeamManager : NetworkSingleton<TeamManager>
         Debug.LogError(IsServerInitialized ? "[Server]" : "[Client]" + $"Team with id {teamId} not found!");
         return false;
     }
-    public NetworkObject GetOtherTeamMember(CSteamID steamId)
+    public NetworkObject GetOtherTeamMember(NetworkConnection playerConnection)
     {
         foreach (var team in allTeams)
         {
-            if (team.Value.scientistPlayer == steamId)
+            if (team.Value.scientistPlayer == playerConnection)
                 return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.ratPlayer);
-            else if (team.Value.ratPlayer == steamId)
+            else if (team.Value.ratPlayer == playerConnection)
                 return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.scientistPlayer);
         }
         return null;

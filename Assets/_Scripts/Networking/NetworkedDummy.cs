@@ -1,3 +1,4 @@
+using FishNet;
 using System.Linq;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ public abstract class NetworkedDummy : MonoBehaviour
     }
     private void TryGetNetworkedComponent()
     {
-        var otherTeamMember = TeamManager.Instance.GetOtherTeamMember(teamMember.OwnerSteamId.Value);
+        var otherTeamMember = TeamManager.Instance.GetOtherTeamMember(InstanceFinder.NetworkManager.ClientManager.Connection);
         if(!otherTeamMember)
         {
             otherTeamMember = FindObjectsByType<TeamMember>(FindObjectsSortMode.None).ToList().Find(x => x.CurrentTeam.Value.id == teamMember.CurrentTeam.Value.id && x.CurrentRole.Value != teamMember.CurrentRole.Value);

@@ -1,5 +1,5 @@
+using FishNet;
 using Steamworks;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,15 +41,23 @@ public class UITeamCard : MonoBehaviour
     void UpdateTeamSlotProfiles()
     {
         if (TeamManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
-        scientistProfile.CurrentSteamId = t.scientistPlayer;
-        ratProfile.CurrentSteamId = t.ratPlayer;
+
+        if (ulong.TryParse(t.scientistPlayer?.GetAddress(), out ulong scientistID))
+            scientistProfile.CurrentSteamId = new CSteamID(scientistID);
+        else
+            scientistProfile.CurrentSteamId = CSteamID.Nil;
+
+        if (ulong.TryParse(t.ratPlayer?.GetAddress(), out ulong ratID))
+            ratProfile.CurrentSteamId = new CSteamID(ratID);
+        else
+            ratProfile.CurrentSteamId = CSteamID.Nil;
     }
 
     private void RequestRatTeamSlot()
     {
         if (TeamManager.Instance != null)
         {
-            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.RAT, SteamUser.GetSteamID().m_SteamID);
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.RAT, InstanceFinder.NetworkManager.ClientManager.Connection);
         }
     }
 
@@ -57,7 +65,7 @@ public class UITeamCard : MonoBehaviour
     { 
         if (TeamManager.Instance != null)
         {
-            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.SCIENTIST, SteamUser.GetSteamID().m_SteamID);
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.SCIENTIST, InstanceFinder.NetworkManager.ClientManager.Connection);
         }    
     }
 }
