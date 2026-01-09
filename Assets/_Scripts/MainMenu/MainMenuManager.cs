@@ -30,6 +30,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
         LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
+        PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
+        PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
+
         TeamManager.OnTeamManagerCreated += CreateTeamCards;
         TeamManager.OnTeamUpdate += UpdateLobbyProfiles;
     }
@@ -40,6 +43,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyExited -= OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves -= OnClientJoined;
         LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
+
+        PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
+        PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
 
         TeamManager.OnTeamManagerCreated -= CreateTeamCards;
         TeamManager.OnTeamUpdate -= UpdateLobbyProfiles;
@@ -65,6 +71,11 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
         startLobbyButton.interactable = InstanceFinder.IsServerStarted && players.Count == 0;
         leaveTeamButton.SetActive(TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(InstanceFinder.NetworkManager.ClientManager.Connection));
+    }
+
+    private void UpdateLobbyProfiles(NetworkConnection c)
+    {
+        UpdateLobbyProfiles();
     }
 
     private void CreateTeamCards()

@@ -40,15 +40,16 @@ public class UITeamCard : MonoBehaviour
 
     void UpdateTeamSlotProfiles()
     {
-        if (TeamManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
+        if (TeamManager.Instance == null || PlayerManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
 
-        if (ulong.TryParse(t.scientistPlayer?.GetAddress(), out ulong scientistID))
-            scientistProfile.CurrentSteamId = new CSteamID(scientistID);
+
+        if (t.scientistPlayer != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.scientistPlayer))
+            scientistProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.scientistPlayer]);
         else
             scientistProfile.CurrentSteamId = CSteamID.Nil;
 
-        if (ulong.TryParse(t.ratPlayer?.GetAddress(), out ulong ratID))
-            ratProfile.CurrentSteamId = new CSteamID(ratID);
+        if (t.ratPlayer != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.ratPlayer))
+            ratProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.ratPlayer]);
         else
             ratProfile.CurrentSteamId = CSteamID.Nil;
     }

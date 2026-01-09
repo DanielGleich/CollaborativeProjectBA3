@@ -26,6 +26,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
+    [Server]
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
     {
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
@@ -36,6 +37,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             AllPlayerConnections.Add(c);
             if (ulong.TryParse(c.GetAddress(), out ulong steamId))
                 AllPlayerSteamIds.Add(c, steamId);
+            NotifyPlayerConnected(c);
         }
 
         if (args.ConnectionState == RemoteConnectionState.Stopped)
@@ -45,7 +47,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             {
                 AllPlayerSteamIds.Remove(c);
             }
-            OnPlayerDisconnected?.Invoke(c);
+            NotifyPlayerDisconnected(c);
         }
     }
 
@@ -63,7 +65,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         MovePlayerToSpawnPoint(player);
         Spawn(player, c);
-        PlayerConnectedClientRpc(c);
     }
 
     public NetworkObject SpawnPlayer()
@@ -137,9 +138,15 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [ObserversRpc]
-    public void PlayerConnectedClientRpc(NetworkConnection c)
+    public void NotifyPlayerConnected(NetworkConnection c)
     {
         OnPlayerConnected?.Invoke(c);
+    }
+
+    [ObserversRpc]
+    public void NotifyPlayerDisconnected(NetworkConnection c)
+    {
+        OnPlayerDisconnected?.Invoke(c);
     }
 
     public NetworkObject GetNetworkObjectBySteamID(NetworkConnection c)
