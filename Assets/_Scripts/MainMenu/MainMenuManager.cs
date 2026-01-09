@@ -51,15 +51,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
         foreach (var kvp in InstanceFinder.NetworkManager.ClientManager.Clients)
         {
             if (TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(kvp.Value) == false)
-            { 
-                if(ulong.TryParse(kvp.Value.GetAddress(), out ulong playerID))
-                    players.Add(new CSteamID(playerID));
-                else 
-                    Debug.Log("Parsing didnt work");
+            {
+                if (PlayerManager.Instance != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(kvp.Value))
+                    players.Add(new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[kvp.Value]));
             }
         }
 
-        Debug.Log($"{players.Count}");
         for (int i = 0; i < lobbyIcons.Count; i++)
         {
             CSteamID playerId = i < players.Count ? players[i] : CSteamID.Nil;

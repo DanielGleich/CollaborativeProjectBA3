@@ -3,6 +3,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using FishNet.Transporting;
+using Steamworks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     int i = 1;
 
     public readonly SyncList<NetworkConnection> AllPlayerConnections = new();
+    public readonly SyncDictionary<NetworkConnection, ulong> AllPlayerSteamIds = new();
     
     public static UnityEvent<NetworkConnection> OnPlayerDisconnected = new();
     public static UnityEvent<NetworkConnection> OnPlayerConnected = new();
@@ -32,12 +34,17 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         if (args.ConnectionState == RemoteConnectionState.Started)
         {
             AllPlayerConnections.Add(c);
+            if (ulong.TryParse(c.GetAddress(), out ulong steamId))
+                AllPlayerSteamIds.Add(c, steamId);
         }
 
         if (args.ConnectionState == RemoteConnectionState.Stopped)
         {
             AllPlayerConnections.Remove(c);
-            int clientId = c.ClientId;
+            if (AllPlayerSteamIds.ContainsKey(c))
+            {
+                AllPlayerSteamIds.Remove(c);
+            }
             OnPlayerDisconnected?.Invoke(c);
         }
     }

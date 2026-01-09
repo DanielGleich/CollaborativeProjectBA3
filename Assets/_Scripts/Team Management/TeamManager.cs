@@ -156,10 +156,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
             return;
         }
         AssignPlayerToTeamSlot(teamId, slot, playerConnection);
-        foreach (Team t in allTeams.Values)
-        {
-            Debug.Log($"Team {t.id} - S: {(t.scientistPlayer == null ? 0 : t.scientistPlayer.ClientId)} & R: {(t.ratPlayer == null ? 0 : t.ratPlayer.ClientId)}");
-        }
     }
 
     [ServerRpc(RequireOwnership = false)]
