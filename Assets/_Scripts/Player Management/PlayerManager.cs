@@ -25,6 +25,12 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
+    public override void OnStopNetwork()
+    {
+        base.OnStopNetwork();
+        InstanceFinder.ClientManager.OnRemoteConnectionState -= OnRemoteConnectionStateChanged;
+    }
+
     [Server]
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
     {

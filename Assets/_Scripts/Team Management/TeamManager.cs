@@ -53,6 +53,16 @@ public class TeamManager : NetworkSingleton<TeamManager>
         LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
     }
 
+    public override void OnStopNetwork()
+    {
+        base.OnStopNetwork();
+
+        allTeams.OnChange -= TeamUpdate;
+        isTeamReady.OnChange -= OnPlayerReady;
+        LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
+        StopAllCoroutines();
+    }
+
     private void TeamUpdate(SyncDictionaryOperation op, int key, Team value, bool asServer)
     {
         OnTeamUpdate?.Invoke();
