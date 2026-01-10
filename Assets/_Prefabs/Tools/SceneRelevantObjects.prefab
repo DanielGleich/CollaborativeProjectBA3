@@ -257,7 +257,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 9110816635963259344}
-  InitializedParentNetworkBehaviour: {fileID: -5270537606694620293}
+  InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -344,7 +344,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 5184971189650645713}
-  InitializedParentNetworkBehaviour: {fileID: -5270537606694620293}
+  InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -403,7 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8876480186818199003}
   - component: {fileID: -3159026803964900308}
-  - component: {fileID: -5270537606694620293}
+  - component: {fileID: 1571361282030280434}
   m_Layer: 0
   m_Name: SceneRelevantObjects
   m_TagString: Untagged
@@ -452,7 +452,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: -5270537606694620293}
+  - {fileID: 0}
   - {fileID: 4226237611507376428}
   - {fileID: 1279957803389923008}
   InitializedParentNetworkBehaviour: {fileID: 0}
@@ -492,7 +492,7 @@ MonoBehaviour:
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
---- !u!114 &-5270537606694620293
+--- !u!114 &1571361282030280434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -501,12 +501,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8316851704417139753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 743056bd829bf9941b7ea63e562ab590, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: -3159026803964900308}
-  _networkObjectCache: {fileID: -3159026803964900308}
+  m_EditorClassIdentifier: Assembly-CSharp::InitialSceneObserver
 --- !u!1001 &156117827728289745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,10 +540,6 @@ PrefabInstance:
       propertyPath: <ComponentIndex>k__BackingField
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
-      propertyPath: InitializedParentNetworkBehaviour
-      value: 
-      objectReference: {fileID: -5270537606694620293}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: SerializedTransformProperties.Position.x
       value: 0
