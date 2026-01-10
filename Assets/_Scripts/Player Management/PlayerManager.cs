@@ -53,6 +53,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [ServerRpc(RequireOwnership = false)]
     public void ConnectToServerRPC(NetworkConnection c = null)
     {
+        Debug.Log($"RPC Triggered- {c == null}");
         if (c == null) return;
 
         Debug.Log($"Player Spawn triggered - {c.GetAddress()}");

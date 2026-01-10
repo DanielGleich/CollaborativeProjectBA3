@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CustomPlayerSpawner : NetworkSingleton<CustomPlayerSpawner>
@@ -6,6 +7,12 @@ public class CustomPlayerSpawner : NetworkSingleton<CustomPlayerSpawner>
     public override void OnStartClient()
     {
         base.OnStartClient();
+        StartCoroutine(WaitForPlayerManager());
+    }
+
+    IEnumerator WaitForPlayerManager()
+    {
+        yield return new WaitUntil(() => PlayerManager.Instance != null);
         PlayerManager.Instance.ConnectToServerRPC();
     }
 }
