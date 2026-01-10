@@ -43,13 +43,13 @@ public class UITeamCard : MonoBehaviour
         if (TeamManager.Instance == null || PlayerManager.Instance == null || TeamManager.Instance.allTeams.TryGetValue(currentTeamId, out Team t) == false) return;
 
 
-        if (t.scientistPlayer != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.scientistPlayer))
-            scientistProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.scientistPlayer]);
+        if (t.scientistPlayerClientId != -1 && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.scientistPlayerClientId))
+            scientistProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.scientistPlayerClientId]);
         else
             scientistProfile.CurrentSteamId = CSteamID.Nil;
 
-        if (t.ratPlayer != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.ratPlayer))
-            ratProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.ratPlayer]);
+        if (t.ratPlayerClientId != -1 && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(t.ratPlayerClientId))
+            ratProfile.CurrentSteamId = new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[t.ratPlayerClientId]);
         else
             ratProfile.CurrentSteamId = CSteamID.Nil;
     }
@@ -58,7 +58,7 @@ public class UITeamCard : MonoBehaviour
     {
         if (TeamManager.Instance != null)
         {
-            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.RAT, InstanceFinder.NetworkManager.ClientManager.Connection);
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.RAT, InstanceFinder.NetworkManager.ClientManager.Connection.ClientId);
         }
     }
 
@@ -66,7 +66,7 @@ public class UITeamCard : MonoBehaviour
     { 
         if (TeamManager.Instance != null)
         {
-            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.SCIENTIST, InstanceFinder.NetworkManager.ClientManager.Connection);
+            TeamManager.Instance.RequestSlot(currentTeamId, TeamRole.SCIENTIST, InstanceFinder.NetworkManager.ClientManager.Connection.ClientId);
         }    
     }
 }

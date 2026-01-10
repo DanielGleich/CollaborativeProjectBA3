@@ -11,6 +11,6 @@ public enum TeamRole
 public struct Team
 {    
     public int id;
-    public NetworkConnection scientistPlayer;
-    public NetworkConnection ratPlayer;
+    public int scientistPlayerClientId;
+    public int ratPlayerClientId;
 }

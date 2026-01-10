@@ -3,7 +3,6 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using FishNet.Transporting;
-using Steamworks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,11 +13,11 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [SerializeField] private NetworkObject playerPrefab;
     int i = 1;
 
-    public readonly SyncList<NetworkConnection> AllPlayerConnections = new SyncList<NetworkConnection>();
-    public readonly SyncDictionary<NetworkConnection, ulong> AllPlayerSteamIds = new SyncDictionary<NetworkConnection, ulong>();
+    public readonly SyncList<int> AllPlayerConnections = new SyncList<int>();
+    public readonly SyncDictionary<int, ulong> AllPlayerSteamIds = new SyncDictionary<int, ulong>();
     
-    public static UnityEvent<NetworkConnection> OnPlayerDisconnected = new UnityEvent<NetworkConnection>();
-    public static UnityEvent<NetworkConnection> OnPlayerConnected = new UnityEvent<NetworkConnection>();
+    public static UnityEvent<int> OnPlayerDisconnected = new UnityEvent<int>();
+    public static UnityEvent<int> OnPlayerConnected = new UnityEvent<int>();
 
     private void Start()
     {
@@ -33,20 +32,20 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         if (args.ConnectionState == RemoteConnectionState.Started)
         {
-            AllPlayerConnections.Add(c);
+            AllPlayerConnections.Add(c.ClientId);
             if (ulong.TryParse(c.GetAddress(), out ulong steamId))
-                AllPlayerSteamIds.Add(c, steamId);
-            NotifyPlayerConnected(c);
+                AllPlayerSteamIds.Add(c.ClientId, steamId);
+            NotifyPlayerConnected(c.ClientId);
         }
 
         if (args.ConnectionState == RemoteConnectionState.Stopped)
         {
-            AllPlayerConnections.Remove(c);
-            if (AllPlayerSteamIds.ContainsKey(c))
+            AllPlayerConnections.Remove(c.ClientId);
+            if (AllPlayerSteamIds.ContainsKey(c.ClientId))
             {
-                AllPlayerSteamIds.Remove(c);
+                AllPlayerSteamIds.Remove(c.ClientId);
             }
-            NotifyPlayerDisconnected(c);
+            NotifyPlayerDisconnected(c.ClientId);
         }
     }
 
@@ -61,9 +60,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         NetworkObject player = SpawnPlayer();
 
         if (c.GetAddress() == "127.0.0.1")
-            AutoAssignDummyToTeam(player, c);
+            AutoAssignDummyToTeam(player, c.ClientId);
         else 
-            AssignPlayerToTeam(player, c);
+            AssignPlayerToTeam(player, c.ClientId);
 
         MovePlayerToSpawnPoint(player);
         Spawn(player, c);
@@ -78,19 +77,19 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [Server]
-    void AssignPlayerToTeam(NetworkObject playerObject, NetworkConnection c)
+    void AssignPlayerToTeam(NetworkObject playerObject, int clientId)
     {
         if (!playerObject.TryGetComponent(out TeamMember playerAssignment)) return;
 
         foreach (var kvp in TeamManager.Instance.allTeams)
         {
             Team t = kvp.Value;
-            if (t.scientistPlayer == c)
+            if (t.scientistPlayerClientId == clientId)
             {
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
             }
-            else if (t.ratPlayer == c)
+            else if (t.ratPlayerClientId == clientId)
             {
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.RAT;
@@ -99,7 +98,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [Server]
-    void AutoAssignDummyToTeam(NetworkObject playerObject, NetworkConnection c)
+    void AutoAssignDummyToTeam(NetworkObject playerObject, int clientId)
     {
         if (!playerObject.TryGetComponent(out TeamMember playerAssignment)) return;
 
@@ -107,16 +106,16 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         {
             Team t = kvp.Value;
 
-            if (t.scientistPlayer == null)
+            if (t.scientistPlayerClientId == -1)
             { 
-                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.SCIENTIST, c);
+                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.SCIENTIST, clientId);
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
                 return;
             } 
-            else if (t.ratPlayer == null)
+            else if (t.ratPlayerClientId == -1)
             {
-                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.RAT, c);
+                TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.RAT, clientId);
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.RAT;
                 return;
@@ -140,25 +139,23 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [ObserversRpc]
-    public void NotifyPlayerConnected(NetworkConnection c)
+    public void NotifyPlayerConnected(int clientId)
     {
-        OnPlayerConnected?.Invoke(c);
+        OnPlayerConnected?.Invoke(clientId);
     }
 
     [ObserversRpc]
-    public void NotifyPlayerDisconnected(NetworkConnection c)
+    public void NotifyPlayerDisconnected(int clientId)
     {
-        OnPlayerDisconnected?.Invoke(c);
+        OnPlayerDisconnected?.Invoke(clientId);
     }
 
-    public NetworkObject GetNetworkObjectBySteamID(NetworkConnection c)
+    public NetworkObject GetNetworkObjectBySteamID(int clientId)
     {
-        if (AllPlayerConnections.Contains(c))
+        if (AllPlayerConnections.Contains(clientId))
         {
-            if (base.IsServerInitialized && InstanceFinder.ServerManager.Clients.TryGetValue(c.ClientId, out NetworkConnection serverConn))
+            if (base.IsServerInitialized && InstanceFinder.ServerManager.Clients.TryGetValue(clientId, out NetworkConnection serverConn))
                 return serverConn.FirstObject;
-
-            return c.FirstObject;
         }
         return null;
     }

@@ -1,6 +1,4 @@
 using FishNet;
-using FishNet.Connection;
-using FishNet.Object;
 using Steamworks;
 using System;
 using System.Collections.Generic;
@@ -56,12 +54,12 @@ public class MainMenuManager : Singleton<MainMenuManager>
         if (PlayerManager.Instance == null) return;
 
         List<CSteamID> players = new List<CSteamID>();
-        foreach (NetworkConnection player in PlayerManager.Instance.AllPlayerConnections)
+        foreach (int clientId in PlayerManager.Instance.AllPlayerConnections)
         {
-            if (TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(player) == false)
+            if (TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(clientId) == false)
             {
-                if (PlayerManager.Instance != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(player))
-                    players.Add(new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[player]));
+                if (PlayerManager.Instance != null && PlayerManager.Instance.AllPlayerSteamIds.ContainsKey(clientId))
+                    players.Add(new CSteamID(PlayerManager.Instance.AllPlayerSteamIds[clientId]));
             }
         }
 
@@ -72,10 +70,10 @@ public class MainMenuManager : Singleton<MainMenuManager>
         }
 
         startLobbyButton.interactable = InstanceFinder.IsServerStarted && players.Count == 0;
-        leaveTeamButton.SetActive(TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(InstanceFinder.NetworkManager.ClientManager.Connection));
+        leaveTeamButton.SetActive(TeamManager.Instance != null && TeamManager.Instance.IsPlayerOwningSlot(InstanceFinder.NetworkManager.ClientManager.Connection.ClientId));
     }
 
-    private void UpdateLobbyProfiles(NetworkConnection c)
+    private void UpdateLobbyProfiles(int clientId)
     {
         UpdateLobbyProfiles();
     }
@@ -146,7 +144,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void LeaveTeamRequest()
     {
-        TeamManager.Instance.RequestLeaveTeamServerRPC(InstanceFinder.NetworkManager.ClientManager.Connection);
+        TeamManager.Instance.RequestLeaveTeamServerRPC(InstanceFinder.NetworkManager.ClientManager.Connection.ClientId);
     }
 
     public void SaveLobbyIdToClipboard()
