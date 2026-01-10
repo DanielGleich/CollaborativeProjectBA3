@@ -257,7 +257,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 9110816635963259344}
-  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedParentNetworkBehaviour: {fileID: -5194509992754653931}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -267,7 +267,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584341411802274828
+  _initializedTimestamp: -8584335233147245797
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: 5184971189650645713}
-  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedParentNetworkBehaviour: {fileID: -5194509992754653931}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
@@ -354,7 +354,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584341411802274828
+  _initializedTimestamp: -8584335233147245797
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 8876480186818199003}
   - component: {fileID: -3159026803964900308}
   - component: {fileID: 1571361282030280434}
+  - component: {fileID: -5194509992754653931}
   m_Layer: 0
   m_Name: SceneRelevantObjects
   m_TagString: Untagged
@@ -452,7 +453,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 0}
+  - {fileID: -5194509992754653931}
   - {fileID: 4226237611507376428}
   - {fileID: 1279957803389923008}
   InitializedParentNetworkBehaviour: {fileID: 0}
@@ -468,7 +469,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584341411802274828
+  _initializedTimestamp: -8584335233147245797
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -483,7 +484,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 2
+  <PrefabId>k__BackingField: 3
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 1669621918990280986
   SceneId: 0
@@ -504,6 +505,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743056bd829bf9941b7ea63e562ab590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InitialSceneObserver
+--- !u!114 &-5194509992754653931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316851704417139753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: -3159026803964900308}
+  _networkObjectCache: {fileID: -3159026803964900308}
 --- !u!1001 &156117827728289745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -522,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584341411802274828
+      value: -8584335233147245797
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _ownerSmoothedProperties
@@ -540,6 +556,10 @@ PrefabInstance:
       propertyPath: <ComponentIndex>k__BackingField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
+      propertyPath: InitializedParentNetworkBehaviour
+      value: 
+      objectReference: {fileID: -5194509992754653931}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: SerializedTransformProperties.Position.x
       value: 0
