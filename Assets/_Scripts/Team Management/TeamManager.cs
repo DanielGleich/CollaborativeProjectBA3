@@ -206,8 +206,8 @@ public class TeamManager : NetworkSingleton<TeamManager>
     [Server]
     private IEnumerator DelayedTeamReady(Team team)
     {
-        while (PlayerManager.Instance.GetNetworkObjectBySteamID(team.scientistPlayerClientId) == null ||
-               PlayerManager.Instance.GetNetworkObjectBySteamID(team.ratPlayerClientId) == null)
+        while (PlayerManager.Instance.GetNetworkObjectByClientId(team.scientistPlayerClientId) == null ||
+               PlayerManager.Instance.GetNetworkObjectByClientId(team.ratPlayerClientId) == null)
         {
             yield return null;
         }
@@ -257,9 +257,9 @@ public class TeamManager : NetworkSingleton<TeamManager>
         foreach (var team in allTeams)
         {
             if (team.Value.scientistPlayerClientId == clientId)
-                return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.ratPlayerClientId);
+                return PlayerManager.Instance.GetNetworkObjectByClientId(team.Value.ratPlayerClientId);
             else if (team.Value.ratPlayerClientId == clientId)
-                return PlayerManager.Instance.GetNetworkObjectBySteamID(team.Value.scientistPlayerClientId);
+                return PlayerManager.Instance.GetNetworkObjectByClientId(team.Value.scientistPlayerClientId);
         }
         return null;
     }
@@ -268,7 +268,7 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         if (allTeams.TryGetValue(teamId, out Team t))
         {
-            return PlayerManager.Instance.GetNetworkObjectBySteamID(role == TeamRole.SCIENTIST ? t.scientistPlayerClientId : t.ratPlayerClientId);
+            return PlayerManager.Instance.GetNetworkObjectByClientId(role == TeamRole.SCIENTIST ? t.scientistPlayerClientId : t.ratPlayerClientId);
         }
         return null;
     }

@@ -25,6 +25,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
+    [Server]
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
     {
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
@@ -150,7 +151,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         OnPlayerDisconnected?.Invoke(clientId);
     }
 
-    public NetworkObject GetNetworkObjectBySteamID(int clientId)
+    public NetworkObject GetNetworkObjectByClientId(int clientId)
     {
         if (AllPlayerConnections.Contains(clientId))
         {
