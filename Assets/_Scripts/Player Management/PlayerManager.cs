@@ -14,11 +14,11 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [SerializeField] private NetworkObject playerPrefab;
     int i = 1;
 
-    public readonly SyncList<NetworkConnection> AllPlayerConnections = new();
-    public readonly SyncDictionary<NetworkConnection, ulong> AllPlayerSteamIds = new();
+    public readonly SyncList<NetworkConnection> AllPlayerConnections = new SyncList<NetworkConnection>();
+    public readonly SyncDictionary<NetworkConnection, ulong> AllPlayerSteamIds = new SyncDictionary<NetworkConnection, ulong>();
     
-    public static UnityEvent<NetworkConnection> OnPlayerDisconnected = new();
-    public static UnityEvent<NetworkConnection> OnPlayerConnected = new();
+    public static UnityEvent<NetworkConnection> OnPlayerDisconnected = new UnityEvent<NetworkConnection>();
+    public static UnityEvent<NetworkConnection> OnPlayerConnected = new UnityEvent<NetworkConnection>();
 
     private void Start()
     {
@@ -26,7 +26,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         InstanceFinder.ClientManager.OnRemoteConnectionState += OnRemoteConnectionStateChanged;
     }
 
-    [Server]
     private void OnRemoteConnectionStateChanged(RemoteConnectionStateArgs args)
     {
         NetworkConnection c = InstanceFinder.ClientManager.Clients[args.ConnectionId];
@@ -55,6 +54,8 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     public void ConnectToServerRPC(NetworkConnection c = null)
     {
         if (c == null) return;
+
+        Debug.Log($"Player Spawn triggered - {c.GetAddress()}");
 
         NetworkObject player = SpawnPlayer();
 

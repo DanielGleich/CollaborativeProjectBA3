@@ -1,5 +1,6 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System.Collections;
 using UnityEngine;
 
 public class TeamMember : NetworkBehaviour
@@ -14,10 +15,17 @@ public class TeamMember : NetworkBehaviour
 
     public override void OnStartClient()
     {
+        StartCoroutine(WaitForPlayerManager());
+    }
+
+    IEnumerator WaitForPlayerManager()
+    {
+        yield return new WaitUntil(() => PlayerManager.Instance != null);
+        yield return new WaitUntil(() => PlayerManager.Instance.AllPlayerConnections != null);
         scientistPlayerPackage.SetActive(CurrentRole.Value == TeamRole.SCIENTIST);
         ratPlayerPackage.SetActive(CurrentRole.Value == TeamRole.RAT);
 
-        if (IsOwner) 
+        if (IsOwner)
         {
             localTeamId = CurrentTeam.Value.id;
             SetPlayerReadyServerRpc();

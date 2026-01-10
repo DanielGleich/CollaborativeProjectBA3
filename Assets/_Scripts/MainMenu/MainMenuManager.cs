@@ -53,6 +53,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void UpdateLobbyProfiles()
     {
+        if (PlayerManager.Instance == null) return;
+
         List<CSteamID> players = new List<CSteamID>();
         foreach (NetworkConnection player in PlayerManager.Instance.AllPlayerConnections)
         {
