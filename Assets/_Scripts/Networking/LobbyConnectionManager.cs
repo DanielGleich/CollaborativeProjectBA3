@@ -123,10 +123,10 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
 
     private void ClientLeaveOrJoin(LobbyChatUpdate_t callback)
     {
-        if (SteamMatchmaking.GetLobbyOwner(new CSteamID(_currentLobbyID)).m_SteamID != _lobbyCreatorId)
-        {
-            OnLobbyOwnerLeft?.Invoke();
-        }
+        //if (SteamMatchmaking.GetLobbyOwner(new CSteamID(_currentLobbyID)).m_SteamID != _lobbyCreatorId)
+        //{
+        //    OnLobbyOwnerLeft?.Invoke();
+        //}
 
         OnClientJoinOrLeaves?.Invoke(new CSteamID(callback.m_ulSteamIDUserChanged));
     }
