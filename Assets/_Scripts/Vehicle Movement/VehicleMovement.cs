@@ -37,7 +37,6 @@ public class VehicleMovement : MonoBehaviour
     {
         // Handle velocity
         int newDirection = Mathf.RoundToInt(inputDirection.y);
-        Debug.Log($"InputDirection");
         float newTargetVelocity = newDirection >= 0 ? motorSpeed.x : -motorSpeed.y;
         float newMotorForce = newDirection >= 0? motorForce.x : motorForce.y;
 
