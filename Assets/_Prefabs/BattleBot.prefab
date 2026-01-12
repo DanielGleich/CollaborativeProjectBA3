@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2382847909764614269}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000018469509, y: 0.707107, z: -0.00000007093754, w: 0.7071066}
-  m_LocalPosition: {x: 0.00585, y: -0.00244, z: -0.00022}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.005, y: 0.00128, z: 0.00373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1385607767923097176}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &2411126219653838977
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,13 +154,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3249515327585985415}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000007093752, y: -0.7071066, z: 0.000000018469507, w: 0.70710695}
-  m_LocalPosition: {x: -0.00516, y: -0.00247, z: -0.00086}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0.00513, y: 0.00126, z: 0.00434}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 395331569291597922}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!1 &6875810565311135710
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,13 +188,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6875810565311135710}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.0075e-10, y: -0.0020563, z: 0.0004605}
-  m_LocalScale: {x: 1.2386, y: 1.6143913, z: 1.2386}
+  m_LocalRotation: {x: -0.04831976, y: -0, z: -0, w: 0.9988319}
+  m_LocalPosition: {x: 0.00039, y: -0.006109991, z: 0.004379989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6567512496939025573}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.539, y: 0, z: 0}
 --- !u!136 &7492324537578571734
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -214,10 +214,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0010316506
-  m_Height: 0.0064751706
+  m_Radius: 0.0011220747
+  m_Height: 0.0050614513
   m_Direction: 1
-  m_Center: {x: 5.4008634e-17, y: 0.0033464194, z: -0.0019296057}
+  m_Center: {x: 0, y: -0.00019098342, z: 0.000035103134}
 --- !u!114 &4543931608220937660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 0
+  ownHealth: {fileID: 6580198540292879955}
+  ignoreOwnHealth: 0
   damagePerSecond: 1
 --- !u!114 &4092409647031105244
 MonoBehaviour:
@@ -302,6 +304,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -7096950386729561838, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -6015563943838604715, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -353,6 +359,10 @@ PrefabInstance:
     - target: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 795332958847788018, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Name
@@ -438,9 +448,6 @@ PrefabInstance:
       addedObject: {fileID: 8299134870069633189}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3021244618035943804}
-    - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6179598990573357568}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
@@ -454,9 +461,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8098446815312290814}
-    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1482862153392380032}
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1632243639068029309}
@@ -981,29 +985,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 4884054835545564801}
-  projectilePrefab: {fileID: 2990580506299518381, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
---- !u!64 &3021244618035943804
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121156719385623760}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2857046487809715543, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
 --- !u!114 &6179598990573357568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,29 +1212,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 3919714130502515608}
-  projectilePrefab: {fileID: 2990580506299518381, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
---- !u!64 &1482862153392380032
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522786063078361925}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2768677055850878922, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
 --- !u!114 &1632243639068029309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,10 +1445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
-  <IsNested>k__BackingField: 1
+  <IsNested>k__BackingField: 0
   WasActiveDuringEdit: 0
   WasActiveDuringEdit_Set1: 1
-  <ComponentIndex>k__BackingField: 1
+  <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
@@ -1517,7 +1477,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584336435529014283
+  _initializedTimestamp: -8584334005373857816
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1532,7 +1492,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 2
+  <PrefabId>k__BackingField: 5
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5918673326528417147
   SceneId: 0
@@ -1637,8 +1597,6 @@ MonoBehaviour:
   - {fileID: 6129700320862724015}
   - {fileID: 3921835254988541443}
   - {fileID: 3707973112139763967}
-  - {fileID: 3021244618035943804}
-  - {fileID: 1482862153392380032}
 --- !u!1 &7787518170026814472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 156130507383607734, guid: d0b36822ba99e53458669ec992765942, type: 3}
