@@ -197,82 +197,6 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584339628962386204
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229270047589638291, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: maxTilt.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229270047589638291, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: maxTilt.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229270047589638291, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: tiltMultiplier.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229270047589638291, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: tiltMultiplier.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443773342753170119, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443773342753170119, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5443773342753170119, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402292624304906093, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: _addedNetworkObject
-      value: 
-      objectReference: {fileID: 5640201686091075007}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 61
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.19999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.3000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6574165233923329536, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087346980294548053, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: _addedNetworkObject
-      value: 
-      objectReference: {fileID: 5640201686091075007}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -426,6 +350,10 @@ PrefabInstance:
     - target: {fileID: 6570028330303530853, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _componentIndexCache
       value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: ballastScaleInfluence
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
