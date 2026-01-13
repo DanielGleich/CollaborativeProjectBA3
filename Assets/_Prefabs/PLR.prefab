@@ -377,15 +377,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3587996976029057204}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 346894309168285579}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetInputDirection
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VehicleMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VehicleSteeringControls, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6286553746046805132, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
@@ -431,6 +443,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1659776728850399575}
   m_SourcePrefab: {fileID: 100100000, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+--- !u!114 &346894309168285579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04868f79488640547a2415482245d84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleSteeringControls
 --- !u!1 &3114375796499789461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6048299857987063386, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
