@@ -13,7 +13,7 @@ public class Interaction : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField, Min(0f)] protected float maxDistance = 2f;
-    [SerializeReference] protected LayerMask interactableLayers;
+    [SerializeReference] protected LayerMask interactableLayers = Physics.DefaultRaycastLayers;
 
     private Interactable currentInteractable;
     public event Action<Interactable> OnSelectInteractable;
@@ -75,6 +75,8 @@ public class Interaction : MonoBehaviour
     }
     protected virtual void OnDrawGizmos()
     {
+        if(!cam)
+            return;
         // Show the maxDistance of the Interactable
         Gizmos.color = new Color(1, 1, 0.5f, 0.1f);
         Gizmos.DrawWireSphere(cam.transform.position, maxDistance);

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class RatInputHandler : MonoBehaviour, PlayerInputs.IFPSControllsActions
+public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
 {
     [Header("Unity Events")]
     [SerializeField] private UnityEvent<Vector2> onMove;
@@ -10,10 +10,6 @@ public class RatInputHandler : MonoBehaviour, PlayerInputs.IFPSControllsActions
     [SerializeField] private UnityEvent onJump;
     [SerializeField] private UnityEvent onInteract;
 
-    private PlayerInputs playerInputs;
-    private void Awake() {
-        playerInputs = new PlayerInputs();
-    }
     void OnEnable()
     {
         playerInputs.FPSControlls.Enable();

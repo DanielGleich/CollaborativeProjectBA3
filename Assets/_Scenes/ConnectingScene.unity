@@ -607,7 +607,7 @@ Transform:
   m_GameObject: {fileID: 208985401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 337251676}
   - component: {fileID: 337251675}
   - component: {fileID: 337251679}
-  - component: {fileID: 337251678}
+  - component: {fileID: 337251680}
   m_Layer: 5
   m_Name: LobbyIdButton
   m_TagString: Untagged
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 701819157}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
         m_MethodName: SaveLobbyIdToClipboard
         m_Mode: 1
@@ -913,21 +913,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337251673}
   m_CullTransparentMesh: 1
---- !u!114 &337251678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337251673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b6673d8e06e2b45bf7d790372d857b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lobbyIdText: {fileID: 1155166927}
-  _linkCursorTexture: {fileID: 2800000, guid: 0eecf240717dd454588fff9fe4b4fb1f, type: 3}
-  _clickedColor: {r: 0.8751268, g: 0.5372549, b: 0.9882353, a: 1}
 --- !u!114 &337251679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,7 +930,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 337251678}
+        - m_Target: {fileID: 337251680}
           m_TargetAssemblyTypeName: UILobbyID, Assembly-CSharp
           m_MethodName: SetCursorToPointer
           m_Mode: 1
@@ -961,7 +946,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 337251678}
+        - m_Target: {fileID: 337251680}
           m_TargetAssemblyTypeName: UILobbyID, Assembly-CSharp
           m_MethodName: ResetCursor
           m_Mode: 1
@@ -977,7 +962,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 337251678}
+        - m_Target: {fileID: 337251680}
           m_TargetAssemblyTypeName: UILobbyID, Assembly-CSharp
           m_MethodName: SetTextColorToClicked
           m_Mode: 1
@@ -993,7 +978,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 337251678}
+        - m_Target: {fileID: 337251680}
           m_TargetAssemblyTypeName: UILobbyID, Assembly-CSharp
           m_MethodName: ResetTextColor
           m_Mode: 1
@@ -1005,6 +990,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &337251680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337251673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b6673d8e06e2b45bf7d790372d857b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UILobbyID
+  lobbyIdText: {fileID: 1155166927}
+  linkCursorTexture: {fileID: 2800000, guid: 0eecf240717dd454588fff9fe4b4fb1f, type: 3}
+  clickedColor: {r: 0.8745098, g: 0.5372549, b: 0.9882353, a: 1}
 --- !u!1 &358601530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 701819152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03802f67d310ec94997fb67851a8f36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 26195e064b19824458e613cd330bb689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startLobbyButton: {fileID: 1302685353}
@@ -1917,7 +1917,6 @@ MonoBehaviour:
   - {fileID: 1727337369}
   - {fileID: 1658066179}
   - {fileID: 1186545305}
-  maxTeamCount: 2
   teamCardPrefab: {fileID: 7612621086694454082, guid: ab34352379aedcf4e9b935e02a656fb7, type: 3}
   teamCardContainer: {fileID: 2052866578}
   leaveTeamButton: {fileID: 457439400}

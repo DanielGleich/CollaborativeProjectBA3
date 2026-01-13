@@ -19,6 +19,7 @@ public class BallastScaleNetworking : NetworkBehaviour
         if(ballastScale)
             ballastScale.OnUpdateWeightBalance -= UpdateWeightBalance;
     }
+    [ServerRpc]
     private void UpdateWeightBalance(Vector2 weightBalance)
     {
         WeightBalance.Value = weightBalance;
