@@ -329,15 +329,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000003192518
+      value: -0.0000041334947
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000008672946
+      value: 0.0000011229249
       objectReference: {fileID: 0}
     - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _initializedTimestamp
       value: -8584346035009917221
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3587996976029057204}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VehicleMovement, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6286553746046805132, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
@@ -418,6 +430,17 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 4354375856556425761}
   _networkObjectCache: {fileID: 0}
+--- !u!114 &3587996976029057204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5268293304013797499, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da8762bb4061134d8492ab0671b9630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleMovement
 --- !u!1 &3731582390643741757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5412942526090882290, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
