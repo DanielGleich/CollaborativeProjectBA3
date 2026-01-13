@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5176204585451165084, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: <Speed>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -358,6 +362,14 @@ PrefabInstance:
     - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: 'NetworkBehaviours.Array.data[14]'
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268293304013797499, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: motorSpeed.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268293304013797499, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: motorSpeed.y
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 5777595781869083422, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
