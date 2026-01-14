@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1704106052433922948}
   - component: {fileID: 2217143729217134434}
   - component: {fileID: 3270642658943037672}
+  - component: {fileID: 3446264286303948644}
   m_Layer: 0
   m_Name: HazardTrigger
   m_TagString: Untagged
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72722e9d10356c44b9e252b418028bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 9
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!114 &1704106052433922948
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 10
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <GodMode>k__BackingField: 0
@@ -123,13 +124,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: -1
+  <WeaponId>k__BackingField: 4
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3446264286303948644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411126219653838977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
+  _componentIndexCache: 13
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1 &3249515327585985415
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,8 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 0
-  ownHealth: {fileID: 6580198540292879955}
-  ignoreOwnHealth: 0
   damagePerSecond: 1
 --- !u!114 &4092409647031105244
 MonoBehaviour:
@@ -443,6 +457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3642256951335445895}
+    - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4984746393268817844}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8299134870069633189}
@@ -454,7 +471,7 @@ PrefabInstance:
       addedObject: {fileID: 1311022878276999232}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6871725302857906400}
+      addedObject: {fileID: 4666146811246834019}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6432357638312353281}
@@ -470,6 +487,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7690277663096622969}
+    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1204134546500510788}
     - targetCorrespondingSourceObject: {fileID: -8199005351108037487, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6028766016764389863}
@@ -648,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 12
+  _componentIndexCache: 15
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -788,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 13
+  _componentIndexCache: 16
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -957,13 +977,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: -1
+  <WeaponId>k__BackingField: 1
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4984746393268817844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788687040419621357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1 &5121156719385623760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -981,7 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 4884054835545564801}
@@ -1012,11 +1047,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <GodMode>k__BackingField: 0
---- !u!114 &6871725302857906400
+--- !u!114 &4666146811246834019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1025,13 +1060,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5121156719385623760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
+  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 6
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
-  <GodMode>k__BackingField: 0
 --- !u!114 &6432357638312353281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,7 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: -1
+  <WeaponId>k__BackingField: 2
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
@@ -1157,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 14
+  _componentIndexCache: 17
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1208,7 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 7
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 3919714130502515608}
@@ -1239,7 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 8
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <GodMode>k__BackingField: 0
@@ -1255,13 +1289,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: -1
+  <WeaponId>k__BackingField: 3
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1204134546500510788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522786063078361925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
+  _componentIndexCache: 10
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!4 &6567512496939025573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3826934387414923547, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1409,7 +1458,7 @@ MonoBehaviour:
   - {fileID: 8491422322252078937}
   - {fileID: 9103657468870749182}
   - {fileID: 8031598630779400605}
-  motorSpeed: {x: 900, y: 900}
+  motorSpeed: {x: 1200, y: 1200}
   motorForce: {x: 10, y: 10}
   extaBoostJoints:
   - {fileID: 8491422322252078937}
@@ -1456,13 +1505,16 @@ MonoBehaviour:
   - {fileID: 1736394960479325595}
   - {fileID: 3333115643738874225}
   - {fileID: 9205338751318228030}
+  - {fileID: 4984746393268817844}
   - {fileID: 8299134870069633189}
   - {fileID: 1311022878276999232}
-  - {fileID: 6871725302857906400}
+  - {fileID: 4666146811246834019}
   - {fileID: 8098446815312290814}
   - {fileID: 7938849050476527156}
+  - {fileID: 1204134546500510788}
   - {fileID: 5493001969599985094}
   - {fileID: 2217143729217134434}
+  - {fileID: 3446264286303948644}
   - {fileID: 6026062333545028756}
   - {fileID: 2485860674817397115}
   - {fileID: 4705399026923109913}
@@ -1477,7 +1529,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584334005373857816
+  _initializedTimestamp: -8584332817992367977
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1743,7 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 11
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2

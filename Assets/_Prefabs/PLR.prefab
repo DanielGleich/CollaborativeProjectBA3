@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5176204585451165084, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: <Speed>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -233,11 +237,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 302988740183421864, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 440506728536628162, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 549479856537950070, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: teamMember
@@ -335,21 +339,65 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0000011229249
       objectReference: {fileID: 0}
+    - target: {fileID: 4314891098942152856, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponId>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _initializedTimestamp
       value: -8584346035009917221
       objectReference: {fileID: 0}
+    - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[11]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[12]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[13]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[14]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268293304013797499, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: motorSpeed.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268293304013797499, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: motorSpeed.y
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777595781869083422, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponId>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3587996976029057204}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 346894309168285579}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetInputDirection
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VehicleMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VehicleSteeringControls, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6286553746046805132, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <WeaponId>k__BackingField
@@ -363,12 +411,20 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 255
       objectReference: {fileID: 0}
+    - target: {fileID: 7193142764035639910, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponId>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: ballastScaleInfluence
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 302988740183421864, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+    - {fileID: 286641526300977404, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+    - {fileID: 3045587905729608767, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2890322998821272990, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2252303840007402122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -386,30 +442,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6048299857987063386, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1659776728850399575}
-    - targetCorrespondingSourceObject: {fileID: 7138897043795232568, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4250372514051733109}
   m_SourcePrefab: {fileID: 100100000, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
---- !u!1 &2001262809705136119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7138897043795232568, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+--- !u!114 &346894309168285579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
   m_PrefabInstance: {fileID: 8707600914945210575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4250372514051733109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001262809705136119}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 04868f79488640547a2415482245d84d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
-  _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 4354375856556425761}
-  _networkObjectCache: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleSteeringControls
 --- !u!1 &3114375796499789461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6048299857987063386, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
