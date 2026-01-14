@@ -14,6 +14,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     int i = 1;
 
     public readonly SyncList<int> AllPlayerConnections = new SyncList<int>();
+    public readonly SyncDictionary<int, NetworkObject> AllPlayerNetworkObjects = new SyncDictionary<int, NetworkObject>();
     public readonly SyncDictionary<int, ulong> AllPlayerSteamIds = new SyncDictionary<int, ulong>();
     
     public static UnityEvent<int> OnPlayerDisconnected = new UnityEvent<int>();
@@ -52,6 +53,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             {
                 AllPlayerSteamIds.Remove(c.ClientId);
             }
+            if (AllPlayerNetworkObjects.ContainsKey(c.ClientId))
+                AllPlayerNetworkObjects.Remove(c.ClientId);
+
             NotifyPlayerDisconnected(c.ClientId);
         }
     }
@@ -59,12 +63,10 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [ServerRpc(RequireOwnership = false)]
     public void ConnectToServerRPC(NetworkConnection c = null)
     {
-        Debug.Log($"RPC Triggered- {c == null}");
         if (c == null) return;
 
-        Debug.Log($"Player Spawn triggered - {c.GetAddress()}");
-
         NetworkObject player = SpawnPlayer();
+        AllPlayerNetworkObjects.Add(c.ClientId, player);
 
         if (c.GetAddress() == "127.0.0.1")
             AutoAssignDummyToTeam(player, c.ClientId);
@@ -159,10 +161,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
     public NetworkObject GetNetworkObjectByClientId(int clientId)
     {
-        if (AllPlayerConnections.Contains(clientId))
+        if (AllPlayerNetworkObjects.ContainsKey(clientId))
         {
-            if (base.IsServerInitialized && InstanceFinder.ServerManager.Clients.TryGetValue(clientId, out NetworkConnection serverConn))
-                return serverConn.FirstObject;
+            return AllPlayerNetworkObjects[clientId];
         }
         return null;
     }
