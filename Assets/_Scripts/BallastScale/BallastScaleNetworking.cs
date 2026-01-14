@@ -19,6 +19,19 @@ public class BallastScaleNetworking : NetworkBehaviour
         if(ballastScale)
             ballastScale.OnUpdateWeightBalance -= UpdateWeightBalance;
     }
+
+    private void Awake()
+    {
+        ballastScale.enabled = false;
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (IsOwner)
+            ballastScale.enabled = true;
+    }
+
     [ServerRpc]
     private void UpdateWeightBalance(Vector2 weightBalance)
     {

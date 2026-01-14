@@ -20,8 +20,22 @@ public class ChargeStatusNetworking : NetworkBehaviour
         localChargeStatus.Unsubscribe();
 
         OverchargedStatus.OnOvercharged += OnOverchargedChanged;
-        ChargeStatus.OnCharge += HandleChargeRequest;
-        ChargeStatus.OnUncharge += HandleUnchargeRequest;
+        if (IsOwner)
+        { 
+            ChargeStatus.OnCharge += HandleChargeRequest;
+            ChargeStatus.OnUncharge += HandleUnchargeRequest;
+        }
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        OverchargedStatus.OnOvercharged -= OnOverchargedChanged;
+        if (IsOwner)
+        { 
+            ChargeStatus.OnCharge -= HandleChargeRequest;
+            ChargeStatus.OnUncharge -= HandleUnchargeRequest;
+        }
     }
 
     private void HandleChargeRequest(int teamId, int weaponId)
@@ -38,6 +52,7 @@ public class ChargeStatusNetworking : NetworkBehaviour
 
     private void OnOverchargedChanged(int teamId, bool newValue)
     {
+        Debug.Log(gameObject);
         if (TeamMember.localTeamId == teamId)
             SetChargeStatus(teamId, IsPowered.Value, newValue);
     }
