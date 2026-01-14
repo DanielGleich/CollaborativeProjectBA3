@@ -14,7 +14,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     int i = 1;
 
     public readonly SyncList<int> AllPlayerConnections = new SyncList<int>();
-    public readonly SyncDictionary<int, NetworkObject> AllPlayerNetworkObjects = new SyncDictionary<int, NetworkObject>();
+    public readonly SyncDictionary<int, int> AllPlayerNetworkObjects = new SyncDictionary<int, int>(); // NetworkConnection.ClientId (Key) - NetworkObject.ObjectId (Value)
     public readonly SyncDictionary<int, ulong> AllPlayerSteamIds = new SyncDictionary<int, ulong>();
     
     public static UnityEvent<int> OnPlayerDisconnected = new UnityEvent<int>();
@@ -66,7 +66,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         if (c == null) return;
 
         NetworkObject player = SpawnPlayer();
-        AllPlayerNetworkObjects.Add(c.ClientId, player);
+
 
         if (c.GetAddress() == "127.0.0.1")
             AutoAssignDummyToTeam(player, c.ClientId);
@@ -75,6 +75,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         MovePlayerToSpawnPoint(player);
         Spawn(player, c);
+        AllPlayerNetworkObjects[c.ClientId] = player.ObjectId;
     }
 
     public NetworkObject SpawnPlayer()
@@ -161,10 +162,23 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
     public NetworkObject GetNetworkObjectByClientId(int clientId)
     {
-        if (AllPlayerNetworkObjects.ContainsKey(clientId))
+        if (!AllPlayerNetworkObjects.TryGetValue(clientId, out int networkObjectId))
+            return null;
+
+        var nm = InstanceFinder.NetworkManager;
+        // Auf Server:
+        if (IsServerInitialized)
         {
-            return AllPlayerNetworkObjects[clientId];
+            nm.ServerManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
+        }
+        // Auf Client:
+        if (IsClientInitialized)
+        {
+            nm.ClientManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
         }
         return null;
     }
+
 }
