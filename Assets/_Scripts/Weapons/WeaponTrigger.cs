@@ -75,7 +75,7 @@ public class WeaponTrigger : MonoBehaviour
 
     public void ForceTriggerWeaponAnimation()
     {
-        Debug.Log("Method not Implemented yet");
+        Debug.Log("ForceTriggerWeaponAnimation not Implemented yet");
     }
 
     private void TriggerChargedWeapons(int teamId)

@@ -391,6 +391,14 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: damageOnEnter
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: damagePerSecond
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061090556077969429, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -564,9 +572,9 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 302988740183421864, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
-    - {fileID: 286641526300977404, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
-    - {fileID: 3045587905729608767, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects:
     - {fileID: 5989486050877798741, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
     m_AddedGameObjects: []
