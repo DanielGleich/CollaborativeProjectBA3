@@ -3,26 +3,16 @@ using UnityEngine;
 /// <summary>
 /// Triggers Knockback, when a weapon is activated
 /// </summary>
-public class WeaponRecoilFeedback : MonoBehaviour {
-    [Header("References")]
-    [SerializeField] private Weapon weapon;
+public class WeaponRecoilFeedback : WeaponFeedback {
     [SerializeField] private Rigidbody affectedRigidbody;
     [SerializeField] private Transform weaponDirection;
 
     [Header("Settings")]
     [SerializeField] private float knockBackForce;
 
-    void OnEnable()
+    protected override void WeaponActivated(bool isActivated)
     {
-        weapon.OnActivate += InvokeKnockback;
-    }
-    void OnDisable()
-    {
-        weapon.OnActivate -= InvokeKnockback;
-    }
-    private void InvokeKnockback(bool activated)
-    {
-        if(activated)
+        if(isActivated)
             affectedRigidbody.AddForce(-weaponDirection.forward * knockBackForce, ForceMode.Impulse);
     }
 }

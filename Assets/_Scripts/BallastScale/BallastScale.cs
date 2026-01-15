@@ -81,8 +81,8 @@ public class BallastScale : MonoBehaviour {
         Vector2 newWeigthBlance = Vector2.zero;
         foreach(Ballast b in ballastOnScale)
         {
-            newWeigthBlance.x += b.Weight * (transform.localPosition - b.transform.localPosition).x * ballastMultiplier.x;
-            newWeigthBlance.y += b.Weight * -(transform.localPosition - b.transform.localPosition).z * ballastMultiplier.y;
+            newWeigthBlance.x += b.Weight * (transform.position - b.transform.position).x * ballastMultiplier.x;
+            newWeigthBlance.y += b.Weight * -(transform.position - b.transform.position).z * ballastMultiplier.y;
         }
         WeightBalance = newWeigthBlance;
     }
