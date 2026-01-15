@@ -8,7 +8,7 @@
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{4427947c-fc33-4ad8-9326-861f3bfc3632}</destination>
+			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{a89d5e08-b605-49a7-8096-356f12512525}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{ce8d32c3-7b96-4d87-9a47-db5f79d8c6ac}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{2eac065a-c3d3-48c6-b854-6d11ec24628c}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a89d5e08-b605-49a7-8096-356f12512525}">
@@ -53,7 +56,7 @@
 			<destination>{7d06257a-972e-44d0-9ad3-5b0a8a40acae}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{97bf4829-c060-46d7-aa38-8810f1f04550}</destination>
+			<destination>{5518516f-b536-4c82-88bc-bee53ea32de5}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{432e4d38-fab9-49e5-a4fc-811c9255a44c}" />
@@ -103,6 +106,8 @@
 		</relationship>
 		<relationship name="sounds">
 			<destination>{8a1148a5-9eb4-489a-af95-bb817927295f}</destination>
+			<destination>{5f94306c-1068-47e0-a5aa-dbcce2bff302}</destination>
+			<destination>{1324f3d9-d103-4bab-b721-8368a0fd48c7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{5c9b2797-3eb0-4902-bd81-0a46245700f1}" />
@@ -119,6 +124,16 @@
 	<object class="SingleSound" id="{8a1148a5-9eb4-489a-af95-bb817927295f}">
 		<relationship name="audioFile">
 			<destination>{947ad692-c390-44b0-8bce-7f3b84d70ced}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{5f94306c-1068-47e0-a5aa-dbcce2bff302}">
+		<relationship name="audioFile">
+			<destination>{2296bffd-b1ac-406d-881d-e7d42eb1ea4d}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{1324f3d9-d103-4bab-b721-8368a0fd48c7}">
+		<relationship name="audioFile">
+			<destination>{a868715a-3847-4733-a57b-066d5c80f1bf}</destination>
 		</relationship>
 	</object>
 </objects>
