@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damageOnEnter
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damagePerSecond
@@ -543,6 +543,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7966976081463509705, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_Height
+      value: 0.006661451
+      objectReference: {fileID: 0}
     - target: {fileID: 8061208869331433880, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _networkObjectCache
       value: 
@@ -578,7 +582,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5989486050877798741, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6197444251564227265, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 981648480888849229}
   m_SourcePrefab: {fileID: 100100000, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
 --- !u!114 &134718128864304686 stripped
 MonoBehaviour:
@@ -635,6 +642,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+--- !u!1 &3374922713539363342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6197444251564227265, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &981648480888849229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374922713539363342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5e848249604df41bd63136ab2cbd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageNetworking
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 4354375856556425761}
+  _networkObjectCache: {fileID: 0}
 --- !u!114 &3526604828651176905 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5199010553883966214, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -668,6 +695,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da8762bb4061134d8492ab0671b9630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleMovement
+--- !u!114 &4354375856556425761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
 --- !u!114 &6035498638653566123 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3104663416009151588, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
