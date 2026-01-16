@@ -24,6 +24,7 @@ public class MenuStateManager : MonoBehaviour
             if(value == currentSubMenu)
                 return;
             currentSubMenu = value;
+            Array.ForEach(SubMenus, s => s.IsActive = s == value);
             OnUpdateCurrentSubMenu?.Invoke(value);
         }
     }
