@@ -1,15 +1,28 @@
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
+using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : NetworkSingleton<GameManager>
 {
     protected override bool _perClient => false;
 
+    [Header("Settings")]
+    public bool IsTesting = true;
+    public float countdownDuration = 3f;
+
+    public static event Action OnInitialized;
     public static UnityEvent OnGameStart = new UnityEvent();
     public static UnityEvent OnGameOver = new UnityEvent();
     public static UnityEvent OnGameWin = new UnityEvent();
     public static UnityEvent<NetworkObject> OnPlayerDied = new UnityEvent<NetworkObject>();
     public static UnityEvent OnLocalPlayerDied = new UnityEvent();
+
+    public readonly SyncTimer PreGameCountdown = new SyncTimer();
+
+    private readonly SyncVar<bool> isGameStarted = new SyncVar<bool>();
+
     private void Start()
     {
         //if (IsServerInitialized)
@@ -19,16 +32,61 @@ public class GameManager : NetworkSingleton<GameManager>
         //}
     }
 
+    private void Update()
+    {
+        if (PreGameCountdown.Paused == false)
+            PreGameCountdown.Update();
+    }
+
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        isGameStarted.Value = false;
+        TeamManager.OnAllTeamsReady += StartCountdown;
+        PreGameCountdown.OnChange += PreGameCountdown_OnChange;
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        OnInitialized?.Invoke();
+    }
+
+    private void PreGameCountdown_OnChange(SyncTimerOperation op, float prev, float next, bool asServer)
+    {
+        if (asServer && op == SyncTimerOperation.Finished)
+        {
+            StartGame();
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void StartCountdown()
+    {
+        if (countdownDuration >= 0)
+        {
+            PreGameCountdown.StartTimer(countdownDuration);
+        }
+        else
+        {
+            Debug.LogWarning("countdownDuration is not set - Game will not start!");
+        }
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void StartGame()
     {
         ChargingPadManagerNetworking.Instance?.InitializeManager();
+        isGameStarted.Value = true;
+        Debug.Log("Server Gamestart");
         NotifyGameStart();
     }
 
     [ObserversRpc]
     private void NotifyGameStart()
-    { 
+    {
+        Debug.Log("Client Gamestart");
         OnGameStart?.Invoke();
     }
 

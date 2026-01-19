@@ -14,6 +14,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     int i = 1;
 
     public readonly SyncList<int> AllPlayerConnections = new SyncList<int>();
+    public readonly SyncDictionary<int, int> AllPlayerNetworkObjects = new SyncDictionary<int, int>(); // NetworkConnection.ClientId (Key) - NetworkObject.ObjectId (Value)
     public readonly SyncDictionary<int, ulong> AllPlayerSteamIds = new SyncDictionary<int, ulong>();
     
     public static UnityEvent<int> OnPlayerDisconnected = new UnityEvent<int>();
@@ -52,6 +53,9 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             {
                 AllPlayerSteamIds.Remove(c.ClientId);
             }
+            if (AllPlayerNetworkObjects.ContainsKey(c.ClientId))
+                AllPlayerNetworkObjects.Remove(c.ClientId);
+
             NotifyPlayerDisconnected(c.ClientId);
         }
     }
@@ -59,12 +63,10 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     [ServerRpc(RequireOwnership = false)]
     public void ConnectToServerRPC(NetworkConnection c = null)
     {
-        Debug.Log($"RPC Triggered- {c == null}");
         if (c == null) return;
 
-        Debug.Log($"Player Spawn triggered - {c.GetAddress()}");
-
         NetworkObject player = SpawnPlayer();
+
 
         if (c.GetAddress() == "127.0.0.1")
             AutoAssignDummyToTeam(player, c.ClientId);
@@ -73,6 +75,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         MovePlayerToSpawnPoint(player);
         Spawn(player, c);
+        AllPlayerNetworkObjects[c.ClientId] = player.ObjectId;
     }
 
     public NetworkObject SpawnPlayer()
@@ -159,11 +162,23 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
     public NetworkObject GetNetworkObjectByClientId(int clientId)
     {
-        if (AllPlayerConnections.Contains(clientId))
+        if (!AllPlayerNetworkObjects.TryGetValue(clientId, out int networkObjectId))
+            return null;
+
+        var nm = InstanceFinder.NetworkManager;
+        // Auf Server:
+        if (IsServerInitialized)
         {
-            if (base.IsServerInitialized && InstanceFinder.ServerManager.Clients.TryGetValue(clientId, out NetworkConnection serverConn))
-                return serverConn.FirstObject;
+            nm.ServerManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
+        }
+        // Auf Client:
+        if (IsClientInitialized)
+        {
+            nm.ClientManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
         }
         return null;
     }
+
 }

@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class VehicleSteeringControls : MonoBehaviour {
     [Header("References")]
-    [SerializeField] private NetworkedBallastScaleDummy ballastScaleNetworking;
+    [SerializeField] private NetworkedBallastScaleDummy ballastScale;
     [SerializeField] private VehicleSteering vehicleSteering;
 
     [Header ("Settings")]
+    [SerializeField] private float weigthBalanceMultiplier = -1;
     [SerializeField, Range(0,1)] private float ballastScaleInfluence = .25f;
     [SerializeField, Min(0.001f), Tooltip("The amount of weight needed for the maximum steering power")] private float maxSteeringPowerWeight = 10f;
 
@@ -15,11 +16,11 @@ public class VehicleSteeringControls : MonoBehaviour {
 
     void OnEnable()
     {
-        ballastScaleNetworking.OnUpdateWeightBalance += UpdateWeightBalance;
+        ballastScale.OnUpdateWeightBalance += UpdateWeightBalance;
     }
     void OnDisable()
     {
-        ballastScaleNetworking.OnUpdateWeightBalance -= UpdateWeightBalance;
+        ballastScale.OnUpdateWeightBalance -= UpdateWeightBalance;
     }
     private void UpdateWeightBalance(Vector2 vector)
     {
@@ -33,7 +34,7 @@ public class VehicleSteeringControls : MonoBehaviour {
     }
     public void UpdateSteering()
     {
-        float steeringInputX = inputDirection * (1 - ballastScaleInfluence) + Mathf.Clamp(weightBalance / maxSteeringPowerWeight,-1,1) * ballastScaleInfluence;
+        float steeringInputX = inputDirection * (1 - ballastScaleInfluence) + Mathf.Clamp(weightBalance * weigthBalanceMultiplier / maxSteeringPowerWeight,-1,1) * ballastScaleInfluence;
         vehicleSteering.SetInputDirection(new(steeringInputX,0));
     }
 }

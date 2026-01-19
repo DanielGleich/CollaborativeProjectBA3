@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7612891434153303637}
   - component: {fileID: 186634480254117704}
   - component: {fileID: 3597766832002286674}
+  - component: {fileID: 3312864480688408905}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 2990580506299518381}
   _networkObjectCache: {fileID: 2990580506299518381}
   rb: {fileID: 7612891434153303637}
+  col: {fileID: 2530231831939529155}
   spawnVelocity: 10
   despawnOnHit: 1
 --- !u!114 &2990580506299518381
@@ -136,7 +138,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &186634480254117704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +168,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleDamage
   damageOnEnter: 10
+--- !u!114 &3312864480688408905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526851693559094585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5e848249604df41bd63136ab2cbd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &8105682616270808008
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 8105682616270808008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -273,7 +287,7 @@ SphereCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5

@@ -20,6 +20,9 @@ public class SimpleDamage : MonoBehaviour
     }
     protected void TakeDamage(Health healthComponent)
     {
+        var networkOwnerShipGuard = GetComponentInParent<DamageNetworking>();
+        if (networkOwnerShipGuard?.CanApplyDamage(gameObject) == false)
+            return;
         healthComponent.CurrentHealth -= damageOnEnter;
         OnHit?.Invoke();
     }

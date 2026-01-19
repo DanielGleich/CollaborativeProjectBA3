@@ -1,3 +1,4 @@
+using FishNet.Object;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +11,14 @@ public class ConstantDamage : SimpleDamage {
     private List<Health> affectedHealthComponents = new();
     protected override void OnTriggerEnter(Collider other)
     {
-        CheckNewContacts(other);
+        if (enabled)
+            CheckNewContacts(other);
     }
 
     protected void OnTriggerStay(Collider other)
     {
-        CheckNewContacts(other);
+        if (enabled)
+            CheckNewContacts(other);
     }
 
     void CheckNewContacts(Collider other)
@@ -41,8 +44,11 @@ public class ConstantDamage : SimpleDamage {
     }
     void Update()
     {
-        foreach(Health h in affectedHealthComponents)
+        foreach (Health h in affectedHealthComponents)
         {
+            var networkOwnerShipGuard = GetComponentInParent<DamageNetworking>();
+            if (networkOwnerShipGuard?.CanApplyDamage(gameObject) == false)
+                continue;
             h.CurrentHealth -= damagePerSecond * Time.deltaTime;
         }
     }

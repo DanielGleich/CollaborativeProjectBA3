@@ -1,7 +1,8 @@
+using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WeaponChargeInterface : MonoBehaviour
+public class WeaponChargeInterface : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] int weaponId = -1;
@@ -15,7 +16,7 @@ public class WeaponChargeInterface : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((chargeTrigger & (1 << other.gameObject.layer)) != 0)
+        if (IsOwner && (chargeTrigger & (1 << other.gameObject.layer)) != 0)
         {
             ChargeStatus.ChargeWeapon(TeamMember.localTeamId, weaponId);
             OnChargeTrigger?.Invoke();
@@ -24,7 +25,7 @@ public class WeaponChargeInterface : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((chargeTrigger & (1 << other.gameObject.layer)) != 0)
+        if (IsOwner && (chargeTrigger & (1 << other.gameObject.layer)) != 0)
         {
             ChargeStatus.UnchargeWeapon(TeamMember.localTeamId, weaponId);
             OnUnchargeTrigger?.Invoke();
