@@ -281,18 +281,6 @@ MonoBehaviour:
   onMove:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8937382933513666372}
-        m_TargetAssemblyTypeName: VehicleSteeringControls, Assembly-CSharp
-        m_MethodName: SetInputDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5268293304013797499}
         m_TargetAssemblyTypeName: VehicleMovement, Assembly-CSharp
         m_MethodName: SetInputDirection
@@ -1565,14 +1553,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
---- !u!114 &8937382933513666372 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8461561788159408731, guid: 9b43883de6c829d4f92a569706873422, type: 3}
-  m_PrefabInstance: {fileID: 678486573158417695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04868f79488640547a2415482245d84d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VehicleSteeringControls
