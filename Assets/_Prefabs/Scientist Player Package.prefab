@@ -231,6 +231,7 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 1104572373847106613}
   - {fileID: 8861226195562026654}
+  - {fileID: 8274829875444741595}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects:
   - {fileID: 4952346747507161838}
@@ -242,7 +243,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584332039070609396
+  _initializedTimestamp: -8584326967399109653
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -257,7 +258,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 10
+  <PrefabId>k__BackingField: 11
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 15317119274973028089
   SceneId: 0
@@ -394,9 +395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455c400aecccbb0429b2f0bdaf4006be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatusNetworking
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 1185381369708860789}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 1185381369708860789}
 --- !u!1 &4001124581300260153
 GameObject:
   m_ObjectHideFlags: 0
