@@ -43,14 +43,21 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         base.OnStartServer();
         isGameStarted.Value = false;
-        TeamManager.OnAllTeamsReady += StartCountdown;
-        PreGameCountdown.OnChange += PreGameCountdown_OnChange;
+
+        if (IsTesting == false)
+        { 
+            TeamManager.OnAllTeamsReady += StartCountdown;
+            PreGameCountdown.OnChange += PreGameCountdown_OnChange;
+        }
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
         OnInitialized?.Invoke();
+
+        if (IsTesting && IsServerInitialized)
+            StartGame();
     }
 
     private void PreGameCountdown_OnChange(SyncTimerOperation op, float prev, float next, bool asServer)
@@ -77,6 +84,7 @@ public class GameManager : NetworkSingleton<GameManager>
     [ServerRpc(RequireOwnership = false)]
     public void StartGame()
     {
+        if (isGameStarted.Value) return;            
         ChargingPadManagerNetworking.Instance?.InitializeManager();
         isGameStarted.Value = true;
         Debug.Log("Server Gamestart");
