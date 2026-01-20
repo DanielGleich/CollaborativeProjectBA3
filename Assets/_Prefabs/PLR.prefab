@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5640201686091075007}
   - component: {fileID: 7682361635520763111}
   - component: {fileID: 4173827825991586151}
+  - component: {fileID: 4536050516981235318}
   m_Layer: 3
   m_Name: PLR
   m_TagString: Untagged
@@ -141,6 +142,18 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5640201686091075007}
   _networkObjectCache: {fileID: 0}
   ballastScale: {fileID: 8072638630036569312}
+--- !u!114 &4536050516981235318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763102462875464336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9b5c48c47e4e549acfdda07f157b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &8303027001431880090
 PrefabInstance:
   m_ObjectHideFlags: 0

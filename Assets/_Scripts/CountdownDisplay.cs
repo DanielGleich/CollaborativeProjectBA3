@@ -21,6 +21,9 @@ public class CountdownDisplay : MonoBehaviour
 
     private void GameManager_OnInitialized()
     {
+        if (GameManager.Instance.IsTesting) 
+            gameObject.SetActive(false);
+
         GameManager.Instance.PreGameCountdown.OnChange += PreGameCountdown_OnChange;
     }
 
