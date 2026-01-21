@@ -13,6 +13,7 @@ public static class NetworkSceneManager
         NetworkConnection[] connections = InstanceFinder.ServerManager.Clients.Values.ToArray();
         InstanceFinder.SceneManager.LoadGlobalScenes(sceneLoadData);
 
+        if (scenesToUnload == null) return;
         foreach (string sceneName in scenesToUnload)
         {
             SceneUnloadData sceneUnloadData = new SceneUnloadData(sceneName);

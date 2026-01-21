@@ -269,7 +269,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584335233147245797
+  _initializedTimestamp: -8584325712589339291
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -351,12 +351,12 @@ MonoBehaviour:
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
-  _isSpawnable: 1
+  _isSpawnable: 0
   _isGlobal: 0
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584335233147245797
+  _initializedTimestamp: -8584325712589339291
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -395,6 +395,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7844899103846479549}
   _networkObjectCache: {fileID: 7844899103846479549}
+  isLobby: 0
 --- !u!1 &8316851704417139753
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,15 +465,16 @@ MonoBehaviour:
   - {fileID: 7844899103846479549}
   - {fileID: 4279707508148341230}
   - {fileID: 5838587124474364066}
+  - {fileID: 9047610467228993790}
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
-  _isSpawnable: 1
+  _isSpawnable: 0
   _isGlobal: 0
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584335233147245797
+  _initializedTimestamp: -8584325712589339291
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -535,6 +537,7 @@ GameObject:
   - component: {fileID: 9047610467228993790}
   - component: {fileID: 240789102897935697}
   - component: {fileID: 5874100501356101694}
+  - component: {fileID: 6993542968713769828}
   m_Layer: 0
   m_Name: ServerSpawner
   m_TagString: Untagged
@@ -569,24 +572,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
-  <IsNested>k__BackingField: 0
+  <IsNested>k__BackingField: 1
   WasActiveDuringEdit: 1
   WasActiveDuringEdit_Set1: 1
-  <ComponentIndex>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 4
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
-  InitializedParentNetworkBehaviour: {fileID: 0}
+  NetworkBehaviours:
+  - {fileID: 6993542968713769828}
+  InitializedParentNetworkBehaviour: {fileID: -5194509992754653931}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
-  _isSpawnable: 1
+  _isSpawnable: 0
   _isGlobal: 0
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: 0
+  _initializedTimestamp: -8584325712589339291
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -607,9 +611,9 @@ MonoBehaviour:
   SceneId: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &240789102897935697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +642,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743056bd829bf9941b7ea63e562ab590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InitialSceneObserver
+--- !u!114 &6993542968713769828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602835246531625956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 9047610467228993790}
+  _networkObjectCache: {fileID: 9047610467228993790}
 --- !u!1001 &156117827728289745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,7 +675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584335233147245797
+      value: -8584325712589339291
       objectReference: {fileID: 0}
     - target: {fileID: 4129298499950388799, guid: 26e7262fa7a94a4479ec6c98f21372f7, type: 3}
       propertyPath: _ownerSmoothedProperties

@@ -87,14 +87,12 @@ public class GameManager : NetworkSingleton<GameManager>
         if (isGameStarted.Value) return;            
         ChargingPadManagerNetworking.Instance?.InitializeManager();
         isGameStarted.Value = true;
-        Debug.Log("Server Gamestart");
         NotifyGameStart();
     }
 
     [ObserversRpc]
     private void NotifyGameStart()
     {
-        Debug.Log("Client Gamestart");
         OnGameStart?.Invoke();
     }
 

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CustomPlayerSpawner : NetworkSingleton<CustomPlayerSpawner>
 {
+    [Header("Settings")]
+    [SerializeField] bool isLobby;
     protected override bool _perClient { get; } = false;
     public override void OnStartClient()
     {
@@ -13,6 +15,6 @@ public class CustomPlayerSpawner : NetworkSingleton<CustomPlayerSpawner>
     IEnumerator WaitForPlayerManager()
     {
         yield return new WaitUntil(() => PlayerManager.Instance != null);
-        PlayerManager.Instance.ConnectToServerRPC();
+        PlayerManager.Instance.SpawnPlayerObjectServerRpc(LocalConnection, isLobby);
     }
 }
