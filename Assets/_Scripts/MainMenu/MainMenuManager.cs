@@ -130,9 +130,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     }
 
-    public void StartGame()
+    public void StartLobby()
     {
-        NetworkSceneManager.LoadNetworkScene("Game", new string[] {"ConnectingScene"} );
+        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] {"ConnectingScene"} );
     }
 
     public void LeaveLobby()
