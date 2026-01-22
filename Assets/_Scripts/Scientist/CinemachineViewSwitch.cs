@@ -39,7 +39,7 @@ public class CinemachineViewSwitch : MonoBehaviour
             Debug.LogError("The selected Cinemachine Camera is not available");
             return;
         }
-        Array.ForEach(availableViews, x => x.Priority = x == selectedView ? 10 : 0);
+        Array.ForEach(availableViews, x => x.Priority = x == selectedView ? 10 : -1);
     }
     public void SwitchView()
     {
