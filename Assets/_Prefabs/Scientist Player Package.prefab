@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -742,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -898,7 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 5952529290214607240}
   - component: {fileID: 1007273596516598914}
   - component: {fileID: 6037014169019527083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HazardTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: -1
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -1826,6 +1826,14 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 2382847909764614269, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411126219653838977, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2485860674817397115, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _componentIndexCache
       value: 18
@@ -1838,13 +1846,29 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3249515327585985415, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3446264286303948644, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _componentIndexCache
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3922843611918718602, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4705399026923109913, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _componentIndexCache
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788687040419621357, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121156719385623760, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5493001969599985094, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _componentIndexCache
@@ -1978,17 +2002,33 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6522786063078361925, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6871725302857906400, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _componentIndexCache
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6875810565311135710, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6921809768911145263, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088006229273234185, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7131754079086674159, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Name
       value: Battle Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131754079086674159, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7415623634265430486, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Layer
