@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BatteryUseField : MonoBehaviour {
+public class BatteryUseField : MonoBehaviour
+{
     [Header("Settings")]
     [SerializeField] private int requiredCharedBatteries = 2;
-    private List<Battery> batteries = new();
+    [SerializeField] private List<Battery> batteries = new();
 
     private bool isReady;
     public event Action<bool> OnUpdateIsReady;
@@ -15,7 +16,7 @@ public class BatteryUseField : MonoBehaviour {
         get => isReady;
         private set
         {
-            if(value == isReady)
+            if (value == isReady)
                 return;
             isReady = value;
             OnUpdateIsReady?.Invoke(value);
@@ -24,19 +25,23 @@ public class BatteryUseField : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            {
-                batteries.Add(battery);
-                CheckBatteryCharging();
-            }
+        if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
+        {
+            if (batteries.Contains(battery))
+                return;
+            batteries.Add(battery);
+            CheckBatteryCharging();
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            {
-                batteries.Remove(battery);
-                CheckBatteryCharging();
-            }
+        if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
+        {
+            if (!batteries.Contains(battery))
+                return;
+            batteries.Remove(battery);
+            CheckBatteryCharging();
+        }
     }
     private void CheckBatteryCharging()
     {
@@ -45,9 +50,9 @@ public class BatteryUseField : MonoBehaviour {
     }
     public void UseUpBatteries()
     {
-        if(!IsReady)
+        if (!IsReady)
             return;
-        for(int i = 0; i < requiredCharedBatteries; i++)
+        for (int i = 0; i < requiredCharedBatteries; i++)
         {
             batteries[i].ChargeAmount = 0;
         }
