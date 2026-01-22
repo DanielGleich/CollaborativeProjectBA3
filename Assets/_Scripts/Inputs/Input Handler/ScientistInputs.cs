@@ -27,7 +27,8 @@ public class ScientistInputsHandler : InputHandler, PlayerInputs.IScientistContr
     }
     public void OnSwitchCamera(InputAction.CallbackContext context)
     {
-        onSwitchCameraView?.Invoke();
+        if(context.performed)
+            onSwitchCameraView?.Invoke();
     }
     public void OnAttack(InputAction.CallbackContext context)
     {

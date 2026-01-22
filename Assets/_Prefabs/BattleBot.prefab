@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1474342585730777783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108944085947241475}
+  m_Layer: 10
+  m_Name: Body Camera Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108944085947241475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474342585730777783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6335819879999158148}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2382847909764614269
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4884054835545564801}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon Rigth Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +76,7 @@ GameObject:
   - component: {fileID: 2217143729217134434}
   - component: {fileID: 3270642658943037672}
   - component: {fileID: 3446264286303948644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HazardTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3919714130502515608}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon Left Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +220,7 @@ GameObject:
   - component: {fileID: 7492324537578571734}
   - component: {fileID: 4543931608220937660}
   - component: {fileID: 4092409647031105244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Front Weapon Hurt Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6015563943838604715, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -495,6 +530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2861826292062753996, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2550272447950647139, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -515,9 +554,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 893354580228503223, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Name
       value: BattleBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Layer
@@ -533,6 +588,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6338865288299130588}
+    - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1108944085947241475}
     - targetCorrespondingSourceObject: {fileID: -817489638006699383, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 565071610852674342}
@@ -1169,7 +1227,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 3977824554837118839}
   materialIndex: 1
   materialAttributeName: _Scroll_Speed
-  baseSawSpeed: 3
+  baseSawSpeed: 0
   activeSawSpeed: 10
   duration: 0.1
   ease: 7
@@ -1741,7 +1799,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584326967399109653
+  _initializedTimestamp: -8584326113198602473
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1756,7 +1814,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 6
+  <PrefabId>k__BackingField: 7
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5918673326528417147
   SceneId: 0
