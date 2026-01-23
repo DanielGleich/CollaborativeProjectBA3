@@ -63,6 +63,9 @@ MonoBehaviour:
   - {fileID: 7087346980294548053}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 3966872722425761631}
   - {fileID: 8010995884967009930}
   - {fileID: 5536893077240158690}
@@ -75,7 +78,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584325712589339291
+  _initializedTimestamp: -8584323983817850514
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -274,10 +277,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1698676001355568397, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584325712589339291
-      objectReference: {fileID: 0}
-    - target: {fileID: 1698676001355568397, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: <IsNested>k__BackingField
       value: 1
       objectReference: {fileID: 0}
@@ -324,10 +323,6 @@ PrefabInstance:
     - target: {fileID: 1733015181407114019, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1733015181407114019, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584325712589339291
       objectReference: {fileID: 0}
     - target: {fileID: 1733015181407114019, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: <IsNested>k__BackingField
@@ -426,10 +421,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4320870257025242187, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584325712589339291
-      objectReference: {fileID: 0}
-    - target: {fileID: 4320870257025242187, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: <IsNested>k__BackingField
       value: 1
       objectReference: {fileID: 0}
@@ -475,7 +466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5236239962413168359, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: m_Name
-      value: Vehicle Inside
+      value: VehicleInsideArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236239962413168359, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5509585033760525826, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: m_Layer
@@ -496,10 +491,6 @@ PrefabInstance:
     - target: {fileID: 7194288690272044446, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7194288690272044446, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: _initializedTimestamp
-      value: -8584325712589339291
       objectReference: {fileID: 0}
     - target: {fileID: 7194288690272044446, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: <IsNested>k__BackingField
@@ -672,6 +663,18 @@ PrefabInstance:
       value: Rat Player
       objectReference: {fileID: 0}
     - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -689,15 +692,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2489622582611423837, guid: ec9d1d30261c25e4d9ffda4658983a41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

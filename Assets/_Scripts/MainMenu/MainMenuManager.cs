@@ -26,7 +26,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
-        LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
+        //LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
         PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
@@ -40,7 +40,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined -= OnLobbyJoined;
         LobbyConnectionManager.OnLobbyExited -= OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves -= OnClientJoined;
-        LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
+        //LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
         PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
