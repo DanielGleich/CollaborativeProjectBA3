@@ -6,8 +6,9 @@ using UnityEngine;
 public class BatteryUseField : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int requiredCharedBatteries = 2;
+    [SerializeField] private int requiredChargedBatteries = 2;
     [SerializeField] private List<Battery> batteries = new();
+    [SerializeField] private bool dischargeAll;
 
     private bool isReady;
     public event Action<bool> OnUpdateIsReady;
@@ -46,15 +47,22 @@ public class BatteryUseField : MonoBehaviour
     private void CheckBatteryCharging()
     {
         int chargedBatteries = batteries.Count(b => b.IsFullyCharged);
-        IsReady = requiredCharedBatteries <= chargedBatteries;
+        IsReady = requiredChargedBatteries <= chargedBatteries;
     }
     public void UseUpBatteries()
     {
         if (!IsReady)
             return;
-        for (int i = 0; i < requiredCharedBatteries; i++)
+        int charges = 0;
+        foreach(Battery b in batteries)
         {
-            batteries[i].ChargeAmount = 0;
+            if(b.IsFullyCharged || dischargeAll)
+            {
+                b.ChargeAmount = 0;
+                charges++;
+            }
+            if(charges >= requiredChargedBatteries && !dischargeAll)
+                break;
         }
         CheckBatteryCharging();
     }
