@@ -76,10 +76,6 @@ public class DebrisSpawnManager : MonoBehaviour
         similtanousSpawns = Mathf.Clamp(similtanousSpawns,0,debrisSpawners.Count());
         debrisSpawners.Shuffle();
 
-        // Check if Shuffle worked...
-        Debug.Log("<b> Shuffled List:");
-        debrisSpawners.ToList().ForEach(x => Debug.Log(x));
-
         for(int i = 0; i < similtanousSpawns; i++)
         {
             if(overwriteDebrisCount)

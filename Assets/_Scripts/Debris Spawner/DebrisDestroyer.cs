@@ -14,6 +14,7 @@ public class DebrisDestroyer : MonoBehaviour {
                 return;
             debrisDestroyed = value;
             OnUpdateDebrisDestoyed?.Invoke(value);
+            Debug.Log($"Number of destoryed debris: {value}");
         }
     }
     void OnTriggerEnter(Collider other)
@@ -21,6 +22,7 @@ public class DebrisDestroyer : MonoBehaviour {
         if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Debris>( out var debris))
         {
             debris.DestoyDebris();
+            DebrisDestroyed += 1;
         }
     }
 }
