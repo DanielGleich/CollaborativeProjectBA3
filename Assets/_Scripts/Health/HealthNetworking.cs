@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
@@ -14,7 +15,7 @@ public class HealthNetworking : NetworkBehaviour
     [SerializeField] float DamageSyncTolerace = 1f;
     public float MaxHealth {get; private set;}
     public readonly SyncVar<float> CurrentHealth = new SyncVar<float>();
-    public event Action OnNetworkedDeath;
+    public event Action<NetworkConnection> OnNetworkedDeath;
 
     private bool loopProtection;
     private bool predictLocally;
@@ -34,14 +35,14 @@ public class HealthNetworking : NetworkBehaviour
     private void SubscribeEvents()
     {
         health.OnUpdateHealth += OnLocalHealthChanged;
-        health.OnDeath += OnDeathServerRpc;
+        health.OnDeath += HandleLocalDeathRequest;
         CurrentHealth.OnChange += UpdateLocalHealth;
     }
 
     private void UnsubscribeEvents()
     {
         health.OnUpdateHealth -= OnLocalHealthChanged;
-        health.OnDeath -= OnDeathServerRpc;
+        health.OnDeath -= HandleLocalDeathRequest;
         CurrentHealth.OnChange -= UpdateLocalHealth;
     }
 
@@ -107,16 +108,24 @@ public class HealthNetworking : NetworkBehaviour
         predictLocally = false;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void OnDeathServerRpc()
+    private void HandleLocalDeathRequest()
     {
+        if (IsOwner)
+            OnDeathServerRpc(LocalConnection);
+    }
+
+    [ServerRpc]
+    private void OnDeathServerRpc(NetworkConnection c = null)
+    {
+        if (IsServerInitialized)
+            OnNetworkedDeath?.Invoke(c);
         HandleNetworkedDeath();
     }
 
     [ObserversRpc]
-    private void HandleNetworkedDeath()
+    private void HandleNetworkedDeath(NetworkConnection c = null)
     { 
-        OnNetworkedDeath?.Invoke();
+        OnNetworkedDeath?.Invoke(c);
         gameObject.SetActive(false);
     }
 }
