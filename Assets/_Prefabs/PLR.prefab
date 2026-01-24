@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7297240033160515925}
   - component: {fileID: 7106630720832034345}
+  - component: {fileID: 8162323171754129108}
   m_Layer: 0
   m_Name: Debris Spawner Manager
   m_TagString: Untagged
@@ -288,7 +289,7 @@ MonoBehaviour:
   debrisSpawners:
   - {fileID: 7016293005317963673}
   - {fileID: 4309213542106934098}
-  startOnEnable: 1
+  startOnEnable: 0
   initialWait: 0
   constantSpawnDelay: 0
   spawnDelayRange: {x: 10, y: 20}
@@ -371,6 +372,25 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8162323171754129108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619455270481954432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805873b738e95664db71589e906a45d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManagerHealthExtension
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 6417547877293594910}
+  _networkObjectCache: {fileID: 0}
+  spawnRules:
+  - healthCondition: 90
+    simultaniousSpawns: 1
+    debrisAmount: {x: 4, y: 5}
 --- !u!1 &6672670550216717525
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +538,18 @@ PrefabInstance:
       propertyPath: interactableLayers.m_Bits
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 6904055231161793901, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_Size.y
+      value: 2.546282
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904055231161793901, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_Size.z
+      value: 50.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904055231161793901, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_Center.y
+      value: 1.273141
+      objectReference: {fileID: 0}
     - target: {fileID: 8089726963348100013, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: Priority.Enabled
       value: 1
@@ -578,6 +610,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5443773342753170119, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
   m_PrefabInstance: {fileID: 8303027001431880090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6417547877293594910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224412582850829221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
 --- !u!4 &6799000717566370958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3269789458613507348, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}

@@ -203,7 +203,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5619010620691017379}
   _networkObjectCache: {fileID: 0}
   spawnRules:
-  - healthCondition: 80
+  - healthCondition: 100
     simultaniousSpawns: 2
     debrisAmount: {x: 1, y: 2}
   - healthCondition: 60
@@ -642,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 3282956900840011481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.4, z: 0}
+  m_LocalPosition: {x: 0, y: 10.32, z: 0}
   m_LocalScale: {x: 57.2, y: 1, z: 53}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -937,7 +937,7 @@ Transform:
   m_GameObject: {fileID: 6884643911691402652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 2.98, z: 0}
+  m_LocalPosition: {x: 6, y: 2.5300002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1189,7 +1189,7 @@ Transform:
   m_GameObject: {fileID: 8557913179556284971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 2.98, z: 0}
+  m_LocalPosition: {x: -5, y: 2.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1226,6 +1226,7 @@ GameObject:
   - component: {fileID: 8820191408115067157}
   - component: {fileID: 9120992532111081542}
   - component: {fileID: 5022358279022176156}
+  - component: {fileID: 8960986527016569849}
   m_Layer: 0
   m_Name: Oven (Debris Destroyer)
   m_TagString: Untagged
@@ -1320,13 +1321,25 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1704124190108709103, guid: bfaa7a401aac605438e65e710cd1ae9e, type: 3}
+--- !u!114 &8960986527016569849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829818923337757488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94122dd73635bd94281d9e67e8882112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisDestroyer
 --- !u!1 &9108399261524086533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1508,10 @@ PrefabInstance:
       propertyPath: SceneId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4354375856556425761, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584323370105420600
+      objectReference: {fileID: 0}
     - target: {fileID: 4606261002301532280, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: SceneId
       value: 0
@@ -1512,12 +1529,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5640201686091075007, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584323370105420600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640201686091075007, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
       value: 14088447411211710615
       objectReference: {fileID: 0}
     - target: {fileID: 6417547877293594910, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: SceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417547877293594910, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584323370105420600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417547877293594910, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[2]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6417547877293594910, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: 'InitializedNestedNetworkObjects.Array.data[0]'
@@ -1547,6 +1576,30 @@ PrefabInstance:
       propertyPath: 'InitializedNestedNetworkObjects.Array.data[6]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6449841695118994120, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000431923
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449841695118994120, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000011733824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7143378425271638764, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71324974
+      objectReference: {fileID: 0}
+    - target: {fileID: 7143378425271638764, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.70091003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187280849274160010, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187280849274160010, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: smoothTime
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 7514153433107840946, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: SceneId
       value: 0
@@ -1554,6 +1607,10 @@ PrefabInstance:
     - target: {fileID: 7540379236342705594, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: SceneId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540379236342705594, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584323370105420600
       objectReference: {fileID: 0}
     - target: {fileID: 7796941814525352688, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1594,6 +1651,22 @@ PrefabInstance:
     - target: {fileID: 7796941814525352688, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836642586699887521, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836642586699887521, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.3826834
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186540307030390776, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000013207826
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186540307030390776, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000351579
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
