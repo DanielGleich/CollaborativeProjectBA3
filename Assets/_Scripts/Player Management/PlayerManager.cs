@@ -188,6 +188,7 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
                 Despawn(player);
             }
         }
+        i = 1;
     }
 
     public NetworkObject GetNetworkObjectByClientId(int clientId)

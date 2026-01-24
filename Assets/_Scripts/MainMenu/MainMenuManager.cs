@@ -78,7 +78,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         UpdateLobbyProfiles();
     }
 
-    private void CreateTeamCards()
+    public void CreateTeamCards()
     {
         foreach(var kvp in TeamManager.Instance.allTeams)
         { 

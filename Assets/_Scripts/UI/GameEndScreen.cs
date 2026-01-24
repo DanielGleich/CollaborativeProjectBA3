@@ -3,6 +3,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,17 +55,18 @@ public class GameEndScreen : NetworkBehaviour
         rematchButton.interactable = next;
     }
 
+    [Server]
     private void PlayerReadyForRematch_OnChange(SyncListOperation op, int index, NetworkConnection oldItem, NetworkConnection newItem, bool asServer)
     {
-        if (asServer == true)
-        {
-            if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
-                NotifyRematch();
-        }
-        else 
-        { 
-            rematchButtonText.text = playerReadyForRematch.Contains(LocalConnection) ? "Waiting for Rematch" : "Rematch?";
-        }
+        if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
+            NotifyRematch();
+        NotifyPlayerRematchReady();
+    }
+
+    [ObserversRpc]
+    private void NotifyPlayerRematchReady()
+    { 
+        rematchButtonText.text = playerReadyForRematch.Contains(LocalConnection) ? "Waiting for Rematch" : "Rematch?";
         rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
     }
 

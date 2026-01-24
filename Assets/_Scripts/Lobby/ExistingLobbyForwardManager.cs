@@ -10,6 +10,9 @@ public class ExistingLobbyForwardManager : NetworkBehaviour
     {
         base.OnStartClient();
         if (lobbyPage.activeSelf == false)
+        { 
+            mainMenuManager.CreateTeamCards();
             mainMenuManager.OnLobbyJoined();
+        }
     }
 }
