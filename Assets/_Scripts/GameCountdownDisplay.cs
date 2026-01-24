@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CountdownDisplay : MonoBehaviour
+public class GameCountdownDisplay : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textField;
 

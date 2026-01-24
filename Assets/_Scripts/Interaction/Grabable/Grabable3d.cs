@@ -18,7 +18,7 @@ public class Grabable3d : Interactable
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.relativeVelocity.magnitude);
+        //Debug.Log(collision.relativeVelocity.magnitude);
         if (collision.relativeVelocity.magnitude > maxCollisionMagnitude)
             OnCollideToHard?.Invoke();
     }

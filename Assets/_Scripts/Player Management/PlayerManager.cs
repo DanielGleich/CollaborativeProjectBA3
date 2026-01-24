@@ -10,7 +10,8 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 {
     protected override bool _perClient => false;
 
-    [SerializeField] private NetworkObject playerPrefab;
+    [SerializeField] private NetworkObject ingamePlayerPrefab;
+    [SerializeField] private NetworkObject lobbyPlayerPrefab;
     int i = 1;
 
     public readonly SyncList<int> AllPlayerConnections = new SyncList<int>();
@@ -61,11 +62,10 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void ConnectToServerRPC(NetworkConnection c = null)
+    public void SpawnPlayerObjectServerRpc(NetworkConnection c, bool isLobbyPlayer)
     {
         if (c == null) return;
-
-        NetworkObject player = SpawnPlayer();
+        NetworkObject player = SpawnPlayer(isLobbyPlayer);
 
 
         if (c.GetAddress() == "127.0.0.1")
@@ -78,9 +78,20 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         AllPlayerNetworkObjects[c.ClientId] = player.ObjectId;
     }
 
-    public NetworkObject SpawnPlayer()
+    [ServerRpc(RequireOwnership = false)]
+    public void DespawnPlayerObjectServerRpc(NetworkConnection c = null)
     {
-        NetworkObject p = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        if (AllPlayerNetworkObjects.ContainsKey(c.ClientId))
+        {
+            Despawn(GetNetworkObjectByClientId(c.ClientId));
+            AllPlayerNetworkObjects.Remove(c.ClientId);
+        }
+    }
+
+
+    public NetworkObject SpawnPlayer(bool isLobbyPlayer)
+    {
+        NetworkObject p = Instantiate(isLobbyPlayer ? lobbyPlayerPrefab : ingamePlayerPrefab, Vector3.zero, Quaternion.identity);
         p.gameObject.name = "Player " + i.ToString();
         i++;
         return p;
@@ -117,15 +128,27 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             Team t = kvp.Value;
 
             if (t.scientistPlayerClientId == -1)
-            { 
+            {
                 TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.SCIENTIST, clientId);
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
                 return;
-            } 
+            }
+            else if (t.scientistPlayerClientId == clientId)
+            {
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.SCIENTIST;
+                return;
+            }
             else if (t.ratPlayerClientId == -1)
             {
                 TeamManager.Instance.AssignPlayerToTeamSlot(kvp.Value.id, TeamRole.RAT, clientId);
+                playerAssignment.CurrentTeam.Value = t;
+                playerAssignment.CurrentRole.Value = TeamRole.RAT;
+                return;
+            }
+            else if (t.ratPlayerClientId == clientId)
+            {
                 playerAssignment.CurrentTeam.Value = t;
                 playerAssignment.CurrentRole.Value = TeamRole.RAT;
                 return;
@@ -148,6 +171,25 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
         }
     }
 
+    public NetworkObject GetNetworkObjectByClientId(int clientId)
+    {
+        if (!AllPlayerNetworkObjects.TryGetValue(clientId, out int networkObjectId))
+            return null;
+
+        var nm = InstanceFinder.NetworkManager;
+        if (IsServerInitialized)
+        {
+            nm.ServerManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
+        }
+        if (IsClientInitialized)
+        {
+            nm.ClientManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
+            return nob;
+        }
+        return null;
+    }
+
     [ObserversRpc]
     public void NotifyPlayerConnected(int clientId)
     {
@@ -159,26 +201,4 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
     {
         OnPlayerDisconnected?.Invoke(clientId);
     }
-
-    public NetworkObject GetNetworkObjectByClientId(int clientId)
-    {
-        if (!AllPlayerNetworkObjects.TryGetValue(clientId, out int networkObjectId))
-            return null;
-
-        var nm = InstanceFinder.NetworkManager;
-        // Auf Server:
-        if (IsServerInitialized)
-        {
-            nm.ServerManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
-            return nob;
-        }
-        // Auf Client:
-        if (IsClientInitialized)
-        {
-            nm.ClientManager.Objects.Spawned.TryGetValue(networkObjectId, out NetworkObject nob);
-            return nob;
-        }
-        return null;
-    }
-
 }

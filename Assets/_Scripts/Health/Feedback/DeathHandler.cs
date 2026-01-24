@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using System;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class DeathHandler : MonoBehaviour
     {
         networkedHealth.OnNetworkedDeath -= HandleDeath;
     }
-    private void HandleDeath()
+    private void HandleDeath(NetworkConnection c)
     {
         Instantiate(deathPrefab, spawnPosition.position, spawnPosition.rotation);
     }

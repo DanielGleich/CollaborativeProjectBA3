@@ -1,8 +1,17 @@
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+
+public enum GameEndReason
+{
+    NONE,
+    DESTROYED,
+    DISCONNECT,
+    OUTOFARENA
+}
 
 public class GameManager : NetworkSingleton<GameManager>
 {
@@ -11,26 +20,14 @@ public class GameManager : NetworkSingleton<GameManager>
     [Header("Settings")]
     public bool IsTesting = true;
     public float countdownDuration = 3f;
+    public readonly SyncTimer PreGameCountdown = new SyncTimer();
+    private readonly SyncVar<bool> isGameStarted = new SyncVar<bool>();
+    public readonly SyncVar<GameEndReason> gameEndReason = new SyncVar<GameEndReason>();
 
     public static event Action OnInitialized;
     public static UnityEvent OnGameStart = new UnityEvent();
     public static UnityEvent OnGameOver = new UnityEvent();
-    public static UnityEvent OnGameWin = new UnityEvent();
-    public static UnityEvent<NetworkObject> OnPlayerDied = new UnityEvent<NetworkObject>();
-    public static UnityEvent OnLocalPlayerDied = new UnityEvent();
-
-    public readonly SyncTimer PreGameCountdown = new SyncTimer();
-
-    private readonly SyncVar<bool> isGameStarted = new SyncVar<bool>();
-
-    private void Start()
-    {
-        //if (IsServerInitialized)
-        //{ 
-        //    PlayerManager.OnPlayerConnected.AddListener(RegisterPlayer);
-        //    PlayerManager.OnPlayerDisconnected.AddListener(UnregisterPlayer);
-        //}
-    }
+    public static UnityEvent<int> OnTeamWins = new UnityEvent<int>();
 
     private void Update()
     {
@@ -38,11 +35,13 @@ public class GameManager : NetworkSingleton<GameManager>
             PreGameCountdown.Update();
     }
 
-
     public override void OnStartServer()
     {
         base.OnStartServer();
         isGameStarted.Value = false;
+        gameEndReason.Value = GameEndReason.NONE;
+        PlayerManager.OnPlayerDisconnected.AddListener(TriggerDisconnectGameEnd);
+        TeamManager.OnAllTeamsReady += SubscribeToPlayerDeaths;
 
         if (IsTesting == false)
         { 
@@ -58,6 +57,48 @@ public class GameManager : NetworkSingleton<GameManager>
 
         if (IsTesting && IsServerInitialized)
             StartGame();
+    }
+
+    [Server]
+    private void SubscribeToPlayerDeaths()
+    {
+        foreach (var team in TeamManager.Instance.allTeams)
+        {
+            NetworkObject playerObject = PlayerManager.Instance.GetNetworkObjectByClientId(team.Value.scientistPlayerClientId);
+            HealthNetworking health = playerObject?.transform.GetComponentInChildren<HealthNetworking>();
+            if (health != null)
+            {
+                health.OnNetworkedDeath += HandlePlayerDeath;
+            }
+        }
+    }
+
+    [Server]
+    private void HandlePlayerDeath(NetworkConnection playerConnection)
+    {
+        int winnerTeam = -1;
+        int loserTeam = -1;
+
+        foreach (var team in TeamManager.Instance.allTeams)
+        {
+            if (team.Value.scientistPlayerClientId == playerConnection.ClientId || team.Value.ratPlayerClientId == playerConnection.ClientId)
+            {
+                loserTeam = team.Key;
+            }
+            else
+            { 
+                winnerTeam = team.Key;
+            }
+        }
+
+        if (loserTeam >= 0 && winnerTeam >= 0)
+        {
+            if (gameEndReason.Value == GameEndReason.NONE)
+                gameEndReason.Value = GameEndReason.DESTROYED;
+
+            NotifyWinnerTeam(winnerTeam);
+            NotifyGameOver();
+        }
     }
 
     private void PreGameCountdown_OnChange(SyncTimerOperation op, float prev, float next, bool asServer)
@@ -87,64 +128,37 @@ public class GameManager : NetworkSingleton<GameManager>
         if (isGameStarted.Value) return;            
         ChargingPadManagerNetworking.Instance?.InitializeManager();
         isGameStarted.Value = true;
-        Debug.Log("Server Gamestart");
         NotifyGameStart();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void RequestGameEndReasonChangeServerRpc(GameEndReason reason)
+    {
+        gameEndReason.Value = reason;
+    }
+
+    [Server]
+    private void TriggerDisconnectGameEnd(int clientId)
+    {
+        gameEndReason.Value = GameEndReason.DISCONNECT;
+        NotifyGameOver();
     }
 
     [ObserversRpc]
     private void NotifyGameStart()
     {
-        Debug.Log("Client Gamestart");
         OnGameStart?.Invoke();
     }
 
-    private void CheckLosingCondition()
-    { 
-        //PlayerManager playerManager = GameObject.FindObjectOfType<PlayerManager>();
-        //if (playerManager != null)
-        //{
-        //    foreach (KeyValuePair<NetworkObject, DamageableController> playerHealthEntry in _allPlayerHealths)
-        //    {
-        //        if (playerHealthEntry.Value != null)
-        //        {
-        //            if (!playerHealthEntry.Value.IsDead)
-        //            {
-        //                return;
-        //            }
-        //        }
-        //        else 
-        //        {
-        //            Debug.Log($"PlayerObject {playerHealthEntry.Value.gameObject.name} has no Damageable-Component");
-        //        }
-        //    }
-        //    HandleGameOver();
-        //}
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void WinGameServerRPC()
-    {
-        HandleWin();
-    }
-
     [ObserversRpc]
-    private void HandleWin()
-    {
-        OnGameWin?.Invoke();
-    }
-
-
-    [ObserversRpc]
-    private void RpcHandleGameOver()
+    private void NotifyGameOver()
     {
         OnGameOver?.Invoke();
     }
 
-    private void HandleGameOver()
-    {
-        if (IsServerInitialized)
-        {
-            RpcHandleGameOver(); 
-        }
+    [ObserversRpc]
+    private void NotifyWinnerTeam(int teamId)
+    { 
+        OnTeamWins.Invoke(teamId);
     }
 }
