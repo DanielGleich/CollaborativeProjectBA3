@@ -13,6 +13,7 @@ public class GameEndScreen : NetworkBehaviour
     [SerializeField] GameObject winnerUI;
     [SerializeField] GameObject loserUI;
     [SerializeField] Button rematchButton;
+    [SerializeField] Button teamSelectionButton;
     [SerializeField] TextMeshProUGUI deathText;
     [SerializeField] TextMeshProUGUI rematchButtonText;
     [SerializeField] TextMeshProUGUI rematchCounter;
@@ -63,13 +64,14 @@ public class GameEndScreen : NetworkBehaviour
         else 
         { 
             rematchButtonText.text = playerReadyForRematch.Contains(LocalConnection) ? "Waiting for Rematch" : "Rematch?";
-            rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
         }
+        rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
     }
 
     private void ActivateScreen()
     {
         uiParent.SetActive(true);
+        teamSelectionButton.interactable = IsServerInitialized;
         rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -152,8 +154,7 @@ public class GameEndScreen : NetworkBehaviour
 
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        //NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ConnectingScene");
+        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
     }
 
     public void MoveToMainMenu()
