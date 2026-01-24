@@ -67,7 +67,6 @@ public class LobbyManager : NetworkSingleton<LobbyManager>
         {
             StartCountdown();
         }
-        Debug.Log($"{AllReadyPlayers.Count}/{PlayerManager.Instance.AllPlayerConnections.Count}");
     }
 
     [Server]
@@ -103,6 +102,7 @@ public class LobbyManager : NetworkSingleton<LobbyManager>
         if (asServer == false) return;
         if (op == SyncTimerOperation.Finished)
         {
+            PlayerManager.Instance.ResetManagerForSceneChange();
             TeamManager.Instance.ResetPlayerReadyStates();
             NetworkSceneManager.LoadNetworkScene("Game", null);
         }

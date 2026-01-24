@@ -41,23 +41,29 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
 
         if (args.ConnectionState == RemoteConnectionState.Started)
         {
-            AllPlayerConnections.Add(c.ClientId);
-            if (ulong.TryParse(c.GetAddress(), out ulong steamId))
-                AllPlayerSteamIds.Add(c.ClientId, steamId);
-            NotifyPlayerConnected(c.ClientId);
+            if (AllPlayerConnections.Contains(args.ConnectionId) == false)
+            {
+                AllPlayerConnections.Add(c.ClientId);
+                if (ulong.TryParse(c.GetAddress(), out ulong steamId))
+                    AllPlayerSteamIds.Add(c.ClientId, steamId);
+                NotifyPlayerConnected(c.ClientId);
+            }
         }
 
         if (args.ConnectionState == RemoteConnectionState.Stopped)
         {
-            AllPlayerConnections.Remove(c.ClientId);
-            if (AllPlayerSteamIds.ContainsKey(c.ClientId))
-            {
-                AllPlayerSteamIds.Remove(c.ClientId);
-            }
-            if (AllPlayerNetworkObjects.ContainsKey(c.ClientId))
-                AllPlayerNetworkObjects.Remove(c.ClientId);
+            if (AllPlayerConnections.Contains(c.ClientId))
+            { 
+                AllPlayerConnections.Remove(c.ClientId);
+                if (AllPlayerSteamIds.ContainsKey(c.ClientId))
+                {
+                    AllPlayerSteamIds.Remove(c.ClientId);
+                }
+                if (AllPlayerNetworkObjects.ContainsKey(c.ClientId))
+                    AllPlayerNetworkObjects.Remove(c.ClientId);
 
-            NotifyPlayerDisconnected(c.ClientId);
+                NotifyPlayerDisconnected(c.ClientId);
+            }
         }
     }
 
@@ -87,7 +93,6 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             AllPlayerNetworkObjects.Remove(c.ClientId);
         }
     }
-
 
     public NetworkObject SpawnPlayer(bool isLobbyPlayer)
     {
@@ -169,6 +174,21 @@ public class PlayerManager : NetworkSingleton<PlayerManager>
             player.transform.position = spawnPoint? spawnPoint.position : Vector3.zero;
             player.transform.rotation = spawnPoint? spawnPoint.rotation : Quaternion.identity;
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetManagerForSceneChange()
+    {
+        foreach (var playerObject in AllPlayerNetworkObjects)
+        {
+            NetworkObject player = GetNetworkObjectByClientId(playerObject.Value);
+            if (player != null)
+            { 
+                AllPlayerNetworkObjects.Remove(playerObject);
+                Despawn(player);
+            }
+        }
+        i = 1;
     }
 
     public NetworkObject GetNetworkObjectByClientId(int clientId)
