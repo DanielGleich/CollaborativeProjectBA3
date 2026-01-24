@@ -96,7 +96,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         }
     }
 
-    private void OnLobbyJoined()
+    public void OnLobbyJoined()
     {
         joinContainer.SetActive(false);
         lobbyContainer.SetActive(true);

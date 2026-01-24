@@ -1,6 +1,7 @@
 using FishNet;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEndScreen : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class GameEndScreen : MonoBehaviour
     private void ActivateScreen()
     {
         uiParent.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void HandleWinLoseScreen(int winnerTeamId)
@@ -66,5 +69,24 @@ public class GameEndScreen : MonoBehaviour
             loserUI.SetActive(true);
             deathText.text = "A player left the game";
         }
+    }
+
+    public void TriggerRematch()
+    { 
+        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
+    }
+
+    public void MoveToTeamSelection()
+    {
+        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+    }
+
+    public void MoveToMainMenu()
+    {
+        if (InstanceFinder.IsServerStarted)
+            InstanceFinder.ServerManager.StopConnection(true);
+        InstanceFinder.ClientManager.StopConnection();
+        LobbyConnectionManager.LeaveLobby();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ConnectingScene");
     }
 }

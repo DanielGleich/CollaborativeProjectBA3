@@ -2,6 +2,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -54,9 +55,6 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         base.OnStartClient();
         OnInitialized?.Invoke();
-
-        if (IsTesting && IsServerInitialized)
-            StartGame();
     }
 
     [Server]
@@ -64,11 +62,13 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         foreach (var team in TeamManager.Instance.allTeams)
         {
+            Debug.Log($"Team {team.Value.id} exists");
             NetworkObject playerObject = PlayerManager.Instance.GetNetworkObjectByClientId(team.Value.scientistPlayerClientId);
             HealthNetworking health = playerObject?.transform.GetComponentInChildren<HealthNetworking>();
             if (health != null)
             {
                 health.OnNetworkedDeath += HandlePlayerDeath;
+                Debug.Log("Subscribed");
             }
         }
     }
@@ -78,6 +78,7 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         int winnerTeam = -1;
         int loserTeam = -1;
+        Debug.Log("Death");
 
         foreach (var team in TeamManager.Instance.allTeams)
         {
@@ -91,7 +92,7 @@ public class GameManager : NetworkSingleton<GameManager>
             }
         }
 
-        if (loserTeam >= 0 && winnerTeam >= 0)
+        if (IsTesting || (loserTeam >= 0 && winnerTeam >= 0))
         {
             if (gameEndReason.Value == GameEndReason.NONE)
                 gameEndReason.Value = GameEndReason.DESTROYED;
@@ -125,7 +126,10 @@ public class GameManager : NetworkSingleton<GameManager>
     [ServerRpc(RequireOwnership = false)]
     public void StartGame()
     {
-        if (isGameStarted.Value) return;            
+        if (isGameStarted.Value) return;
+        if (IsTesting)
+            SubscribeToPlayerDeaths();
+
         ChargingPadManagerNetworking.Instance?.InitializeManager();
         isGameStarted.Value = true;
         NotifyGameStart();
