@@ -1,15 +1,24 @@
 using FishNet;
+using FishNet.Connection;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameEndScreen : MonoBehaviour
+public class GameEndScreen : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject uiParent;
     [SerializeField] GameObject winnerUI;
     [SerializeField] GameObject loserUI;
+    [SerializeField] Button rematchButton;
     [SerializeField] TextMeshProUGUI deathText;
+    [SerializeField] TextMeshProUGUI rematchButtonText;
+    [SerializeField] TextMeshProUGUI rematchCounter;
+
+    private readonly SyncList<NetworkConnection> playerReadyForRematch = new SyncList<NetworkConnection>();
+    private readonly SyncVar<bool> noPlayerLeft = new SyncVar<bool>();
 
     private void Awake()
     {
@@ -21,18 +30,47 @@ public class GameEndScreen : MonoBehaviour
         GameManager.OnGameOver.AddListener(ActivateScreen);
         GameManager.OnTeamWins.AddListener(HandleWinLoseScreen);
         PlayerManager.OnPlayerDisconnected.AddListener(BackupPlayerLeaveScreen);
+        noPlayerLeft.OnChange += NoPlayerLeft_OnChange;
     }
+
 
     private void OnDisable()
     {
         GameManager.OnGameOver.RemoveListener(ActivateScreen);
         GameManager.OnTeamWins.RemoveListener(HandleWinLoseScreen);
         PlayerManager.OnPlayerDisconnected.RemoveListener(BackupPlayerLeaveScreen);        
+        noPlayerLeft.OnChange -= NoPlayerLeft_OnChange;
+    }
+
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        noPlayerLeft.Value = true;
+        playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
+    }
+    private void NoPlayerLeft_OnChange(bool prev, bool next, bool asServer)
+    {
+        rematchButton.interactable = next;
+    }
+
+    private void PlayerReadyForRematch_OnChange(SyncListOperation op, int index, NetworkConnection oldItem, NetworkConnection newItem, bool asServer)
+    {
+        if (asServer == true)
+        {
+            if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
+                NotifyRematch();
+        }
+        else 
+        { 
+            rematchButtonText.text = playerReadyForRematch.Contains(LocalConnection) ? "Waiting for Rematch" : "Rematch?";
+            rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
+        }
     }
 
     private void ActivateScreen()
     {
         uiParent.SetActive(true);
+        rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -64,6 +102,7 @@ public class GameEndScreen : MonoBehaviour
 
     private void BackupPlayerLeaveScreen(int clientId)
     {
+        RequestPlayerLeftServerRpc();
         if (deathText.text == string.Empty)
         { 
             loserUI.SetActive(true);
@@ -71,14 +110,50 @@ public class GameEndScreen : MonoBehaviour
         }
     }
 
-    public void TriggerRematch()
-    { 
+    public void RequestRematch()
+    {
+        if (playerReadyForRematch.Contains(LocalConnection))
+            UntriggerRematch(LocalConnection);
+        else
+            TriggerRematch(LocalConnection);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void TriggerRematch(NetworkConnection c)
+    {
+        playerReadyForRematch.Add(c);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UntriggerRematch(NetworkConnection c)
+    {
+        playerReadyForRematch.Remove(c);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestPlayerLeftServerRpc()
+    {
+        noPlayerLeft.Value = false;
+    }
+
+    [ObserversRpc]
+    private void NotifyRematch()
+    {
+        PlayerManager.Instance.ResetManagerForSceneChange();
+        TeamManager.Instance.ResetPlayerReadyStates();
         NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
     }
 
     public void MoveToTeamSelection()
     {
-        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+        RequestPlayerLeftServerRpc();
+        if (playerReadyForRematch.Contains(LocalConnection))
+            UntriggerRematch(LocalConnection);
+
+        PlayerManager.Instance.ResetManagerForSceneChange();
+        TeamManager.Instance.ResetPlayerReadyStates();
+        //NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ConnectingScene");
     }
 
     public void MoveToMainMenu()
