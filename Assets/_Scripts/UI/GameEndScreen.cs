@@ -50,6 +50,32 @@ public class GameEndScreen : NetworkBehaviour
         noPlayerLeft.Value = true;
         playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
     }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        GameManager.Instance.gameEndReason.OnChange += GameEndReason_OnChange;
+    }
+
+    private void GameEndReason_OnChange(GameEndReason prev, GameEndReason next, bool asServer)
+    {
+        if (uiParent.activeSelf && loserUI.activeSelf)
+        {
+            switch (GameManager.Instance?.gameEndReason.Value)
+            {
+                case GameEndReason.DESTROYED:
+                    deathText.text = "Your RattleBot got destroyed!";
+                    break;
+                case GameEndReason.DISCONNECT:
+                    deathText.text = "Your team mate left the game!";
+                    break;
+                case GameEndReason.OUTOFARENA:
+                    deathText.text = "Your RattleBot left the arena!";
+                    break;
+            }
+        }
+    }
+
     private void NoPlayerLeft_OnChange(bool prev, bool next, bool asServer)
     {
         rematchButton.interactable = next;

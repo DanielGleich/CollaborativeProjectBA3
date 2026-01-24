@@ -34,8 +34,6 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         if (PreGameCountdown.Paused == false)
             PreGameCountdown.Update();
-
-        Debug.Log(gameEndReason.Value);
     }
 
     public override void OnStartServer()
@@ -64,13 +62,11 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         foreach (var team in TeamManager.Instance.allTeams)
         {
-            Debug.Log($"Team {team.Value.id} exists");
             NetworkObject playerObject = PlayerManager.Instance.GetNetworkObjectByClientId(team.Value.scientistPlayerClientId);
             HealthNetworking health = playerObject?.transform.GetComponentInChildren<HealthNetworking>();
             if (health != null)
             {
                 health.OnNetworkedDeath += HandlePlayerDeath;
-                Debug.Log("Subscribed");
             }
         }
     }
