@@ -1,4 +1,5 @@
 using FishNet.Object;
+using System.Collections;
 using UnityEngine;
 
 public class ExistingLobbyForwardManager : NetworkBehaviour
@@ -13,6 +14,13 @@ public class ExistingLobbyForwardManager : NetworkBehaviour
         { 
             mainMenuManager.CreateTeamCards();
             mainMenuManager.OnLobbyJoined();
+            StartCoroutine(DelayedLobbyUpdate());
         }
+    }
+
+    IEnumerator DelayedLobbyUpdate()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        mainMenuManager.UpdateLobbyProfiles();
     }
 }

@@ -34,6 +34,8 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         if (PreGameCountdown.Paused == false)
             PreGameCountdown.Update();
+
+        Debug.Log(gameEndReason.Value);
     }
 
     public override void OnStartServer()
