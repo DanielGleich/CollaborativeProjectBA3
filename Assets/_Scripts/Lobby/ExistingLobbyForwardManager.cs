@@ -14,13 +14,15 @@ public class ExistingLobbyForwardManager : NetworkBehaviour
         { 
             mainMenuManager.CreateTeamCards();
             mainMenuManager.OnLobbyJoined();
-            StartCoroutine(DelayedLobbyUpdate());
+            StartCoroutine(DelayedLobbyUpdate(2));
+            StartCoroutine(DelayedLobbyUpdate(5));
+            StartCoroutine(DelayedLobbyUpdate(10));
         }
     }
 
-    IEnumerator DelayedLobbyUpdate()
+    IEnumerator DelayedLobbyUpdate(float seconds)
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(seconds);
         mainMenuManager.UpdateLobbyProfiles();
     }
 }
