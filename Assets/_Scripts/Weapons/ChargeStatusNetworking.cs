@@ -1,14 +1,14 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(ChargeStatus))]
 public class ChargeStatusNetworking : NetworkBehaviour
 {
-    ChargeStatus localChargeStatus;
+    public ChargeStatus localChargeStatus { get; private set; }
     public readonly SyncVar<bool> IsPowered = new SyncVar<bool>();
     public readonly SyncVar<bool> IsOvercharged = new SyncVar<bool>();
-
     private void Awake()
     {
         localChargeStatus = GetComponent<ChargeStatus>();
@@ -22,6 +22,14 @@ public class ChargeStatusNetworking : NetworkBehaviour
         OverchargedStatus.OnOvercharged += OnOverchargedChanged;
         ChargeStatus.OnCharge += HandleChargeRequest;
         ChargeStatus.OnUncharge += HandleUnchargeRequest;
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        OverchargedStatus.OnOvercharged -= OnOverchargedChanged;
+        ChargeStatus.OnCharge -= HandleChargeRequest;
+        ChargeStatus.OnUncharge -= HandleUnchargeRequest;
     }
 
     private void HandleChargeRequest(int teamId, int weaponId)
@@ -54,6 +62,7 @@ public class ChargeStatusNetworking : NetworkBehaviour
         if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
         {
             NotifyCharge(teamId);
+            Debug.Log(gameObject + " charged");
         }
         else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
         {

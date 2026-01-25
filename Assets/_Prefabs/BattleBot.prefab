@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1474342585730777783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108944085947241475}
+  m_Layer: 10
+  m_Name: Body Camera Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108944085947241475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474342585730777783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6335819879999158148}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2382847909764614269
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,8 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4884054835545564801}
-  m_Layer: 0
-  m_Name: Weapon Left Bullet Spawn
+  m_Layer: 10
+  m_Name: Weapon Rigth Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,11 +56,11 @@ Transform:
   m_GameObject: {fileID: 2382847909764614269}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.005, y: 0.00128, z: 0.00373}
+  m_LocalPosition: {x: 0.005, y: 0.0012799997, z: 0.0037299995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1385607767923097176}
+  m_Father: {fileID: 395331569291597922}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &2411126219653838977
 GameObject:
@@ -45,7 +76,7 @@ GameObject:
   - component: {fileID: 2217143729217134434}
   - component: {fileID: 3270642658943037672}
   - component: {fileID: 3446264286303948644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HazardTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: 4
+  <WeaponId>k__BackingField: 3
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
@@ -155,8 +186,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3919714130502515608}
-  m_Layer: 0
-  m_Name: Weapon Right Bullet Spawn
+  m_Layer: 10
+  m_Name: Weapon Left Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,11 +202,11 @@ Transform:
   m_GameObject: {fileID: 3249515327585985415}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.00513, y: 0.00126, z: 0.00434}
+  m_LocalPosition: {x: -0.00513, y: 0.001260001, z: 0.0043399995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 395331569291597922}
+  m_Father: {fileID: 1385607767923097176}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!1 &6875810565311135710
 GameObject:
@@ -189,7 +220,7 @@ GameObject:
   - component: {fileID: 7492324537578571734}
   - component: {fileID: 4543931608220937660}
   - component: {fileID: 4092409647031105244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Front Weapon Hurt Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,6 +490,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6015563943838604715, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -495,6 +530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2861826292062753996, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2550272447950647139, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -515,9 +554,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 893354580228503223, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Name
       value: BattleBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5059356478008970502, guid: d0b36822ba99e53458669ec992765942, type: 3}
       propertyPath: m_Layer
@@ -533,6 +588,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6338865288299130588}
+    - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1108944085947241475}
     - targetCorrespondingSourceObject: {fileID: -817489638006699383, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 565071610852674342}
@@ -541,10 +599,10 @@ PrefabInstance:
       addedObject: {fileID: 3850792732131510533}
     - targetCorrespondingSourceObject: {fileID: 9007999360112870374, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4884054835545564801}
+      addedObject: {fileID: 3919714130502515608}
     - targetCorrespondingSourceObject: {fileID: -1494066243899677220, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3919714130502515608}
+      addedObject: {fileID: 4884054835545564801}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
@@ -600,6 +658,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4984746393268817844}
+    - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1918190622809912594}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8299134870069633189}
@@ -615,6 +676,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6432357638312353281}
+    - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8234798814182649249}
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8098446815312290814}
@@ -627,6 +691,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7690277663096622969}
+    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7135765918768299488}
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1204134546500510788}
@@ -1144,6 +1211,26 @@ MonoBehaviour:
   _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
+--- !u!114 &1918190622809912594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788687040419621357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897fdc44d363df54dac02cbc156edbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainsawFeedback
+  weapon: {fileID: 3333115643738874225}
+  meshRenderer: {fileID: 3977824554837118839}
+  materialIndex: 1
+  materialAttributeName: _Scroll_Speed
+  baseSawSpeed: 0
+  activeSawSpeed: 10
+  duration: 0.1
+  ease: 7
 --- !u!1 &5121156719385623760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1164,7 +1251,7 @@ MonoBehaviour:
   _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
-  spawnPoint: {fileID: 4884054835545564801}
+  spawnPoint: {fileID: 3919714130502515608}
   projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
 --- !u!114 &6179598990573357568
 MonoBehaviour:
@@ -1223,13 +1310,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: 2
+  <WeaponId>k__BackingField: 4
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8234798814182649249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121156719385623760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cffe1b77969c941a5ac596eb749856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponRecoilFeedback
+  weapon: {fileID: 8299134870069633189}
+  affectedRigidbody: {fileID: 1657840696044281464}
+  weaponDirection: {fileID: 3919714130502515608}
+  knockBackForce: 3
 --- !u!4 &6335819879999158148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1395,7 +1498,7 @@ MonoBehaviour:
   _componentIndexCache: 8
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
-  spawnPoint: {fileID: 3919714130502515608}
+  spawnPoint: {fileID: 4884054835545564801}
   projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
 --- !u!114 &1632243639068029309
 MonoBehaviour:
@@ -1439,13 +1542,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: 3
+  <WeaponId>k__BackingField: 2
   OnChargeActive:
     m_PersistentCalls:
       m_Calls: []
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7135765918768299488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522786063078361925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cffe1b77969c941a5ac596eb749856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponRecoilFeedback
+  weapon: {fileID: 8098446815312290814}
+  affectedRigidbody: {fileID: 1657840696044281464}
+  weaponDirection: {fileID: 4884054835545564801}
+  knockBackForce: 3
 --- !u!114 &1204134546500510788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,8 +1707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04868f79488640547a2415482245d84d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleSteeringControls
-  ballastScaleNetworking: {fileID: 0}
+  ballastScale: {fileID: 0}
   vehicleSteering: {fileID: 3401226020852860089}
+  weigthBalanceMultiplier: -1
   ballastScaleInfluence: 0.5
   maxSteeringPowerWeight: 3
 --- !u!114 &4645123444373290340
@@ -1608,7 +1728,7 @@ MonoBehaviour:
   - {fileID: 8491422322252078937}
   - {fileID: 9103657468870749182}
   - {fileID: 8031598630779400605}
-  motorSpeed: {x: 1200, y: 1200}
+  motorSpeed: {x: 900, y: 900}
   motorForce: {x: 10, y: 10}
   extaBoostJoints:
   - {fileID: 8491422322252078937}
@@ -1679,7 +1799,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584332817992367977
+  _initializedTimestamp: -8584323267686212492
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1694,7 +1814,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 5
+  <PrefabId>k__BackingField: 7
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5918673326528417147
   SceneId: 0

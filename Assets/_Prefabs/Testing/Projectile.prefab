@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7612891434153303637}
   - component: {fileID: 186634480254117704}
   - component: {fileID: 3597766832002286674}
+  - component: {fileID: 3312864480688408905}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -77,6 +78,7 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 3782572831373989009}
   - {fileID: 186634480254117704}
+  - {fileID: 3312864480688408905}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -87,7 +89,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584335233147245797
+  _initializedTimestamp: -8584323267686212492
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -102,7 +104,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 11
+  <PrefabId>k__BackingField: 14
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 17208552865639799187
   SceneId: 0
@@ -167,8 +169,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleDamage
   damageOnEnter: 10
-  ownHealth: {fileID: 0}
-  ignoreOwnHealth: 0
+--- !u!114 &3312864480688408905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526851693559094585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5e848249604df41bd63136ab2cbd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 2990580506299518381}
+  _networkObjectCache: {fileID: 2990580506299518381}
 --- !u!1 &8105682616270808008
 GameObject:
   m_ObjectHideFlags: 0

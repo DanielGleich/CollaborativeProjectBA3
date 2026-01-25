@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
     [SerializeField] private UnityEvent<Vector2> onLook;
     [SerializeField] private UnityEvent onJump;
     [SerializeField] private UnityEvent onInteract;
+    [SerializeField] private UnityEvent onSubmit;
 
     void OnEnable()
     {
@@ -44,5 +46,11 @@ public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
     public void OnMove(InputAction.CallbackContext context)
     {
         onMove?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            onSubmit?.Invoke();
     }
 }

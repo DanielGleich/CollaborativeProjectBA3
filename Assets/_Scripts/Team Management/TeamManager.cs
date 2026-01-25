@@ -40,6 +40,13 @@ public class TeamManager : NetworkSingleton<TeamManager>
         isTeamReady.OnChange += OnPlayerReady;
     }
 
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        allTeams.OnChange -= TeamUpdate;
+        isTeamReady.OnChange -= OnPlayerReady;
+    }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -51,16 +58,6 @@ public class TeamManager : NetworkSingleton<TeamManager>
     {
         base.OnStopServer();
         LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
-    }
-
-    public override void OnStopNetwork()
-    {
-        base.OnStopNetwork();
-
-        allTeams.OnChange -= TeamUpdate;
-        isTeamReady.OnChange -= OnPlayerReady;
-        LobbyConnectionManager.OnClientJoinOrLeaves -= ClientJoinOrLeave;
-        StopAllCoroutines();
     }
 
     private void TeamUpdate(SyncDictionaryOperation op, int key, Team value, bool asServer)
@@ -152,6 +149,22 @@ public class TeamManager : NetworkSingleton<TeamManager>
         }
         RequestTeamSlotServerRPC(teamId, slot, clientId);
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetPlayerReadyStates()
+    {
+        foreach (var kvp in isTeamReady.ToList()) 
+        {
+            isTeamReady[kvp.Key] = new TeamReadyFlag
+            {
+                ratReady = false,
+                scientistReady = false
+            };
+        }
+
+        AllTeamsReady.Value = false;
+    }
+
 
     [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, int clientId)
