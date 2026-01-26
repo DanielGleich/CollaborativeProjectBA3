@@ -24,7 +24,7 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
     public static event Action OnLobbyJoined;
     public static event Action OnLobbyExited;
     public static event Action<CSteamID> OnClientJoinOrLeaves;
-    public static event Action OnLobbyOwnerLeft;
+    //public static event Action OnLobbyOwnerLeft;
 
 
     private void OnEnable()
@@ -42,7 +42,7 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
 
     internal static void JoinLobbyByID(CSteamID steamID)
     {
-        UnityEngine.Debug.Log($"Attempting to joing lobby with ID:({steamID})");
+        Debug.Log($"Attempting to joing lobby with ID:({steamID})");
 
         if (SteamMatchmaking.RequestLobbyData(steamID))
         {
@@ -50,12 +50,18 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
         } 
         else
         {
-            UnityEngine.Debug.LogWarning($"Failed to join lobby with ID:({steamID})");
+            Debug.LogWarning($"Failed to join lobby with ID:({steamID})");
         }
     }
 
     public static void LeaveLobby()
     {
+        if (SteamAPI.IsSteamRunning())
+            return;
+
+        if (_currentLobbyID == 0 || new CSteamID(_currentLobbyID).m_SteamID == 0)
+            return;
+
         SteamMatchmaking.LeaveLobby(new CSteamID(CurrentLobbyID));
         _currentLobbyID = 0;
 
@@ -103,7 +109,7 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
         _fishySteamworks.SetClientAddress(_hostAddress);
         _fishySteamworks.StartConnection(true);
         _lobbyCreatorId = SteamMatchmaking.GetLobbyOwner(lobbyID).m_SteamID;
-        UnityEngine.Debug.Log("Lobby Creation Successful");
+        Debug.Log("Lobby Creation Successful");
     }
 
     private void LobbyJoinRequested(GameLobbyJoinRequested_t callback)

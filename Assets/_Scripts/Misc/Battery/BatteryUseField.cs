@@ -6,7 +6,7 @@ using UnityEngine;
 public class BatteryUseField : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int requiredChargedBatteries = 2;
+    [field: SerializeField] public int requiredChargedBatteries { get; private set; } = 2;
     [SerializeField] private List<Battery> batteries = new();
     [SerializeField] private bool dischargeAll;
 

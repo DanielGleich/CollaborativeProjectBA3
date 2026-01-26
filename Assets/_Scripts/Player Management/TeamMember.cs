@@ -42,4 +42,10 @@ public class TeamMember : NetworkBehaviour
     {
         TeamManager.Instance.SetPlayerReady(CurrentTeam.Value, CurrentRole.Value);
     }
+
+    private void OnDestroy()
+    {
+        if (IsOwner && PlayerManager.Instance != null)
+            PlayerManager.Instance.DespawnPlayerObjectServerRpc(LocalConnection);
+    }
 }

@@ -151,6 +151,22 @@ public class TeamManager : NetworkSingleton<TeamManager>
     }
 
     [ServerRpc(RequireOwnership = false)]
+    public void ResetPlayerReadyStates()
+    {
+        foreach (var kvp in isTeamReady.ToList()) 
+        {
+            isTeamReady[kvp.Key] = new TeamReadyFlag
+            {
+                ratReady = false,
+                scientistReady = false
+            };
+        }
+
+        AllTeamsReady.Value = false;
+    }
+
+
+    [ServerRpc(RequireOwnership = false)]
     private void RequestTeamSlotServerRPC(int teamId, TeamRole slot, int clientId)
     {
         RemovePlayerFromAllTeams(clientId);

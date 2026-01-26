@@ -26,7 +26,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
-        LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
+        //LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
         PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
@@ -40,7 +40,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined -= OnLobbyJoined;
         LobbyConnectionManager.OnLobbyExited -= OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves -= OnClientJoined;
-        LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
+        //LobbyConnectionManager.OnLobbyOwnerLeft -= LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
         PlayerManager.OnPlayerDisconnected.AddListener(UpdateLobbyProfiles);
@@ -78,8 +78,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
         UpdateLobbyProfiles();
     }
 
-    private void CreateTeamCards()
+    public void CreateTeamCards()
     {
+        ClearTeamCards();
         foreach(var kvp in TeamManager.Instance.allTeams)
         { 
             GameObject tCard = Instantiate(teamCardPrefab, teamCardContainer).gameObject;
@@ -96,7 +97,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         }
     }
 
-    private void OnLobbyJoined()
+    public void OnLobbyJoined()
     {
         joinContainer.SetActive(false);
         lobbyContainer.SetActive(true);
@@ -113,7 +114,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void OnLobbyExited()
     {
-        ClearTeamCards();
         UpdateLobbyProfiles();
     }
 
@@ -130,14 +130,20 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     }
 
-    public void StartGame()
+    public void StartLobby()
     {
-        NetworkSceneManager.LoadNetworkScene("Game", new string[] {"ConnectingScene"} );
+        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] {"ConnectingScene"} );
     }
 
     public void LeaveLobby()
     {
         LobbyConnectionManager.LeaveLobby();
+        
+        if (PlayerManager.Instance != null)
+            Destroy(PlayerManager.Instance.gameObject);
+        if (TeamManager.Instance != null)
+            Destroy(TeamManager.Instance.gameObject);
+        
         joinContainer.SetActive(true);
         lobbyContainer.SetActive(false);
     }

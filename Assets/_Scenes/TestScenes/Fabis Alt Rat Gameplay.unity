@@ -3008,7 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!136 &844877665
@@ -3449,7 +3449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!114 &984495541
@@ -3912,7 +3912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!136 &1053217526
@@ -4252,7 +4252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!114 &1112373523
@@ -4615,7 +4615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!114 &1321767385
@@ -4700,7 +4700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  requiredChargedBatteries: 2
+  <requiredChargedBatteries>k__BackingField: 2
   batteries: []
   dischargeAll: 0
 --- !u!1001 &1391924980
@@ -6958,6 +6958,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1163373211228828478
 GameObject:
   m_ObjectHideFlags: 0
