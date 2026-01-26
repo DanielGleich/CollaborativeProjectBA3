@@ -4,29 +4,37 @@ using FMODUnity;
 using UnityEngine;
 
 /// <summary>
-/// Ambience that only plays if you are the owner of this script (avoids hearing ambience special to certain roles at the same time)
+/// Ambience/ Music that only plays if you are the owner of this script and you have right team role (avoids hearing ambience special to certain roles at the same time)
 /// </summary>
-public class ClientLocalAmbience : NetworkBehaviour
+public class ClientLocalRoleBasedAudio : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] private EventReference ambienceReference;
+    [SerializeField] private TeamMember teamMember;
 
     [Header("Settings")]
+    [SerializeField] private TeamRole teamRole;
     [SerializeField] private bool playOnStartClient = true;
 
     private EventInstance eventInstance;
 
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if(!teamMember)
+            GetComponentInParent<TeamMember>();
+    }
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (!IsOwner)
+        if (!IsOwner || teamMember.CurrentRole.Value != teamRole)
         {
             Destroy(this);
             return;
         }
         eventInstance = RuntimeManager.CreateInstance(ambienceReference);
         RuntimeManager.AttachInstanceToGameObject(eventInstance, gameObject);
-        if (playOnStartClient)
+        if (playOnStartClient && gameObject.activeInHierarchy)
             Play();
     }
     public void Play() => eventInstance.start();
@@ -34,7 +42,7 @@ public class ClientLocalAmbience : NetworkBehaviour
 
     public override void OnStopClient()
     {
-        base.OnStopClient();
         eventInstance.release();
+        base.OnStopClient();
     }
 }
