@@ -6,7 +6,8 @@ using UnityEngine;
 /// <summary>
 /// Ambience that only plays if you are the owner of this script (avoids hearing ambience special to certain roles at the same time)
 /// </summary>
-public class ClientLocalAmbience : NetworkBehaviour {
+public class ClientLocalAmbience : NetworkBehaviour
+{
     [Header("References")]
     [SerializeField] private EventReference ambienceReference;
 
@@ -18,12 +19,15 @@ public class ClientLocalAmbience : NetworkBehaviour {
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if(!IsOwner)
+        if (!IsOwner)
         {
             Destroy(this);
             return;
         }
         eventInstance = RuntimeManager.CreateInstance(ambienceReference);
+        RuntimeManager.AttachInstanceToGameObject(eventInstance, gameObject);
+        if (playOnStartClient)
+            Play();
     }
     public void Play() => eventInstance.start();
     public void Stop() => eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
