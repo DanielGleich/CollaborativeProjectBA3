@@ -3,7 +3,17 @@ guid: 46dc1edbb8659d04a9ea56d92cba61ff
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery Base
+    second: {fileID: -876546973899608171, guid: c9989137dcf7c434f8be303cc463e15a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery Glow
+    second: {fileID: -876546973899608171, guid: 098c8ed10e122e542b6cdd2f9ad457cd, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

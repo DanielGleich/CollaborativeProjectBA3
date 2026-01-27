@@ -1231,6 +1231,13 @@ MonoBehaviour:
   activeSawSpeed: 10
   duration: 0.1
   ease: 7
+  ChainsawTriggeredSFX:
+    Guid:
+      Data1: 41297388
+      Data2: 1197776737
+      Data3: -1443287874
+      Data4: 1886909238
+    Path: event:/SFX/ChainsawTriggeredOutside
 --- !u!1 &5121156719385623760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1710,8 +1717,8 @@ MonoBehaviour:
   ballastScale: {fileID: 0}
   vehicleSteering: {fileID: 3401226020852860089}
   weigthBalanceMultiplier: -1
-  ballastScaleInfluence: 0.5
-  maxSteeringPowerWeight: 3
+  ballastScaleInfluence: 0.75
+  maxSteeringPowerWeight: 6
 --- !u!114 &4645123444373290340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,7 +1735,7 @@ MonoBehaviour:
   - {fileID: 8491422322252078937}
   - {fileID: 9103657468870749182}
   - {fileID: 8031598630779400605}
-  motorSpeed: {x: 900, y: 900}
+  motorSpeed: {x: 450, y: 450}
   motorForce: {x: 10, y: 10}
   extaBoostJoints:
   - {fileID: 8491422322252078937}
@@ -1750,7 +1757,7 @@ MonoBehaviour:
   wheelRotationPoints:
   - {fileID: 2511605872656321944}
   rotationAxis: {x: 0, y: 0, z: 1}
-  rotationAmount: 60
+  rotationAmount: 30
   smoothTime: 0.1
 --- !u!114 &5607037410786639857
 MonoBehaviour:
@@ -1799,7 +1806,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584323267686212492
+  _initializedTimestamp: -8584320823760634932
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1814,7 +1821,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 6
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5918673326528417147
   SceneId: 0
