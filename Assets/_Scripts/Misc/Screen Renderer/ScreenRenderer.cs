@@ -95,14 +95,14 @@ public class ScreenRenderer : MonoBehaviour
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
         return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
     }
-    private void CreateRenderTexture()
+    private void CreateRenderTexture(bool useSharedMaterial = false)
     {
         renderTexture = new RenderTexture(imageResolution.x, imageResolution.y, 1000, renderTextureFormat);
         renderTexture.filterMode = filterMode;
         renderTexture.wrapMode = TextureWrapMode.Clamp;
         renderCamera.targetTexture = renderTexture;
         Debug.Log(Application.isEditor);
-        if (Application.isEditor)
+        if (useSharedMaterial)
             meshRenderer.sharedMaterial.SetTexture(screenVariableName, renderTexture);
         else
             meshRenderer.material.SetTexture(screenVariableName, renderTexture);
@@ -122,7 +122,7 @@ public class ScreenRenderer : MonoBehaviour
         if (!(renderCamera && meshRenderer))
             yield break;
         yield return null;
-        CreateRenderTexture();
+        CreateRenderTexture(true);
         Render();
     }
     #endregion
