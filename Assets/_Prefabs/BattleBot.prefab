@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bcba3f3349959439026cacd6207df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
-  damageOnEnter: 0
+  damageOnEnter: 10
   damagePerSecond: 1
 --- !u!114 &4092409647031105244
 MonoBehaviour:
@@ -1223,7 +1223,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2596143300717024529}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1363,7 +1363,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2886258379609698488}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   constantDamage: {fileID: 4543931608220937660}
-  duration: 2
+  duration: 4
   limitedTime: 1
 --- !u!64 &3707973112139763967
 MeshCollider:
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
   targetWeapon: {fileID: 8299134870069633189}
-  <WeaponCooldown>k__BackingField: 10
+  <WeaponCooldown>k__BackingField: 5
 --- !u!114 &1311022878276999232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   weapon: {fileID: 8299134870069633189}
   affectedRigidbody: {fileID: 1657840696044281464}
   weaponDirection: {fileID: 3919714130502515608}
-  knockBackForce: 3
+  knockBackForce: 7
 --- !u!4 &6335819879999158148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
   targetWeapon: {fileID: 8098446815312290814}
-  <WeaponCooldown>k__BackingField: 10
+  <WeaponCooldown>k__BackingField: 5
 --- !u!114 &7938849050476527156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,7 +1989,7 @@ MonoBehaviour:
   weapon: {fileID: 8098446815312290814}
   affectedRigidbody: {fileID: 1657840696044281464}
   weaponDirection: {fileID: 4884054835545564801}
-  knockBackForce: 3
+  knockBackForce: 7
 --- !u!114 &1204134546500510788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,8 +2206,8 @@ MonoBehaviour:
   ballastScale: {fileID: 0}
   vehicleSteering: {fileID: 3401226020852860089}
   weigthBalanceMultiplier: -1
-  ballastScaleInfluence: 0.75
-  maxSteeringPowerWeight: 6
+  ballastScaleInfluence: 0.765
+  maxSteeringPowerWeight: 30
 --- !u!114 &4645123444373290340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,7 +2224,7 @@ MonoBehaviour:
   - {fileID: 8491422322252078937}
   - {fileID: 9103657468870749182}
   - {fileID: 8031598630779400605}
-  motorSpeed: {x: 450, y: 450}
+  motorSpeed: {x: 400, y: 350}
   motorForce: {x: 10, y: 10}
   extaBoostJoints:
   - {fileID: 8491422322252078937}
