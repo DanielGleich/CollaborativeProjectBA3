@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4010675597067934004}
   - component: {fileID: 1862011997934580694}
   - component: {fileID: 6436239580665345816}
+  - component: {fileID: 7670974470160508696}
   m_Layer: 0
   m_Name: Rat Player
   m_TagString: Untagged
@@ -157,6 +158,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
   <Weight>k__BackingField: 1
+--- !u!114 &7670974470160508696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618099404285537198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a9bc8e7ea5a6c48b9851502426f8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpGrabable3d
+  interaction: {fileID: 0}
+  grabableTargetPosition: {fileID: 0}
+  speed: 10
+  smoothTime: 0.1
+  throwStrength: {x: 1, y: 1}
 --- !u!1 &2118742767913893264
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +205,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8879191014853689431}
+  - {fileID: 7505624015240773339}
   m_Father: {fileID: 2489622582611423837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4558184193266530893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7505624015240773339}
+  m_Layer: 0
+  m_Name: GrabPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7505624015240773339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558184193266530893}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6309675398655295516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7155122874236792959
 GameObject:

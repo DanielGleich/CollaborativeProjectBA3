@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8214294263592795525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      propertyPath: m_Name
+      value: Carboard Cut Out Weapon Tutorial
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4693772229613444439}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4442499967393869675}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7616021254690771631}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4623131750767892738}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2089458009864218042}
+  m_SourcePrefab: {fileID: 100100000, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+--- !u!4 &8535922603490499182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+  m_PrefabInstance: {fileID: 8214294263592795525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9024757138659410132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+  m_PrefabInstance: {fileID: 8214294263592795525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4693772229613444439
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024757138659410132}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3602629119637006008, guid: a516321d5e309854e9dd8d24bc38ff00, type: 3}
+--- !u!114 &4442499967393869675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024757138659410132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e7d4cbf4e2e7940bf63df2192949a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  <MaxHealth>k__BackingField: 1
+--- !u!114 &7616021254690771631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024757138659410132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390c36d1477f7e04989a296fd212a1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthNetworking
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: -4623131750767892738}
+  _networkObjectCache: {fileID: -4623131750767892738}
+  health: {fileID: 4442499967393869675}
+  DamageSyncTolerace: 1
+--- !u!114 &-4623131750767892738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024757138659410132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
+  <IsNested>k__BackingField: 0
+  WasActiveDuringEdit: 0
+  WasActiveDuringEdit_Set1: 1
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  <PredictedOwner>k__BackingField: {fileID: 0}
+  NetworkBehaviours:
+  - {fileID: 7616021254690771631}
+  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedNestedNetworkObjects: []
+  RuntimeParentNetworkBehaviour: {fileID: 0}
+  RuntimeChildNetworkBehaviours: []
+  _isNetworked: 1
+  _isSpawnable: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _preventDespawnOnDisconnect: 0
+  _defaultDespawnType: 0
+  _initializedTimestamp: -8584322633313867223
+  NetworkObserver: {fileID: 0}
+  _enablePrediction: 0
+  _predictionType: 0
+  _graphicalObject: {fileID: 0}
+  _detachGraphicalObject: 0
+  _enableStateForwarding: 1
+  _networkTransform: {fileID: 0}
+  _ownerInterpolation: 1
+  _ownerSmoothedProperties: 255
+  _adaptiveInterpolation: 3
+  _spectatorSmoothedProperties: 255
+  _spectatorInterpolation: 2
+  _enableTeleport: 0
+  _teleportThreshold: 1
+  <PrefabId>k__BackingField: 20
+  <SpawnableCollectionId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 15066479652531424442
+  SceneId: 0
+  SerializedTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
+--- !u!114 &-2089458009864218042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024757138659410132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938fa96fb59f86049aa2699c8f253f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
+  networkedHealth: {fileID: 7616021254690771631}
+  spawnPosition: {fileID: 8535922603490499182}
+  deathPrefab: {fileID: 8123817507976800770, guid: 10edc8499f7d1b8408e2630d2e944eb7, type: 3}

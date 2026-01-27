@@ -43,9 +43,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "95731c13-e2d7-4607-8556-1e2150dabe54",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Submit",
                     "type": "Button",
                     "id": "49d3d93c-d1a5-46eb-9307-1a98a3e8fa6a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Duck",
+                    "type": "Button",
+                    "id": "164e304e-d623-47b8-87cd-b29e09aac8db",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -248,6 +266,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4dfaf42-650a-4456-bd0c-fe6505490e89",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fa386c4-7d14-481a-b952-30394b075234",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Duck",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

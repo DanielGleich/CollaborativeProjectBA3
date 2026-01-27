@@ -377,7 +377,7 @@ Transform:
   - {fileID: 5994634823785261298}
   - {fileID: 6978525335225442122}
   - {fileID: 7531601245441644152}
-  - {fileID: 5846737718784472174}
+  - {fileID: 6358735981119394777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1185381369708860789
@@ -413,7 +413,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584326103763092900
+  _initializedTimestamp: -8584320823760634932
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 13
+  <PrefabId>k__BackingField: 19
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 15317119274973028089
   SceneId: 0
@@ -454,6 +454,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5268293304013797499}
         m_TargetAssemblyTypeName: VehicleMovement, Assembly-CSharp
+        m_MethodName: SetInputDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8937382933513666372}
+        m_TargetAssemblyTypeName: VehicleSteeringControls, Assembly-CSharp
         m_MethodName: SetInputDirection
         m_Mode: 0
         m_Arguments:
@@ -568,9 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455c400aecccbb0429b2f0bdaf4006be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatusNetworking
-  _componentIndexCache: 2
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 1185381369708860789}
-  _networkObjectCache: {fileID: 1185381369708860789}
+  _networkObjectCache: {fileID: 0}
 --- !u!1 &3415363989384373410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1181,38 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &5970196072802969673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6358735981119394777}
+  m_Layer: 0
+  m_Name: Archive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6358735981119394777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970196072802969673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5846737718784472174}
+  m_Father: {fileID: 2009091798075497183}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5989486050877798741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1539,7 @@ GameObject:
   - component: {fileID: 3176267008753224908}
   - component: {fileID: 5857927317637470860}
   m_Layer: 0
-  m_Name: Scientist
+  m_Name: "\U0001F97C Scientist"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,13 +1620,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8787289137942421346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5730382300604350063}
-  m_Father: {fileID: 2009091798075497183}
+  m_Father: {fileID: 6358735981119394777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1880,7 +1924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584326103763092900
+      value: -8584320823760634932
       objectReference: {fileID: 0}
     - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: <IsNested>k__BackingField
@@ -2024,7 +2068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131754079086674159, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Name
-      value: Battle Bot
+      value: "\U0001F916 Battle Bot"
       objectReference: {fileID: 0}
     - target: {fileID: 7131754079086674159, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Layer
@@ -2094,10 +2138,6 @@ PrefabInstance:
       propertyPath: ballastScaleNetworking
       value: 
       objectReference: {fileID: 549479856537950070}
-    - target: {fileID: 8461561788159408731, guid: 9b43883de6c829d4f92a569706873422, type: 3}
-      propertyPath: maxSteeringPowerWeight
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2332,3 +2372,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
+--- !u!114 &8937382933513666372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8461561788159408731, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+  m_PrefabInstance: {fileID: 678486573158417695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04868f79488640547a2415482245d84d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleSteeringControls

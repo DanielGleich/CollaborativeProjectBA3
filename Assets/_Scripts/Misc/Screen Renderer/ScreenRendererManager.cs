@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 /// <summary>
@@ -10,7 +11,8 @@ public class ScreenRendererManager : MonoBehaviour {
     [SerializeField, Tooltip("The order should according to the vehicle cameras class")] private ScreenRenderer[] screenRenderers;
 
     [Header("Settings")]
-    [SerializeField] private bool singleActiveScreen = true;
+    [SerializeField] private bool singleActiveScreen;
+    [SerializeField] private bool activateAllOnFound = true;
 
     private int activeIndex = -1;
 
@@ -25,6 +27,8 @@ public class ScreenRendererManager : MonoBehaviour {
     private void VehicleCamerasFound()
     {
         SetUpScreenRenderCameras();
+        if(activateAllOnFound)
+            ActivateAllScreens();
     }
     public void ActivateSingleScreen(int index)
     {

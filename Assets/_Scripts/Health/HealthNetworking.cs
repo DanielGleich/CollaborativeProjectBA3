@@ -87,8 +87,15 @@ public class HealthNetworking : NetworkBehaviour
     {
         if (CurrentHealth.Value != newValue)
         {
-            //Debug.Log($"{gameObject.name} - local => network new value {newValue}");
-            CurrentHealth.Value = newValue;
+            if (newValue <= 0)
+            {
+                OnDeathServerRpc();
+            }
+            else
+            { 
+                CurrentHealth.Value = newValue;
+                //Debug.Log($"{gameObject.name} - local => network new value {newValue}");
+            }
         }
     }
 
@@ -124,7 +131,7 @@ public class HealthNetworking : NetworkBehaviour
 
     [ObserversRpc]
     private void HandleNetworkedDeath(NetworkConnection c = null)
-    { 
+    {
         OnNetworkedDeath?.Invoke(c);
         gameObject.SetActive(false);
     }

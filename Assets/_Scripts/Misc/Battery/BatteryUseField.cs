@@ -7,7 +7,7 @@ public class BatteryUseField : MonoBehaviour
 {
     [Header("Settings")]
     [field: SerializeField] public int requiredChargedBatteries { get; private set; } = 2;
-    [SerializeField] private List<Battery> batteries = new();
+    [field: SerializeField] public List<Battery> batteries { get; private set; } = new();
     [SerializeField] private bool dischargeAll;
 
     private bool isReady;
