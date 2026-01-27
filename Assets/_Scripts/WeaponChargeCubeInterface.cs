@@ -1,5 +1,5 @@
 using FishNet.Object;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +10,6 @@ public class WeaponChargeCubeInterface : NetworkBehaviour
     [SerializeField] int weaponId = -1;
 
     BatteryUseField batteryUseField;
-
-    List<Battery> batteries = new List<Battery>();
 
     [Header("Events")]
     public UnityEvent OnChargeTrigger = new UnityEvent();
@@ -35,31 +33,38 @@ public class WeaponChargeCubeInterface : NetworkBehaviour
     private void OnChargeUsed(int teamId, int triggeredWeaponId)
     {
         if (IsOwner && TeamMember.localTeamId == teamId && triggeredWeaponId == weaponId)
+        {
             batteryUseField.UseUpBatteries();
+            if (batteryUseField.batteries.Count <= batteryUseField.requiredChargedBatteries)
+            {
+                ChargeStatus.UnchargeWeapon(TeamMember.localTeamId, weaponId);
+                OnUnchargeTrigger?.Invoke();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (IsOwner && other.gameObject.TryGetComponent<Battery>(out Battery bat) && batteries.Contains(bat) == false)
+        if (IsOwner && other.gameObject.TryGetComponent<Battery>(out Battery bat))
         {
-            batteries.Add(bat);
-            if (batteries.Count >= batteryUseField.requiredChargedBatteries)
+            if (batteryUseField.batteries.Count >= batteryUseField.requiredChargedBatteries)
             {
                 ChargeStatus.ChargeWeapon(TeamMember.localTeamId, weaponId);
                 OnChargeTrigger?.Invoke();
+                Debug.Log($"{gameObject} charged");
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (IsOwner && other.gameObject.TryGetComponent<Battery>(out Battery bat) && batteries.Contains(bat))
+        if (IsOwner && other.gameObject.TryGetComponent<Battery>(out Battery bat))
         {
-            batteries.Remove(bat);
-            if (batteries.Count < batteryUseField.requiredChargedBatteries)
+            if (batteryUseField.batteries.Count < batteryUseField.requiredChargedBatteries)
             {
                 ChargeStatus.UnchargeWeapon(TeamMember.localTeamId, weaponId);
                 OnUnchargeTrigger?.Invoke();
+                Debug.Log($"{gameObject} uncharged");
             }
         }
     }
