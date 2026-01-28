@@ -1,6 +1,6 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
-using Steamworks;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,15 +14,7 @@ public class TeamMember : NetworkBehaviour
     [SerializeField] private GameObject scientistPlayerPackage;
     [SerializeField] private GameObject ratPlayerPackage;
 
-    private void OnEnable()
-    {
-        GameManager.OnGameStart.AddListener(ActivateInputs);
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnGameStart.RemoveListener(ActivateInputs);
-    }
+    public event Action<GameObject> OnPlayerPackageDefined;
 
     public override void OnStartClient()
     {
@@ -36,16 +28,7 @@ public class TeamMember : NetworkBehaviour
 
         scientistPlayerPackage.SetActive(CurrentRole.Value == TeamRole.SCIENTIST);
         ratPlayerPackage.SetActive(CurrentRole.Value == TeamRole.RAT);
-
-
-        if (GameManager.Instance != null && GameManager.Instance.IsTesting == false)
-        {
-            if (scientistPlayerPackage.TryGetComponent<ScientistInputsHandler>(out ScientistInputsHandler sInput))
-                sInput.enabled = false;
-
-            if (ratPlayerPackage.TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
-                rInput.enabled = false;
-        }
+        OnPlayerPackageDefined?.Invoke(CurrentRole.Value == TeamRole.SCIENTIST ? scientistPlayerPackage : ratPlayerPackage);
 
         if (IsOwner)
         {
@@ -54,26 +37,15 @@ public class TeamMember : NetworkBehaviour
         }
     }
 
-    private void ActivateInputs()
-    {
-        switch (CurrentRole.Value)
-        {
-
-            case TeamRole.SCIENTIST:
-                if (scientistPlayerPackage.TryGetComponent<ScientistInputsHandler>(out ScientistInputsHandler sInput))
-                    sInput.enabled = true;
-            break;
-
-            case TeamRole.RAT:
-                if (ratPlayerPackage.TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
-                    rInput.enabled = true;
-            break;
-        }
-    }
-
     [ServerRpc]
     private void SetPlayerReadyServerRpc()
     {
         TeamManager.Instance.SetPlayerReady(CurrentTeam.Value, CurrentRole.Value);
+    }
+
+    private void OnDestroy()
+    {
+        if (IsOwner && PlayerManager.Instance != null)
+            PlayerManager.Instance.DespawnPlayerObjectServerRpc(LocalConnection);
     }
 }

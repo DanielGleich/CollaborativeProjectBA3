@@ -1,4 +1,5 @@
 using FishNet.Object;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,9 +8,14 @@ public class WeaponTriggerNetworking : NetworkBehaviour
 {
     [Header("Options")]
     [field: SerializeField] public bool GodMode { private set; get; } = false;
-    private WeaponTrigger localTrigger;
-    private ChargeStatusNetworking networkedChargeStatus;
+    
     private bool isCooldown = false;
+    int weaponId = -1;
+    
+    private ChargeStatusNetworking networkedChargeStatus;
+    private WeaponTrigger localTrigger;
+
+    public static event Action<int,int> OnWeaponTriggered;
 
     public override void OnStartClient()
     {
@@ -17,6 +23,7 @@ public class WeaponTriggerNetworking : NetworkBehaviour
         localTrigger = GetComponent<WeaponTrigger>();
         localTrigger.Unsubscribe();
         networkedChargeStatus = GetComponent<ChargeStatusNetworking>();
+        weaponId = networkedChargeStatus.localChargeStatus.WeaponId;
 
         if (IsOwner)
             WeaponManager.OnWeaponTrigger += HandleLocalTriggerRequest;
@@ -36,14 +43,14 @@ public class WeaponTriggerNetworking : NetworkBehaviour
 
         if ( GodMode || networkedChargeStatus.IsOvercharged.Value || (isCooldown == false && networkedChargeStatus.IsPowered.Value))
         {
-            TriggerWeapon();
+            TriggerWeapon(teamId);
             StartCoroutine(Cooldown());
             OverchargedStatus.RequestUseOvercharge(teamId);
         }
     }
 
     [ObserversRpc]
-    private void TriggerWeapon()
+    private void TriggerWeapon(int teamId)
     {
         if (IsOwner)
         {
@@ -53,6 +60,7 @@ public class WeaponTriggerNetworking : NetworkBehaviour
         {
             localTrigger.ForceTriggerWeaponAnimation();
         }
+        OnWeaponTriggered?.Invoke(teamId, weaponId);
     }
 
     [Server]

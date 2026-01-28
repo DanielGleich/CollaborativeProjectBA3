@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BatteryUseField : MonoBehaviour {
+public class BatteryUseField : MonoBehaviour
+{
     [Header("Settings")]
-    [SerializeField] private int requiredCharedBatteries = 2;
-    private List<Battery> batteries = new();
+    [field: SerializeField] public int requiredChargedBatteries { get; private set; } = 2;
+    [field: SerializeField] public List<Battery> batteries { get; private set; } = new();
+    [SerializeField] private bool dischargeAll;
 
     private bool isReady;
     public event Action<bool> OnUpdateIsReady;
@@ -15,7 +17,7 @@ public class BatteryUseField : MonoBehaviour {
         get => isReady;
         private set
         {
-            if(value == isReady)
+            if (value == isReady)
                 return;
             isReady = value;
             OnUpdateIsReady?.Invoke(value);
@@ -24,32 +26,43 @@ public class BatteryUseField : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            {
-                batteries.Add(battery);
-                CheckBatteryCharging();
-            }
+        if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
+        {
+            if (batteries.Contains(battery))
+                return;
+            batteries.Add(battery);
+            CheckBatteryCharging();
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            {
-                batteries.Remove(battery);
-                CheckBatteryCharging();
-            }
+        if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
+        {
+            if (!batteries.Contains(battery))
+                return;
+            batteries.Remove(battery);
+            CheckBatteryCharging();
+        }
     }
     private void CheckBatteryCharging()
     {
         int chargedBatteries = batteries.Count(b => b.IsFullyCharged);
-        IsReady = requiredCharedBatteries <= chargedBatteries;
+        IsReady = requiredChargedBatteries <= chargedBatteries;
     }
     public void UseUpBatteries()
     {
-        if(!IsReady)
+        if (!IsReady)
             return;
-        for(int i = 0; i < requiredCharedBatteries; i++)
+        int charges = 0;
+        foreach(Battery b in batteries)
         {
-            batteries[i].ChargeAmount = 0;
+            if(b.IsFullyCharged || dischargeAll)
+            {
+                b.ChargeAmount = 0;
+                charges++;
+            }
+            if(charges >= requiredChargedBatteries && !dischargeAll)
+                break;
         }
         CheckBatteryCharging();
     }

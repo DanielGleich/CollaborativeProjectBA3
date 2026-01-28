@@ -8,6 +8,7 @@ public class ScientistInputsHandler : InputHandler, PlayerInputs.IScientistContr
     [SerializeField] private UnityEvent<Vector2> onMove;
     [SerializeField] private UnityEvent onSwitchCameraView;
     [SerializeField] private UnityEvent onTryAttack;
+    [SerializeField] private UnityEvent onSubmit;
 
     void OnEnable()
     {
@@ -27,11 +28,18 @@ public class ScientistInputsHandler : InputHandler, PlayerInputs.IScientistContr
     }
     public void OnSwitchCamera(InputAction.CallbackContext context)
     {
-        onSwitchCameraView?.Invoke();
+        if(context.performed)
+            onSwitchCameraView?.Invoke();
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
             onTryAttack?.Invoke();
+    }
+
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            onSubmit?.Invoke();
     }
 }

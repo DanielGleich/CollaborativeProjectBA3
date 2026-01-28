@@ -3994,8 +3994,12 @@ MonoBehaviour:
   - {fileID: 897627231}
   - {fileID: 1664840195}
   - {fileID: 1081863297}
-  motorSpeed: 1200
-  motorForce: 25
+  motorSpeed: {x: 600, y: 300}
+  motorForce: {x: 25, y: 25}
+  extaBoostJoints: []
+  boostMultiplier: 2
+  stopOnNoInput: 1
+  startMovementInput: 0
 --- !u!114 &1290866055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4060,6 +4064,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1298641545
@@ -7267,6 +7274,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1959228589

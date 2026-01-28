@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8222089152593576625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_Name
+      value: Screw Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2983770315637157351}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2877761303702225799}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8489779107902463254}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8492819828591853284}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6610882761837101844}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2212936202374204332}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1275114072154657963}
+  m_SourcePrefab: {fileID: 100100000, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+--- !u!23 &7339511850491207221 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+  m_PrefabInstance: {fileID: 8222089152593576625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9141132228420698080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+  m_PrefabInstance: {fileID: 8222089152593576625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2983770315637157351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ballast
+  <Weight>k__BackingField: 0.5
+--- !u!114 &2877761303702225799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c2bcf0b9bca5845811cd95a82684d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Grabable3d
+  Rigidbody: {fileID: 8492819828591853284}
+  maxCollisionMagnitude: 3
+--- !u!114 &8489779107902463254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5519098807c314896cb6be679d08e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Debris
+  FracturedDebris: {fileID: 0}
+--- !u!54 &8492819828591853284
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  serializedVersion: 5
+  m_Mass: 0.25
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &6610882761837101844
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7019499404158029721, guid: 1e49fc5533ac45d4eab47f88c9d14ec1, type: 3}
+--- !u!114 &2212936202374204332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e64bad7c5fd0f4ca0e516512f69543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableOverlayMaterialFeedback
+  interactable: {fileID: 2877761303702225799}
+  meshRenderer: {fileID: 7339511850491207221}
+  overlayMaterialReference: {fileID: -876546973899608171, guid: f3c8a750801710a4d92f74635ec22ee6, type: 3}
+  effectName: _Overlay_Alpha
+  duration: 0.25
+  ease: 4
+--- !u!114 &1275114072154657963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141132228420698080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1714aea927d10946bb307861b2528fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisFeedback
+  debris: {fileID: 8489779107902463254}
+  destoyedPrefab: {fileID: 4921014257491071401, guid: 18045a94d9664cc4ba892b681baf52df, type: 3}
+  destroctionSFX:
+    Guid:
+      Data1: 1083826733
+      Data2: 1341333149
+      Data3: 398663307
+      Data4: 437692459
+    Path: event:/SFX/Footstep Types/Footstep Concrete

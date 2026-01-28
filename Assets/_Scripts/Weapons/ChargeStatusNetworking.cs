@@ -1,14 +1,14 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(ChargeStatus))]
 public class ChargeStatusNetworking : NetworkBehaviour
 {
-    ChargeStatus localChargeStatus;
+    public ChargeStatus localChargeStatus { get; private set; }
     public readonly SyncVar<bool> IsPowered = new SyncVar<bool>();
     public readonly SyncVar<bool> IsOvercharged = new SyncVar<bool>();
-
     private void Awake()
     {
         localChargeStatus = GetComponent<ChargeStatus>();

@@ -11,12 +11,14 @@ public class BatteryChargingField : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            batteries.Add(battery);
+            if(!batteries.Contains(battery))
+                batteries.Add(battery);
     }
     void OnTriggerExit(Collider other)
     {
         if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent<Battery>(out var battery))
-            batteries.Remove(battery);
+            if(batteries.Contains(battery))
+                batteries.Remove(battery);
     }
     void Update()
     {

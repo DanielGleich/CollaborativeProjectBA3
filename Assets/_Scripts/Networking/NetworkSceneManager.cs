@@ -9,10 +9,11 @@ public static class NetworkSceneManager
     {
         if (!InstanceFinder.IsServerStarted) { return; }
 
-        SceneLoadData sceneLoadData = new SceneLoadData(sceneToLoad);
+        SceneLoadData sceneLoadData = new SceneLoadData(sceneToLoad) { ReplaceScenes = ReplaceOption.All };
         NetworkConnection[] connections = InstanceFinder.ServerManager.Clients.Values.ToArray();
         InstanceFinder.SceneManager.LoadGlobalScenes(sceneLoadData);
 
+        if (scenesToUnload == null) return;
         foreach (string sceneName in scenesToUnload)
         {
             SceneUnloadData sceneUnloadData = new SceneUnloadData(sceneName);

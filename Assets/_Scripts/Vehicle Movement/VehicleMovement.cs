@@ -1,6 +1,10 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Component responsible for controlling the motor speed
+/// </summary>
 public class VehicleMovement : MonoBehaviour
 {
     [Header("References")]
@@ -10,13 +14,17 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField, Min(0), Tooltip("x = forward, y = backwards")] private Vector2 motorSpeed = new(600f, 300f);
     [SerializeField, Tooltip("x = forward, y = backwards")] private Vector2 motorForce = new(25f, 25f);
 
-    [Header("Extra Boost")]
+    // Giving certain wheels extra boost is necessary because some wheels are smaller than others
+    [Header("Extra Boost (for smaller wheels)")]
     [SerializeField] private HingeJoint[] extaBoostJoints;
     [SerializeField, Min(1)] private float boostMultiplier = 2;
 
     [Header("Settings")]
     [SerializeField, Tooltip("Decides if the vehicle stops, when the input direction (y) is 0")] private bool stopOnNoInput = true;
     [SerializeField, Range(-1,1), Tooltip("Decides if the vehicle alredy starts with a certain move direction")] private int startMovementInput = 0;
+
+    public event Action<float> OnUpdateInputDirection;
+    public float InputDirection {get; private set;}
 
     void OnValidate()
     {
@@ -36,12 +44,13 @@ public class VehicleMovement : MonoBehaviour
     public void SetInputDirection(Vector2 inputDirection)
     {
         // Handle velocity
-        int newDirection = Mathf.RoundToInt(inputDirection.y);
-        float newTargetVelocity = newDirection >= 0 ? motorSpeed.x : -motorSpeed.y;
-        float newMotorForce = newDirection >= 0? motorForce.x : motorForce.y;
+        InputDirection = Mathf.Round(inputDirection.y);
+        float newTargetVelocity = InputDirection >= 0 ? motorSpeed.x : -motorSpeed.y;
+        float newMotorForce = InputDirection >= 0? motorForce.x : motorForce.y;
+        OnUpdateInputDirection?.Invoke(InputDirection);
 
         // Handle stoping the vehicle
-        if(newDirection == 0 && stopOnNoInput)
+        if(InputDirection == 0 && stopOnNoInput)
             newTargetVelocity = 0;
 
         foreach(HingeJoint h in hingeJoints)

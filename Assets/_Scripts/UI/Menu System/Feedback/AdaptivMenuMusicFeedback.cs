@@ -11,7 +11,8 @@ public class AdaptivMenuMusicFeedback : MonoBehaviour {
 
     [Header("Settings")]
     [SerializeField] private SubMenuMusicPhase[] subMenuMusicPhases;
-    [ParamRef, SerializeField] private string paramterName;
+    [SerializeField] private string paramterName;
+    [SerializeField, Tooltip("Necessary in case you want to play the music locally from a radio")] private bool attachToGameObject;
 
     private EventInstance eventInstance;
 
@@ -22,6 +23,8 @@ public class AdaptivMenuMusicFeedback : MonoBehaviour {
         UpdateMenuActive(menuStateManager.MenuIsActive);
         UpdateCurrentSubMenu(menuStateManager.CurrentSubMenu);
         eventInstance = RuntimeManager.CreateInstance(musicTrack);
+        if(attachToGameObject)
+            RuntimeManager.AttachInstanceToGameObject(eventInstance, gameObject);
     }
     void OnDisable()
     {
