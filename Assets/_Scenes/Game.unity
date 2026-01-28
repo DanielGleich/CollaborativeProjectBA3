@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 282014182}
   - component: {fileID: 282014181}
   - component: {fileID: 282014180}
+  - component: {fileID: 282014184}
   m_Layer: 0
   m_Name: hazard.right
   m_TagString: Untagged
@@ -635,7 +636,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3, z: 1}
+  m_Size: {x: 1, y: 3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &282014182
 MeshRenderer:
@@ -694,6 +695,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282014178}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &282014184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282014178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922b522071aec89489484b9c53543d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vfxPrefab: {fileID: 347534292051733321, guid: 6f7c09a9cd735b942aea03d3a692b497, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  UseTriggerEvents: 1
+  UseCollisionEvents: 0
+  spawnCooldown: 0.2
 --- !u!1 &300863008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +2058,7 @@ GameObject:
   - component: {fileID: 1346311957}
   - component: {fileID: 1346311956}
   - component: {fileID: 1346311955}
+  - component: {fileID: 1346311959}
   m_Layer: 0
   m_Name: hazard.left
   m_TagString: Untagged
@@ -2093,7 +2114,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3, z: 1}
+  m_Size: {x: 1, y: 3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1346311957
 MeshRenderer:
@@ -2152,6 +2173,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346311953}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1346311959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346311953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922b522071aec89489484b9c53543d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vfxPrefab: {fileID: 347534292051733321, guid: 6f7c09a9cd735b942aea03d3a692b497, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  UseTriggerEvents: 1
+  UseCollisionEvents: 0
+  spawnCooldown: 0.2
 --- !u!1 &1364415321
 GameObject:
   m_ObjectHideFlags: 0
