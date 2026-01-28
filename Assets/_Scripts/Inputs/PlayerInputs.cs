@@ -127,6 +127,33 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""95731c13-e2d7-4607-8556-1e2150dabe54"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""49d3d93c-d1a5-46eb-9307-1a98a3e8fa6a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Duck"",
+                    ""type"": ""Button"",
+                    ""id"": ""164e304e-d623-47b8-87cd-b29e09aac8db"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -316,6 +343,39 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c112a21b-a3ff-4460-8d68-be9e7fc46057"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4dfaf42-650a-4456-bd0c-fe6505490e89"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fa386c4-7d14-481a-b952-30394b075234"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Duck"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -345,6 +405,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""80144137-954a-4a6b-88ba-ea68d7c95413"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""84aa9ae5-abf2-4072-9e11-1e0ba6fe8b0d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -439,6 +508,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc75f590-7d27-42ef-9723-e09cadd8c8b3"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -490,11 +570,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_FPSControlls_Look = m_FPSControlls.FindAction("Look", throwIfNotFound: true);
         m_FPSControlls_Jump = m_FPSControlls.FindAction("Jump", throwIfNotFound: true);
         m_FPSControlls_Interact = m_FPSControlls.FindAction("Interact", throwIfNotFound: true);
+        m_FPSControlls_Throw = m_FPSControlls.FindAction("Throw", throwIfNotFound: true);
+        m_FPSControlls_Submit = m_FPSControlls.FindAction("Submit", throwIfNotFound: true);
+        m_FPSControlls_Duck = m_FPSControlls.FindAction("Duck", throwIfNotFound: true);
         // Scientist Controlls
         m_ScientistControlls = asset.FindActionMap("Scientist Controlls", throwIfNotFound: true);
         m_ScientistControlls_Move = m_ScientistControlls.FindAction("Move", throwIfNotFound: true);
         m_ScientistControlls_SwitchCamera = m_ScientistControlls.FindAction("Switch Camera", throwIfNotFound: true);
         m_ScientistControlls_Attack = m_ScientistControlls.FindAction("Attack", throwIfNotFound: true);
+        m_ScientistControlls_Submit = m_ScientistControlls.FindAction("Submit", throwIfNotFound: true);
         // Menu Inputs
         m_MenuInputs = asset.FindActionMap("Menu Inputs", throwIfNotFound: true);
         m_MenuInputs_ToggleMenu = m_MenuInputs.FindAction("Toggle Menu", throwIfNotFound: true);
@@ -584,6 +668,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPSControlls_Look;
     private readonly InputAction m_FPSControlls_Jump;
     private readonly InputAction m_FPSControlls_Interact;
+    private readonly InputAction m_FPSControlls_Throw;
+    private readonly InputAction m_FPSControlls_Submit;
+    private readonly InputAction m_FPSControlls_Duck;
     /// <summary>
     /// Provides access to input actions defined in input action map "FPS Controlls".
     /// </summary>
@@ -611,6 +698,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "FPSControlls/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_FPSControlls_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "FPSControlls/Throw".
+        /// </summary>
+        public InputAction @Throw => m_Wrapper.m_FPSControlls_Throw;
+        /// <summary>
+        /// Provides access to the underlying input action "FPSControlls/Submit".
+        /// </summary>
+        public InputAction @Submit => m_Wrapper.m_FPSControlls_Submit;
+        /// <summary>
+        /// Provides access to the underlying input action "FPSControlls/Duck".
+        /// </summary>
+        public InputAction @Duck => m_Wrapper.m_FPSControlls_Duck;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -649,6 +748,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
+            @Duck.started += instance.OnDuck;
+            @Duck.performed += instance.OnDuck;
+            @Duck.canceled += instance.OnDuck;
         }
 
         /// <summary>
@@ -672,6 +780,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
+            @Duck.started -= instance.OnDuck;
+            @Duck.performed -= instance.OnDuck;
+            @Duck.canceled -= instance.OnDuck;
         }
 
         /// <summary>
@@ -712,6 +829,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_ScientistControlls_Move;
     private readonly InputAction m_ScientistControlls_SwitchCamera;
     private readonly InputAction m_ScientistControlls_Attack;
+    private readonly InputAction m_ScientistControlls_Submit;
     /// <summary>
     /// Provides access to input actions defined in input action map "Scientist Controlls".
     /// </summary>
@@ -735,6 +853,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "ScientistControlls/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_ScientistControlls_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "ScientistControlls/Submit".
+        /// </summary>
+        public InputAction @Submit => m_Wrapper.m_ScientistControlls_Submit;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -770,6 +892,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Submit.started += instance.OnSubmit;
+            @Submit.performed += instance.OnSubmit;
+            @Submit.canceled += instance.OnSubmit;
         }
 
         /// <summary>
@@ -790,6 +915,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Submit.started -= instance.OnSubmit;
+            @Submit.performed -= instance.OnSubmit;
+            @Submit.canceled -= instance.OnSubmit;
         }
 
         /// <summary>
@@ -954,6 +1082,27 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Throw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnThrow(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Submit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSubmit(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Duck" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDuck(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Scientist Controlls" which allows adding and removing callbacks.
@@ -983,6 +1132,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Submit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSubmit(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Menu Inputs" which allows adding and removing callbacks.

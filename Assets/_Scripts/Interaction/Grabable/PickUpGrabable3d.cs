@@ -10,7 +10,7 @@ public class PickUpGrabable3d : MonoBehaviour
     [Header("Settings")]
     [SerializeField, Min(0)] private float speed = 10;
     [SerializeField, Min(0)] private float smoothTime = 0.1f;
-    [SerializeField, Min(0)] private Vector2 throwStrength = new Vector2(1, 01f);
+    [SerializeField, Min(0)] private Vector2 throwStrength = new Vector2(1, 0.1f);
     
     // For Smooth Damping
     private Vector3 currentVelocity;
@@ -41,12 +41,12 @@ public class PickUpGrabable3d : MonoBehaviour
         interaction.OnInteract -= OnInteract;
         Grabable = null;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (grabable)
         {
-            grabable.Rigidbody.linearVelocity = Vector3.SmoothDamp(grabable.Rigidbody.linearVelocity, (grabableTargetPosition.position - grabable.transform.position) * speed, ref currentVelocity, smoothTime, Mathf.Infinity, Time.deltaTime);
-            grabable.Rigidbody.angularVelocity = Vector3.SmoothDamp(grabable.Rigidbody.angularVelocity, Vector3.zero, ref currentRotationVelocity, smoothTime, Mathf.Infinity, Time.deltaTime);
+            grabable.Rigidbody.linearVelocity = Vector3.SmoothDamp(grabable.Rigidbody.linearVelocity, (grabableTargetPosition.position - grabable.transform.position) * speed, ref currentVelocity, smoothTime, Mathf.Infinity, Time.fixedDeltaTime);
+            grabable.Rigidbody.angularVelocity = Vector3.SmoothDamp(grabable.Rigidbody.angularVelocity, Vector3.zero, ref currentRotationVelocity, smoothTime, Mathf.Infinity, Time.fixedDeltaTime);
         }
     }
 

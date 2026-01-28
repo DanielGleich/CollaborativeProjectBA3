@@ -483,8 +483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839936b540a40e441be88bac9f6ce8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosionForceRigidbody3d
-  radius: 1
+  radius: 0.25
   forceRange: {x: 3, y: 2}
+  offset: {x: 0, y: 0.05, z: 0}
   triggerOnStart: 1
 --- !u!1 &2672071276213208132 stripped
 GameObject:

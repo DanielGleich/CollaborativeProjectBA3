@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VehilcleCamerasDummy : NetworkedDummy
 {
-    public VehicleCameras vehicleCamera;
+    [HideInInspector] public VehicleCameras vehicleCamera;
     public event Action OnComponentFound;
     protected override void GetNetworkedComponent(GameObject other)
     {

@@ -13,13 +13,12 @@ public class PlayerSpawnPoint : MonoBehaviour
                 Gizmos.color = Color.red;
                 break;
             case TeamRole.SCIENTIST:
-                Gizmos.color = Color.limeGreen;
+                Gizmos.DrawIcon(transform.position, "PLC_Scientist");
                 break;
             case TeamRole.RAT:
-                Gizmos.color = Color.navyBlue;
+                Gizmos.DrawIcon(transform.position, "PLC_Rat");
                 break;
         }
-        Gizmos.DrawWireSphere(transform.position,.25f);
         Gizmos.DrawLine(transform.position, transform.position + transform.forward);
     }
 }

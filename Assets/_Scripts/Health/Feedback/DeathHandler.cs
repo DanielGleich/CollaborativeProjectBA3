@@ -1,3 +1,4 @@
+using FishNet.Connection;
 using System;
 using UnityEngine;
 
@@ -8,6 +9,14 @@ public class DeathHandler : MonoBehaviour
     [SerializeField, Tooltip("Position of the gameobject replaced by the death prefab")] private Transform spawnPosition;
     [SerializeField] private GameObject deathPrefab;
 
+    void OnValidate()
+    {
+        if(!networkedHealth)
+            networkedHealth = GetComponent<HealthNetworking>();
+        if(!spawnPosition)
+            spawnPosition = transform;
+    }
+
     void OnEnable()
     {
         networkedHealth.OnNetworkedDeath += HandleDeath;
@@ -16,9 +25,10 @@ public class DeathHandler : MonoBehaviour
     {
         networkedHealth.OnNetworkedDeath -= HandleDeath;
     }
-    private void HandleDeath()
+    private void HandleDeath(NetworkConnection c)
     {
         Instantiate(deathPrefab, spawnPosition.position, spawnPosition.rotation);
+        Destroy(gameObject);
     }
 
 }
