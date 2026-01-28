@@ -960,9 +960,18 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5640201686091075007}
   _networkObjectCache: {fileID: 0}
   spawnRules:
-  - healthCondition: 90
+  - healthCondition: 80
     simultaniousSpawns: 1
     debrisAmount: {x: 4, y: 5}
+  - healthCondition: 60
+    simultaniousSpawns: 1
+    debrisAmount: {x: 3, y: 4}
+  - healthCondition: 40
+    simultaniousSpawns: 1
+    debrisAmount: {x: 2, y: 3}
+  - healthCondition: 20
+    simultaniousSpawns: 1
+    debrisAmount: {x: 2, y: 2}
 --- !u!1 &6672670550216717525
 GameObject:
   m_ObjectHideFlags: 0
