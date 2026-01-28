@@ -570,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpGrabable3d
   interaction: {fileID: 9003009225330632754}
   grabableTargetPosition: {fileID: 1602593440099037253}
-  speed: 20
+  speed: 15
   smoothTime: 0.01
   throwStrength: {x: 5, y: 2}
 --- !u!54 &2750995557289129773
@@ -626,11 +626,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterControllerPushRigidbodies
   characterControllerMovement: {fileID: 250270547517007290}
-  force: 0.1
+  force: 0.01
   useCharacterControllerVelocity: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
+  forceMode: 1
 --- !u!1 &7288524565613062859
 GameObject:
   m_ObjectHideFlags: 0
