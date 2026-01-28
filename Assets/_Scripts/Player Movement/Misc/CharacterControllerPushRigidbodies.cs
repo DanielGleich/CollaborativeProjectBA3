@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CharacterControllerPushRigidbodies : MonoBehaviour
@@ -6,6 +7,7 @@ public class CharacterControllerPushRigidbodies : MonoBehaviour
     [SerializeField] private float force = .1f;
     [SerializeField] private bool useCharacterControllerVelocity;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ForceMode forceMode;
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -16,7 +18,7 @@ public class CharacterControllerPushRigidbodies : MonoBehaviour
                 return;
             Vector3 forceDirection = (hit.point - transform.position).normalized;
             forceDirection *= useCharacterControllerVelocity? (characterControllerMovement.Velocity.magnitude * force) : force;
-            rb.AddForceAtPosition(forceDirection, transform.position, ForceMode.Impulse);
+            rb.AddForceAtPosition(forceDirection, transform.position, forceMode);
         }
     }
 }

@@ -121,7 +121,7 @@ public class HealthNetworking : NetworkBehaviour
             OnDeathServerRpc(LocalConnection);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void OnDeathServerRpc(NetworkConnection c = null)
     {
         if (IsServerInitialized)
