@@ -1463,6 +1463,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1962117519374396778}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LobbyReadyInteraction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1691105949332105791, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_Name
       value: "\U0001F400 Rat Player Package"
@@ -1528,6 +1556,10 @@ PrefabInstance:
       value: "\U0001F697 Vehicle Inside"
       objectReference: {fileID: 0}
     - target: {fileID: 2049360257755266086, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396072217766205886, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -1635,6 +1667,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5197217557020290432, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: gameplayMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5536893077240158690, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: _initializedTimestamp
       value: -8584322613538971497
@@ -1703,6 +1739,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7571762683463343904, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819512007862959782, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1747,6 +1787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Source Footsteps
       objectReference: {fileID: 0}
+    - target: {fileID: 8934523011065723878, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1784,6 +1828,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7053703815083891273}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1691105949332105791, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1962117519374396778}
     - targetCorrespondingSourceObject: {fileID: 7819512007862959782, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7187280849274160010}
@@ -1873,6 +1920,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1691105949332105791, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
   m_PrefabInstance: {fileID: 8303027001431880090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1962117519374396778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224412582850829221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdb3308f74833e49a2d9ff361cfaabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LobbyReadyInteraction
 --- !u!4 &7497365967298421764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1959551336097650078, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
