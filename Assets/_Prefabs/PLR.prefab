@@ -1605,6 +1605,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7087346980294548053, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: cameras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087346980294548053, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: _addedNetworkObject
       value: 
       objectReference: {fileID: 5640201686091075007}
@@ -1612,6 +1616,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7087346980294548053, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: 'cameras.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5644500712412334937}
     - target: {fileID: 7145407999464649151, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: _addedNetworkObject
       value: 
@@ -1872,6 +1880,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
+--- !u!114 &5644500712412334937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4426770620970449603, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3218296179889012108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!4 &6799000717566370958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3269789458613507348, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
