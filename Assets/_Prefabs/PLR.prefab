@@ -2118,6 +2118,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2291367941258654818, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponCooldown>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9709877
@@ -2145,6 +2149,10 @@ PrefabInstance:
     - target: {fileID: 2790508741684480635, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _componentIndexCache
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822610129522828398, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: duration
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2822610129522828398, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
@@ -2176,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damageOnEnter
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damagePerSecond
@@ -2332,7 +2340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925602705816531788, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <MaxHealth>k__BackingField
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5970196072802969673, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_IsActive
@@ -2361,6 +2369,10 @@ PrefabInstance:
     - target: {fileID: 6570028330303530853, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _componentIndexCache
       value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676638657040224031, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponCooldown>k__BackingField
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6978525335225442122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalPosition.y
