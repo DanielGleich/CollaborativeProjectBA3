@@ -24,7 +24,7 @@ public class CinemachineMenuSwitch : MenuDisplayHandler
         Array.ForEach(subMenuCinemachineCameras, s => 
             s.CinemachineCamera.Priority = s.SubMenu == currentSubMenu && menuStateManager.MenuIsActive? activePriority : inActivePriority);
     }
-    [ContextMenu("Create SubMenuCinemachine Camera for every SubMenu in MenustateManager <i>(Warning: will destroy old values)</i>")]
+    [ContextMenu("Create SubMenuCinemachine Camera for every SubMenu in MenustateManager")]
     private void CreateSubMenuCinemachineCameras()
     {
         if(!menuStateManager)

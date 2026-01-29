@@ -1739,6 +1739,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba08c1583ceb2c47ac9595ae9129075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -8004416122563423573}
+  _networkObjectCache: {fileID: 0}
+  recoilUnits: []
+  recoilBehavior:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  strength: 0
 --- !u!1 &1622632146881172800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1853,57 @@ Transform:
   - {fileID: 974392889892146684}
   m_Father: {fileID: 2258060194230724614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1978061952611461346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9270909756746905}
+  - component: {fileID: 5097705936471147714}
+  m_Layer: 0
+  m_Name: DebrisSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 65
+  m_IsActive: 1
+--- !u!4 &9270909756746905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978061952611461346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4802333637959838222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5097705936471147714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978061952611461346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839673cae25c2054e9e007d456ce4907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawner
+  debris:
+  - {fileID: 824963454654776625, guid: edead70c9513423448a0db8d2bc23ff1, type: 3}
+  - {fileID: 8489779107902463254, guid: 1fa18658ec76fbb49ba56f93e9d2ccf8, type: 3}
+  debrisCount: 3
+  spawnRadius: 1.21
+  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnDelay: 0
 --- !u!1 &1985366954513905887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,7 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 10
+  Weight: 0
 --- !u!54 &8155480296069644569
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4595,6 +4657,7 @@ Transform:
   - {fileID: 1085208900316915270}
   - {fileID: 6338274424580488174}
   - {fileID: 3910459029247872528}
+  - {fileID: 4802333637959838222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-573437969009284526
@@ -5307,7 +5370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 0.25
+  Weight: 0
 --- !u!1 &5643070493272073042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,6 +7708,218 @@ Transform:
   - {fileID: 6392214917266019062}
   m_Father: {fileID: 3910459029247872528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8897502462444507022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3009199646454377417}
+  - component: {fileID: 2030339722825273353}
+  m_Layer: 0
+  m_Name: DebrisSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 65
+  m_IsActive: 1
+--- !u!4 &3009199646454377417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897502462444507022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2500002, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4802333637959838222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030339722825273353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897502462444507022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839673cae25c2054e9e007d456ce4907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawner
+  debris:
+  - {fileID: 824963454654776625, guid: edead70c9513423448a0db8d2bc23ff1, type: 3}
+  - {fileID: 8489779107902463254, guid: 1fa18658ec76fbb49ba56f93e9d2ccf8, type: 3}
+  debrisCount: 3
+  spawnRadius: 1.21
+  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnDelay: 0
+--- !u!1 &8952406902652911067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4802333637959838222}
+  - component: {fileID: 5007865513512660338}
+  - component: {fileID: 6243735623070616975}
+  m_Layer: 0
+  m_Name: "\u2699\uFE0F Debris Spawner Manager"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 65
+  m_IsActive: 0
+--- !u!4 &4802333637959838222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952406902652911067}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.3333333, y: 3.3333333, z: 3.3333333}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9270909756746905}
+  - {fileID: 3009199646454377417}
+  m_Father: {fileID: 2258060194230724614}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5007865513512660338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952406902652911067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5e096d10e9e4a4f82aaed6cbd502d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManager
+  debrisSpawners:
+  - {fileID: 5097705936471147714}
+  - {fileID: 2030339722825273353}
+  startOnEnable: 0
+  initialWait: 0
+  constantSpawnDelay: 0
+  spawnDelayRange: {x: 10, y: 20}
+  useSpawnDelayMultiplier: 0
+  spawnDelayMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  similtanousSpawns: 1
+  useSimiltanousSpawnsMultiplier: 0
+  simultaniousSpawnsMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  overwriteDebrisCount: 1
+  debrisCountRange: {x: 2, y: 3}
+  constantDebrisCount: 0
+  useDebrisMultiplier: 0
+  debrisPartsCountMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &6243735623070616975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952406902652911067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805873b738e95664db71589e906a45d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManagerHealthExtension
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -8004416122563423573}
+  _networkObjectCache: {fileID: 0}
+  spawnRules:
+  - healthCondition: 80
+    simultaniousSpawns: 1
+    debrisAmount: {x: 4, y: 5}
+  - healthCondition: 60
+    simultaniousSpawns: 1
+    debrisAmount: {x: 3, y: 4}
+  - healthCondition: 40
+    simultaniousSpawns: 1
+    debrisAmount: {x: 2, y: 3}
+  - healthCondition: 20
+    simultaniousSpawns: 1
+    debrisAmount: {x: 2, y: 2}
 --- !u!1 &9011730346240752907
 GameObject:
   m_ObjectHideFlags: 0
