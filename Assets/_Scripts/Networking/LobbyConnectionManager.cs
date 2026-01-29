@@ -23,6 +23,7 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
 
     public static event Action OnLobbyJoined;
     public static event Action OnLobbyExited;
+    public static event Action OnLobbyJoinedViaFriendlist;
     public static event Action<CSteamID> OnClientJoinOrLeaves;
     //public static event Action OnLobbyOwnerLeft;
 
@@ -116,6 +117,7 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
     {
         SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
         _lobbyCreatorId = SteamMatchmaking.GetLobbyOwner(new CSteamID(_currentLobbyID)).m_SteamID;
+        OnLobbyJoinedViaFriendlist?.Invoke();
     }
 
     private void LobbyEntered(LobbyEnter_t callback)

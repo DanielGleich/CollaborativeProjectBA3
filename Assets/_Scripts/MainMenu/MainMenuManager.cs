@@ -29,6 +29,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
+        LobbyConnectionManager.OnLobbyJoinedViaFriendlist += JoinLobbyByFriendList;
         //LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
@@ -123,6 +124,11 @@ public class MainMenuManager : Singleton<MainMenuManager>
     public void CreateLobby()
     {
         LobbyConnectionManager.CreateLobby();
+    }
+
+    private void JoinLobbyByFriendList()
+    { 
+        OnLobbyJoin?.Invoke();
     }
 
     public void JoinLobby(TMP_InputField input)
