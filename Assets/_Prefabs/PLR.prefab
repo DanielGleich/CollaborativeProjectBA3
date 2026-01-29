@@ -2024,11 +2024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000015027622
+      value: 0.0000015627847
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000036033566
+      value: -0.00000037472802
       objectReference: {fileID: 0}
     - target: {fileID: 927227171753040627, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_Enabled
@@ -2208,11 +2208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000010631951
+      value: -0.0000011049341
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000026183804
+      value: 0.00000027211732
       objectReference: {fileID: 0}
     - target: {fileID: 2790508741684480635, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
@@ -2414,6 +2414,10 @@ PrefabInstance:
       propertyPath: _networkObjectCache
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5617233165056761721, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5925602705816531788, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <MaxHealth>k__BackingField
       value: 100
@@ -2544,11 +2548,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: ballastScaleInfluence
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8937382933513666372, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: maxSteeringPowerWeight
-      value: 15
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137185726934692311, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: sharedProfile
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
