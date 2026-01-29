@@ -1436,7 +1436,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5256208093946453944}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
@@ -1444,20 +1452,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7187280849274160010}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1962117519374396778}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Throw
       objectReference: {fileID: 0}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PickUpGrabable3d, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: LobbyReadyInteraction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: onThrow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4244930766712615467, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: onSubmit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1743,9 +1771,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9205532138632230005, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5479084834126151147}
-    - targetCorrespondingSourceObject: {fileID: 7819512007862959782, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7187280849274160010}
   m_SourcePrefab: {fileID: 100100000, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
 --- !u!114 &209381788193786450 stripped
 MonoBehaviour:
@@ -1836,23 +1861,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7819512007862959782, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
   m_PrefabInstance: {fileID: 8303027001431880090}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7187280849274160010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2287331274383183676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a9bc8e7ea5a6c48b9851502426f8fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickUpGrabable3d
-  interaction: {fileID: 0}
-  grabableTargetPosition: {fileID: 7053703815083891273}
-  speed: 10
-  smoothTime: 0.1
-  throwStrength: {x: 1, y: 1}
 --- !u!114 &2472206312650000959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5869683013170346917, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
@@ -1918,6 +1926,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3269789458613507348, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
   m_PrefabInstance: {fileID: 8303027001431880090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7187280849274160010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1190110059920011792, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287331274383183676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a9bc8e7ea5a6c48b9851502426f8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpGrabable3d
 --- !u!1 &7224412582850829221 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1691105949332105791, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
