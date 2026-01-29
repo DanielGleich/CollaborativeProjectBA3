@@ -347,7 +347,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c112a21b-a3ff-4460-8d68-be9e7fc46057"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -502,17 +502,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""1cfd0c0d-8af9-4f82-b776-c7f8457d306b"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""db1f577b-5700-4e05-9975-937f40008d68"",
-                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
