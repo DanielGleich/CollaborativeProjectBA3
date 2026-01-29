@@ -5,7 +5,7 @@
 			<value>CannonHitsInside</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{791a4a72-3d3f-430b-b2a8-2d1eca3ace98}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{14368a12-0640-4817-9133-29ff9dae4d91}</destination>
 		</relationship>
@@ -96,10 +99,51 @@
 	<object class="MixerBusEffectChain" id="{14368a12-0640-4817-9133-29ff9dae4d91}">
 		<relationship name="effects">
 			<destination>{7bc96008-1156-446c-a9df-afa57e153d0c}</destination>
+			<destination>{c4c601f4-bbbc-48d6-a561-1a869f59fdd9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{421fe442-1ecc-4d3b-a4aa-92acf392ca13}" />
-	<object class="MultiSound" id="{bc7a0b9c-1c28-437e-8209-9aa700e80c3d}" />
+	<object class="MultiSound" id="{bc7a0b9c-1c28-437e-8209-9aa700e80c3d}">
+		<relationship name="modulators">
+			<destination>{d4f8bac2-ff09-4f2c-9bc1-f6cad48a56dd}</destination>
+		</relationship>
+		<relationship name="sounds">
+			<destination>{76f11d78-0581-4824-9de8-1230bbca0f38}</destination>
+			<destination>{3fd57056-ab6e-4978-9e9b-f475f344a544}</destination>
+			<destination>{0b669a7b-b186-4698-8427-189d43056708}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{a0e1c4e8-884c-457c-9764-214e0a9aa0fa}" />
 	<object class="MixerBusFader" id="{7bc96008-1156-446c-a9df-afa57e153d0c}" />
+	<object class="SFXReverbEffect" id="{c4c601f4-bbbc-48d6-a561-1a869f59fdd9}">
+		<property name="earlyLateMix">
+			<value>14</value>
+		</property>
+		<property name="wetLevel">
+			<value>-14.5</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{d4f8bac2-ff09-4f2c-9bc1-f6cad48a56dd}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>6</value>
+		</property>
+	</object>
+	<object class="SingleSound" id="{76f11d78-0581-4824-9de8-1230bbca0f38}">
+		<relationship name="audioFile">
+			<destination>{de1e6488-64fa-43f0-bc48-372212950614}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{3fd57056-ab6e-4978-9e9b-f475f344a544}">
+		<relationship name="audioFile">
+			<destination>{c83783c0-03ef-416e-b620-8481d3aa4ace}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{0b669a7b-b186-4698-8427-189d43056708}">
+		<relationship name="audioFile">
+			<destination>{979a82a1-24b8-4faa-8c78-3ac4cabd0885}</destination>
+		</relationship>
+	</object>
 </objects>

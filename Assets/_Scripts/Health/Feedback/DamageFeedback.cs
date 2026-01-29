@@ -6,6 +6,7 @@ public class DamageFeedback : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float requiredDamageToTrigger = .1f;
+
     [Header("Events")]
     public UnityEvent<float> OnDamageTriggered = new UnityEvent<float>();
 

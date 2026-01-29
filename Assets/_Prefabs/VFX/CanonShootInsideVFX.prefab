@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 981311377842603736}
-  - component: {fileID: 8975375394607827371}
+  - component: {fileID: 1660272529417229142}
   - component: {fileID: 4486444772968928946}
+  - component: {fileID: 8975375394607827371}
   - component: {fileID: 1348126138445254356}
   m_Layer: 0
-  m_Name: CanonShootVFX
+  m_Name: CanonShootInsideVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +29,13 @@ Transform:
   m_GameObject: {fileID: 3374786199772759743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.283, y: -0.73, z: -0.173}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8975375394607827371
+--- !u!114 &1660272529417229142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,41 +44,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3374786199772759743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de8fc551d2b6db24b9b0fda5a17095a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b8b93dca5f4deb438243f7ab48610ff, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  weaponId: -1
-  duration: 5
-  OnFeedbackStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1348126138445254356}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnFeedbackStop:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1348126138445254356}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_EditorClassIdentifier: Assembly-CSharp::AttachedComment
+  comment: "Dieses VFX ist im PLR (Prefab) enthalten\r\n\U0001F400 Rat Player Package
+    > VFX > EastCanonShootVFX\r\n\U0001F400 Rat Player Package > VFX > WestCanonShootVFX "
 --- !u!199 &4486444772968928946
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -158,6 +129,50 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &8975375394607827371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374786199772759743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8fc551d2b6db24b9b0fda5a17095a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  weaponId: -1
+  duration: 5
+  OnFeedbackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1348126138445254356}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFeedbackStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1348126138445254356}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!198 &1348126138445254356
 ParticleSystem:
   m_ObjectHideFlags: 0
