@@ -25,7 +25,10 @@ public class RatGameplayModeSwitcher : MonoBehaviour {
 
     [Header("Settings")]
     [SerializeField] private GameplayMode gameplayMode;
+    [SerializeField] private bool useDebris;
+
     [SerializeField] private List<GameplayModeGameObjects> gameplayModeGameObjects = new();
+    [SerializeField] private GameObject[] debrisSystemObjects;
 
     void OnValidate()
     {
@@ -36,6 +39,7 @@ public class RatGameplayModeSwitcher : MonoBehaviour {
     private void UpdateGameplayMode(GameplayMode gameplayMode)
     {
         gameplayModeGameObjects.ForEach(m => m.GameObjects.ForEach(g => g.SetActive(m.GameplayMode == gameplayMode)));
+        Array.ForEach(debrisSystemObjects, d => d.SetActive(useDebris));
     }
     public void SetGameplayMode(GameplayMode gameplayMode)
     {
