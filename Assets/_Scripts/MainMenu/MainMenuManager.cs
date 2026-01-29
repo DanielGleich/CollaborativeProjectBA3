@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MainMenuManager : Singleton<MainMenuManager>
@@ -16,6 +17,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] GameObject teamCardPrefab;
     [SerializeField] Transform teamCardContainer;
     [SerializeField] GameObject leaveTeamButton;
+
+    public UnityEvent OnLobbyJoin = new UnityEvent();
 
 
     private void OnEnable()
@@ -124,10 +127,10 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void JoinLobby(TMP_InputField input)
     {
-        if (InstanceFinder.IsHostStarted) return;
+        if (InstanceFinder.IsHostStarted || String.IsNullOrEmpty(input.text) || String.IsNullOrWhiteSpace(input.text)) return;
         CSteamID steamID = new CSteamID(Convert.ToUInt64(input.text));
         LobbyConnectionManager.JoinLobbyByID(steamID);
-
+        OnLobbyJoin?.Invoke();
     }
 
     public void StartLobby()
