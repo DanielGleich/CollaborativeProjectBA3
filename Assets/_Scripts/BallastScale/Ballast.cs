@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Ballast : MonoBehaviour
 {
-    [field: SerializeField] public float Weight {get; private set;}
+    [SerializeField] public float Weight;
     public event Action<Ballast> OnDestroyBallast;
     void OnDestroy()
     {
