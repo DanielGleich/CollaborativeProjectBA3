@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RatGameplayModeSwitcher
   gameplayMode: 0
+  useDebris: 0
   gameplayModeGameObjects:
   - <GameplayMode>k__BackingField: 0
     <GameObjects>k__BackingField:
@@ -157,6 +158,8 @@ MonoBehaviour:
     <GameObjects>k__BackingField:
     - {fileID: 8934523011065723878}
     - {fileID: 2679960193391607861}
+  debrisSystemObjects:
+  - {fileID: 0}
 --- !u!114 &7494148581817015536
 MonoBehaviour:
   m_ObjectHideFlags: 0
