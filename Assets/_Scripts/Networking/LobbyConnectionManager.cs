@@ -57,9 +57,6 @@ public class LobbyConnectionManager : Singleton<LobbyConnectionManager>
 
     public static void LeaveLobby()
     {
-        if (SteamAPI.IsSteamRunning())
-            return;
-
         if (_currentLobbyID == 0 || new CSteamID(_currentLobbyID).m_SteamID == 0)
             return;
 

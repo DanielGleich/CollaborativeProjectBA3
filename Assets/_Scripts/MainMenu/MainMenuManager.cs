@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class MainMenuManager : Singleton<MainMenuManager>
 {
     [SerializeField] private Button startLobbyButton;
-    [SerializeField] private GameObject joinContainer, lobbyContainer;
     [SerializeField] private TMP_Text title, id;
     [SerializeField] private List<UISteamProfile> lobbyIcons;
 
@@ -23,9 +22,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     private void OnEnable()
     {
-        joinContainer.SetActive(true);
-        lobbyContainer.SetActive(false);
-
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
@@ -103,8 +99,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void OnLobbyJoined()
     {
-        joinContainer.SetActive(false);
-        lobbyContainer.SetActive(true);
         id.text = LobbyConnectionManager.CurrentLobbyID.ToString();
         title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
         startLobbyButton.interactable = InstanceFinder.IsServerStarted;
@@ -152,9 +146,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
             Destroy(PlayerManager.Instance.gameObject);
         if (TeamManager.Instance != null)
             Destroy(TeamManager.Instance.gameObject);
-        
-        joinContainer.SetActive(true);
-        lobbyContainer.SetActive(false);
     }
 
     public void LeaveTeamRequest()
