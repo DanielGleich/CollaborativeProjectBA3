@@ -1299,6 +1299,14 @@ PrefabInstance:
       propertyPath: Weight
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 913159150470242996, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 913159150470242996, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_AngularDamping
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 971927368098708440, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2016,11 +2024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000014728117
+      value: 0.0000015027622
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000003531541
+      value: -0.00000036033566
       objectReference: {fileID: 0}
     - target: {fileID: 927227171753040627, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_Enabled
@@ -2200,11 +2208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000010422532
+      value: -0.0000010631951
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000002566806
+      value: 0.00000026183804
       objectReference: {fileID: 0}
     - target: {fileID: 2790508741684480635, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
