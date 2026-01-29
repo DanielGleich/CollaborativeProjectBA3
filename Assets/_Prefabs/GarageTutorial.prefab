@@ -1415,6 +1415,14 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6385303576585043152, guid: cd07454560e4e1544a54c730d3c7ce29, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385303576585043152, guid: cd07454560e4e1544a54c730d3c7ce29, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1600,6 +1608,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1407616905745863653}
+    - targetCorrespondingSourceObject: {fileID: 9152363913774390056, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 388070000862258443}
   m_SourcePrefab: {fileID: 100100000, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
 --- !u!1 &3783018971114882767 stripped
 GameObject:
@@ -1633,6 +1644,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
   m_PrefabInstance: {fileID: 4088866470360054686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5169332034668110006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9152363913774390056, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
+  m_PrefabInstance: {fileID: 4088866470360054686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &388070000862258443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5169332034668110006}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6692290496178104961, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
 --- !u!1001 &4444632647531926008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1644,6 +1682,14 @@ PrefabInstance:
     - target: {fileID: -4623131750767892738, guid: 2e71dbaa72f54ef429d2823e5fb13d30, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4623131750767892738, guid: 2e71dbaa72f54ef429d2823e5fb13d30, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -4623131750767892738, guid: 2e71dbaa72f54ef429d2823e5fb13d30, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8535922603490499182, guid: 2e71dbaa72f54ef429d2823e5fb13d30, type: 3}
       propertyPath: m_LocalScale.x
@@ -1726,6 +1772,14 @@ PrefabInstance:
     - target: {fileID: -8632537985418048964, guid: fc342ed884423474983e95b9d177d7d4, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8632537985418048964, guid: fc342ed884423474983e95b9d177d7d4, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -8632537985418048964, guid: fc342ed884423474983e95b9d177d7d4, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8144684744157440322, guid: fc342ed884423474983e95b9d177d7d4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1913,6 +1967,14 @@ PrefabInstance:
       propertyPath: WasActiveDuringEdit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8229605868231163440, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -8229605868231163440, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3856934824109580316, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
       propertyPath: m_Name
       value: Carboard Cut Out Monster (1)
@@ -1994,6 +2056,14 @@ PrefabInstance:
     - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1415264438373069037, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
       propertyPath: m_LocalScale.x
@@ -2132,7 +2202,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4611376650560531598}
+    - targetCorrespondingSourceObject: {fileID: 9152363913774390056, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6480458119744710067}
   m_SourcePrefab: {fileID: 100100000, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
+--- !u!1 &2997399195845876511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9152363913774390056, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
+  m_PrefabInstance: {fileID: 6240683743951913015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6480458119744710067
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997399195845876511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6692290496178104961, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
 --- !u!4 &5841702742454855644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8bbbf5a19ca198f4bab9b212fa4d63a1, type: 3}
@@ -2180,6 +2280,14 @@ PrefabInstance:
     - target: {fileID: -8229605868231163440, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8229605868231163440, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -8229605868231163440, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3856934824109580316, guid: fa6f8ff73bce8404f9b7c9c3c79d80e8, type: 3}
       propertyPath: m_Name
@@ -2262,6 +2370,14 @@ PrefabInstance:
     - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584319834187701916
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7131754079086674159, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: m_Name
@@ -2348,6 +2464,14 @@ PrefabInstance:
     - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
       propertyPath: WasActiveDuringEdit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
+      propertyPath: _initializedTimestamp
+      value: -8584318794969781758
+      objectReference: {fileID: 0}
+    - target: {fileID: -3469355004413619813, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
+      propertyPath: <PrefabId>k__BackingField
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1415264438373069037, guid: 60599c7aa0f58444dbf5b96ec079850e, type: 3}
       propertyPath: m_LocalScale.x
