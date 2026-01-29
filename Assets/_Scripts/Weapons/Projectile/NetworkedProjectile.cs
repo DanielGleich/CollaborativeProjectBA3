@@ -25,13 +25,15 @@ public class NetworkedProjectile : NetworkBehaviour
     void OnCollisionEnter(Collision collision)
     {
         OnHit?.Invoke();
-        if(despawnOnHit)
+        if (despawnOnHit)
             Despawn();
+        gameObject.SetActive(false);
     }
     void OnTriggerEnter(Collider other)
     {
         OnHit?.Invoke();
-        if(despawnOnHit)
+        if (despawnOnHit)
             Despawn();
+        gameObject.SetActive(false);
     }
 }

@@ -10,7 +10,9 @@ public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
     [SerializeField] private UnityEvent<Vector2> onLook;
     [SerializeField] private UnityEvent onJump;
     [SerializeField] private UnityEvent onInteract;
+    [SerializeField] private UnityEvent onThrow;
     [SerializeField] private UnityEvent onSubmit;
+    [SerializeField] private UnityEvent<bool> onDuck;
 
     void OnEnable()
     {
@@ -52,5 +54,20 @@ public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
     {
         if (context.phase == InputActionPhase.Performed)
             onSubmit?.Invoke();
+    }
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            onThrow?.Invoke();
+
+    }
+
+    public void OnDuck(InputAction.CallbackContext context)
+    {
+        if(context.started)
+            onDuck?.Invoke(true);
+        if(context.canceled)
+            onDuck?.Invoke(false);
     }
 }

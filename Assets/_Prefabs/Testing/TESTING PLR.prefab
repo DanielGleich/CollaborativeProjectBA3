@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3966202496966797808, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
+      propertyPath: WasActiveDuringEdit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4173827825991586151, guid: ca78dd272a48f4f4e85584c3c2ffa70f, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -540,6 +544,12 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  onThrow:
+    m_PersistentCalls:
+      m_Calls: []
   onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDuck:
     m_PersistentCalls:
       m_Calls: []
