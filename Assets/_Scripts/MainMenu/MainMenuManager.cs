@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MainMenuManager : Singleton<MainMenuManager>
 {
     [SerializeField] private Button startLobbyButton;
-    [SerializeField] private GameObject joinContainer, lobbyContainer;
     [SerializeField] private TMP_Text title, id;
     [SerializeField] private List<UISteamProfile> lobbyIcons;
 
@@ -17,15 +17,15 @@ public class MainMenuManager : Singleton<MainMenuManager>
     [SerializeField] Transform teamCardContainer;
     [SerializeField] GameObject leaveTeamButton;
 
+    public UnityEvent OnLobbyJoin = new UnityEvent();
+
 
     private void OnEnable()
     {
-        joinContainer.SetActive(true);
-        lobbyContainer.SetActive(false);
-
         LobbyConnectionManager.OnLobbyJoined += OnLobbyJoined;;
         LobbyConnectionManager.OnLobbyExited += OnLobbyExited;
         LobbyConnectionManager.OnClientJoinOrLeaves += OnClientJoined;
+        LobbyConnectionManager.OnLobbyJoinedViaFriendlist += JoinLobbyByFriendList;
         //LobbyConnectionManager.OnLobbyOwnerLeft += LeaveLobby;
 
         PlayerManager.OnPlayerConnected.AddListener(UpdateLobbyProfiles);
@@ -99,8 +99,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void OnLobbyJoined()
     {
-        joinContainer.SetActive(false);
-        lobbyContainer.SetActive(true);
         id.text = LobbyConnectionManager.CurrentLobbyID.ToString();
         title.text = SteamMatchmaking.GetLobbyData(new CSteamID(LobbyConnectionManager.CurrentLobbyID), "LobbyName");
         startLobbyButton.interactable = InstanceFinder.IsServerStarted;
@@ -122,12 +120,17 @@ public class MainMenuManager : Singleton<MainMenuManager>
         LobbyConnectionManager.CreateLobby();
     }
 
+    private void JoinLobbyByFriendList()
+    { 
+        OnLobbyJoin?.Invoke();
+    }
+
     public void JoinLobby(TMP_InputField input)
     {
-        if (InstanceFinder.IsHostStarted) return;
+        if (InstanceFinder.IsHostStarted || String.IsNullOrEmpty(input.text) || String.IsNullOrWhiteSpace(input.text)) return;
         CSteamID steamID = new CSteamID(Convert.ToUInt64(input.text));
         LobbyConnectionManager.JoinLobbyByID(steamID);
-
+        OnLobbyJoin?.Invoke();
     }
 
     public void StartLobby()
@@ -143,9 +146,6 @@ public class MainMenuManager : Singleton<MainMenuManager>
             Destroy(PlayerManager.Instance.gameObject);
         if (TeamManager.Instance != null)
             Destroy(TeamManager.Instance.gameObject);
-        
-        joinContainer.SetActive(true);
-        lobbyContainer.SetActive(false);
     }
 
     public void LeaveTeamRequest()

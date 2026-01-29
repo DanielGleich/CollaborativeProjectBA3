@@ -13,6 +13,7 @@ public class MenuStateManager : MonoBehaviour
 
     [Header("Settings")] 
     [SerializeField] private bool resetOnDisableMenu = true;
+    [SerializeField] private bool startActive;
 
     private SubMenu currentSubMenu;
     public event Action<SubMenu> OnUpdateCurrentSubMenu;
@@ -53,6 +54,8 @@ public class MenuStateManager : MonoBehaviour
     private void Awake()
     {
         CurrentSubMenu = StartMenu;
+        if(startActive)
+            SetMenuActive(true);
     }
     public void SetCurrentSubMenu(SubMenu subMenu)
     {
@@ -64,9 +67,11 @@ public class MenuStateManager : MonoBehaviour
         CurrentSubMenu = subMenu;
     }
     public void ResetActiveMenu() => CurrentSubMenu = StartMenu;
-    public void ToggleMenuActive()
+    [ContextMenu("Toggle Menu Active")]
+    public void ToggleMenuActive() => SetMenuActive(!MenuIsActive);
+    public void SetMenuActive(bool active)
     {
-        MenuIsActive = !MenuIsActive;
+        MenuIsActive = active;
         if(!MenuIsActive && resetOnDisableMenu)
             ResetActiveMenu();
     }
