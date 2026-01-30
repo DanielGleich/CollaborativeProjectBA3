@@ -3,16 +3,42 @@ using UnityEngine;
 
 public class StageHazard : MonoBehaviour
 {
-    public static event Action OnTriggered;
+    public event Action OnActivate;
+    public static event Action OnActivateAll;
+    public event Action OnDeactivate;
+    public static event Action OnDeactivateAll;
 
-    public static void TriggerAllHazards()
+
+    private void OnEnable()
     {
-        OnTriggered?.Invoke();
+        OnActivateAll += Activate;
+        OnDeactivateAll += Deactivate;
     }
 
-    [ContextMenu("Debug Trigger")]
-    public void DebugTrigger()
+    private void OnDisable()
     {
-        TriggerAllHazards();
+        OnActivateAll -= Activate;
+        OnDeactivateAll -= Deactivate;
     }
+    public static void DeactivateAllHazards()
+    {
+        OnActivateAll?.Invoke();
+    }
+
+    public static void ActivateAllHazards()
+    {
+        OnDeactivateAll?.Invoke();
+    }
+
+    public void Activate()
+    {
+        OnActivate?.Invoke();
+    }
+
+    public void Deactivate()
+    {
+        OnDeactivate?.Invoke();
+    }
+
+
 }
