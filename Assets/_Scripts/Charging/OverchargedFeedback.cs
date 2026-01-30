@@ -12,19 +12,26 @@ public class OverchargedFeedback : MonoBehaviour
 
     private void OnEnable()
     {
-        TeamManager.OnAllTeamsReady += FindTeam;
+        TeamManager.OnTeamReady += FindTeam;
         OverchargedStatus.OnOvercharged += OnTeamOvercharged;
     }
     private void OnDisable()
     {
-        TeamManager.OnAllTeamsReady -= FindTeam;
+        TeamManager.OnTeamReady -= FindTeam;
         OverchargedStatus.OnOvercharged -= OnTeamOvercharged;
     }
 
-    private void FindTeam()
+    private void FindTeam(Team team)
     {
+        if (ownerTeamId != -1) return;
         if (gameObject.transform.root.TryGetComponent<NetworkObject>(out NetworkObject playerObject))
-            ownerTeamId = TeamManager.Instance.GetTeamId(playerObject);
+        { 
+            int ownerId = playerObject.OwnerId;
+            if ( team.scientistPlayerClientId == ownerId || team.ratPlayerClientId == ownerId)
+            {
+                ownerTeamId = team.id;
+            }
+        }
 
         if (ownerTeamId == -1)
             gameObject.SetActive(false);
