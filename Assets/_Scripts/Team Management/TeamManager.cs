@@ -295,5 +295,14 @@ public class TeamManager : NetworkSingleton<TeamManager>
         }
         return null;
     }
+
+    public int GetTeamId(NetworkObject playerObject)
+    {
+        NetworkConnection owner = playerObject.Owner;
+        foreach (var team in TeamManager.Instance.allTeams)
+            if (team.Value.scientistPlayerClientId == owner.ClientId || team.Value.ratPlayerClientId == owner.ClientId)
+                return team.Value.id;
+        return -1;
+    }
 }
 

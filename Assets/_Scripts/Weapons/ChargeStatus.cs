@@ -46,7 +46,6 @@ public class ChargeStatus : NetworkBehaviour
     {
         if (TeamMember.localTeamId == teamId && WeaponId == weaponId )
         {
-            Debug.Log(gameObject.transform.root);
             SetChargeStatus(teamId, true);
         }
     }
