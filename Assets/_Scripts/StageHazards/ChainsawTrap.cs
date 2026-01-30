@@ -36,18 +36,17 @@ public class ChainsawTrap : MonoBehaviour
         StageHazard.OnTriggered -= TriggerTrap;    
     }
 
+    [ContextMenu("Trigger Trap")]
     public void TriggerTrap()
     {
         StartCoroutine(TrapProcedure());
     }
-
     private void ActivateTrap()
     { 
         OnTrapStarting?.Invoke();
         hitbox.SetActive(true);
         OnTrapStarted?.Invoke();
     }
-
     private void DeactivateTrap()
     { 
         OnTrapFinishing?.Invoke();
