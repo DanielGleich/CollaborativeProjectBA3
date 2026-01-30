@@ -5821,18 +5821,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7537660616581339858, guid: f1206411abd73dd4d9a0155f0b277566, type: 3}
   m_PrefabInstance: {fileID: 1658340891781318511}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1720639290800319369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3960562263575261312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f1bac351feadd4f8549420277e9f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageHazard
 --- !u!1001 &2097988336079200426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5958,7 +5946,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6479435098821189041}
-  - component: {fileID: 1720639290800319369}
   - component: {fileID: 1279957803288658527}
   m_Layer: 0
   m_Name: StageHazardManager
