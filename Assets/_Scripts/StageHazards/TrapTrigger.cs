@@ -17,12 +17,12 @@ public class TrapTrigger : MonoBehaviour {
     void OnEnable()
     {
         if(triggerOnStageHazardTriggered)
-            StageHazard.OnTriggered += Trigger;
+            StageHazard.OnActivateAll += Trigger;
     }
     void OnDisable()
     {
         if(triggerOnStageHazardTriggered)
-            StageHazard.OnTriggered -= Trigger;
+            StageHazard.OnActivateAll -= Trigger;
     }
     [ContextMenu("Trigger Weapon")]
     public void Trigger()

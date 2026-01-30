@@ -128,6 +128,7 @@ public class GameManager : NetworkSingleton<GameManager>
             SubscribeToPlayerDeaths();
 
         ChargingPadManager.Instance?.InitializeManager();
+        StageHazardManager.Instance?.InitializeManager();
         isGameStarted.Value = true;
         NotifyGameStart();
     }

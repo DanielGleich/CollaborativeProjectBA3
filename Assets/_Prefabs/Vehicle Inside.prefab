@@ -958,7 +958,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584320156068268255
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584320156068268255
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1739,9 +1739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba08c1583ceb2c47ac9595ae9129075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -8004416122563423573}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -8004416122563423573}
   recoilUnits: []
   recoilBehavior:
     serializedVersion: 2
@@ -2671,7 +2671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 2
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 2
@@ -4723,6 +4723,8 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: -8301536722665731611}
+  - {fileID: 7191991749768103265}
+  - {fileID: 6243735623070616975}
   - {fileID: 2668257961653154057}
   - {fileID: 4031707363861494654}
   - {fileID: 5614732495903047377}
@@ -4740,7 +4742,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584320156068268255
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -4755,7 +4757,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 17
+  <PrefabId>k__BackingField: 15
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 14864186163942696537
   SceneId: 0
@@ -5137,7 +5139,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584320156068268255
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -6176,7 +6178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 1
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 1
@@ -6367,7 +6369,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584320156068268255
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -7904,9 +7906,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805873b738e95664db71589e906a45d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManagerHealthExtension
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: -8004416122563423573}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -8004416122563423573}
   spawnRules:
   - healthCondition: 80
     simultaniousSpawns: 1
@@ -8357,7 +8359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 3
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 4
