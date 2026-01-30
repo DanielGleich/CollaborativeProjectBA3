@@ -19,6 +19,7 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Playback Settings")]
     [SerializeField] private bool playOnEnable = false;
+    [SerializeField] private bool ignoreVisibility = true;
 
     [Header("Preview Settings")]
     [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
@@ -77,11 +78,13 @@ public class ScreenRenderer : MonoBehaviour
     }
     public void StopRenderRoutine()
     {
+        Debug.Log("Stop Render Routine");
         StopAllCoroutines();
         OnActivateCamera?.Invoke(false);
     }
     private IEnumerator RenderRoutine()
     {
+        Debug.Log("Start Render Routine");
         CreateRenderTexture();
         yield return null;
         while (true)
@@ -109,7 +112,7 @@ public class ScreenRenderer : MonoBehaviour
     }
     private void Render()
     {
-        if (VisibleFromCamera(meshRenderer, Camera.main) || Application.isEditor)
+        if  (ignoreVisibility || VisibleFromCamera(meshRenderer, Camera.main) ||Application.isEditor)
             renderCamera.Render();
     }
 
