@@ -79,7 +79,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909222165953749283}
   - component: {fileID: 4117015837677860285}
-  - component: {fileID: 7233728804167958229}
   - component: {fileID: 7208336471943436029}
   - component: {fileID: 3101284996218979245}
   m_Layer: 0
@@ -118,6 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdce486feeb03914fb0bf204fdb30371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 7208336471943436029}
+  _networkObjectCache: {fileID: 0}
   <Trigger>k__BackingField: {fileID: 4925079765037595811}
   <Cooldown>k__BackingField: 5
   <TriggerOnce>k__BackingField: 1
@@ -157,21 +159,6 @@ MonoBehaviour:
   OnCooldownStop:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7233728804167958229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560762252650051526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e9fa56a1f246646869108561d71782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 7208336471943436029}
-  _networkObjectCache: {fileID: 7208336471943436029}
 --- !u!114 &7208336471943436029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +178,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 7233728804167958229}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}

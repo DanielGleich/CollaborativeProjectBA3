@@ -230,121 +230,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 395331569291597922}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
---- !u!1 &2411126219653838977
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 565071610852674342}
-  - component: {fileID: 5493001969599985094}
-  - component: {fileID: 1704106052433922948}
-  - component: {fileID: 2217143729217134434}
-  - component: {fileID: 3270642658943037672}
-  - component: {fileID: 3446264286303948644}
-  m_Layer: 10
-  m_Name: HazardTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &565071610852674342
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1918477212058056503}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5493001969599985094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72722e9d10356c44b9e252b418028bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _componentIndexCache: 11
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
---- !u!114 &1704106052433922948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  targetWeapon: {fileID: 5493001969599985094}
-  <WeaponCooldown>k__BackingField: 10
---- !u!114 &2217143729217134434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 12
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
-  <GodMode>k__BackingField: 0
---- !u!114 &3270642658943037672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  <WeaponId>k__BackingField: 3
-  OnChargeActive:
-    m_PersistentCalls:
-      m_Calls: []
-  OnChargeInactive:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3446264286303948644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411126219653838977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
-  _componentIndexCache: 13
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1 &3249515327585985415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,9 +1143,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5689191650715043810}
-    - targetCorrespondingSourceObject: {fileID: -817489638006699383, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 565071610852674342}
     - targetCorrespondingSourceObject: {fileID: 3826934387414923547, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3850792732131510533}
@@ -1330,13 +1212,7 @@ PrefabInstance:
       addedObject: {fileID: 8379070486850140609}
     - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9205338751318228030}
-    - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3642256951335445895}
-    - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4984746393268817844}
     - targetCorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1918190622809912594}
@@ -1346,12 +1222,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6179598990573357568}
-    - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1311022878276999232}
-    - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4666146811246834019}
     - targetCorrespondingSourceObject: {fileID: 2966321543526678894, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6432357638312353281}
@@ -1366,16 +1236,10 @@ PrefabInstance:
       addedObject: {fileID: 1632243639068029309}
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7938849050476527156}
-    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7690277663096622969}
     - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7135765918768299488}
-    - targetCorrespondingSourceObject: {fileID: 3800450946338469627, guid: d0b36822ba99e53458669ec992765942, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1204134546500510788}
     - targetCorrespondingSourceObject: {fileID: -8199005351108037487, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6028766016764389863}
@@ -1436,11 +1300,6 @@ Transform:
 --- !u!4 &1385607767923097176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9007999360112870374, guid: d0b36822ba99e53458669ec992765942, type: 3}
-  m_PrefabInstance: {fileID: 7942235783290338750}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1918477212058056503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -817489638006699383, guid: d0b36822ba99e53458669ec992765942, type: 3}
   m_PrefabInstance: {fileID: 7942235783290338750}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2511605872656321944 stripped
@@ -1838,23 +1697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  targetWeapon: {fileID: 3333115643738874225}
-  <WeaponCooldown>k__BackingField: 10
---- !u!114 &9205338751318228030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4788687040419621357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 3
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
+  targetWeapon: {fileID: 3333115643738874225}
+  <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
 --- !u!114 &3642256951335445895
 MonoBehaviour:
@@ -1868,6 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
   <WeaponId>k__BackingField: 1
   OnChargeActive:
     m_PersistentCalls:
@@ -1875,21 +1725,6 @@ MonoBehaviour:
   OnChargeInactive:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4984746393268817844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4788687040419621357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
-  _componentIndexCache: 4
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!114 &1918190622809912594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,39 +1786,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
   targetWeapon: {fileID: 8299134870069633189}
-  <WeaponCooldown>k__BackingField: 10
---- !u!114 &1311022878276999232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121156719385623760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 6
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
+  <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
---- !u!114 &4666146811246834019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121156719385623760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
-  _componentIndexCache: 7
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!114 &6432357638312353281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,6 +1804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
   <WeaponId>k__BackingField: 4
   OnChargeActive:
     m_PersistentCalls:
@@ -2198,23 +2009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  targetWeapon: {fileID: 8098446815312290814}
-  <WeaponCooldown>k__BackingField: 10
---- !u!114 &7938849050476527156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522786063078361925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
-  _componentIndexCache: 9
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
+  targetWeapon: {fileID: 8098446815312290814}
+  <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
 --- !u!114 &7690277663096622969
 MonoBehaviour:
@@ -2228,6 +2027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 0}
   <WeaponId>k__BackingField: 2
   OnChargeActive:
     m_PersistentCalls:
@@ -2251,21 +2053,6 @@ MonoBehaviour:
   affectedRigidbody: {fileID: 1657840696044281464}
   weaponDirection: {fileID: 4884054835545564801}
   knockBackForce: 3
---- !u!114 &1204134546500510788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522786063078361925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b673a5a0a568c214d8400e661719df1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargeStatusNetworking
-  _componentIndexCache: 10
-  _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!4 &6567512496939025573 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3826934387414923547, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -2403,17 +2190,17 @@ MonoBehaviour:
   - {fileID: 1750614451255156641}
   - {fileID: 1736394960479325595}
   - {fileID: 3333115643738874225}
-  - {fileID: 9205338751318228030}
-  - {fileID: 4984746393268817844}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8299134870069633189}
-  - {fileID: 1311022878276999232}
-  - {fileID: 4666146811246834019}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8098446815312290814}
-  - {fileID: 7938849050476527156}
-  - {fileID: 1204134546500510788}
-  - {fileID: 5493001969599985094}
-  - {fileID: 2217143729217134434}
-  - {fileID: 3446264286303948644}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 6026062333545028756}
   - {fileID: 2485860674817397115}
   - {fileID: 4705399026923109913}

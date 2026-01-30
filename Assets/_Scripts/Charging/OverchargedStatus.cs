@@ -1,57 +1,46 @@
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using System;
-using UnityEngine;
 
-public class OverchargedStatus : MonoBehaviour
+public class OverchargedStatus : NetworkBehaviour
 {
-    public static event Action<int, bool> OnOvercharged;
-    public event Action<int> OnOverchargeRequest;
     public static event Action<int> OnUseOverchargeRequest;
+    public static event Action<int, bool> OnOvercharged;
 
-    public bool IsOvercharged { get; set; }
+    public readonly SyncVar<bool> IsOvercharged = new SyncVar<bool>();
 
-    private void OnEnable()
+    public override void OnStartClient()
     {
-        Subscribe(); 
-    }
-
-    private void OnDisable()
-    {
-        Unsubscribe();
-    }
-
-    public void Subscribe()
-    {
-        OnOverchargeRequest += HandleLocalOverchargeRequest;
-        OnUseOverchargeRequest += HandleLocalUseOverchargeRequest;
-    }
-
-    public void Unsubscribe()
-    {
-        OnOverchargeRequest -= HandleLocalOverchargeRequest;
-        OnUseOverchargeRequest -= HandleLocalUseOverchargeRequest;
+        base.OnStartClient();
+        if (IsOwner)
+            OnUseOverchargeRequest += RequestOverchargeUse;
     }
 
     public void RequestOvercharge()
     {
-        OnOverchargeRequest?.Invoke(TeamMember.localTeamId);
+        SetOverchargeServerRpc(TeamMember.localTeamId);
     }
-
     public static void RequestUseOvercharge(int teamId)
     {
         OnUseOverchargeRequest?.Invoke(teamId);
     }
 
-    private void HandleLocalOverchargeRequest(int teamId)
+    [ServerRpc]
+    private void SetOverchargeServerRpc(int teamId)
     {
-        ApplyOvercharge(teamId, true);
+        IsOvercharged.Value = true;
+        NotifySetOvercharge(teamId, true);
     }
 
-    private static void HandleLocalUseOverchargeRequest(int teamId)
+    [ServerRpc]
+    private void RequestOverchargeUse(int teamId)
     {
-        ApplyOvercharge(teamId, false);
+        IsOvercharged.Value = false;
+        NotifySetOvercharge(teamId, false);
     }
 
-    public static void ApplyOvercharge(int teamId, bool value)
+    [ObserversRpc]
+    private void NotifySetOvercharge(int teamId, bool value)
     {
         OnOvercharged?.Invoke(teamId, value);
     }

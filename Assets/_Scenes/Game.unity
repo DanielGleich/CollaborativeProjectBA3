@@ -4455,6 +4455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayTestArena
       objectReference: {fileID: 0}
+    - target: {fileID: 5857336263967818685, guid: 44745bb678bbe3347b443f96cfd169ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5962522002349050074, guid: 44745bb678bbe3347b443f96cfd169ad, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6519,12 +6523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a242199d7266a6543a40e97540b26a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargingPadManagerNetworking
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5838587124575628349}
-  _networkObjectCache: {fileID: 5838587124575628349}
-  <InitialWaitTime>k__BackingField: 5
-  <TimeBetweenActivations>k__BackingField: 5
-  <ActivationDuration>k__BackingField: 5
 --- !u!4 &9111026178629345574
 Transform:
   m_ObjectHideFlags: 0

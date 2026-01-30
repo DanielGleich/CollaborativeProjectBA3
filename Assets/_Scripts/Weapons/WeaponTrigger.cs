@@ -1,101 +1,93 @@
+using FishNet.Object;
 using System;
 using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(ChargeStatus))]
-public class WeaponTrigger : MonoBehaviour
+public class WeaponTrigger : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] Weapon targetWeapon;
+    private ChargeStatus chargeStatus;
 
     [Header("Settings")]
     [field: SerializeField] public float WeaponCooldown { private set; get; } = 0;
+    [field: SerializeField] public bool GodMode { private set; get; } = false;
+
     public bool IsCooldown { get; private set; } = false;
+    int weaponId = -1;
 
-    private ChargeStatus chargeStatus;
-    public event Action OnTriggered;
-    public event Action OnTriggerRequest;
-    public event Action OnCooldownStart;
-    public event Action OnCooldownCancelled;
-    public event Action OnCooldownFinished;
 
-    private void Awake()
+    public static event Action<int, int> OnWeaponTriggered;
+
+    public override void OnStartClient()
     {
+        base.OnStartClient();
         chargeStatus = GetComponent<ChargeStatus>();
+        weaponId = chargeStatus.WeaponId;
+
+        if (IsOwner)
+            WeaponManager.OnWeaponTrigger += HandleLocalTriggerRequest;
     }
 
-    private void OnEnable()
+    void HandleLocalTriggerRequest(int teamId)
     {
-        Subscribe();
-    }
-
-    private void OnDisable()
-    {
-        Unsubscribe();
-    }
-
-    public void Subscribe()
-    {
-        OnTriggerRequest += TriggerWeapon;
-        WeaponManager.OnWeaponTrigger += TriggerChargedWeapons;
-    }
-
-    public void Unsubscribe()
-    {
-        OnTriggerRequest -= TriggerWeapon;
-        WeaponManager.OnWeaponTrigger -= TriggerChargedWeapons;
-    }
-
-    private void TriggerWeapon()
-    {
-        if (IsCooldown == false)
+        if (TeamMember.localTeamId == teamId && IsOwner)
         {
-            targetWeapon.TryActivate();
-            OnTriggered?.Invoke();
-            StartCoroutine(Cooldown());
-            Debug.Log(targetWeapon.name + " successfully triggered");
+            OnLocalTriggerRequest(teamId);
         }
     }
 
+    [ServerRpc]
+    private void OnLocalTriggerRequest(int teamId)
+    {
+        if (GodMode || chargeStatus.IsOvercharged.Value)
+        {
+            ForceTriggerWeapon(teamId);
+            StartCoroutine(Cooldown());
+        }
+        else if (IsCooldown == false && chargeStatus.IsPowered.Value)
+        {
+            NotifyWeaponTrigger(teamId);
+            chargeStatus.UnchargeWeapon();
+            StartCoroutine(Cooldown());
+        }
+    }
+
+    [Server]
     public void ForceTriggerWeapon(int teamId)
     {
         if (TeamMember.localTeamId != teamId) return;
         StopAllCoroutines();
-        OnCooldownCancelled?.Invoke();
-        targetWeapon.TryActivate();
-        OnTriggered?.Invoke();
+        NotifyWeaponTrigger(teamId);
         StartCoroutine(Cooldown());
-        Debug.Log(targetWeapon.name + " successfully force-triggered");
     }
 
-    public void ForceTriggerWeapon()
+    public void TriggerWeaponAnimation()
     {
-        ForceTriggerWeapon(TeamMember.localTeamId);
+        //Probably needs to be changed if damage is dealt double/quadruple
+        targetWeapon.TryActivate();
     }
 
-    public void ForceTriggerWeaponAnimation()
+    [ObserversRpc]
+    private void NotifyWeaponTrigger(int teamId)
     {
-        Debug.Log("ForceTriggerWeaponAnimation not Implemented yet");
-    }
-
-    private void TriggerChargedWeapons(int teamId)
-    {
-        Debug.Log($"{gameObject.name} - Team {teamId} triggered");
-        if (TeamMember.localTeamId != teamId) return;
-
-        if (chargeStatus.IsCharged)
+        if (IsOwner && teamId == TeamMember.localTeamId)
         {
-            OnTriggerRequest?.Invoke();
+            targetWeapon.TryActivate();
         }
+        else
+        {
+            TriggerWeaponAnimation();
+        }
+        OnWeaponTriggered?.Invoke(teamId, weaponId);
     }
 
+    [Server]
     IEnumerator Cooldown()
     {
-        if (WeaponCooldown <= 0) yield break;
         IsCooldown = true;
-        OnCooldownStart?.Invoke();
         yield return new WaitForSeconds(WeaponCooldown);
         IsCooldown = false;
-        OnCooldownFinished?.Invoke();
     }
 }

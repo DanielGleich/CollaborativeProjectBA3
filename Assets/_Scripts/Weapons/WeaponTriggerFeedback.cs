@@ -14,12 +14,12 @@ public class WeaponTriggerFeedback : MonoBehaviour
 
     private void OnEnable()
     {
-        WeaponTriggerNetworking.OnWeaponTriggered += WeaponTriggerNetworking_OnWeaponTriggered;
+        WeaponTrigger.OnWeaponTriggered += WeaponTriggerNetworking_OnWeaponTriggered;
     }
 
     private void OnDisable()
     {
-        WeaponTriggerNetworking.OnWeaponTriggered -= WeaponTriggerNetworking_OnWeaponTriggered;
+        WeaponTrigger.OnWeaponTriggered -= WeaponTriggerNetworking_OnWeaponTriggered;
     }
 
     private void WeaponTriggerNetworking_OnWeaponTriggered(int teamId, int triggeredWeaponId)

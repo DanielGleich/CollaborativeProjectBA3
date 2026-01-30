@@ -1,9 +1,10 @@
+using FishNet.Object;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ChargingPad : MonoBehaviour
+public class ChargingPad : NetworkBehaviour
 {
     [Header("References")]
     [field: SerializeField] public ChargingPadTrigger Trigger { private set; get; }
@@ -23,25 +24,10 @@ public class ChargingPad : MonoBehaviour
     public UnityEvent OnCooldownStart = new UnityEvent();
     public UnityEvent OnCooldownStop = new UnityEvent();
 
-    private void OnEnable()
+    public override void OnStartClient()
     {
-        Subscribe();
-        Deactivate();
-    }
-
-    private void OnDisable()
-    {
-        Unsubscribe();
-    }
-
-    public void Subscribe()
-    {
-        Trigger.OnCharging += OverchargeVehicle;
-    }
-
-    public void Unsubscribe()
-    {
-        Trigger.OnCharging -= OverchargeVehicle;
+        base.OnStartClient();
+        Trigger.OnCharging += HandleOnChargingEvent;
     }
 
     public void Activate()
@@ -65,7 +51,7 @@ public class ChargingPad : MonoBehaviour
         StartCoroutine(CooldownProcess());
     }
 
-        IEnumerator CooldownProcess()
+    IEnumerator CooldownProcess()
     {
         if (Cooldown <= 0) yield break;
 
@@ -79,24 +65,41 @@ public class ChargingPad : MonoBehaviour
             OnCooldownStop?.Invoke();
     }
 
-    private void OverchargeVehicle(GameObject vehicle)
+    private void HandleOnChargingEvent(GameObject obj)
+    {
+        if (obj.transform.root.TryGetComponent<NetworkObject>(out NetworkObject networkObj))
+        {
+            if (networkObj.IsOwner)
+                RequestChargeServerRpc(networkObj);
+        }
+    }
+
+
+    [ServerRpc(RequireOwnership = false)]
+    private void RequestChargeServerRpc(NetworkObject obj)
     {
         if (IsActive && IsCooldown == false)
         {
-            OverchargedStatus[] chargingStatuses = vehicle.transform.root.GetComponentsInChildren<OverchargedStatus>();
+            OverchargedStatus[] chargingStatuses = obj.GetComponentsInChildren<OverchargedStatus>();
             foreach (OverchargedStatus chargingStatus in chargingStatuses)
             {
-                if (chargingStatus.IsOvercharged == false)
+                if (chargingStatus.IsOvercharged.Value == false)
                 {
-                    chargingStatus.RequestOvercharge();
-                    StartCooldown();
-                    if (TriggerOnce)
-                    {
-                        Deactivate();
-                        return;
-                    }
+                    NotifyOverchargeRequest(chargingStatus.GetComponent<NetworkObject>());
                 }
             }
         }
+    }
+
+    [ObserversRpc]
+    private void NotifyOverchargeRequest(NetworkObject obj)
+    {
+        if (obj.IsOwner)
+            obj.GetComponent<OverchargedStatus>().RequestOvercharge();
+
+        if (TriggerOnce)
+            Deactivate();
+
+        StartCooldown();
     }
 }

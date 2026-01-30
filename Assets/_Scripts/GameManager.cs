@@ -2,7 +2,6 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -128,7 +127,7 @@ public class GameManager : NetworkSingleton<GameManager>
         if (IsTesting)
             SubscribeToPlayerDeaths();
 
-        ChargingPadManagerNetworking.Instance?.InitializeManager();
+        ChargingPadManager.Instance?.InitializeManager();
         isGameStarted.Value = true;
         NotifyGameStart();
     }
