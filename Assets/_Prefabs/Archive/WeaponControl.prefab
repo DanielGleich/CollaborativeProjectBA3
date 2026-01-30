@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8927073325010351830}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8927073325010351830}
   targetWeapon: {fileID: 0}
   <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8927073325010351830}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8927073325010351830}
   <WeaponId>k__BackingField: -1
   OnChargeActive:
     m_PersistentCalls:
@@ -145,7 +145,8 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 0}
+  - {fileID: 6042226601858657436}
+  - {fileID: 5189328726308637952}
   - {fileID: 367924785743690926}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
@@ -157,7 +158,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584323267686212492
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -365,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e24e4ebfccba3d4bb95b632fba5acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 8927073325010351830}
   _networkObjectCache: {fileID: 8927073325010351830}
   weaponId: -1

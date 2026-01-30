@@ -62,14 +62,12 @@ public class StageHazardManager : NetworkSingleton<StageHazardManager>
 
     IEnumerator Trigger(GameObject stageHazard, float overwriteDuration = 0)
     {
-        NotifyHazardActivate(stageHazard);
         float time = (Duration.x == Duration.y) ? Duration.x : UnityEngine.Random.Range(Duration.x,Duration.y);
-
         if (overwriteDuration > 0)
             time = overwriteDuration;
-
         if (time <= 0) yield break;
 
+        NotifyHazardActivate(stageHazard);
         yield return new WaitForSeconds(time);
         NotifyHazardDeactivate(stageHazard);
     }

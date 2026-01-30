@@ -1833,7 +1833,7 @@ PrefabInstance:
     - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: 'NetworkBehaviours.Array.data[14]'
       value: 
-      objectReference: {fileID: 4994887543133434073}
+      objectReference: {fileID: 0}
     - target: {fileID: 5607037410786639857, guid: 9b43883de6c829d4f92a569706873422, type: 3}
       propertyPath: 'NetworkBehaviours.Array.data[15]'
       value: 
@@ -2043,17 +2043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
---- !u!114 &4994887543133434073 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5493001969599985094, guid: 9b43883de6c829d4f92a569706873422, type: 3}
-  m_PrefabInstance: {fileID: 678486573158417695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72722e9d10356c44b9e252b418028bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &5199010553883966214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4705399026923109913, guid: 9b43883de6c829d4f92a569706873422, type: 3}

@@ -146,7 +146,7 @@ MonoBehaviour:
   priority: 1000
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: ea3813a181d65bc41a3a03901963429b, type: 2}
+  sharedProfile: {fileID: 0}
 --- !u!135 &2334429616030221824
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
   priority: 1000
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: ea3813a181d65bc41a3a03901963429b, type: 2}
+  sharedProfile: {fileID: 0}
 --- !u!135 &192110710811171523
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 15
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 16
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1697,9 +1697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 3333115643738874225}
   <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
@@ -1715,9 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 255
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 1
   OnChargeActive:
     m_PersistentCalls:
@@ -1786,9 +1786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 255
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8299134870069633189}
   <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
@@ -1804,9 +1804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 255
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 4
   OnChargeActive:
     m_PersistentCalls:
@@ -1941,7 +1941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 17
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -2009,9 +2009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 255
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8098446815312290814}
   <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
@@ -2027,9 +2027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 255
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 2
   OnChargeActive:
     m_PersistentCalls:
@@ -2190,17 +2190,14 @@ MonoBehaviour:
   - {fileID: 1750614451255156641}
   - {fileID: 1736394960479325595}
   - {fileID: 3333115643738874225}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8379070486850140609}
+  - {fileID: 3642256951335445895}
   - {fileID: 8299134870069633189}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6179598990573357568}
+  - {fileID: 6432357638312353281}
   - {fileID: 8098446815312290814}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1632243639068029309}
+  - {fileID: 7690277663096622969}
   - {fileID: 6026062333545028756}
   - {fileID: 2485860674817397115}
   - {fileID: 4705399026923109913}
@@ -2215,7 +2212,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584319834187701916
+  _initializedTimestamp: -8584318060087715980
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -2230,7 +2227,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 5
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5918673326528417147
   SceneId: 0
@@ -2580,7 +2577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 14
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
