@@ -57,7 +57,6 @@ public class WeaponTrigger : NetworkBehaviour
     [Server]
     public void ForceTriggerWeapon(int teamId)
     {
-        if (TeamMember.localTeamId != teamId) return;
         StopAllCoroutines();
         NotifyWeaponTrigger(teamId);
         StartCoroutine(Cooldown());

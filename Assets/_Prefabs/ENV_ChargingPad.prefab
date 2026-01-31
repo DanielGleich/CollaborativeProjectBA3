@@ -103,6 +103,7 @@ Transform:
   m_Children:
   - {fileID: 2185450652454292890}
   - {fileID: 4646050091424058627}
+  - {fileID: 5348765254612438706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4117015837677860285
@@ -138,6 +139,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 384752690697932653}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeactivate:
     m_PersistentCalls:
       m_Calls:
@@ -148,6 +161,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 3a6841ef24c484f42b287332b903d143, type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 384752690697932653}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -369,3 +394,70 @@ Transform:
   - {fileID: 6741013143341051053}
   m_Father: {fileID: 1909222165953749283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4058803889938445617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1909222165953749283}
+    m_Modifications:
+    - target: {fileID: 3385596067541471316, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_Name
+      value: ChargingPadVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+--- !u!198 &384752690697932653 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4396971372202179164, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+  m_PrefabInstance: {fileID: 4058803889938445617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5348765254612438706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8244231690074028931, guid: 4b7582e71a2c9c64dae320105a7e50fc, type: 3}
+  m_PrefabInstance: {fileID: 4058803889938445617}
+  m_PrefabAsset: {fileID: 0}

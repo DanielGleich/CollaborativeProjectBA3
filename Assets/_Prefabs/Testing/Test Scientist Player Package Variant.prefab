@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1185381369708860789, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584322651753916474
+      value: -8584317985973722723
       objectReference: {fileID: 0}
     - target: {fileID: 1185381369708860789, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <PrefabId>k__BackingField
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1185381369708860789, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: <AssetPathHash>k__BackingField
@@ -70,8 +70,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _initializedTimestamp
-      value: -8584322651753916474
+      value: -8584317985973722723
       objectReference: {fileID: 0}
+    - target: {fileID: 5482264508663238771, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'NetworkBehaviours.Array.data[0]'
+      value: 
+      objectReference: {fileID: -258064323370284630}
     - target: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: onTryAttack.m_PersistentCalls.m_Calls.Array.size
       value: 4
@@ -151,7 +155,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8463356905608115540, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -258064323370284630}
   m_SourcePrefab: {fileID: 100100000, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
 --- !u!114 &1497908548647649739 stripped
 MonoBehaviour:
@@ -164,6 +171,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7eaad30afc0e394499241d95e8a957c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
+--- !u!1 &5085036036868034801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8463356905608115540, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 3738637599691679141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-258064323370284630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085036036868034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 9220739327163643350}
+  _networkObjectCache: {fileID: 9220739327163643350}
 --- !u!114 &5306449646162182175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8810734944087451066, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -186,3 +213,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
+--- !u!114 &9220739327163643350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5482264508663238771, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 3738637599691679141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085036036868034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
