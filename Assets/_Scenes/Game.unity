@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9085447225992091574, guid: bea9acdca5e47a54fa11e96dc96a1ac5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -617,6 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 0
   damagePerSecond: 1
+  onEnterCooldown: 1
 --- !u!65 &282014181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1897,7 +1898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &976670600
 Camera:
   m_ObjectHideFlags: 0
@@ -2932,6 +2933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 0
   damagePerSecond: 1
+  onEnterCooldown: 1
 --- !u!65 &1346311956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4831,6 +4833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 50
   damagePerSecond: 50
+  onEnterCooldown: 1
 --- !u!65 &1901713073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4993,6 +4996,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 68bb284825163ee46a2da555f7c13f82, type: 3}
       propertyPath: m_Name
       value: Pilbert
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 68bb284825163ee46a2da555f7c13f82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
