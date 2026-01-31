@@ -85,7 +85,10 @@ public class GameEndScreen : NetworkBehaviour
     private void PlayerReadyForRematch_OnChange(SyncListOperation op, int index, NetworkConnection oldItem, NetworkConnection newItem, bool asServer)
     {
         if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
+        { 
             NotifyRematch();
+            NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
+        }
         NotifyPlayerRematchReady();
     }
 
@@ -171,7 +174,6 @@ public class GameEndScreen : NetworkBehaviour
     {
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
     }
 
     public void MoveToTeamSelection()
