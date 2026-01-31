@@ -3,7 +3,17 @@ guid: 31d866d4449c6064db442f468df8f0e2
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmissionSimple
+    second: {fileID: 2100000, guid: be76e35343ce6ee479075bf68af6c11b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightBulbBase.001
+    second: {fileID: 2100000, guid: 09f56262cfeb3c04583da4b0c11e7fd0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
