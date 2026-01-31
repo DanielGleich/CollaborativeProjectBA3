@@ -87,7 +87,7 @@ public class GameEndScreen : NetworkBehaviour
         if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
         { 
             NotifyRematch();
-            NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
+            NetworkSceneManager.LoadNetworkScene("Tutorial");
         }
         NotifyPlayerRematchReady();
     }
@@ -184,7 +184,7 @@ public class GameEndScreen : NetworkBehaviour
 
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+        NetworkSceneManager.LoadNetworkScene("ConnectingScene");
     }
 
     public void MoveToMainMenu()
