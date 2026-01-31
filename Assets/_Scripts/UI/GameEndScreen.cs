@@ -169,9 +169,9 @@ public class GameEndScreen : NetworkBehaviour
     [ObserversRpc]
     private void NotifyRematch()
     {
-        PlayerManager.Instance.ResetManagerForSceneChange();
-        TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
+        //PlayerManager.Instance.ResetManagerForSceneChange();
+        //TeamManager.Instance.ResetPlayerReadyStates();
+        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" }, false);
     }
 
     public void MoveToTeamSelection()
@@ -182,7 +182,7 @@ public class GameEndScreen : NetworkBehaviour
 
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" }, false);
     }
 
     public void MoveToMainMenu()

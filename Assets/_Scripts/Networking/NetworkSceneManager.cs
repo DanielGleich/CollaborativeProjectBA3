@@ -5,11 +5,11 @@ using System.Linq;
 
 public static class NetworkSceneManager
 {
-    public static void LoadNetworkScene(string sceneToLoad, string[] scenesToUnload)
+    public static void LoadNetworkScene(string sceneToLoad, string[] scenesToUnload, bool replaceOption = true)
     {
         if (!InstanceFinder.IsServerStarted) { return; }
 
-        SceneLoadData sceneLoadData = new SceneLoadData(sceneToLoad) { ReplaceScenes = ReplaceOption.All };
+        SceneLoadData sceneLoadData = replaceOption ? new SceneLoadData(sceneToLoad) { ReplaceScenes = ReplaceOption.All } : new SceneLoadData(sceneToLoad);
         NetworkConnection[] connections = InstanceFinder.ServerManager.Clients.Values.ToArray();
         InstanceFinder.SceneManager.LoadGlobalScenes(sceneLoadData);
 
