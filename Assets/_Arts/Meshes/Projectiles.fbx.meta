@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33004cf16a41b2244b68363101ea697f
+guid: 9cf2193e1055e814880d942ad66dbe0e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Box_Material
-    second: {fileID: 2100000, guid: 1fc4acea20ecf1245aa285799789ebbc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: CameraForFabian
-    second: {fileID: 2100000, guid: 08cf33c2dab9d7749b127f7400c4da28, type: 2}
+      name: Bullet_Material
+    second: {fileID: 2100000, guid: 5cff806f7ac28f843b2922f9c9c42932, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -43,9 +38,9 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.5
+    globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
@@ -56,7 +51,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -101,7 +96,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
