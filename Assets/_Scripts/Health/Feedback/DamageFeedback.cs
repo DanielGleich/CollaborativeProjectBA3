@@ -46,7 +46,6 @@ public class DamageFeedback : MonoBehaviour
     private void CurrentHealth_OnChange(float prev, float next, bool asServer)
     {
         float damageTaken = (prev - next);
-            Debug.Log(damageTaken);
         if (damageTaken > requiredDamageToTrigger)
         {
             OnDamageTriggered.Invoke(damageTaken);
