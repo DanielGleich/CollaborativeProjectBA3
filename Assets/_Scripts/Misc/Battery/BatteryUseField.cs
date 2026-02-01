@@ -15,6 +15,7 @@ public class BatteryUseField : MonoBehaviour
     private bool isReady;
     public event Action OnUpdateBatteries;
     public event Action<bool> OnUpdateIsReady;
+    public event Action OnDischargeBatteries;
     public bool IsReady
     {
         get => isReady;
@@ -68,6 +69,7 @@ public class BatteryUseField : MonoBehaviour
             if(charges >= RequiredChargedBatteries && !dischargeAll)
                 break;
         }
+        OnDischargeBatteries?.Invoke();
         CheckBatteryCharging();
     }
 }
