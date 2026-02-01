@@ -31,7 +31,7 @@ public class UITeamCard : MonoBehaviour
     {
         teamTemplate = team;
         currentTeamId = team.id;
-        teamTitle.text = "Team " + (team.id + 1);
+        teamTitle.text = team.id == 0 ? "Team Dan" : "Team Pilbert";
         UpdateTeamSlotProfiles();
 
         JoinRatButton.onClick.AddListener(RequestRatTeamSlot);

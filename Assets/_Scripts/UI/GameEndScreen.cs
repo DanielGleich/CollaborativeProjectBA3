@@ -2,6 +2,7 @@ using FishNet;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class GameEndScreen : NetworkBehaviour
     [SerializeField] TextMeshProUGUI deathText;
     [SerializeField] TextMeshProUGUI rematchButtonText;
     [SerializeField] TextMeshProUGUI rematchCounter;
+
+    [Header("Settings")]
+    [SerializeField] float OnDeathDelay = 3;
 
     private readonly SyncList<NetworkConnection> playerReadyForRematch = new SyncList<NetworkConnection>();
     private readonly SyncVar<bool> noPlayerLeft = new SyncVar<bool>();
@@ -101,6 +105,12 @@ public class GameEndScreen : NetworkBehaviour
 
     private void ActivateScreen()
     {
+        StartCoroutine(OnEnableDelay());
+    }
+
+    IEnumerator OnEnableDelay()
+    {
+        yield return new WaitForSeconds(OnDeathDelay);
         uiParent.SetActive(true);
         teamSelectionButton.interactable = IsServerInitialized;
         rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
