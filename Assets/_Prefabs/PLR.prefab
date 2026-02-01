@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1006553589373478822, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: _componentIndexCache
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1033287210412478442, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -1219,6 +1223,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 6211900497630662567, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: teamMember
+      value: 
+      objectReference: {fileID: 7682361635520763111}
     - target: {fileID: 6232915920688149591, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_Layer
       value: 11
@@ -1499,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 9213735004828328675, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4618763445215678201, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
@@ -1771,11 +1783,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000009586481
+      value: -0.0000013821129
       objectReference: {fileID: 0}
     - target: {fileID: 669897170150379319, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000025518244
+      value: 0.00000036790448
+      objectReference: {fileID: 0}
+    - target: {fileID: 870759762702597015, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: debugs
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 927227171753040627, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_Enabled
@@ -1945,6 +1961,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2291367941258654818, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponCooldown>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.96502364
@@ -1955,11 +1975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000009599262
+      value: 0.0000013826311
       objectReference: {fileID: 0}
     - target: {fileID: 2402085722509988359, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000026077814
+      value: -0.00000037561216
       objectReference: {fileID: 0}
     - target: {fileID: 2790508741684480635, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
@@ -2009,12 +2029,24 @@ PrefabInstance:
       propertyPath: 'otherColliders.Array.data[5]'
       value: 
       objectReference: {fileID: 689001521754089162}
+    - target: {fileID: 3881053181745345477, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881053181745345477, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: ad37fac0d3abcda4d902647bd8fbe501, type: 3}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damageOnEnter
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: damagePerSecond
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919607531908327587, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: onEnterCooldown
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4061090556077969429, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -2025,6 +2057,22 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 255
       objectReference: {fileID: 0}
+    - target: {fileID: 4319086001741242040, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: teamMaterials.Array.data[0].materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319086001741242040, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: teamMaterials.Array.data[1].materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319086001741242040, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'teamMaterials.Array.data[0].materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: ad37fac0d3abcda4d902647bd8fbe501, type: 3}
+    - target: {fileID: 4319086001741242040, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: 'teamMaterials.Array.data[1].materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: ad37fac0d3abcda4d902647bd8fbe501, type: 3}
     - target: {fileID: 4952346747507161838, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _initializedTimestamp
       value: -8584346035009917221
@@ -2181,6 +2229,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 255
       objectReference: {fileID: 0}
+    - target: {fileID: 6676638657040224031, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponCooldown>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6978525335225442122, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -2204,6 +2256,10 @@ PrefabInstance:
     - target: {fileID: 7441638559987235627, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _componentIndexCache
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668823924309702911, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: knockBackForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7966976081463509705, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_Height
@@ -2288,6 +2344,14 @@ PrefabInstance:
     - target: {fileID: 8861226195562026654, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _networkObjectCache
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875915461008615614, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: knockBackForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016777955855285470, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: <WeaponCooldown>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

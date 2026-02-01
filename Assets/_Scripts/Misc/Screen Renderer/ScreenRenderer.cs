@@ -9,6 +9,7 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Material & Shader Settings")]
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private int materialIndex;
     [SerializeField] private string screenVariableName = "_Screen";
 
     [Header("Render Settings")]
@@ -24,6 +25,7 @@ public class ScreenRenderer : MonoBehaviour
     [Header("Preview Settings")]
     [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
     private RenderTexture renderTexture;
+    private Material material;
 
     public Camera RenderCamera
     {
@@ -57,8 +59,15 @@ public class ScreenRenderer : MonoBehaviour
 
     void OnValidate()
     {
+        if(!meshRenderer)
+            meshRenderer = GetComponent<MeshRenderer>();
         if (updatePreviewOnValidate)
             StartCoroutine(PreviewRenderTextureRoutine());
+    }
+
+    void Awake()
+    {
+        material = meshRenderer.materials[materialIndex];
     }
 
     void OnEnable()
@@ -95,8 +104,9 @@ public class ScreenRenderer : MonoBehaviour
     }
     public bool VisibleFromCamera(Renderer renderer, Camera camera)
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-        return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        // Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        // return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        return true;
     }
     private void CreateRenderTexture(bool useSharedMaterial = false)
     {
@@ -104,11 +114,10 @@ public class ScreenRenderer : MonoBehaviour
         renderTexture.filterMode = filterMode;
         renderTexture.wrapMode = TextureWrapMode.Clamp;
         renderCamera.targetTexture = renderTexture;
-        Debug.Log(Application.isEditor);
         if (useSharedMaterial)
-            meshRenderer.sharedMaterial.SetTexture(screenVariableName, renderTexture);
+            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, renderTexture);
         else
-            meshRenderer.material.SetTexture(screenVariableName, renderTexture);
+            material.SetTexture(screenVariableName, renderTexture);
     }
     private void Render()
     {
