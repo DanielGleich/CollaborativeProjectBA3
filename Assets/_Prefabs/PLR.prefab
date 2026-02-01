@@ -158,6 +158,8 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 5640201686091075007}
   _networkObjectCache: {fileID: 0}
+  rInput: {fileID: 8941193313755814374}
+  sInput: {fileID: 3156626956574667790}
 --- !u!114 &8481224314858821898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,6 +1743,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 320885893985033832, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
   m_PrefabInstance: {fileID: 8303027001431880090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8941193313755814374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1094155783195699324, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6905d75ce6c19e242926323ab04dbd84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RatInputHandler
 --- !u!1001 &8707600914945210575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2410,6 +2423,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+--- !u!114 &3156626956574667790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464248597896186437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279ada932831d4b46881cff6464f9a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScientistInputsHandler
 --- !u!1 &3374922713539363342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6197444251564227265, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
