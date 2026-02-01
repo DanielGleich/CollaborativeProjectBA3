@@ -2,6 +2,7 @@ using FishNet;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,6 +19,9 @@ public class GameEndScreen : NetworkBehaviour
     [SerializeField] TextMeshProUGUI deathText;
     [SerializeField] TextMeshProUGUI rematchButtonText;
     [SerializeField] TextMeshProUGUI rematchCounter;
+
+    [Header("Settings")]
+    [SerializeField] float OnDeathDelay = 3;
 
     private readonly SyncList<NetworkConnection> playerReadyForRematch = new SyncList<NetworkConnection>();
     private readonly SyncVar<bool> noPlayerLeft = new SyncVar<bool>();
@@ -85,7 +89,10 @@ public class GameEndScreen : NetworkBehaviour
     private void PlayerReadyForRematch_OnChange(SyncListOperation op, int index, NetworkConnection oldItem, NetworkConnection newItem, bool asServer)
     {
         if (noPlayerLeft.Value && playerReadyForRematch.Count == PlayerManager.Instance.AllPlayerConnections.Count)
+        { 
             NotifyRematch();
+            NetworkSceneManager.LoadNetworkScene("Tutorial");
+        }
         NotifyPlayerRematchReady();
     }
 
@@ -98,6 +105,12 @@ public class GameEndScreen : NetworkBehaviour
 
     private void ActivateScreen()
     {
+        StartCoroutine(OnEnableDelay());
+    }
+
+    IEnumerator OnEnableDelay()
+    {
+        yield return new WaitForSeconds(OnDeathDelay);
         uiParent.SetActive(true);
         teamSelectionButton.interactable = IsServerInitialized;
         rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
@@ -171,7 +184,6 @@ public class GameEndScreen : NetworkBehaviour
     {
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] { "Game" });
     }
 
     public void MoveToTeamSelection()
@@ -182,7 +194,7 @@ public class GameEndScreen : NetworkBehaviour
 
         PlayerManager.Instance.ResetManagerForSceneChange();
         TeamManager.Instance.ResetPlayerReadyStates();
-        NetworkSceneManager.LoadNetworkScene("ConnectingScene", new string[] { "Game" });
+        NetworkSceneManager.LoadNetworkScene("ConnectingScene");
     }
 
     public void MoveToMainMenu()

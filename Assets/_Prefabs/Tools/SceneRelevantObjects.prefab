@@ -197,8 +197,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7653154672003604363}
-  - component: {fileID: 9110816635963259344}
   - component: {fileID: 5838587124474364066}
+  - component: {fileID: 5695841666860213673}
   m_Layer: 0
   m_Name: ChargingPadManager
   m_TagString: Untagged
@@ -221,24 +221,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8876480186818199003}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9110816635963259344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7074011944584568979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a242199d7266a6543a40e97540b26a03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargingPadManagerNetworking
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 5838587124474364066}
-  _networkObjectCache: {fileID: 5838587124474364066}
-  <InitialWaitTime>k__BackingField: 5
-  <TimeBetweenActivations>k__BackingField: 5
-  <ActivationDuration>k__BackingField: 5
 --- !u!114 &5838587124474364066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +240,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 9110816635963259344}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: -5194509992754653931}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -293,6 +275,24 @@ MonoBehaviour:
     Rotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
     Scale: {x: 1, y: 1, z: 1}
     IsValid: 1
+--- !u!114 &5695841666860213673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074011944584568979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c45ab4b745ddd409efb42185850f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingPadManager
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5838587124474364066}
+  _networkObjectCache: {fileID: 0}
+  <InitialWaitTime>k__BackingField: 5
+  <TimeBetweenActivations>k__BackingField: 5
+  <ActivationDuration>k__BackingField: 5
 --- !u!1 &8029960651372059801
 GameObject:
   m_ObjectHideFlags: 0

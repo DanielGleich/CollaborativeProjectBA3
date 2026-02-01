@@ -1,95 +1,93 @@
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargingPadManager : MonoBehaviour
+public class ChargingPadManager : NetworkSingleton<ChargingPadManager>
 {
+    protected override bool _perClient { get; } = false;
+    
     [Header("Settings")]
-    [field: SerializeField] public bool LocalAutostart { private set; get; } = false;
     [field: SerializeField] public float InitialWaitTime { private set; get; } = 5;
     [field: SerializeField] public float TimeBetweenActivations { private set; get; } = 5;
     [field: SerializeField] public float ActivationDuration { private set; get; } = 5;
 
+    public readonly SyncList<GameObject> deactivatedChargingPads = new SyncList<GameObject>();
+    public readonly SyncList<GameObject> activatedChargingPads = new SyncList<GameObject>();
 
-    List<ChargingPad> deactivatedChargingPads;
-    List<ChargingPad> activatedChargingPads;
 
-    private void Awake()
+    [Server, ContextMenu("Start")]
+    public void InitializeManager()
     {
-        deactivatedChargingPads = new List<ChargingPad>(FindObjectsByType<ChargingPad>(FindObjectsSortMode.None));
-        activatedChargingPads = new List<ChargingPad>();
-    }
-
-    private void Start()
-    {
-        if (LocalAutostart)
-            StartCoroutine(WaitPhase(InitialWaitTime));
-    }
-
-    private void OnEnable()
-    {
-        Subscribe();
-    }
-    private void OnDisable()
-    {
-        Unsubscribe();
-    }
-
-    public void Subscribe()
-    { 
-        ChargingPad.OnPadActivated += OnPadActivated;
-        ChargingPad.OnPadDeactivated += OnPadDeactivated;
-    }
-
-    public void Unsubscribe()
-    { 
-        ChargingPad.OnPadActivated -= OnPadActivated;
-        ChargingPad.OnPadDeactivated -= OnPadDeactivated;
-    }
-
-    private void OnPadActivated(ChargingPad pad)
-    {
-        if (activatedChargingPads.Contains(pad) == false)
+        if (deactivatedChargingPads.Count + activatedChargingPads.Count == 0)
         {
-            activatedChargingPads.Add(pad);
+            ChargingPad[] pads = FindObjectsByType<ChargingPad>(FindObjectsSortMode.None);
+            foreach (var pad in pads)
+            {
+                deactivatedChargingPads.Add(pad.gameObject);
+            }
         }
-
-        if (deactivatedChargingPads.Contains(pad))
-        {
-            deactivatedChargingPads.Remove(pad);
-        }
+        StartCoroutine(WaitPhase(InitialWaitTime));
     }
 
-    private void OnPadDeactivated(ChargingPad pad)
+    public override void OnStopServer()
     {
-        if (deactivatedChargingPads.Contains(pad) == false)
-        { 
-            deactivatedChargingPads.Add(pad);
-        }
-
-        if (activatedChargingPads.Contains(pad))
-        {
-            activatedChargingPads.Remove(pad);
-        }
+        base.OnStopServer();
+        CancelInvoke();
     }
 
+    [Server]
+    public void AddChargingPad(GameObject chargingPad)
+    {
+        deactivatedChargingPads.Add(chargingPad);
+    }
+
+
+    [Server]
     IEnumerator WaitPhase(float time)
-    { 
+    {
         yield return new WaitForSeconds(time);
         if (deactivatedChargingPads.Count > 0)
         {
-            ChargingPad chosenPad = deactivatedChargingPads[Random.Range(0, deactivatedChargingPads.Count)];
-            chosenPad.Activate();
+            GameObject chosenPad = deactivatedChargingPads[Random.Range(0, deactivatedChargingPads.Count)];
+            NotifyClientPadActivation(chosenPad.gameObject);
+            deactivatedChargingPads.Remove(chosenPad);
+            activatedChargingPads.Add(chosenPad);
             if (ActivationDuration > 0)
-                StartCoroutine(DeactivatePlatform(chosenPad));
+                StartCoroutine(DeactivatePad(chosenPad));
         }
 
         StartCoroutine(WaitPhase(TimeBetweenActivations));
     }
 
-    IEnumerator DeactivatePlatform(ChargingPad pad)
+    private IEnumerator DeactivatePad(GameObject pad)
     {
         yield return new WaitForSeconds(ActivationDuration);
-        pad.Deactivate();
+        NotifyClientPadDeactivation(pad);
+        activatedChargingPads.Remove(pad);
+        deactivatedChargingPads.Add(pad);
+    }
+
+    [ObserversRpc]
+    private void NotifyClientPadActivation(GameObject pad)
+    {
+        pad.GetComponent<ChargingPad>().Activate();
+    }
+
+    [ObserversRpc]
+    private void NotifyClientPadDeactivation(GameObject pad)
+    {
+        pad.GetComponent<ChargingPad>().Deactivate();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void DeactivateChargingPadServerRpc(GameObject pad)
+    {
+        if (activatedChargingPads.Contains(pad))
+        {
+            activatedChargingPads.Remove(pad);
+            deactivatedChargingPads.Add(pad);
+            NotifyClientPadDeactivation(pad);
+        }
     }
 }
