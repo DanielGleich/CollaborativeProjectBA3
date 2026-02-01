@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class WeaponManager : Singleton<WeaponManager>
 {
@@ -7,7 +6,7 @@ public class WeaponManager : Singleton<WeaponManager>
 
     public static void TriggerChargedWeapons(int teamId)
     {
-        OverchargedStatus.RequestUseOvercharge(teamId);
         OnWeaponTrigger?.Invoke(teamId);
+        OverchargedStatus.RequestUseOvercharge(teamId);
     }
 }

@@ -9,6 +9,7 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Material & Shader Settings")]
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private int materialIndex;
     [SerializeField] private string screenVariableName = "_Screen";
 
     [Header("Render Settings")]
@@ -19,10 +20,12 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Playback Settings")]
     [SerializeField] private bool playOnEnable = false;
+    [SerializeField] private bool ignoreVisibility = true;
 
     [Header("Preview Settings")]
     [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
     private RenderTexture renderTexture;
+    private Material material;
 
     public Camera RenderCamera
     {
@@ -56,8 +59,15 @@ public class ScreenRenderer : MonoBehaviour
 
     void OnValidate()
     {
+        if(!meshRenderer)
+            meshRenderer = GetComponent<MeshRenderer>();
         if (updatePreviewOnValidate)
             StartCoroutine(PreviewRenderTextureRoutine());
+    }
+
+    void Awake()
+    {
+        material = meshRenderer.materials[materialIndex];
     }
 
     void OnEnable()
@@ -77,11 +87,13 @@ public class ScreenRenderer : MonoBehaviour
     }
     public void StopRenderRoutine()
     {
+        Debug.Log("Stop Render Routine");
         StopAllCoroutines();
         OnActivateCamera?.Invoke(false);
     }
     private IEnumerator RenderRoutine()
     {
+        Debug.Log("Start Render Routine");
         CreateRenderTexture();
         yield return null;
         while (true)
@@ -102,15 +114,14 @@ public class ScreenRenderer : MonoBehaviour
         renderTexture.filterMode = filterMode;
         renderTexture.wrapMode = TextureWrapMode.Clamp;
         renderCamera.targetTexture = renderTexture;
-        Debug.Log(Application.isEditor);
         if (useSharedMaterial)
-            meshRenderer.sharedMaterial.SetTexture(screenVariableName, renderTexture);
+            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, renderTexture);
         else
-            meshRenderer.material.SetTexture(screenVariableName, renderTexture);
+            material.SetTexture(screenVariableName, renderTexture);
     }
     private void Render()
     {
-        if (VisibleFromCamera(meshRenderer, Camera.main) || Application.isEditor)
+        if  (ignoreVisibility || VisibleFromCamera(meshRenderer, Camera.main) ||Application.isEditor)
             renderCamera.Render();
     }
 

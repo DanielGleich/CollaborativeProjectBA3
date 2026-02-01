@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2283006896115489967}
   - component: {fileID: 6042226601858657436}
-  - component: {fileID: 3609141314417507009}
   - component: {fileID: 5189328726308637952}
   - component: {fileID: 5763643757865886548}
   - component: {fileID: 5662482459776725760}
@@ -51,23 +50,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  targetWeapon: {fileID: 0}
-  <WeaponCooldown>k__BackingField: 5
---- !u!114 &3609141314417507009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2852211739219482045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f29a640a059ca4db12f591771cf480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponTriggerNetworking
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8927073325010351830}
   _networkObjectCache: {fileID: 8927073325010351830}
+  targetWeapon: {fileID: 0}
+  <WeaponCooldown>k__BackingField: 5
   <GodMode>k__BackingField: 0
 --- !u!114 &5189328726308637952
 MonoBehaviour:
@@ -81,6 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 8927073325010351830}
+  _networkObjectCache: {fileID: 8927073325010351830}
   <WeaponId>k__BackingField: -1
   OnChargeActive:
     m_PersistentCalls:
@@ -155,7 +145,8 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 3609141314417507009}
+  - {fileID: 6042226601858657436}
+  - {fileID: 5189328726308637952}
   - {fileID: 367924785743690926}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
@@ -167,7 +158,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584323267686212492
+  _initializedTimestamp: -8584317121911497434
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -375,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e24e4ebfccba3d4bb95b632fba5acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 8927073325010351830}
   _networkObjectCache: {fileID: 8927073325010351830}
   weaponId: -1
