@@ -104,8 +104,9 @@ public class ScreenRenderer : MonoBehaviour
     }
     public bool VisibleFromCamera(Renderer renderer, Camera camera)
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-        return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        // Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        // return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        return true;
     }
     private void CreateRenderTexture(bool useSharedMaterial = false)
     {
