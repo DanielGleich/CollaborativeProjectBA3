@@ -135,7 +135,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public void StartLobby()
     {
-        NetworkSceneManager.LoadNetworkScene("Tutorial", new string[] {"ConnectingScene"} );
+        NetworkSceneManager.LoadNetworkScene("Tutorial");
     }
 
     public void LeaveLobby()

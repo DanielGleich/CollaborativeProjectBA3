@@ -6,18 +6,17 @@ public class ExistingLobbyForwardManager : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] MainMenuManager mainMenuManager;
-    [SerializeField] GameObject lobbyPage;
+    [SerializeField] MenuStateManager menuStateManager;
+    [SerializeField] SubMenu lobbyMenu;
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (lobbyPage.activeSelf == false)
-        { 
-            mainMenuManager.CreateTeamCards();
-            mainMenuManager.OnLobbyJoined();
-            StartCoroutine(DelayedLobbyUpdate(2));
-            StartCoroutine(DelayedLobbyUpdate(5));
-            StartCoroutine(DelayedLobbyUpdate(10));
-        }
+        menuStateManager.SetCurrentSubMenu(lobbyMenu);
+        mainMenuManager.CreateTeamCards();
+        mainMenuManager.OnLobbyJoined();
+        StartCoroutine(DelayedLobbyUpdate(2));
+        StartCoroutine(DelayedLobbyUpdate(5));
+        StartCoroutine(DelayedLobbyUpdate(10));
     }
 
     IEnumerator DelayedLobbyUpdate(float seconds)

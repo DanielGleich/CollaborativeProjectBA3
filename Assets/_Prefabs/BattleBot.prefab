@@ -627,6 +627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConstantDamage
   damageOnEnter: 0
   damagePerSecond: 1
+  onEnterCooldown: 1
 --- !u!114 &4092409647031105244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,9 +974,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
-  _componentIndexCache: 0
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 5607037410786639857}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1001 &2728646799560900483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1422,6 +1423,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1750614451255156641}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3646242397196442535}
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1657840696044281464}
@@ -1652,7 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 12
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1792,7 +1796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 13
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1879,6 +1883,11 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2806746396054637879, guid: d0b36822ba99e53458669ec992765942, type: 3}
   m_PrefabInstance: {fileID: 7942235783290338750}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4374739887542138586 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5948779992782785380, guid: d0b36822ba99e53458669ec992765942, type: 3}
+  m_PrefabInstance: {fileID: 7942235783290338750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4788687040419621357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6031260942982917037, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -1896,7 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7eaad30afc0e394499241d95e8a957c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   constantDamage: {fileID: 4543931608220937660}
@@ -1936,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 3333115643738874225}
@@ -1954,7 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 1
@@ -2008,11 +2017,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 3919714130502515608}
-  projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
+  projectilePrefab: {fileID: 1260295138661007389, guid: 051aa5747ebd92b4b905da9d8d4c91eb, type: 3}
 --- !u!114 &6179598990573357568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,7 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 6
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8299134870069633189}
@@ -2043,7 +2052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 7
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 4
@@ -2180,7 +2189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 14
+  _componentIndexCache: 15
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -2231,11 +2240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 8
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 4884054835545564801}
-  projectilePrefab: {fileID: 3782572831373989009, guid: 9cd60c9af57221044ad4ef3095612ebd, type: 3}
+  projectilePrefab: {fileID: 5895052687822229717, guid: fc5760fcaad1aba4aa9c34e405f32c5d, type: 3}
 --- !u!114 &1632243639068029309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,7 +2257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8098446815312290814}
@@ -2266,7 +2275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 10
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 2
@@ -2428,6 +2437,7 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 1750614451255156641}
   - {fileID: 1736394960479325595}
+  - {fileID: 8980860123513413769}
   - {fileID: 3333115643738874225}
   - {fileID: 8379070486850140609}
   - {fileID: 3642256951335445895}
@@ -2442,8 +2452,7 @@ MonoBehaviour:
   - {fileID: 4705399026923109913}
   - {fileID: 1028936660600228598}
   InitializedParentNetworkBehaviour: {fileID: 0}
-  InitializedNestedNetworkObjects:
-  - {fileID: 0}
+  InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
   RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
@@ -2452,7 +2461,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584317985973722723
+  _initializedTimestamp: -8584317121911497434
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -2563,6 +2572,28 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5607037410786639857}
   health: {fileID: 6580198540292879955}
   DamageSyncTolerace: 1
+--- !u!114 &3646242397196442535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131754079086674159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70577c07a6c069448514b3acb13eb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  targetMeshRenderer: {fileID: 4374739887542138586}
+  teamMaterials:
+  - teamId: 0
+    materials:
+    - {fileID: 2100000, guid: 88d035f0abc5ebb47818a9ebb39d6f18, type: 2}
+    - {fileID: 2100000, guid: bfa62c5db1abaa64e822461077b84152, type: 2}
+  - teamId: 1
+    materials:
+    - {fileID: 2100000, guid: 294c6aa28954959479a0320e3f0a5f9f, type: 2}
+    - {fileID: 2100000, guid: af9c4b844468920468a7fc634c4d386c, type: 2}
 --- !u!1 &7415623634265430486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
@@ -2780,7 +2811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 11
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2

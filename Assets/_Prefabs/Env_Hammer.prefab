@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
   <IsNested>k__BackingField: 0
   WasActiveDuringEdit: 0
-  WasActiveDuringEdit_Set1: 0
+  WasActiveDuringEdit_Set1: 1
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 17ed419fbdc77424ebc94c8f627d0b2d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6452a82ec5e5d064582035d52dfb093c, type: 2}
     - target: {fileID: 919132149155446097, guid: 17ed419fbdc77424ebc94c8f627d0b2d, type: 3}
       propertyPath: m_Name
       value: MDL_Arena_HammerNew_Universal

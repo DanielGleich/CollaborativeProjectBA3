@@ -75,7 +75,6 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         int winnerTeam = -1;
         int loserTeam = -1;
-        Debug.Log("Death");
 
         foreach (var team in TeamManager.Instance.allTeams)
         {

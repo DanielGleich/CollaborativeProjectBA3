@@ -24,7 +24,7 @@ public class WeaponTriggerFeedback : MonoBehaviour
 
     private void OnDisable()
     {
-        TeamManager.OnTeamReady += FindTeam;
+        TeamManager.OnTeamReady -= FindTeam;
         WeaponTrigger.OnWeaponTriggered -= OnTeamWeaponTrigger;
     }
 
