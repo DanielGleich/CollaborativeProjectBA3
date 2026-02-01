@@ -72,6 +72,7 @@
 			<destination>{3adcb7f9-4e77-433b-9578-d4d29ebe3a20}</destination>
 			<destination>{89868a34-e38a-468b-bf57-57b1247de387}</destination>
 			<destination>{b85e514f-7349-4ae1-9afa-59651cec5c41}</destination>
+			<destination>{48757528-e307-4227-b299-37ea7c53afd1}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{5a1fa8e3-b3cc-42a0-8390-6ab3c4995e12}</destination>
@@ -80,6 +81,8 @@
 	<object class="GroupTrack" id="{d0c4ac9c-ff2f-47c9-994c-112a1e3eb6b2}">
 		<relationship name="modules">
 			<destination>{bdfde991-85fe-4f56-b341-98b0caf517dd}</destination>
+			<destination>{7a56ca8c-65ba-47ee-83c0-d3321b110b79}</destination>
+			<destination>{6b1c3973-fdae-43ba-9fdb-f585fe2deea1}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{01346f85-3754-4212-9596-8d65a21a05ea}</destination>
@@ -101,6 +104,9 @@
 			<destination>{bdfde991-85fe-4f56-b341-98b0caf517dd}</destination>
 			<destination>{89868a34-e38a-468b-bf57-57b1247de387}</destination>
 			<destination>{b85e514f-7349-4ae1-9afa-59651cec5c41}</destination>
+			<destination>{48757528-e307-4227-b299-37ea7c53afd1}</destination>
+			<destination>{7a56ca8c-65ba-47ee-83c0-d3321b110b79}</destination>
+			<destination>{6b1c3973-fdae-43ba-9fdb-f585fe2deea1}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{a67fedac-13ac-4a59-9c5f-c249599bfe6b}</destination>
@@ -186,6 +192,23 @@
 			<destination>{695e0848-0f56-4ea2-80b7-c33e14d20c90}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{48757528-e307-4227-b299-37ea7c53afd1}">
+		<property name="isCutoff">
+			<value>true</value>
+		</property>
+		<property name="start">
+			<value>2</value>
+		</property>
+		<property name="pitch">
+			<value>5</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{695e0848-0f56-4ea2-80b7-c33e14d20c90}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{5a1fa8e3-b3cc-42a0-8390-6ab3c4995e12}">
 		<property name="name">
 			<value>Audio 1</value>
@@ -212,6 +235,46 @@
 		</property>
 		<property name="pitch">
 			<value>-1.20000005</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{1b18a87c-fa89-4f09-b09e-12c5dafaa3f7}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{7a56ca8c-65ba-47ee-83c0-d3321b110b79}">
+		<property name="isCutoff">
+			<value>true</value>
+		</property>
+		<property name="start">
+			<value>2</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
+		</property>
+		<property name="pitch">
+			<value>-1.20000005</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{1b18a87c-fa89-4f09-b09e-12c5dafaa3f7}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{6b1c3973-fdae-43ba-9fdb-f585fe2deea1}">
+		<property name="isCutoff">
+			<value>true</value>
+		</property>
+		<property name="start">
+			<value>2</value>
+		</property>
+		<property name="volume">
+			<value>-2</value>
+		</property>
+		<property name="pitch">
+			<value>0.699999988</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
