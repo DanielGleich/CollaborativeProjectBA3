@@ -104,7 +104,7 @@ public class LobbyManager : NetworkSingleton<LobbyManager>
         {
             PlayerManager.Instance.ResetManagerForSceneChange();
             TeamManager.Instance.ResetPlayerReadyStates();
-            NetworkSceneManager.LoadNetworkScene("Game", null);
+            NetworkSceneManager.LoadNetworkScene("Game");
         }
     }
 

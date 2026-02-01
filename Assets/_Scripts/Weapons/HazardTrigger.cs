@@ -9,6 +9,6 @@ public class HazardTrigger : Weapon
         if (StageHazardManager.Instance != null)
             StageHazardManager.Instance.RequestTrigger();
         else 
-            StageHazard.TriggerAllHazards();
+            StageHazard.ActivateAllHazards();
     }
 }

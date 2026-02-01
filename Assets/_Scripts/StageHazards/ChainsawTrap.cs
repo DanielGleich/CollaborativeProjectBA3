@@ -1,64 +1,46 @@
-using FishNet;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(StageHazard))]
 public class ChainsawTrap : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject hitbox;
+    [SerializeField] Animator animate;
+    StageHazard hazard;
 
     [Header("Settings")]
-    public float Duration;
     public UnityEvent OnTrapStarting = new UnityEvent();
-    public UnityEvent OnTrapStarted = new UnityEvent();
-    public UnityEvent OnTrapFinishing = new UnityEvent();
     public UnityEvent OnTrapFinished = new UnityEvent();
+
+    private void Awake()
+    {
+        hazard = GetComponent<StageHazard>();
+    }
 
     private void OnEnable()
     {
-        Subscribe();
-        DeactivateTrap();
+        hazard.OnActivate += Activate;
+        hazard.OnDeactivate += Deactivate;
+        Deactivate();
     }
     private void OnDisable()
     {
-        Unsubscribe();
+        hazard.OnActivate -= Activate;
+        hazard.OnDeactivate -= Deactivate;
     }
 
-    public void Subscribe()
+    public void Activate()
     {
-        StageHazard.OnTriggered += TriggerTrap;
-    }
-
-    public void Unsubscribe()
-    { 
-        StageHazard.OnTriggered -= TriggerTrap;    
-    }
-
-    [ContextMenu("Trigger Trap")]
-    public void TriggerTrap()
-    {
-        StartCoroutine(TrapProcedure());
-    }
-    private void ActivateTrap()
-    { 
         OnTrapStarting?.Invoke();
+        animate.SetBool("Active", true);
         hitbox.SetActive(true);
-        OnTrapStarted?.Invoke();
     }
-    private void DeactivateTrap()
+    public void Deactivate()
     { 
-        OnTrapFinishing?.Invoke();
         hitbox.SetActive(false);
         OnTrapFinished?.Invoke();
+        animate.SetBool("Active", false);
     }
-
-    IEnumerator TrapProcedure()
-    {
-        ActivateTrap();
-        yield return new WaitForSeconds(Duration);
-        DeactivateTrap();
-    }
-
 }

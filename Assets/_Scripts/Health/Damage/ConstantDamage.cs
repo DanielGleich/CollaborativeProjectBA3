@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,9 @@ using UnityEngine;
 /// </summary>
 public class ConstantDamage : SimpleDamage {
     [SerializeField, Min(0)] private float damagePerSecond = 1f;
+    [SerializeField, Min(0)] private float onEnterCooldown = 1f;
     private List<Health> affectedHealthComponents = new();
+    private List<Health> healthComponentsOnCooldown = new();
     public int AffectedHealthComponentsCount => affectedHealthComponents.Count;
     public event Action<int> OnUpdatedAffectHealthComponents;
     protected override void OnTriggerEnter(Collider other)
@@ -26,8 +29,9 @@ public class ConstantDamage : SimpleDamage {
     void CheckNewContacts(Collider other)
     {
         Health h = other.GetComponentInParent<Health>();
-        if (h && !affectedHealthComponents.Contains(h))
+        if (h && !affectedHealthComponents.Contains(h) && !healthComponentsOnCooldown.Contains(h))
         {
+            TriggerCooldown(h);
             affectedHealthComponents.Add(h);
             OnUpdatedAffectHealthComponents?.Invoke(affectedHealthComponents.Count);
             TakeDamage(h);
@@ -36,12 +40,20 @@ public class ConstantDamage : SimpleDamage {
     void OnTriggerExit(Collider other)
     {
         Health h = other.GetComponentInParent<Health>();
-        if(h && affectedHealthComponents.Contains(h))
+        if (h && affectedHealthComponents.Contains(h))
         {
             affectedHealthComponents.Remove(h);
             OnUpdatedAffectHealthComponents?.Invoke(affectedHealthComponents.Count);
         }
     }
+
+    IEnumerator TriggerCooldown(Health h)
+    {
+        healthComponentsOnCooldown.Add(h);
+        yield return new WaitForSeconds(onEnterCooldown);
+        healthComponentsOnCooldown.Remove(h);
+    }
+
     void OnDisable()
     {
         affectedHealthComponents.Clear();
