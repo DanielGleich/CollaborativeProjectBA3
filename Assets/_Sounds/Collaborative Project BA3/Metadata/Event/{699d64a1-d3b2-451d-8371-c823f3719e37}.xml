@@ -5,7 +5,7 @@
 			<value>ChainsawChargedOutside</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -99,7 +99,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a8367077-7bba-4303-958c-fd7e08701173}" />
-	<object class="SingleSound" id="{9d0b853d-4733-468f-b65c-e78f22d4422b}" />
+	<object class="SingleSound" id="{9d0b853d-4733-468f-b65c-e78f22d4422b}">
+		<relationship name="audioFile">
+			<destination>{8df3c08a-442f-493a-8057-883e9d941d6f}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{e468e850-ffdd-478f-8a45-a4bc565160a8}" />
 	<object class="MixerBusFader" id="{72772e8e-71db-4b14-9375-a4ce8c6f1a3f}" />
 </objects>
