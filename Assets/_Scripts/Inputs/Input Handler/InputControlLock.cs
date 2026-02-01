@@ -7,7 +7,10 @@ using UnityEngine;
 public class InputControlLock : NetworkBehaviour
 {
     TeamMember teamMember;
-    GameObject playerPackage;
+    [Header("References")]
+    [SerializeField] RatInputHandler rInput;
+    [SerializeField] ScientistInputsHandler sInput;
+
 
     private void Awake()
     {
@@ -30,20 +33,17 @@ public class InputControlLock : NetworkBehaviour
 
     private void DisableInputs(GameObject pPackage)
     {
-        playerPackage = pPackage;
         if (GameManager.Instance?.IsTesting == false)
         {
             switch (teamMember.CurrentRole.Value)
             {
                 case TeamRole.SCIENTIST:
-                    if (playerPackage.TryGetComponent<ScientistInputsHandler>(out ScientistInputsHandler sInput))
-                        sInput.enabled = false;
-                    break;
+                    sInput.enabled = false;
+                break;
 
                 case TeamRole.RAT:
-                    if (playerPackage.TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
-                        rInput.enabled = false;
-                    break;
+                    rInput.enabled = false;
+                break;
             }
 
         }
@@ -57,14 +57,12 @@ public class InputControlLock : NetworkBehaviour
         switch (teamMember.CurrentRole.Value)
         {
             case TeamRole.SCIENTIST:
-                if (playerPackage.TryGetComponent<ScientistInputsHandler>(out ScientistInputsHandler sInput))
-                    sInput.enabled = true;
-                break;
+                sInput.enabled = true;
+            break;
 
             case TeamRole.RAT:
-                if (playerPackage.TryGetComponent<RatInputHandler>(out RatInputHandler rInput))
-                    rInput.enabled = true;
-                break;
+                rInput.enabled = true;
+            break;
         }
     }
 }

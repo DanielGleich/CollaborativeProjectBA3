@@ -8,11 +8,18 @@ public class GameCountdownDisplay : MonoBehaviour
 
     bool timerStarted = false;
 
+    private void Awake()
+    {
+        if (GameManager.Instance.IsTesting == false)
+        { 
+            background.SetActive(true); 
+            textField.gameObject.SetActive(true);
+        }
+    }
+
     private void OnEnable()
     {
         GameManager.OnInitialized += GameManager_OnInitialized;
-        background.SetActive(true);
-        textField.gameObject.SetActive(true);
     }
 
     private void OnDisable()
