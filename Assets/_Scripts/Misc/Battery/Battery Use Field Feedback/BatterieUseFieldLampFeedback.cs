@@ -26,8 +26,5 @@ public class BatterieUseFieldLampFeedback : BatteryUseFieldFeedback
         }
     }
 
-    protected override void UpdateIsReady(bool isReady)
-    {
-        // Do Noting
-    }
+    protected override void UpdateIsReady(bool isReady) => UpdateLamps();
 }
