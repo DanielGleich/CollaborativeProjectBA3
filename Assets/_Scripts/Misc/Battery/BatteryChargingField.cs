@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Charges every battery that enters a Triggerzone by a certain amount per second
+/// </summary>
 public class BatteryChargingField : MonoBehaviour
 {
-
     [Header("Settings")]
     [SerializeField] private float chargePerSecond;
     private List<Battery> batteries = new();

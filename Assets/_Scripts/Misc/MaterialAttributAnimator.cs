@@ -8,7 +8,7 @@ public class MaterialAttributAnimator : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private int materialIndex = 0;
+    [SerializeField, Min(0)] private int materialIndex = 0;
     [SerializeField] private string materialAttributeName = "_GlowStrength";
 
     [Header("Settings")]

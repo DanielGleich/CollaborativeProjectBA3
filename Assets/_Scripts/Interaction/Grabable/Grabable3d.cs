@@ -3,23 +3,22 @@ using UnityEngine;
 
 public class Grabable3d : Interactable
 {
-    [field: SerializeField] public Rigidbody Rigidbody;
-    [Header("Settings")]
-    [SerializeField, Min(0)] private float maxCollisionMagnitude = 3;
-    public event Action OnCollideToHard;
-    public override void Interact()
-    {
-        // DoNothing
-    }
+    [Header("References")]
+    [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+    [field: SerializeField] public Collider Collider { get; private set; }
+    public event Action OnForceDrop;
     void OnValidate()
     {
         if (!Rigidbody)
             Rigidbody = GetComponent<Rigidbody>();
+        if (!Rigidbody)
+            Rigidbody = gameObject.AddComponent<Rigidbody>();
+        if (!Collider)
+            Collider = GetComponent<Collider>();
     }
-    void OnCollisionEnter(Collision collision)
+    public override void Interact()
     {
-        //Debug.Log(collision.relativeVelocity.magnitude);
-        if (collision.relativeVelocity.magnitude > maxCollisionMagnitude)
-            OnCollideToHard?.Invoke();
+        // DoNothing
     }
+    public void ForceDrop() => OnForceDrop?.Invoke();
 }
