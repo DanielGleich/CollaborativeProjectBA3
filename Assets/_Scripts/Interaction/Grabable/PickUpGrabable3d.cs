@@ -25,10 +25,10 @@ public class PickUpGrabable3d : MonoBehaviour
             if (value == grabable)
                 return;
             if(grabable)
-                grabable.OnCollideToHard -= Drop;
+                grabable.OnForceDrop -= Drop;
             grabable = value;
             if(grabable)
-                grabable.OnCollideToHard += Drop;
+                grabable.OnForceDrop += Drop;
             OnPickUp?.Invoke(grabable);
         }
     }
@@ -67,6 +67,7 @@ public class PickUpGrabable3d : MonoBehaviour
     {
         if (!grabable)
             return;
+        // grabable.Rigidbody.AddForce(transform.forward * throwStrength.x + transform.up * throwStrength.y, ForceMode.Impulse);
         grabable.Rigidbody.linearVelocity = transform.forward * throwStrength.x + transform.up * throwStrength.y;
         Drop();
     }

@@ -2855,7 +2855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!136 &844877665
@@ -3365,7 +3365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!114 &984495541
@@ -3381,7 +3381,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 984495540}
-  l: {fileID: 563060387}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1008275364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3897,7 +3905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!136 &1053217526
@@ -4237,7 +4245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!114 &1112373523
@@ -4253,7 +4261,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 1112373522}
-  l: {fileID: 1135261736}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1135261733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,7 +4616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!114 &1321767385
@@ -4616,7 +4632,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 1321767384}
-  l: {fileID: 523384879}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1382701475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,7 +4709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31217d0b2df20a4997cbd57d8efcaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BatteryUseField
-  <requiredChargedBatteries>k__BackingField: 2
+  <RequiredChargedBatteries>k__BackingField: 2
   <batteries>k__BackingField: []
   dischargeAll: 0
 --- !u!1 &1392458528
@@ -6672,19 +6696,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6692,7 +6716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6813554265662776664, guid: 2208c0a130c758d45acf31d9157ca88d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

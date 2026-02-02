@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Tracks the amount of batteries and discharges them when activated
+/// </summary>
 public class BatteryUseField : MonoBehaviour
 {
     [Header("Settings")]
-    [field: SerializeField] public int requiredChargedBatteries { get; private set; } = 2;
+    [field: SerializeField] public int RequiredChargedBatteries { get; private set; } = 2;
     [field: SerializeField] public List<Battery> batteries { get; private set; } = new();
     [SerializeField] private bool dischargeAll;
 
+    public int ChargedBatteriesCount => batteries.Count(b => b.IsFullyCharged);
+
     private bool isReady;
+    public event Action OnUpdateBatteries;
     public event Action<bool> OnUpdateIsReady;
+    public event Action OnDischargeBatteries;
     public bool IsReady
     {
         get => isReady;
@@ -33,6 +40,7 @@ public class BatteryUseField : MonoBehaviour
             batteries.Add(battery);
             CheckBatteryCharging();
         }
+        OnUpdateBatteries?.Invoke();
     }
     void OnTriggerExit(Collider other)
     {
@@ -43,11 +51,12 @@ public class BatteryUseField : MonoBehaviour
             batteries.Remove(battery);
             CheckBatteryCharging();
         }
+        OnUpdateBatteries?.Invoke();
     }
     private void CheckBatteryCharging()
     {
         int chargedBatteries = batteries.Count(b => b.IsFullyCharged);
-        IsReady = requiredChargedBatteries <= chargedBatteries;
+        IsReady = RequiredChargedBatteries <= chargedBatteries;
     }
     public void UseUpBatteries()
     {
@@ -61,9 +70,10 @@ public class BatteryUseField : MonoBehaviour
                 b.ChargeAmount = 0;
                 charges++;
             }
-            if(charges >= requiredChargedBatteries && !dischargeAll)
+            if(charges >= RequiredChargedBatteries && !dischargeAll)
                 break;
         }
+        OnDischargeBatteries?.Invoke();
         CheckBatteryCharging();
     }
 }
