@@ -46,4 +46,11 @@ public class ConstantRotation : MonoBehaviour
     {
         DOTween.To(x => currentSpeed = x, activeSpeed, baseSpeed, tweenTime).SetEase(ease);
     }
+    public void Activate(bool activate)
+    {
+        if(activate)
+            Activate();
+        else
+            Deactivate();
+    }
 }
