@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Tracks the amount of batteries and discharges them when activated
+/// </summary>
 public class BatteryUseField : MonoBehaviour
 {
     [Header("Settings")]
@@ -37,6 +40,7 @@ public class BatteryUseField : MonoBehaviour
             batteries.Add(battery);
             CheckBatteryCharging();
         }
+        OnUpdateBatteries?.Invoke();
     }
     void OnTriggerExit(Collider other)
     {
@@ -47,10 +51,10 @@ public class BatteryUseField : MonoBehaviour
             batteries.Remove(battery);
             CheckBatteryCharging();
         }
+        OnUpdateBatteries?.Invoke();
     }
     private void CheckBatteryCharging()
     {
-        OnUpdateBatteries?.Invoke();
         int chargedBatteries = batteries.Count(b => b.IsFullyCharged);
         IsReady = RequiredChargedBatteries <= chargedBatteries;
     }
