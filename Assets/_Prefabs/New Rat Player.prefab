@@ -347,7 +347,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 2750995557289129773}
   - component: {fileID: 1857331391094201320}
   - component: {fileID: 668132460860079348}
+  - component: {fileID: 946017433006868862}
   m_Layer: 3
   m_Name: New Rat Player
   m_TagString: Untagged
@@ -489,10 +490,34 @@ MonoBehaviour:
         m_CallState: 2
   onThrow:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 813769866577305607}
+        m_TargetAssemblyTypeName: PickUpGrabable3d, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSubmit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: LobbyReadyInteraction, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDuck:
     m_PersistentCalls:
       m_Calls: []
@@ -572,7 +597,7 @@ MonoBehaviour:
   grabableTargetPosition: {fileID: 1602593440099037253}
   speed: 15
   smoothTime: 0.01
-  throwStrength: {x: 5, y: 2}
+  throwStrength: {x: 4, y: 1}
 --- !u!54 &2750995557289129773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -612,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 3
+  Weight: 0
 --- !u!114 &668132460860079348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,8 +655,22 @@ MonoBehaviour:
   useCharacterControllerVelocity: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   forceMode: 1
+--- !u!114 &946017433006868862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594580320741681224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fd99e03c15c18489ae0b8854fd7922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IgnoreCollisionsWhileGrabed
+  pickUpGrabable3D: {fileID: 813769866577305607}
+  characterController: {fileID: 520795165400890271}
 --- !u!1 &7288524565613062859
 GameObject:
   m_ObjectHideFlags: 0

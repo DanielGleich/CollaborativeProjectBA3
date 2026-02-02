@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public abstract class BatteryUseFieldFeedback : MonoBehaviour {
-    [SerializeField] private BatteryUseField batteryUseField;
+    [SerializeField] protected BatteryUseField batteryUseField;
 
     protected virtual void OnValidate()
     {
