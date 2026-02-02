@@ -39,7 +39,8 @@ public class RatGameplayModeSwitcher : MonoBehaviour {
     private void UpdateGameplayMode(GameplayMode gameplayMode)
     {
         gameplayModeGameObjects.ForEach(m => m.GameObjects.ForEach(g => g.SetActive(m.GameplayMode == gameplayMode)));
-        Array.ForEach(debrisSystemObjects, d => d.SetActive(useDebris));
+        if(debrisSystemObjects != null)
+            Array.ForEach(debrisSystemObjects, d => d.SetActive(useDebris));
     }
     public void SetGameplayMode(GameplayMode gameplayMode)
     {

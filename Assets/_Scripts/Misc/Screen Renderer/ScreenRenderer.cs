@@ -24,7 +24,7 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Preview Settings")]
     [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
-    private RenderTexture renderTexture;
+    public RenderTexture RenderTexture {get; private set;}
     private Material material;
 
     public Camera RenderCamera
@@ -42,6 +42,7 @@ public class ScreenRenderer : MonoBehaviour
         }
     }
     public event Action<Camera> OnSwitchRenderCamera;
+    public event Action OnUpdateTexture;
 
     private bool cameraDisplayActive;
     public event Action<bool> OnActivateCamera;
@@ -110,19 +111,20 @@ public class ScreenRenderer : MonoBehaviour
     }
     private void CreateRenderTexture(bool useSharedMaterial = false)
     {
-        renderTexture = new RenderTexture(imageResolution.x, imageResolution.y, 1000, renderTextureFormat);
-        renderTexture.filterMode = filterMode;
-        renderTexture.wrapMode = TextureWrapMode.Clamp;
-        renderCamera.targetTexture = renderTexture;
+        RenderTexture = new RenderTexture(imageResolution.x, imageResolution.y, 1000, renderTextureFormat);
+        RenderTexture.filterMode = filterMode;
+        RenderTexture.wrapMode = TextureWrapMode.Clamp;
+        renderCamera.targetTexture = RenderTexture;
         if (useSharedMaterial)
-            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, renderTexture);
+            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, RenderTexture);
         else
-            material.SetTexture(screenVariableName, renderTexture);
+            material.SetTexture(screenVariableName, RenderTexture);
     }
     private void Render()
     {
         if  (ignoreVisibility || VisibleFromCamera(meshRenderer, Camera.main) ||Application.isEditor)
             renderCamera.Render();
+        OnUpdateTexture?.Invoke();
     }
 
     #region Preview
