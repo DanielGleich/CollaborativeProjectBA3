@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be56194d4f9241e47a8aa10958ab7500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonoBehaiviorOwnershipHandler
-  _componentIndexCache: 2
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   monoBehaviours:
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316688144445022
+  _initializedTimestamp: -8584315746956642403
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316688144445022
+  _initializedTimestamp: -8584315746956642403
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -1827,7 +1827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba08c1583ceb2c47ac9595ae9129075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   recoilUnits: []
@@ -2273,9 +2273,9 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 30
   m_Range: 10
-  m_SpotAngle: 75
+  m_SpotAngle: 90
   m_InnerSpotAngle: 30
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -2626,10 +2626,12 @@ GameObject:
   - component: {fileID: 3227550030950247789}
   - component: {fileID: 2771863903027868686}
   - component: {fileID: 8474402495429217269}
-  - component: {fileID: 2931439196079081840}
   - component: {fileID: 5955361238323193145}
   - component: {fileID: 4031707363861494654}
   - component: {fileID: 6231579920790545653}
+  - component: {fileID: 1215405232659286946}
+  - component: {fileID: 6280565412458744844}
+  - component: {fileID: 172794229869698752}
   m_Layer: 2
   m_Name: WeaponFieldEast
   m_TagString: Untagged
@@ -2709,28 +2711,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2931439196079081840
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2405001902521630949}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8322013157587907430, guid: bfaa7a401aac605438e65e710cd1ae9e, type: 3}
 --- !u!114 &5955361238323193145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 2
@@ -2815,6 +2795,78 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1215405232659286946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405001902521630949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
+  batteryUseField: {fileID: 5955361238323193145}
+  lamps:
+  - {fileID: 3844210547522007421}
+  - {fileID: 4920080191877477242}
+--- !u!64 &6280565412458744844
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405001902521630949}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3633456499474170124, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+--- !u!114 &172794229869698752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405001902521630949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f122fdfc5241f42906ce81dac83893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
+  batteryUseField: {fileID: 5955361238323193145}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1664102266721462241}
+        m_TargetAssemblyTypeName: ConstantRotation, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2423242843310747188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,9 +2987,9 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 30
   m_Range: 10
-  m_SpotAngle: 75
+  m_SpotAngle: 90
   m_InnerSpotAngle: 30
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -3322,9 +3374,9 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 30
   m_Range: 10
-  m_SpotAngle: 75
+  m_SpotAngle: 90
   m_InnerSpotAngle: 30
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -3416,9 +3468,9 @@ GameObject:
   - component: {fileID: 8678514850839138199}
   - component: {fileID: 2298355774509110853}
   - component: {fileID: 956276139619127000}
-  - component: {fileID: 661058061878941845}
   - component: {fileID: 590065065965674072}
   - component: {fileID: 5946979123999402993}
+  - component: {fileID: 5480547662191583960}
   m_Layer: 2
   m_Name: Battery Charge Field
   m_TagString: Untagged
@@ -3498,28 +3550,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &661058061878941845
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3100682028719712290}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7117604509801988050, guid: bfaa7a401aac605438e65e710cd1ae9e, type: 3}
 --- !u!114 &590065065965674072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,6 +3586,28 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &5480547662191583960
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100682028719712290}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4007452176530169047, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
 --- !u!1 &3155889563306354602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,6 +4789,7 @@ Transform:
   - {fileID: 6490142251595236583}
   - {fileID: 6980314522936804803}
   - {fileID: 7467760577747553891}
+  - {fileID: 6605292928384776700}
   - {fileID: 4624388356690850242}
   - {fileID: 2445981138569377837}
   - {fileID: 4445461095757911091}
@@ -4810,6 +4863,7 @@ MonoBehaviour:
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
   - {fileID: -8301536722665731611}
+  - {fileID: 8600890430754291021}
   - {fileID: 7191991749768103265}
   - {fileID: 6243735623070616975}
   - {fileID: 2668257961653154057}
@@ -4829,7 +4883,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316688144445022
+  _initializedTimestamp: -8584315746956642403
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -5226,7 +5280,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316688144445022
+  _initializedTimestamp: -8584315746956642403
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -6135,7 +6189,9 @@ GameObject:
   - component: {fileID: 1636642673871729555}
   - component: {fileID: 2668257961653154057}
   - component: {fileID: 2534120652469530838}
-  - component: {fileID: 510782020016919365}
+  - component: {fileID: 2773718675763078129}
+  - component: {fileID: 6217534925785992709}
+  - component: {fileID: 7748173104939710201}
   m_Layer: 2
   m_Name: WeaponFieldNorth
   m_TagString: Untagged
@@ -6242,7 +6298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 1
@@ -6299,7 +6355,23 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!64 &510782020016919365
+--- !u!114 &2773718675763078129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524853797402854699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
+  batteryUseField: {fileID: 1636642673871729555}
+  lamps:
+  - {fileID: 3732213381677335564}
+  - {fileID: 7864702074426668438}
+--- !u!64 &6217534925785992709
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6321,6 +6393,40 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4471488270406054397, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+--- !u!114 &7748173104939710201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524853797402854699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f122fdfc5241f42906ce81dac83893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
+  batteryUseField: {fileID: 1636642673871729555}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1664102266721462241}
+        m_TargetAssemblyTypeName: ConstantRotation, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6870808639204299518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,7 +6561,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316688144445022
+  _initializedTimestamp: -8584315746956642403
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -6523,9 +6629,9 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 30
   m_Range: 10
-  m_SpotAngle: 75
+  m_SpotAngle: 90
   m_InnerSpotAngle: 30
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -6681,9 +6787,9 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 30
   m_Range: 10
-  m_SpotAngle: 75
+  m_SpotAngle: 90
   m_InnerSpotAngle: 30
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
@@ -7992,7 +8098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805873b738e95664db71589e906a45d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManagerHealthExtension
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   spawnRules:
@@ -8312,10 +8418,12 @@ GameObject:
   - component: {fileID: 8190491271412460579}
   - component: {fileID: 8978881689758462258}
   - component: {fileID: 1757726267110523620}
-  - component: {fileID: 2344487708601054241}
   - component: {fileID: 2505093858605478732}
   - component: {fileID: 5614732495903047377}
   - component: {fileID: 7977625330881285748}
+  - component: {fileID: 1911136721582863420}
+  - component: {fileID: 6924985190434158711}
+  - component: {fileID: 1268045742597726550}
   m_Layer: 2
   m_Name: WeaponFieldWest
   m_TagString: Untagged
@@ -8395,28 +8503,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2344487708601054241
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193795102589874861}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8590257202037040375, guid: bfaa7a401aac605438e65e710cd1ae9e, type: 3}
 --- !u!114 &2505093858605478732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8444,7 +8530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: -8004416122563423573}
   _networkObjectCache: {fileID: -8004416122563423573}
   weaponId: 4
@@ -8501,6 +8587,78 @@ CapsuleCollider:
   m_Height: 8
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1911136721582863420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193795102589874861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
+  batteryUseField: {fileID: 2505093858605478732}
+  lamps:
+  - {fileID: 5385105271739086793}
+  - {fileID: 6138968061514889176}
+--- !u!64 &6924985190434158711
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193795102589874861}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5491113636205673959, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+--- !u!114 &1268045742597726550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193795102589874861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f122fdfc5241f42906ce81dac83893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
+  batteryUseField: {fileID: 2505093858605478732}
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerField:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdateChargedBatteriesCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &154448716310932361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8791,6 +8949,134 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 10b1693922dddb8478587c243da57e91, type: 3}
   m_PrefabInstance: {fileID: 5438833836106031888}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5518807654822522925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2258060194230724614}
+    m_Modifications:
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051345731038565227, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Name
+      value: LampInside
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+--- !u!114 &3732213381677335564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!114 &3844210547522007421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!114 &4920080191877477242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!114 &5385105271739086793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!114 &6138968061514889176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!4 &6605292928384776700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7864702074426668438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lamp
 --- !u!1001 &6928904371047655816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8983,6 +9269,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -5379392877763991767, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889203090858048554}
+    - targetCorrespondingSourceObject: {fileID: -6375405995940510796, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6536027299585857296}
     - targetCorrespondingSourceObject: {fileID: -7120252794171073929, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4282598376400289363}
@@ -8992,6 +9284,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6633904912359366148, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5117356920644585158}
+    - targetCorrespondingSourceObject: {fileID: 41190023146814654, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1664102266721462241}
+    - targetCorrespondingSourceObject: {fileID: -3996701630735453911, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4530645643412399471}
     - targetCorrespondingSourceObject: {fileID: -1614662567921363471, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5330023155168449481}
@@ -9030,9 +9328,43 @@ MonoBehaviour:
   playOnEnable: 0
   ignoreVisibility: 0
   updatePreviewOnValidate: 0
+--- !u!4 &2256491593559836239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9185305804628586439, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &2415533993407304431 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4490692945885906073, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2927538607599884449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3996701630735453911, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4530645643412399471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927538607599884449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 2256491593559836239}
+  baseSpeed: 0
+  activeSpeed: 5
+  rotationAxis: {x: 0, y: 1, z: 0}
+  useLocalRotation: 1
+  tweenTime: 2
+  ease: 4
+--- !u!4 &3853258155352731328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6147954661524457288, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
   m_PrefabInstance: {fileID: 6928904371047655816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4086217565701813564 stripped
@@ -9124,11 +9456,83 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &5165184393532172860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6375405995940510796, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6536027299585857296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165184393532172860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 3853258155352731328}
+  baseSpeed: 0
+  activeSpeed: 10
+  rotationAxis: {x: 1, y: 0, z: 0}
+  useLocalRotation: 1
+  tweenTime: 2
+  ease: 1
 --- !u!23 &6003163733901058659 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -5519183004584621077, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
   m_PrefabInstance: {fileID: 6928904371047655816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6156675215937900193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5379392877763991767, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1889203090858048554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156675215937900193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 8437695473988875976}
+  baseSpeed: 0
+  activeSpeed: 5
+  rotationAxis: {x: 1, y: 0, z: 0}
+  useLocalRotation: 1
+  tweenTime: 3
+  ease: 4
+--- !u!1 &6969953514940716342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 41190023146814654, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1664102266721462241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969953514940716342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 7349856683783396161}
+  baseSpeed: 0
+  activeSpeed: 5
+  rotationAxis: {x: 0, y: 1, z: 0}
+  useLocalRotation: 1
+  tweenTime: 2
+  ease: 4
 --- !u!1 &6983996632336696116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -9157,9 +9561,19 @@ MonoBehaviour:
   playOnEnable: 0
   ignoreVisibility: 0
   updatePreviewOnValidate: 0
+--- !u!4 &7349856683783396161 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8802419169933724983, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7467760577747553891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+  m_PrefabInstance: {fileID: 6928904371047655816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8437695473988875976 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1526964935097409344, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
   m_PrefabInstance: {fileID: 6928904371047655816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &9009361025371288575 stripped
