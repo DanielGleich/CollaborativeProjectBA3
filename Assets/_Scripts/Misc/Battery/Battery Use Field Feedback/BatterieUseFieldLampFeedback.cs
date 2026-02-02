@@ -3,17 +3,7 @@ using UnityEngine;
 public class BatterieUseFieldLampFeedback : BatteryUseFieldFeedback
 {
     [Header("References")]
-    [SerializeField] private Animator[] lampAnimators;
-
-    [Header("Settings")]
-    [SerializeField] private string parameterName = "Active";
-
-    private int parameterHash;
-
-    void Awake()
-    {
-        parameterHash = Animator.StringToHash(parameterName);
-    }
+    [SerializeField] private Lamp[] lamps;
 
     protected override void OnEnable()
     {
@@ -29,9 +19,10 @@ public class BatterieUseFieldLampFeedback : BatteryUseFieldFeedback
     private void UpdateLamps()
     {
         int chargedBatteriesCount = batteryUseField.ChargedBatteriesCount;
-        for(int i = 0; i < lampAnimators.Length; i ++)
+        Debug.Log($"Active Lamps: {chargedBatteriesCount}");
+        for(int i = 0; i < lamps.Length; i ++)
         {
-            lampAnimators[i].SetBool(parameterHash, i < chargedBatteriesCount);
+            lamps[i].Activate(i < chargedBatteriesCount);
         }
     }
 
