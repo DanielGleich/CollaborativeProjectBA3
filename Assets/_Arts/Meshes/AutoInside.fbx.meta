@@ -3,7 +3,17 @@ guid: 33004cf16a41b2244b68363101ea697f
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box_Material
+    second: {fileID: 2100000, guid: 1fc4acea20ecf1245aa285799789ebbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CameraForFabian
+    second: {fileID: -876546973899608171, guid: 331001eb4654dde4b8bdb96955e9433c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -2,7 +2,6 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -76,7 +75,6 @@ public class GameManager : NetworkSingleton<GameManager>
     {
         int winnerTeam = -1;
         int loserTeam = -1;
-        Debug.Log("Death");
 
         foreach (var team in TeamManager.Instance.allTeams)
         {
@@ -89,7 +87,7 @@ public class GameManager : NetworkSingleton<GameManager>
                 winnerTeam = team.Key;
             }
         }
-
+        Debug.Log($"{IsTesting} - {loserTeam}, {winnerTeam}");
         if (IsTesting || (loserTeam >= 0 && winnerTeam >= 0))
         {
             if (gameEndReason.Value == GameEndReason.NONE)
@@ -128,7 +126,8 @@ public class GameManager : NetworkSingleton<GameManager>
         if (IsTesting)
             SubscribeToPlayerDeaths();
 
-        ChargingPadManagerNetworking.Instance?.InitializeManager();
+        ChargingPadManager.Instance?.InitializeManager();
+        StageHazardManager.Instance?.InitializeManager();
         isGameStarted.Value = true;
         NotifyGameStart();
     }

@@ -54,7 +54,7 @@ public class HealthNetworking : NetworkBehaviour
 
     private void OnEnable()
     {
-        if (NetworkManager != null && (base.IsServerInitialized || base.IsClientInitialized))
+        if (NetworkManager != null && (IsServerInitialized || IsClientInitialized))
         {
             SubscribeEvents();
         }

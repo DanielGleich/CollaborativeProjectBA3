@@ -41,6 +41,7 @@ public class ScreenRendererManager : MonoBehaviour {
     }
     public void ActivateAllScreens()
     {
+        Debug.Log("Activate all screens");
         foreach(ScreenRenderer s in screenRenderers)
             s.StartRenderRoutine();
     }
@@ -60,6 +61,7 @@ public class ScreenRendererManager : MonoBehaviour {
     }
     public void DisableAllScreens()
     {
+        Debug.Log("Disable all screens");
         activeIndex = -1;
         foreach(ScreenRenderer s in screenRenderers)
             s.StopRenderRoutine();

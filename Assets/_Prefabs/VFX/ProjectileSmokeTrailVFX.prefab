@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2232576265445933529}
   - component: {fileID: 2080835169389130865}
   - component: {fileID: 8507119443695519776}
+  - component: {fileID: 6711670503777233047}
   m_Layer: 0
   m_Name: ProjectileSmokeTrailVFX
   m_TagString: Untagged
@@ -4865,4 +4866,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7684d60eb6bfd584e8e82640c66822bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelfDestroyWithDelay
+  OnStart: 0
   delay: 5
+--- !u!114 &6711670503777233047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649686668746400800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8b93dca5f4deb438243f7ab48610ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttachedComment
+  comment: Rauchspur von fliegenden Projektilen

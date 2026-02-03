@@ -9,6 +9,7 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Material & Shader Settings")]
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private int materialIndex;
     [SerializeField] private string screenVariableName = "_Screen";
 
     [Header("Render Settings")]
@@ -19,10 +20,12 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Playback Settings")]
     [SerializeField] private bool playOnEnable = false;
+    [SerializeField] private bool ignoreVisibility = true;
 
     [Header("Preview Settings")]
     [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
-    private RenderTexture renderTexture;
+    public RenderTexture RenderTexture {get; private set;}
+    private Material material;
 
     public Camera RenderCamera
     {
@@ -39,6 +42,7 @@ public class ScreenRenderer : MonoBehaviour
         }
     }
     public event Action<Camera> OnSwitchRenderCamera;
+    public event Action OnUpdateTexture;
 
     private bool cameraDisplayActive;
     public event Action<bool> OnActivateCamera;
@@ -56,8 +60,15 @@ public class ScreenRenderer : MonoBehaviour
 
     void OnValidate()
     {
+        if(!meshRenderer)
+            meshRenderer = GetComponent<MeshRenderer>();
         if (updatePreviewOnValidate)
             StartCoroutine(PreviewRenderTextureRoutine());
+    }
+
+    void Awake()
+    {
+        material = meshRenderer.materials[materialIndex];
     }
 
     void OnEnable()
@@ -77,11 +88,13 @@ public class ScreenRenderer : MonoBehaviour
     }
     public void StopRenderRoutine()
     {
+        Debug.Log("Stop Render Routine");
         StopAllCoroutines();
         OnActivateCamera?.Invoke(false);
     }
     private IEnumerator RenderRoutine()
     {
+        Debug.Log("Start Render Routine");
         CreateRenderTexture();
         yield return null;
         while (true)
@@ -92,25 +105,26 @@ public class ScreenRenderer : MonoBehaviour
     }
     public bool VisibleFromCamera(Renderer renderer, Camera camera)
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-        return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        // Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        // return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
+        return true;
     }
     private void CreateRenderTexture(bool useSharedMaterial = false)
     {
-        renderTexture = new RenderTexture(imageResolution.x, imageResolution.y, 1000, renderTextureFormat);
-        renderTexture.filterMode = filterMode;
-        renderTexture.wrapMode = TextureWrapMode.Clamp;
-        renderCamera.targetTexture = renderTexture;
-        Debug.Log(Application.isEditor);
+        RenderTexture = new RenderTexture(imageResolution.x, imageResolution.y, 1000, renderTextureFormat);
+        RenderTexture.filterMode = filterMode;
+        RenderTexture.wrapMode = TextureWrapMode.Clamp;
+        renderCamera.targetTexture = RenderTexture;
         if (useSharedMaterial)
-            meshRenderer.sharedMaterial.SetTexture(screenVariableName, renderTexture);
+            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, RenderTexture);
         else
-            meshRenderer.material.SetTexture(screenVariableName, renderTexture);
+            material.SetTexture(screenVariableName, RenderTexture);
     }
     private void Render()
     {
-        if (VisibleFromCamera(meshRenderer, Camera.main) || Application.isEditor)
+        if  (ignoreVisibility || VisibleFromCamera(meshRenderer, Camera.main) ||Application.isEditor)
             renderCamera.Render();
+        OnUpdateTexture?.Invoke();
     }
 
     #region Preview

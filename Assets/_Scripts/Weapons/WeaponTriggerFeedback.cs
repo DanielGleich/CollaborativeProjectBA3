@@ -1,3 +1,5 @@
+using FishNet.Connection;
+using FishNet.Object;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,23 +10,43 @@ public class WeaponTriggerFeedback : MonoBehaviour
     [SerializeField] int weaponId = -1;
     [SerializeField] float duration = 5f;
 
+    int ownerTeamId = -1;
+
     [Header("Events")]
     public UnityEvent OnFeedbackStart;
     public UnityEvent OnFeedbackStop;
 
     private void OnEnable()
     {
-        WeaponTriggerNetworking.OnWeaponTriggered += WeaponTriggerNetworking_OnWeaponTriggered;
+        TeamManager.OnTeamReady += FindTeam;
+        WeaponTrigger.OnWeaponTriggered += OnTeamWeaponTrigger;
     }
 
     private void OnDisable()
     {
-        WeaponTriggerNetworking.OnWeaponTriggered -= WeaponTriggerNetworking_OnWeaponTriggered;
+        TeamManager.OnTeamReady -= FindTeam;
+        WeaponTrigger.OnWeaponTriggered -= OnTeamWeaponTrigger;
     }
 
-    private void WeaponTriggerNetworking_OnWeaponTriggered(int teamId, int triggeredWeaponId)
+    private void FindTeam(Team team)
     {
-        if (teamId == TeamMember.localTeamId && weaponId == triggeredWeaponId)
+        if (ownerTeamId != -1) return;
+        if (gameObject.transform.root.TryGetComponent<NetworkObject>(out NetworkObject playerObject))
+        {
+            int ownerId = playerObject.OwnerId;
+            if (team.scientistPlayerClientId == ownerId || team.ratPlayerClientId == ownerId)
+            {
+                ownerTeamId = team.id;
+            }
+        }
+
+        if (ownerTeamId == -1)
+            gameObject.SetActive(false);
+    }
+
+    private void OnTeamWeaponTrigger(int teamId, int triggeredWeaponId)
+    {
+        if (teamId == ownerTeamId && weaponId == triggeredWeaponId)
         {
             OnFeedbackStart?.Invoke();
             StartCoroutine(FeedbackProcedureWait());
