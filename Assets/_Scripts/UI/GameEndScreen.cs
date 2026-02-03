@@ -3,42 +3,30 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameEndScreen : NetworkBehaviour
 {
     [Header("References")]
-    [SerializeField] GameObject uiParent;
-    [SerializeField] GameObject winnerUI;
-    [SerializeField] GameObject loserUI;
+    [SerializeField] List<GameObject> ObjectsToDisableOnStart;
     [SerializeField] Button rematchButton;
     [SerializeField] Button teamSelectionButton;
-    [SerializeField] TextMeshProUGUI deathText;
     [SerializeField] TextMeshProUGUI rematchButtonText;
-    [SerializeField] TextMeshProUGUI rematchCounter;
 
     [Header("Settings")]
     [SerializeField] float OnDeathDelay = 3;
 
+    [Header("Events")]
+    public UnityEvent OnGameEnd = new UnityEvent();
+    public UnityEvent OnPlayerWin = new UnityEvent();
+    public UnityEvent OnPlayerLose = new UnityEvent();
+
     private readonly SyncList<NetworkConnection> playerReadyForRematch = new SyncList<NetworkConnection>();
     private readonly SyncVar<bool> noPlayerLeft = new SyncVar<bool>();
-
-    private void Awake()
-    {
-        uiParent.SetActive(false);
-    }
-
-    private void OnEnable()
-    {        
-        GameManager.OnGameOver.AddListener(ActivateScreen);
-        GameManager.OnTeamWins.AddListener(HandleWinLoseScreen);
-        PlayerManager.OnPlayerDisconnected.AddListener(BackupPlayerLeaveScreen);
-        noPlayerLeft.OnChange += NoPlayerLeft_OnChange;
-    }
-
 
     private void OnDisable()
     {
@@ -52,32 +40,20 @@ public class GameEndScreen : NetworkBehaviour
     {
         base.OnStartServer();
         noPlayerLeft.Value = true;
-        playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
+        foreach (GameObject o in ObjectsToDisableOnStart)
+            o.SetActive(false);
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        GameManager.Instance.gameEndReason.OnChange += GameEndReason_OnChange;
-    }
-
-    private void GameEndReason_OnChange(GameEndReason prev, GameEndReason next, bool asServer)
-    {
-        if (uiParent.activeSelf && loserUI.activeSelf)
-        {
-            switch (GameManager.Instance?.gameEndReason.Value)
-            {
-                case GameEndReason.DESTROYED:
-                    deathText.text = "Your RattleBot got destroyed!";
-                    break;
-                case GameEndReason.DISCONNECT:
-                    deathText.text = "Your team mate left the game!";
-                    break;
-                case GameEndReason.OUTOFARENA:
-                    deathText.text = "Your RattleBot left the arena!";
-                    break;
-            }
-        }
+        noPlayerLeft.OnChange += NoPlayerLeft_OnChange;
+        playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
+        GameManager.OnGameOver.AddListener(ActivateScreen);
+        GameManager.OnTeamWins.AddListener(HandleWinLoseScreen);
+        PlayerManager.OnPlayerDisconnected.AddListener(BackupPlayerLeaveScreen);
+        foreach (GameObject o in ObjectsToDisableOnStart)
+            o.SetActive(false);
     }
 
     private void NoPlayerLeft_OnChange(bool prev, bool next, bool asServer)
@@ -99,8 +75,7 @@ public class GameEndScreen : NetworkBehaviour
     [ObserversRpc]
     private void NotifyPlayerRematchReady()
     { 
-        rematchButtonText.text = playerReadyForRematch.Contains(LocalConnection) ? "Waiting for Rematch" : "Rematch?";
-        rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
+        rematchButtonText.text = $"Rematch? ({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
     }
 
     private void ActivateScreen()
@@ -111,11 +86,11 @@ public class GameEndScreen : NetworkBehaviour
     IEnumerator OnEnableDelay()
     {
         yield return new WaitForSeconds(OnDeathDelay);
-        uiParent.SetActive(true);
         teamSelectionButton.interactable = IsServerInitialized;
-        rematchCounter.text = $"({playerReadyForRematch.Count}/{PlayerManager.Instance.AllPlayerConnections.Count})";
+        rematchButtonText.text = $"Rematch? (0/{PlayerManager.Instance.AllPlayerConnections.Count})";
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        OnGameEnd?.Invoke();
     }
 
     private void HandleWinLoseScreen(int winnerTeamId)
@@ -123,34 +98,21 @@ public class GameEndScreen : NetworkBehaviour
         int localClientId = InstanceFinder.ClientManager.Connection.ClientId;
         if (winnerTeamId == TeamMember.localTeamId)
         {
-            winnerUI.SetActive(true);
+            OnPlayerWin?.Invoke();
+            Debug.Log("Player w");
         }
         else
-        { 
-            loserUI.SetActive(true);
-            switch (GameManager.Instance?.gameEndReason.Value)
-            {
-                case GameEndReason.DESTROYED:
-                    deathText.text = "Your RattleBot got destroyed!";
-                break;
-                case GameEndReason.DISCONNECT:
-                    deathText.text = "Your team mate left the game!";
-                break;
-                case GameEndReason.OUTOFARENA:
-                    deathText.text = "Your RattleBot left the arena!";
-                break;
-            }
+        {
+            OnPlayerLose?.Invoke();
+            Debug.Log("Player l");
         }
     }
 
     private void BackupPlayerLeaveScreen(int clientId)
     {
         RequestPlayerLeftServerRpc();
-        if (deathText.text == string.Empty)
-        { 
-            loserUI.SetActive(true);
-            deathText.text = "A player left the game";
-        }
+        OnPlayerLose?.Invoke();
+        Debug.Log("Player l2");
     }
 
     public void RequestRematch()
@@ -206,3 +168,4 @@ public class GameEndScreen : NetworkBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("ConnectingScene");
     }
 }
+
