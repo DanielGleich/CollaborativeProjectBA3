@@ -38,14 +38,12 @@ public class Lamp : MonoBehaviour
     [ContextMenu("Activate")]
     public void Activate()
     {
-        Debug.Log($"Activate {name}");
         attachedLight.DOIntensity(lightIntensityRange.y, tweenDuration).SetEase(ease);
         material.DOFloat(shaderRange.y, propertyName, tweenDuration).SetEase(ease);
     }
     [ContextMenu("Deactivate")]
     public void Deactivate()
     {
-        Debug.Log($"Deactivate {name}");
         attachedLight.DOIntensity(lightIntensityRange.x, tweenDuration).SetEase(ease);
         material.DOFloat(shaderRange.x, propertyName, tweenDuration).SetEase(ease);
     }
