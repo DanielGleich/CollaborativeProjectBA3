@@ -69,8 +69,9 @@
 	<object class="MarkerTrack" id="{42466930-1bb2-4a7b-903a-16789821d09a}" />
 	<object class="GroupTrack" id="{ea665357-a61a-47fd-a244-cae525997508}">
 		<relationship name="modules">
-			<destination>{33a77c42-47ab-4645-bd9c-e81ba53d6f3b}</destination>
 			<destination>{d174a798-f3a5-420c-98c8-281bb586de6a}</destination>
+			<destination>{b25b6c10-4ca9-4f04-8e5a-bd79cc46b6c5}</destination>
+			<destination>{59abb42b-fbdb-4c13-91f4-7cc030778010}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b33f8378-b434-45e8-9efe-16b4e533fdec}</destination>
@@ -86,9 +87,10 @@
 	</object>
 	<object class="Timeline" id="{8c6eed1e-88e5-471e-81f6-851236f781e8}">
 		<relationship name="modules">
-			<destination>{33a77c42-47ab-4645-bd9c-e81ba53d6f3b}</destination>
 			<destination>{d174a798-f3a5-420c-98c8-281bb586de6a}</destination>
 			<destination>{caf78249-9a17-4564-ab7d-1c7605015ad9}</destination>
+			<destination>{b25b6c10-4ca9-4f04-8e5a-bd79cc46b6c5}</destination>
+			<destination>{59abb42b-fbdb-4c13-91f4-7cc030778010}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{cf6fc5b0-30e7-4ab5-9cc8-e5e3de5fe9d1}</destination>
@@ -121,17 +123,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{17732a6e-19f0-4e4e-90bd-2d5fe702fa83}" />
-	<object class="SingleSound" id="{33a77c42-47ab-4645-bd9c-e81ba53d6f3b}">
-		<property name="length">
-			<value>38.399999999999999</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{6157d44d-40e7-4d32-a6e8-31198ecdcad8}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{d174a798-f3a5-420c-98c8-281bb586de6a}">
 		<property name="start">
-			<value>38.399999999999999</value>
+			<value>8.2758958333333332</value>
 		</property>
 		<property name="length">
 			<value>38.399999999999999</value>
@@ -141,6 +135,25 @@
 		</property>
 		<relationship name="audioFile">
 			<destination>{76b8a58c-e903-4373-998e-9a7752dd1431}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{b25b6c10-4ca9-4f04-8e5a-bd79cc46b6c5}">
+		<property name="length">
+			<value>6.620708333333333</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{a6e07221-92e0-4e66-b669-adde11e0238d}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{59abb42b-fbdb-4c13-91f4-7cc030778010}">
+		<property name="start">
+			<value>6.620708333333333</value>
+		</property>
+		<property name="length">
+			<value>1.6551875</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{d9a26c5c-a877-4a8e-8a41-898e2df357b5}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b33f8378-b434-45e8-9efe-16b4e533fdec}">
@@ -187,7 +200,7 @@
 			<value>0</value>
 		</property>
 		<property name="tempo">
-			<value>100</value>
+			<value>145</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{8c6eed1e-88e5-471e-81f6-851236f781e8}</destination>
@@ -201,7 +214,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>38.399999999999999</value>
+			<value>6.620708333333333</value>
 		</property>
 		<property name="name">
 			<value>Intro</value>
@@ -215,10 +228,10 @@
 	</object>
 	<object class="LoopRegion" id="{2509d917-efae-4f11-ba5b-0d20f5944472}">
 		<property name="position">
-			<value>38.399999999999999</value>
+			<value>8.2758958333333332</value>
 		</property>
 		<property name="length">
-			<value>38.399999999999999</value>
+			<value>18.379291666666667</value>
 		</property>
 		<property name="name">
 			<value>Drummsms</value>
@@ -249,10 +262,10 @@
 	</object>
 	<object class="TransitionRegion" id="{c21f8039-d742-4f48-947b-b522184ddddf}">
 		<property name="position">
-			<value>0</value>
+			<value>6.620708333333333</value>
 		</property>
 		<property name="length">
-			<value>38.399999999999999</value>
+			<value>1.6551875000000003</value>
 		</property>
 		<property name="quantizationInterval">
 			<value>2</value>
@@ -275,10 +288,10 @@
 	</object>
 	<object class="TransitionRegion" id="{90daa136-2ccc-436f-a481-08711836dd01}">
 		<property name="position">
-			<value>38.399999999999999</value>
+			<value>8.2758958333333332</value>
 		</property>
 		<property name="length">
-			<value>38.399999999999999</value>
+			<value>31.779291666666666</value>
 		</property>
 		<property name="quantizationInterval">
 			<value>2</value>
@@ -301,10 +314,10 @@
 	</object>
 	<object class="TransitionRegion" id="{5d0bb72b-6b5b-40ac-86cf-9d96b1099377}">
 		<property name="position">
-			<value>38.399999999999999</value>
+			<value>8.2758958333333332</value>
 		</property>
 		<property name="length">
-			<value>38.399999999999999</value>
+			<value>31.779291666666666</value>
 		</property>
 		<property name="quantizationInterval">
 			<value>2</value>
