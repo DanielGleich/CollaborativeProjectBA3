@@ -1107,16 +1107,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5197217557020290432, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: debrisSystemObjects.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5197217557020290432, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: 'debrisSystemObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 6619455270481954432}
-    - target: {fileID: 5197217557020290432, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-      propertyPath: 'debrisSystemObjects.Array.data[1]'
-      value: 
-      objectReference: {fileID: 3834561700438626772}
     - target: {fileID: 5197217557020290432, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: gameplayModeGameObjects.Array.data[1].<GameplayMode>k__BackingField
       value: 1
@@ -1552,6 +1548,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6887103625556200470, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3981800084600389143}
+    - targetCorrespondingSourceObject: {fileID: 921073451762021, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 619738462505931598}
     - targetCorrespondingSourceObject: {fileID: 9205532138632230005, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7744486012093492181}
@@ -1681,11 +1680,6 @@ MonoBehaviour:
   AmplitudeGain: 0
   FrequencyGain: 0
   m_NoiseOffsets: {x: 123.57483, y: 455.56946, z: -668.5133}
---- !u!1 &3834561700438626772 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5047794789297463374, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
-  m_PrefabInstance: {fileID: 8303027001431880090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5256208093946453944 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4308689719562399266, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
@@ -1750,6 +1744,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546945717f986cb4d91b8d0b93568b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallastScale
+--- !u!1 &8302670304773501183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 921073451762021, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &619738462505931598
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302670304773501183}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &8596882492827086834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 320885893985033832, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
@@ -1887,12 +1908,20 @@ PrefabInstance:
       value: -1.0000005
       objectReference: {fileID: 0}
     - target: {fileID: 1447559887119518574, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.88688207
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447559887119518574, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.46199587
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447559887119518574, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447559887119518574, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706467919225035389, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
@@ -2173,6 +2202,22 @@ PrefabInstance:
     - target: {fileID: 4992578788469278391, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992578788469278391, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.88688207
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992578788469278391, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.46199587
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992578788469278391, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992578788469278391, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4994887543133434073, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
       propertyPath: _addedNetworkObject
@@ -2457,9 +2502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9726a3ab64fa2c641a178dffcc0e238f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  localHealth: {fileID: 3092957689926732675}
   networkedHealth: {fileID: 7635437025695146609}
   prefab: {fileID: 5722679565054832933, guid: 3222f8d83075b1e4ca87aa5964792993, type: 3}
+  triggerOnce: 1
 --- !u!114 &2458179073621762372 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6542226342898489739, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -2471,17 +2516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
---- !u!114 &3092957689926732675 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5925602705816531788, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
-  m_PrefabInstance: {fileID: 8707600914945210575}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e7d4cbf4e2e7940bf63df2192949a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
 --- !u!114 &3156626956574667790 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5987829942700920001, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
