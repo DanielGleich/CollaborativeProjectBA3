@@ -87,7 +87,7 @@ public class GameManager : NetworkSingleton<GameManager>
                 winnerTeam = team.Key;
             }
         }
-
+        Debug.Log($"{IsTesting} - {loserTeam}, {winnerTeam}");
         if (IsTesting || (loserTeam >= 0 && winnerTeam >= 0))
         {
             if (gameEndReason.Value == GameEndReason.NONE)
