@@ -54,7 +54,7 @@ public class VehicleOutsideSmokeFeedback : MonoBehaviour
         gameObject.transform.SetParent(null, true);
         gameObject.transform.localScale = initialScale;
         selfDestroy.Trigger();
-        pSystem.Pause();
+        pSystem.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         OnVehicleDeath?.Invoke();
     }
 }
