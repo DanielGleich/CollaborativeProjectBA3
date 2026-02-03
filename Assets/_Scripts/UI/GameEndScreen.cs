@@ -3,6 +3,7 @@ using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,7 @@ using UnityEngine.UI;
 public class GameEndScreen : NetworkBehaviour
 {
     [Header("References")]
+    [SerializeField] List<GameObject> ObjectsToDisableOnStart;
     [SerializeField] Button rematchButton;
     [SerializeField] Button teamSelectionButton;
     [SerializeField] TextMeshProUGUI rematchButtonText;
@@ -19,19 +21,12 @@ public class GameEndScreen : NetworkBehaviour
     [SerializeField] float OnDeathDelay = 3;
 
     [Header("Events")]
+    public UnityEvent OnGameEnd = new UnityEvent();
     public UnityEvent OnPlayerWin = new UnityEvent();
     public UnityEvent OnPlayerLose = new UnityEvent();
 
     private readonly SyncList<NetworkConnection> playerReadyForRematch = new SyncList<NetworkConnection>();
     private readonly SyncVar<bool> noPlayerLeft = new SyncVar<bool>();
-
-    private void OnEnable()
-    {        
-        GameManager.OnGameOver.AddListener(ActivateScreen);
-        GameManager.OnTeamWins.AddListener(HandleWinLoseScreen);
-        PlayerManager.OnPlayerDisconnected.AddListener(BackupPlayerLeaveScreen);
-        noPlayerLeft.OnChange += NoPlayerLeft_OnChange;
-    }
 
     private void OnDisable()
     {
@@ -45,18 +40,20 @@ public class GameEndScreen : NetworkBehaviour
     {
         base.OnStartServer();
         noPlayerLeft.Value = true;
-        playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
+        foreach (GameObject o in ObjectsToDisableOnStart)
+            o.SetActive(false);
     }
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        GameManager.Instance.gameEndReason.OnChange += GameEndReason_OnChange;
-    }
-
-    private void GameEndReason_OnChange(GameEndReason prev, GameEndReason next, bool asServer)
-    {
-        OnPlayerLose?.Invoke();
+        noPlayerLeft.OnChange += NoPlayerLeft_OnChange;
+        playerReadyForRematch.OnChange += PlayerReadyForRematch_OnChange;
+        GameManager.OnGameOver.AddListener(ActivateScreen);
+        GameManager.OnTeamWins.AddListener(HandleWinLoseScreen);
+        PlayerManager.OnPlayerDisconnected.AddListener(BackupPlayerLeaveScreen);
+        foreach (GameObject o in ObjectsToDisableOnStart)
+            o.SetActive(false);
     }
 
     private void NoPlayerLeft_OnChange(bool prev, bool next, bool asServer)
@@ -93,6 +90,7 @@ public class GameEndScreen : NetworkBehaviour
         rematchButtonText.text = $"Rematch? (0/{PlayerManager.Instance.AllPlayerConnections.Count})";
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        OnGameEnd?.Invoke();
     }
 
     private void HandleWinLoseScreen(int winnerTeamId)
@@ -170,3 +168,4 @@ public class GameEndScreen : NetworkBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("ConnectingScene");
     }
 }
+
