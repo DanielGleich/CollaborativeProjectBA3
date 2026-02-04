@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 42356732597684587}
   - component: {fileID: 6519833859628739248}
   - component: {fileID: 4521851029828492975}
-  - component: {fileID: 5368893537952169584}
   m_Layer: 0
   m_Name: Sparks_Small
   m_TagString: Untagged
@@ -4837,20 +4836,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
---- !u!114 &5368893537952169584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3496838710384446366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7684d60eb6bfd584e8e82640c66822bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SelfDestroyWithDelay
-  OnStart: 1
-  delay: 5
 --- !u!1 &5449551370929395442
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +4981,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.05
   simulationSpeed: 0.2
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
