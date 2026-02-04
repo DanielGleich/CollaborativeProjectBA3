@@ -13,6 +13,7 @@ public class IgnoreCollisions3d : MonoBehaviour
     }
     private void Awake() {
         foreach(Collider c in otherColliders)
-            Physics.IgnoreCollision(myCollider, c);
+            if(c)
+                Physics.IgnoreCollision(myCollider, c);
     }
 }
