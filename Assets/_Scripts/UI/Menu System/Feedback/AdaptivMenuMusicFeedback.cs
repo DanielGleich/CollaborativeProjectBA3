@@ -3,7 +3,8 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
-public class AdaptivMenuMusicFeedback : MonoBehaviour {
+public class AdaptivMenuMusicFeedback : MonoBehaviour
+{
 
     [Header("References")]
     [SerializeField] private MenuStateManager menuStateManager;
@@ -23,19 +24,20 @@ public class AdaptivMenuMusicFeedback : MonoBehaviour {
         UpdateMenuActive(menuStateManager.MenuIsActive);
         UpdateCurrentSubMenu(menuStateManager.CurrentSubMenu);
         eventInstance = RuntimeManager.CreateInstance(musicTrack);
-        if(attachToGameObject)
+        if (attachToGameObject)
             RuntimeManager.AttachInstanceToGameObject(eventInstance, gameObject);
     }
     void OnDisable()
     {
         menuStateManager.OnUpdateCurrentSubMenu -= UpdateCurrentSubMenu;
         menuStateManager.OnUpdateMenuIsActive -= UpdateMenuActive;
+        eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         eventInstance.release();
     }
 
     private void UpdateMenuActive(bool isActive)
     {
-        if(isActive)
+        if (isActive)
             eventInstance.start();
         else
             eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -44,27 +46,28 @@ public class AdaptivMenuMusicFeedback : MonoBehaviour {
     {
         SubMenuMusicPhase subMenuMusicPhase = Array.Find(subMenuMusicPhases, s => s.SubMenu == menu);
 
-        if(subMenuMusicPhase != null && menuStateManager.MenuIsActive)
-            eventInstance.setParameterByName(paramterName,subMenuMusicPhase.PhaseValue);
+        if (subMenuMusicPhase != null && menuStateManager.MenuIsActive)
+            eventInstance.setParameterByName(paramterName, subMenuMusicPhase.PhaseValue);
     }
 
     [ContextMenu("Create SubMenuMusicPhase for every SubMenu in MenuStateManager <i>(Warning: will destroy old values)</i>")]
     private void CreateSubMenuMusicPhases()
     {
-        if(!menuStateManager)
+        if (!menuStateManager)
             return;
         subMenuMusicPhases = new SubMenuMusicPhase[menuStateManager.SubMenus.Length];
-        for(int i = 0; i < menuStateManager.SubMenus.Length; i++)
+        for (int i = 0; i < menuStateManager.SubMenus.Length; i++)
             subMenuMusicPhases[i] = new SubMenuMusicPhase(menuStateManager.SubMenus[i]);
     }
 
-    [Serializable] public class SubMenuMusicPhase
+    [Serializable]
+    public class SubMenuMusicPhase
     {
         public SubMenuMusicPhase(SubMenu subMenu)
         {
             this.SubMenu = subMenu;
         }
-        [field: SerializeField] public SubMenu SubMenu{get; private set;}
-        [field: SerializeField] public int PhaseValue{get; private set;}
+        [field: SerializeField] public SubMenu SubMenu { get; private set; }
+        [field: SerializeField] public int PhaseValue { get; private set; }
     }
 }
