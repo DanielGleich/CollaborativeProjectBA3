@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd54b1a3991fc524fbfa711dccc63c2b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3955015003737101100}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd54b1a3991fc524fbfa711dccc63c2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 284216040287778824}
     - targetCorrespondingSourceObject: {fileID: -3602521592554924954, guid: bd54b1a3991fc524fbfa711dccc63c2b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8534183267843501936}
@@ -483,10 +486,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839936b540a40e441be88bac9f6ce8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosionForceRigidbody3d
+  offset: {x: 0, y: 0.05, z: 0}
   radius: 0.25
   forceRange: {x: 3, y: 2}
-  offset: {x: 0, y: 0.05, z: 0}
+  onlyLocal: 0
   triggerOnStart: 1
+--- !u!114 &284216040287778824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508856762509552199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2090087299
+      Data2: 1131604776
+      Data3: -417957970
+      Data4: -1825130869
+    Path: event:/SFX/DebrisShred
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2672071276213208132 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794125108318589778, guid: bd54b1a3991fc524fbfa711dccc63c2b, type: 3}
