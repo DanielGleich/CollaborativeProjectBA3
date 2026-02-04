@@ -5,10 +5,10 @@
 			<value>Explosion</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{4427947c-fc33-4ad8-9326-861f3bfc3632}</destination>
+			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{16b517af-5978-49ee-83b0-aedfeb49b7a0}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{0f830287-e0e4-4c1b-a53a-63c7309e28b9}">
 		<relationship name="effects">
 			<destination>{dbd4d481-abbb-4754-b15c-b29df36920bb}</destination>
+			<destination>{904ac4fd-4020-4efc-bbaa-9cc3139f932f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2d801293-18ef-4330-8c60-56606bb0bb1a}" />
@@ -106,4 +107,5 @@
 	</object>
 	<object class="MixerBusFader" id="{568ecd33-8386-4705-8666-5c1a5a7922e4}" />
 	<object class="MixerBusFader" id="{dbd4d481-abbb-4754-b15c-b29df36920bb}" />
+	<object class="SpatialiserEffect" id="{904ac4fd-4020-4efc-bbaa-9cc3139f932f}" />
 </objects>
