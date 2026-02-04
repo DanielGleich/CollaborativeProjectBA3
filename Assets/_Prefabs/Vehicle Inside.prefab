@@ -9223,6 +9223,7 @@ GameObject:
   - component: {fileID: 1911136721582863420}
   - component: {fileID: 6924985190434158711}
   - component: {fileID: 1268045742597726550}
+  - component: {fileID: 3159021799851729803}
   m_Layer: 2
   m_Name: WeaponFieldWest
   m_TagString: Untagged
@@ -9458,6 +9459,37 @@ MonoBehaviour:
   onUpdateChargedBatteriesCount:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3159021799851729803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193795102589874861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1001 &154448716310932361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9663,8 +9695,8 @@ MonoBehaviour:
       Data4: 1298533615
     Path: event:/SFX/ShredderAmbience
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10077,8 +10109,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10113,8 +10145,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10171,8 +10203,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10229,8 +10261,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10276,8 +10308,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -10317,8 +10349,8 @@ MonoBehaviour:
       Data4: -1706197004
     Path: event:/Ambience/LightZurringInside1
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
