@@ -108,14 +108,20 @@ public class ChargeStatus : NetworkBehaviour
     [ObserversRpc]
     void NotifyCharge(int teamId)
     {
-        Debug.Log($"{teamId} charged {WeaponId}");
-        OnChargeActive?.Invoke();
+        if (TeamMember.localTeamId == teamId)
+        { 
+            OnChargeActive?.Invoke();
+            Debug.Log($"{teamId} charged {WeaponId}");
+        }
     }
 
     [ObserversRpc]
     void NotifyUncharge(int teamId)
     {
-        Debug.Log($"{teamId} uncharged {WeaponId}");
-        OnChargeInactive?.Invoke();
+        if (TeamMember.localTeamId == teamId)
+        { 
+            OnChargeInactive?.Invoke();
+            Debug.Log($"{teamId} uncharged {WeaponId}");
+        }
     }
 }
