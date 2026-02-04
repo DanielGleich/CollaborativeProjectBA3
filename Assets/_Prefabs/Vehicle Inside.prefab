@@ -9590,11 +9590,51 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9198075308143742348, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7366452516919725044}
+      addedObject: {fileID: 3911051761378447825}
+    - targetCorrespondingSourceObject: {fileID: 9198075308143742348, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8820645174704602460}
+    - targetCorrespondingSourceObject: {fileID: -6628752444421658071, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5690530616256520473}
   m_SourcePrefab: {fileID: 100100000, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
 --- !u!4 &261065367170728368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+  m_PrefabInstance: {fileID: 294357868686288475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2311529862564514930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6628752444421658071, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+  m_PrefabInstance: {fileID: 294357868686288475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5690530616256520473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311529862564514930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 2605035172910706805}
+  baseSpeed: 1
+  activeSpeed: 1
+  rotationAxis: {x: 1, y: 0, z: 0}
+  useLocalRotation: 1
+  tweenTime: 0.25
+  ease: 1
+--- !u!4 &2605035172910706805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2320256902469948974, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+  m_PrefabInstance: {fileID: 294357868686288475}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7037249712328858309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7330894513264131230, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
   m_PrefabInstance: {fileID: 294357868686288475}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8913718975206009815 stripped
@@ -9602,28 +9642,56 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9198075308143742348, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
   m_PrefabInstance: {fileID: 294357868686288475}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7366452516919725044
-Animator:
-  serializedVersion: 7
+--- !u!114 &3911051761378447825
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8913718975206009815}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4993c91e018ca9f43b7bf49940f164dc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 795490414
+      Data2: 1227657876
+      Data3: 1475703429
+      Data4: 1298533615
+    Path: event:/SFX/ShredderAmbience
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &8820645174704602460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913718975206009815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  target: {fileID: 7037249712328858309}
+  baseSpeed: 2
+  activeSpeed: 2
+  rotationAxis: {x: 1, y: 0, z: 0}
+  useLocalRotation: 1
+  tweenTime: 0.25
+  ease: 1
 --- !u!1001 &4218407205348198242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9963,14 +10031,104 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5865549815642462269, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3183127328023513047}
+    - targetCorrespondingSourceObject: {fileID: 5888308258498038883, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6996214268131448894}
+    - targetCorrespondingSourceObject: {fileID: 8611158789659042814, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8750604560056013882}
+    - targetCorrespondingSourceObject: {fileID: 1751879567340600201, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5303530101003133666}
+    - targetCorrespondingSourceObject: {fileID: 1295200582171901619, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8632262104740123361}
+    - targetCorrespondingSourceObject: {fileID: 1897842168180266854, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144752756302232765}
   m_SourcePrefab: {fileID: 100100000, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+--- !u!1 &2099178235154758734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5888308258498038883, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6996214268131448894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099178235154758734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
+--- !u!1 &2157259580044552208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5865549815642462269, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3183127328023513047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157259580044552208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
 --- !u!114 &3732213381677335564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2157259580044552208}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
@@ -9981,18 +10139,54 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6732815761265069726}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!1 &4257666475218375635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8611158789659042814, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8750604560056013882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257666475218375635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
 --- !u!114 &4920080191877477242 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6251210927727929163}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
@@ -10003,34 +10197,142 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4257666475218375635}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!1 &6114009766508284836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1751879567340600201, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5303530101003133666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114009766508284836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
 --- !u!114 &6138968061514889176 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6114009766508284836}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lamp
+--- !u!1 &6251210927727929163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1897842168180266854, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144752756302232765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251210927727929163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
 --- !u!4 &6605292928384776700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6732815761265069726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1295200582171901619, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+  m_PrefabInstance: {fileID: 5518807654822522925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8632262104740123361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732815761265069726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 613765397
+      Data2: 1336724088
+      Data3: 469080456
+      Data4: -1706197004
+    Path: event:/Ambience/LightZurringInside1
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5
 --- !u!114 &7864702074426668438 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
   m_PrefabInstance: {fileID: 5518807654822522925}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2099178235154758734}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
