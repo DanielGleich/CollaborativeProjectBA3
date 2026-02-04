@@ -338,7 +338,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 378753892324948979, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_text
-      value: 'Join '
+      value: Dominate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824916959489884879, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920230813025222230, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_Texture
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4627621145306823299, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Pivot.x
@@ -472,6 +480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_TeamScientist
       objectReference: {fileID: 0}
+    - target: {fileID: 7160592314418385594, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7586375827283712033, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -576,9 +588,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1795037479124182640}
     m_Modifications:
+    - target: {fileID: 378753892324948979, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_text
+      value: "Serve\nas \nrat"
+      objectReference: {fileID: 0}
     - target: {fileID: 1824916959489884879, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Name
       value: RoleIcon_Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824916959489884879, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4627621145306823299, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Pivot.x
@@ -712,10 +732,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_TeamRat
       objectReference: {fileID: 0}
+    - target: {fileID: 6378187732967507037, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8831666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378187732967507037, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 6962272055949541230, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5a5dacbdbe0399546bc77500610f9fba, type: 3}
+      objectReference: {fileID: 974580074, guid: a741868332843e147b8ec39a3888d046, type: 3}
     - target: {fileID: 7586375827283712033, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
