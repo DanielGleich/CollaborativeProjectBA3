@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7254489473926519219}
   - component: {fileID: 7942587296611884300}
+  - component: {fileID: 4429623428324741204}
   m_Layer: 0
   m_Name: Ambience
   m_TagString: Untagged
@@ -232,6 +233,31 @@ MonoBehaviour:
     Path: event:/Ambience/VehicleInsideAmbience
   teamMember: {fileID: 7682361635520763111}
   teamRole: 1
+  playOnStartClient: 1
+--- !u!114 &4429623428324741204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2628446072869150893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a36d1aa9ca229f4ab48f9baae2a9cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClientLocalRoleBasedAudio
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 6417547877293594910}
+  _networkObjectCache: {fileID: 0}
+  ambienceReference:
+    Guid:
+      Data1: -965428347
+      Data2: 1337638753
+      Data3: 1268990100
+      Data4: -1456689202
+    Path: event:/Ambience/AmbienceGarage
+  teamMember: {fileID: 7682361635520763111}
+  teamRole: 0
   playOnStartClient: 1
 --- !u!1 &3930361709180886751
 GameObject:
@@ -1702,6 +1728,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+--- !u!114 &6417547877293594910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
+  m_PrefabInstance: {fileID: 8303027001431880090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224412582850829221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.NetworkObject
 --- !u!1 &6619455270481954432 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2947395323526969114, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}

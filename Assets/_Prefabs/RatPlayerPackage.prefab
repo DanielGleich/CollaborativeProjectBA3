@@ -561,22 +561,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 9.81
       objectReference: {fileID: 0}
-    - target: {fileID: 1268045742597726550, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7654431609484816302}
-    - target: {fileID: 1268045742597726550, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Activate
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268045742597726550, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ConstantRotation, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1268045742597726550, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1672282201061520331, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: m_Cookie
       value: 
@@ -937,14 +921,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7748173104939710201, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7748173104939710201, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-      propertyPath: onIsReady.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5687442665293002475}
     - target: {fileID: 8087568401816499446, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: m_Intensity
       value: 30
@@ -957,6 +933,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9193795102589874861, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -964,6 +944,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5236239962413168359, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4308689719562399266}
+    - targetCorrespondingSourceObject: {fileID: 6524853797402854699, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6678421858322358043}
+    - targetCorrespondingSourceObject: {fileID: 6524853797402854699, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4545802671164566225}
     - targetCorrespondingSourceObject: {fileID: 8913718975206009815, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       insertIndex: 3
       addedObject: {fileID: 8915933054208243825}
@@ -988,6 +974,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805873b738e95664db71589e906a45d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DebrisSpawnManagerHealthExtension
+--- !u!1 &1033287210412478442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524853797402854699, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+  m_PrefabInstance: {fileID: 6114224505815124673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6678421858322358043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033287210412478442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2056681655
+      Data2: 1332600323
+      Data3: 154971809
+      Data4: -813242822
+    Path: event:/SFX/WeaponChargedInside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &4545802671164566225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033287210412478442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 801910600
+      Data2: 1242690670
+      Data3: -1742471533
+      Data4: -660939321
+    Path: event:/SFX/ChainsawTriggeredInside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1815407771072197648 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5614732495903047377, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
@@ -1141,17 +1194,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2258060194230724614, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
   m_PrefabInstance: {fileID: 6114224505815124673}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5687442665293002475 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1889203090858048554, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-  m_PrefabInstance: {fileID: 6114224505815124673}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
 --- !u!114 &6345873822603756324 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8301536722665731611, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
@@ -1174,23 +1216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponChargeCubeInterface
---- !u!114 &7654431609484816302 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4530645643412399471, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
-  m_PrefabInstance: {fileID: 6114224505815124673}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
 --- !u!114 &8204881984387349448 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2668257961653154057, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
   m_PrefabInstance: {fileID: 6114224505815124673}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1033287210412478442}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f77b7c340285f74884f1493f17e656b, type: 3}
