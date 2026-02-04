@@ -7,7 +7,7 @@ public class OverchargedStatus : NetworkBehaviour
     public static event Action<int> OnUseOverchargeRequest;
     public static event Action<int, bool> OnOvercharged;
 
-    public readonly SyncVar<bool> IsOvercharged = new SyncVar<bool>();
+    public bool IsOvercharged = false;
 
     public override void OnStartClient()
     {
@@ -19,6 +19,7 @@ public class OverchargedStatus : NetworkBehaviour
     public void RequestOvercharge()
     {
         SetOverchargeServerRpc(TeamMember.localTeamId);
+        OnOvercharged.Invoke(TeamMember.localTeamId, true);
     }
     public static void RequestUseOvercharge(int teamId)
     {
@@ -28,14 +29,14 @@ public class OverchargedStatus : NetworkBehaviour
     [ServerRpc]
     private void SetOverchargeServerRpc(int teamId)
     {
-        IsOvercharged.Value = true;
+        IsOvercharged = true;
         NotifySetOvercharge(teamId, true);
     }
 
     [ServerRpc]
     private void RequestOverchargeUse(int teamId)
     {
-        IsOvercharged.Value = false;
+        IsOvercharged = false;
         NotifySetOvercharge(teamId, false);
     }
 
