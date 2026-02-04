@@ -47,6 +47,8 @@ public class WeaponChargeCubeInterface : NetworkBehaviour
         {
             if (batteryUseField.IsReady)
             {
+                if (IsOwner)
+                    Debug.Log($"Team {TeamMember.localTeamId} charged by local client");
                 ChargeStatus.ChargeWeapon(TeamMember.localTeamId, weaponId);
                 OnChargeTrigger?.Invoke();
             }
@@ -59,6 +61,8 @@ public class WeaponChargeCubeInterface : NetworkBehaviour
         {
             if (batteryUseField.IsReady)
             {
+                if (IsOwner)
+                    Debug.Log($"Team {TeamMember.localTeamId} charged by local client");
                 ChargeStatus.UnchargeWeapon(TeamMember.localTeamId, weaponId);
                 OnUnchargeTrigger?.Invoke();
             }

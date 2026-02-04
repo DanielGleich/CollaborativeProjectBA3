@@ -80,11 +80,13 @@ public class ChargeStatus : NetworkBehaviour
         {
             NotifyUncharge(teamId);
         }
+        Debug.Log($"{gameObject.transform.root.name} charged weapon {gameObject.name} - Team {teamId}, Weapon {WeaponId}");
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void SetOverchargeStatus(int teamId, bool newOverchargedValue)
     {
+        Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
         bool oldChargedState = IsPowered.Value || IsOvercharged.Value;
         bool newChargedState = newOverchargedValue;
 
