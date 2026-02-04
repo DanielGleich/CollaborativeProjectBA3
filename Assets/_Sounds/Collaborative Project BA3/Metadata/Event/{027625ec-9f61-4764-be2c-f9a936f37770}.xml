@@ -5,7 +5,7 @@
 			<value>ChainsawTriggeredOutside</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{640005f6-f5ac-4ce3-a82c-5e589f441561}">
 		<relationship name="effects">
 			<destination>{0c80d125-c3fe-4e6e-9ebd-67bbc5d1997c}</destination>
+			<destination>{2222603f-8018-4f3f-a2c6-2cae93e5366b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4a52a076-17ca-4a96-973f-8ac76a47df0b}" />
@@ -107,6 +108,7 @@
 	</object>
 	<object class="MixerBusFader" id="{36f6f058-ecbe-46c8-aff4-e98001ee86b9}" />
 	<object class="MixerBusFader" id="{0c80d125-c3fe-4e6e-9ebd-67bbc5d1997c}" />
+	<object class="SpatialiserEffect" id="{2222603f-8018-4f3f-a2c6-2cae93e5366b}" />
 	<object class="SingleSound" id="{6a03c205-6e3d-48e4-aad0-48ec4d0a2fe9}">
 		<relationship name="audioFile">
 			<destination>{1e92655c-8e91-4a32-83df-7e4ad5d66c85}</destination>

@@ -5,7 +5,7 @@
 			<value>CannonHitsInside</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -100,6 +100,7 @@
 		<relationship name="effects">
 			<destination>{7bc96008-1156-446c-a9df-afa57e153d0c}</destination>
 			<destination>{c4c601f4-bbbc-48d6-a561-1a869f59fdd9}</destination>
+			<destination>{00ea8d22-2668-4305-bea7-93ebb9a6e61e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{421fe442-1ecc-4d3b-a4aa-92acf392ca13}" />
@@ -123,6 +124,7 @@
 			<value>-14.5</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{00ea8d22-2668-4305-bea7-93ebb9a6e61e}" />
 	<object class="RandomizerModulator" id="{d4f8bac2-ff09-4f2c-9bc1-f6cad48a56dd}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

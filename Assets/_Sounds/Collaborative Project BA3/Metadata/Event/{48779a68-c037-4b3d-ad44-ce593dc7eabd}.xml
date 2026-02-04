@@ -5,7 +5,7 @@
 			<value>SteamSFX</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{4d82e53e-117d-4d46-a958-4f7858da9637}">
 		<relationship name="effects">
 			<destination>{c5083fe1-eb5d-41ca-b7a1-413f679d75ed}</destination>
+			<destination>{a06cb5f3-e0d6-4796-98c5-3abab126bd2c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{701e150b-a7ea-40f4-8b1c-b87934802333}" />
@@ -109,6 +110,7 @@
 	</object>
 	<object class="MixerBusFader" id="{3a8541ad-49a5-4eda-ae84-3cccb56c4951}" />
 	<object class="MixerBusFader" id="{c5083fe1-eb5d-41ca-b7a1-413f679d75ed}" />
+	<object class="SpatialiserEffect" id="{a06cb5f3-e0d6-4796-98c5-3abab126bd2c}" />
 	<object class="SingleSound" id="{7441558a-0608-4940-9322-7e2dfbe61908}">
 		<relationship name="audioFile">
 			<destination>{5132ee35-c4cd-44d1-afc0-1fe9a2331987}</destination>

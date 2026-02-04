@@ -5,7 +5,7 @@
 			<value>VehicleOvercharged</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -130,6 +130,7 @@
 	<object class="MixerBusEffectChain" id="{e9c5add3-c139-499a-ae5e-220916c517f2}">
 		<relationship name="effects">
 			<destination>{85a6e762-4a46-42dd-a2ca-2119c19a9d8d}</destination>
+			<destination>{539f4ed1-b3db-4588-9d11-ea3fc268b288}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{14956e49-f01d-4466-b135-19f317e8e67f}" />
@@ -143,6 +144,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{3e9fc3ea-cbf9-45e9-9e16-85cad8a5ff27}" />
 	<object class="MixerBusFader" id="{85a6e762-4a46-42dd-a2ca-2119c19a9d8d}" />
+	<object class="SpatialiserEffect" id="{539f4ed1-b3db-4588-9d11-ea3fc268b288}" />
 	<object class="MixerBusFader" id="{59cf4558-e23d-407a-bc4f-d25842b0f2f5}" />
 	<object class="ChorusEffect" id="{a30ec3b9-0bf8-4b6e-ae83-b6ae7d38b714}">
 		<property name="rate">
