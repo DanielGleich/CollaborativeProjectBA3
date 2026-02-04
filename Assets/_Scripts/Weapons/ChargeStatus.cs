@@ -21,6 +21,7 @@ public class ChargeStatus : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
+
         OnChargeRequest += HandleChargeRequest;
         OnUnchargeRequest += HandleUnchargeRequest;
         OverchargedStatus.OnOvercharged += OnOverchargedChanged;
@@ -64,7 +65,6 @@ public class ChargeStatus : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SetChargeStatus(int teamId, bool newPoweredValue)
     {
-        if (teamId == -1) return;
         bool oldChargedState = IsPowered.Value || IsOvercharged.Value;
         bool newChargedState = newPoweredValue;
 
@@ -86,19 +86,28 @@ public class ChargeStatus : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SetOverchargeStatus(int teamId, bool newOverchargedValue)
     {
-        if (teamId == -1) return;
         bool oldChargedState = IsPowered.Value || IsOvercharged.Value;
         bool newChargedState = newOverchargedValue;
 
         if (oldChargedState == newOverchargedValue) return;
 
         IsOvercharged.Value = newOverchargedValue;
+
+        //if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
+        //{
+        //    //NotifyCharge(teamId);
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //}
+        //else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
+        //{
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //    //NotifyUncharge(teamId);
+        //}
     }
 
     [ObserversRpc]
     void NotifyCharge(int teamId)
     {
-        if (teamId == -1) return;
         if (TeamMember.localTeamId == teamId)
         { 
             OnChargeActive?.Invoke();
@@ -109,7 +118,6 @@ public class ChargeStatus : NetworkBehaviour
     [ObserversRpc]
     void NotifyUncharge(int teamId)
     {
-        if (teamId == -1) return;
         if (TeamMember.localTeamId == teamId)
         { 
             OnChargeInactive?.Invoke();

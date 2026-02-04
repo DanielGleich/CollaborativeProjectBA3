@@ -21,7 +21,7 @@ public class GameManager : NetworkSingleton<GameManager>
     public bool IsTesting = true;
     public float countdownDuration = 3f;
     public readonly SyncTimer PreGameCountdown = new SyncTimer();
-    public readonly SyncVar<bool> isGameStarted = new SyncVar<bool>();
+    private readonly SyncVar<bool> isGameStarted = new SyncVar<bool>();
     public readonly SyncVar<GameEndReason> gameEndReason = new SyncVar<GameEndReason>();
 
     public static event Action OnInitialized;
