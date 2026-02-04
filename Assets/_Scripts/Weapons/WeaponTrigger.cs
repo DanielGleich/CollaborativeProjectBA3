@@ -64,7 +64,8 @@ public class WeaponTrigger : NetworkBehaviour
     public void TriggerWeaponAnimation()
     {
         //Probably needs to be changed if damage is dealt double/quadruple
-        targetWeapon.TryActivate();
+        if (weaponId == 1)
+            targetWeapon.TryActivate();
     }
 
     [ObserversRpc]
