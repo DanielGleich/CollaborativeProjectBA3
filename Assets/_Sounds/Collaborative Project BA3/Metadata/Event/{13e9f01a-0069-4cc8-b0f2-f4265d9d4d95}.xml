@@ -5,7 +5,7 @@
 			<value>MenuMusic</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{31bdadba-cbbf-4b07-9d2e-ce04a974e8b8}</destination>
@@ -383,7 +383,6 @@
 	<object class="MixerBusEffectChain" id="{39b24424-08e3-49f2-b5cf-61a4019eaa9f}">
 		<relationship name="effects">
 			<destination>{dbe1761e-b3d3-483f-bcf9-24fead163b01}</destination>
-			<destination>{a7f7636f-aad1-4bc2-aeba-fff6bcb1aa7c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e36fd7b0-e1da-431c-a3cd-44190a34c637}" />
@@ -460,7 +459,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{dbe1761e-b3d3-483f-bcf9-24fead163b01}" />
-	<object class="SpatialiserEffect" id="{a7f7636f-aad1-4bc2-aeba-fff6bcb1aa7c}" />
 	<object class="MixerBusFader" id="{1aaff9b1-4f74-49b6-9853-792b490a117c}" />
 	<object class="SFXReverbEffect" id="{9d382e47-6da7-45fb-b17c-00620a8bce1a}">
 		<property name="decayTime">
