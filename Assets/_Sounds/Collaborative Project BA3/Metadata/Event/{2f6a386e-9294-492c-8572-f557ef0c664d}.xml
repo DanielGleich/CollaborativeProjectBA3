@@ -5,7 +5,7 @@
 			<value>ShredderAmbience</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -76,6 +76,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{275cd000-fa00-4d83-b2fd-90678ae65645}">
+		<property name="volume">
+			<value>-7.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{7b9dfdc2-22d4-44cb-85ac-add9e85d4ce8}</destination>
 		</relationship>
@@ -131,6 +134,7 @@
 	<object class="MixerBusEffectChain" id="{7b9dfdc2-22d4-44cb-85ac-add9e85d4ce8}">
 		<relationship name="effects">
 			<destination>{39e7a4d9-087d-48fd-9afc-1649eb122367}</destination>
+			<destination>{a01287f8-23bb-4c7d-b1cf-bde65f01c7e4}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ec8bdee8-e8ff-4f3e-a1c7-b1b2762b4e4a}" />
@@ -142,5 +146,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{0c1dbcbe-0225-4a14-9826-a52a76cede82}" />
 	<object class="MixerBusFader" id="{39e7a4d9-087d-48fd-9afc-1649eb122367}" />
+	<object class="SpatialiserEffect" id="{a01287f8-23bb-4c7d-b1cf-bde65f01c7e4}" />
 	<object class="MixerBusFader" id="{2ee54917-4bfe-4d22-8045-027af5f11f54}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>AmbienceGarage</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c8990a31-90b1-42d3-b57e-7431e1b03c1b}</destination>
@@ -85,7 +85,11 @@
 			<destination>{6ac04971-bd5e-47d7-ae2d-749b0fe6cf6e}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{20137ac5-6ecb-428d-a9c6-5ea7950f18df}" />
+	<object class="MultiSound" id="{20137ac5-6ecb-428d-a9c6-5ea7950f18df}">
+		<relationship name="sounds">
+			<destination>{9d03282e-1e88-45bc-8c8c-c804b9d14e08}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{04e2bcd9-fdc2-4edf-8a27-3022f1b6934d}">
 		<relationship name="effects">
 			<destination>{c25769fd-2492-47f2-b941-c75d3549bd08}</destination>
@@ -95,9 +99,16 @@
 	<object class="MixerBusEffectChain" id="{4297be93-6ab4-411f-bcf3-fe71c8db24d4}">
 		<relationship name="effects">
 			<destination>{13e7f794-6904-49cb-b5ed-757a844c2188}</destination>
+			<destination>{00db4c8d-be81-46d8-92fa-a3e3bd4b2f33}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{22d07140-8d91-47bb-a81b-fb723081316f}" />
+	<object class="SingleSound" id="{9d03282e-1e88-45bc-8c8c-c804b9d14e08}">
+		<relationship name="audioFile">
+			<destination>{b30b936b-7135-4806-bd04-84111d457ca1}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{c25769fd-2492-47f2-b941-c75d3549bd08}" />
 	<object class="MixerBusFader" id="{13e7f794-6904-49cb-b5ed-757a844c2188}" />
+	<object class="SpatialiserEffect" id="{00db4c8d-be81-46d8-92fa-a3e3bd4b2f33}" />
 </objects>

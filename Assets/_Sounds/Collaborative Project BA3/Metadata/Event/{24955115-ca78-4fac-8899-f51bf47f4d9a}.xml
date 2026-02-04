@@ -5,7 +5,7 @@
 			<value>LightZurringInside1</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c8990a31-90b1-42d3-b57e-7431e1b03c1b}</destination>
@@ -99,6 +99,7 @@
 	<object class="MixerBusEffectChain" id="{4b34f0a2-9f2c-4ddc-bdcb-4a0feec745af}">
 		<relationship name="effects">
 			<destination>{e8c6decc-00e0-483a-93e3-90574922eb04}</destination>
+			<destination>{27fb4faf-77ff-44eb-87df-011817927b4e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e62be156-31ec-434b-89bc-955b1a69f4d0}" />
@@ -109,4 +110,5 @@
 	</object>
 	<object class="MixerBusFader" id="{404e368d-269b-498a-b268-ba5438bd0b1e}" />
 	<object class="MixerBusFader" id="{e8c6decc-00e0-483a-93e3-90574922eb04}" />
+	<object class="SpatialiserEffect" id="{27fb4faf-77ff-44eb-87df-011817927b4e}" />
 </objects>

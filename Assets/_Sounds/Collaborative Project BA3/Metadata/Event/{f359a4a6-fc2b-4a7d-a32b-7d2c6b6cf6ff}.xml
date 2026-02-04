@@ -5,7 +5,7 @@
 			<value>OverchargePlatformActive</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{e52343ff-9313-4260-95a4-66670b4e07a5}">
 		<relationship name="effects">
 			<destination>{fbc5203d-3ab3-4c6e-815d-d2f84dc9b448}</destination>
+			<destination>{d0f75cd4-fbbf-47f0-89f7-93c5323d1d43}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5f0d72f4-887f-4801-bc84-2444848cb775}" />
@@ -112,4 +113,5 @@
 	</object>
 	<object class="MixerBusFader" id="{a3371750-61b8-4e16-a70c-dd2d12350603}" />
 	<object class="MixerBusFader" id="{fbc5203d-3ab3-4c6e-815d-d2f84dc9b448}" />
+	<object class="SpatialiserEffect" id="{d0f75cd4-fbbf-47f0-89f7-93c5323d1d43}" />
 </objects>

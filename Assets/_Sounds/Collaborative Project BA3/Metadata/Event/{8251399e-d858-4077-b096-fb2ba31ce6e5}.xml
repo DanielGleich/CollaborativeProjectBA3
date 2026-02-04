@@ -5,7 +5,7 @@
 			<value>MachineRumble</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c8990a31-90b1-42d3-b57e-7431e1b03c1b}</destination>
@@ -82,7 +82,11 @@
 			<destination>{f84d5b41-344f-487b-9b61-1d7d1b66d7ad}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{b9b007d4-139f-40e0-8529-c9d89e6fb466}" />
+	<object class="MultiSound" id="{b9b007d4-139f-40e0-8529-c9d89e6fb466}">
+		<relationship name="sounds">
+			<destination>{c6f585bf-a488-4ea1-abc8-cac3f1f6d96f}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{9c527e8d-7f3d-45bf-8901-536b54d24d6a}">
 		<relationship name="effects">
 			<destination>{03cb4209-04b2-409a-a5ac-301c3cdf5b93}</destination>
@@ -92,9 +96,16 @@
 	<object class="MixerBusEffectChain" id="{2969b8c4-96ca-436b-a07d-46fd7cb1bdc2}">
 		<relationship name="effects">
 			<destination>{b4db868f-d6d3-4144-a695-d0ea8cfd0df0}</destination>
+			<destination>{0ed35c67-02c6-4adc-8669-3788c7ec0f07}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ca534d12-24c8-4a57-9fd8-6ce8a891c992}" />
+	<object class="SingleSound" id="{c6f585bf-a488-4ea1-abc8-cac3f1f6d96f}">
+		<relationship name="audioFile">
+			<destination>{cdc87e93-80a7-4851-ab70-d2882d2d154c}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{03cb4209-04b2-409a-a5ac-301c3cdf5b93}" />
 	<object class="MixerBusFader" id="{b4db868f-d6d3-4144-a695-d0ea8cfd0df0}" />
+	<object class="SpatialiserEffect" id="{0ed35c67-02c6-4adc-8669-3788c7ec0f07}" />
 </objects>

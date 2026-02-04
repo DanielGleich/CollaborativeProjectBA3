@@ -5,7 +5,7 @@
 			<value>ChainsawHitsSmth</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{dd8453d1-ab5d-42a3-a9fd-37d42ff52505}">
 		<relationship name="effects">
 			<destination>{cfbee169-9bd2-49c6-a163-b86c64b50688}</destination>
+			<destination>{8c13f24d-937e-40fe-bff6-adcac5a3e501}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bc7e1589-3256-4967-bda5-328c4b12634e}" />
@@ -109,6 +110,7 @@
 	</object>
 	<object class="MixerBusFader" id="{68a882a4-a411-4f7d-b238-56e2f8cd965c}" />
 	<object class="MixerBusFader" id="{cfbee169-9bd2-49c6-a163-b86c64b50688}" />
+	<object class="SpatialiserEffect" id="{8c13f24d-937e-40fe-bff6-adcac5a3e501}" />
 	<object class="RandomizerModulator" id="{117518d9-7a2f-470d-8446-5c5897a0663b}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>startOffset</value>

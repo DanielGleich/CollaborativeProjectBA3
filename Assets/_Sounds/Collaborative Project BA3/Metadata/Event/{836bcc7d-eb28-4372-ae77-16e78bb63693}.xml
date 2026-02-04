@@ -5,7 +5,7 @@
 			<value>DebrisShred</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{f76e83d4-17a1-41fe-be82-7fa8395a5fdb}">
 		<relationship name="effects">
 			<destination>{ca464225-d521-4625-b4df-9c80ea15900d}</destination>
+			<destination>{ef0e5b1d-6258-4e3e-9b80-915c819e6e04}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e212556d-8f24-4108-8ed9-d3b9b24b6b63}" />
@@ -111,6 +112,7 @@
 	</object>
 	<object class="MixerBusFader" id="{f4ce3cc2-f83e-4576-95fd-fd116d39b500}" />
 	<object class="MixerBusFader" id="{ca464225-d521-4625-b4df-9c80ea15900d}" />
+	<object class="SpatialiserEffect" id="{ef0e5b1d-6258-4e3e-9b80-915c819e6e04}" />
 	<object class="RandomizerModulator" id="{e28ead26-502e-441f-96d3-95eaff56d8f9}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

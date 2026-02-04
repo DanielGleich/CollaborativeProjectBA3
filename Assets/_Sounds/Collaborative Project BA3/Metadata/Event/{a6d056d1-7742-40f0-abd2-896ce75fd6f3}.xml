@@ -5,7 +5,7 @@
 			<value>HammerSound</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,6 +96,7 @@
 	<object class="MixerBusEffectChain" id="{75c0b4bf-0d08-4cae-ba1b-82378b3677b9}">
 		<relationship name="effects">
 			<destination>{689982fc-5b2c-443a-917e-6a10ac2ade41}</destination>
+			<destination>{bf6dbf9f-ab43-4474-a024-5fe0a5be3cce}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e99718a0-d188-48c9-a527-bca0641291f7}" />
@@ -110,6 +111,7 @@
 	</object>
 	<object class="MixerBusFader" id="{76b19f43-f6e3-4afb-a8ba-52dd4680fda4}" />
 	<object class="MixerBusFader" id="{689982fc-5b2c-443a-917e-6a10ac2ade41}" />
+	<object class="SpatialiserEffect" id="{bf6dbf9f-ab43-4474-a024-5fe0a5be3cce}" />
 	<object class="RandomizerModulator" id="{b084b152-0650-4870-a653-cf655ba05a2e}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>
