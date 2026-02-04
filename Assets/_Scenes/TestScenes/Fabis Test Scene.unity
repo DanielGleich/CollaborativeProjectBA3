@@ -3374,7 +3374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 3
+  Weight: 0
 --- !u!54 &1030891326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4066,7 +4066,13 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  onThrow:
+    m_PersistentCalls:
+      m_Calls: []
   onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDuck:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1298641545
@@ -4922,7 +4928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 3
+  Weight: 0
 --- !u!54 &1645420929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7276,7 +7282,13 @@ MonoBehaviour:
   onInteract:
     m_PersistentCalls:
       m_Calls: []
+  onThrow:
+    m_PersistentCalls:
+      m_Calls: []
   onSubmit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDuck:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1959228589
@@ -7366,7 +7378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5673bbec277114b83c5f031bb07b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ballast
-  <Weight>k__BackingField: 3
+  Weight: 0
 --- !u!54 &1959228594
 Rigidbody:
   m_ObjectHideFlags: 0
