@@ -8,10 +8,10 @@ public class ConstantRotation : MonoBehaviour
 
     [Header("Speed Settings")]
     [SerializeField] private float baseSpeed = 0;
-    [SerializeField] private float activeSpeed = 10;
+    [SerializeField] private float activeSpeed = 1;
 
     [Header("Rotaion Settings")]
-    [SerializeField] private Vector3 rotationAxis = new (0,1,0);
+    [SerializeField] private Vector3 rotationAxis = new(0, 1, 0);
     [SerializeField] private bool useLocalRotation = true;
 
     [Header("Tweening Settings")]
@@ -22,10 +22,9 @@ public class ConstantRotation : MonoBehaviour
 
     void OnValidate()
     {
-        if(!target)
+        if (!target)
             target = gameObject.transform;
     }
-
     private void Awake()
     {
         currentSpeed = baseSpeed;
@@ -33,22 +32,26 @@ public class ConstantRotation : MonoBehaviour
     }
     void Update()
     {
-        if (useLocalRotation) 
-            target.localEulerAngles += rotationAxis * currentSpeed;
+        if (currentSpeed == 0)
+            return;
+        if (useLocalRotation)
+            target.RotateAround(target.position, target.rotation * rotationAxis, currentSpeed * 360 * Time.deltaTime);
         else
-            target.eulerAngles += rotationAxis * currentSpeed;
+            target.RotateAround(target.position, rotationAxis, currentSpeed * 360 * Time.deltaTime);
     }
     public void Activate()
     {
-        DOTween.To(x => currentSpeed = x, baseSpeed, activeSpeed, tweenTime).SetEase(ease);
+        Debug.Log("Activate");
+        DOTween.To(x => currentSpeed = x, currentSpeed, activeSpeed, tweenTime).SetEase(ease);
     }
     public void Deactivate()
     {
-        DOTween.To(x => currentSpeed = x, activeSpeed, baseSpeed, tweenTime).SetEase(ease);
+        Debug.Log("Deactivate");
+        DOTween.To(x => currentSpeed = x, currentSpeed, baseSpeed, tweenTime).SetEase(ease);
     }
     public void Activate(bool activate)
     {
-        if(activate)
+        if (activate)
             Activate();
         else
             Deactivate();
