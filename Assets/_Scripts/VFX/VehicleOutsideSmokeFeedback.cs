@@ -9,6 +9,7 @@ public class VehicleOutsideSmokeFeedback : MonoBehaviour
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] SelfDestroyWithDelay selfDestroy;
 
+    Vector3 initialScale = Vector3.one;
 
     [Header("Settings")]
     [SerializeField] float healthCondition = 20f;
@@ -19,6 +20,7 @@ public class VehicleOutsideSmokeFeedback : MonoBehaviour
     private void OnEnable()
     {
         networkedHealth.CurrentHealth.OnChange += CurrentHealth_OnChange;
+        initialScale = transform.localScale;
         if (detachParticlesOnDeath)
         {
             health.OnDeath += HandleDeath;
@@ -50,8 +52,9 @@ public class VehicleOutsideSmokeFeedback : MonoBehaviour
     private void HandleDeath()
     {
         gameObject.transform.SetParent(null, true);
+        gameObject.transform.localScale = initialScale;
         selfDestroy.Trigger();
-        pSystem.Pause();
+        pSystem.Stop(false, ParticleSystemStopBehavior.StopEmitting);
         OnVehicleDeath?.Invoke();
     }
 }
