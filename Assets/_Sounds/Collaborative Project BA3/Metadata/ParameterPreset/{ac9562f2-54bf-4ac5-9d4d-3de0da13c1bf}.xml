@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{ac9562f2-54bf-4ac5-9d4d-3de0da13c1bf}">
+		<property name="name">
+			<value>Accalerate</value>
+		</property>
+		<relationship name="folder">
+			<destination>{761378e2-5dde-4d44-89c8-ce66aff5c292}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a67fedac-13ac-4a59-9c5f-c249599bfe6b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a67fedac-13ac-4a59-9c5f-c249599bfe6b}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
