@@ -86,7 +86,6 @@ public class ChargeStatus : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SetOverchargeStatus(int teamId, bool newOverchargedValue)
     {
-        Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
         bool oldChargedState = IsPowered.Value || IsOvercharged.Value;
         bool newChargedState = newOverchargedValue;
 
@@ -94,14 +93,16 @@ public class ChargeStatus : NetworkBehaviour
 
         IsOvercharged.Value = newOverchargedValue;
 
-        if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
-        {
-            NotifyCharge(teamId);
-        }
-        else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
-        {
-            NotifyUncharge(teamId);
-        }
+        //if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
+        //{
+        //    //NotifyCharge(teamId);
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //}
+        //else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
+        //{
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //    //NotifyUncharge(teamId);
+        //}
     }
 
     [ObserversRpc]
