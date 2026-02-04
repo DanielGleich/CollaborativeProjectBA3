@@ -5,7 +5,7 @@
 			<value>ChainsawHitsSmth</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -99,7 +99,27 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bc7e1589-3256-4967-bda5-328c4b12634e}" />
-	<object class="MultiSound" id="{bd5b6d77-5bf8-4671-a6f1-7203f40c272c}" />
+	<object class="MultiSound" id="{bd5b6d77-5bf8-4671-a6f1-7203f40c272c}">
+		<relationship name="modulators">
+			<destination>{117518d9-7a2f-470d-8446-5c5897a0663b}</destination>
+		</relationship>
+		<relationship name="sounds">
+			<destination>{a71fc3d7-ba41-421a-9b04-b34a30f83df0}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{68a882a4-a411-4f7d-b238-56e2f8cd965c}" />
 	<object class="MixerBusFader" id="{cfbee169-9bd2-49c6-a163-b86c64b50688}" />
+	<object class="RandomizerModulator" id="{117518d9-7a2f-470d-8446-5c5897a0663b}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>17</value>
+		</property>
+	</object>
+	<object class="SingleSound" id="{a71fc3d7-ba41-421a-9b04-b34a30f83df0}">
+		<relationship name="audioFile">
+			<destination>{3b98654c-dce0-452d-b9cd-5d4da9ef1ca8}</destination>
+		</relationship>
+	</object>
 </objects>
