@@ -177,6 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1108944085947241475}
+  - component: {fileID: 8325345091150543223}
   m_Layer: 10
   m_Name: Body Camera Target
   m_TagString: Untagged
@@ -199,6 +200,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6335819879999158148}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &8325345091150543223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474342585730777783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5744d77b598d13b4c8be9502de9d260e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkedMotorSoundFeedback
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 5607037410786639857}
+  _networkObjectCache: {fileID: 5607037410786639857}
+  vehicleMovement: {fileID: 4645123444373290340}
+  motorSFX:
+    Guid:
+      Data1: 1434697781
+      Data2: 1319935223
+      Data3: -1064543312
+      Data4: -957138929
+    Path: event:/SFX/MachineMotorForward
+  paramterName: Acceleration
 --- !u!1 &2382847909764614269
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
   m_IsGlobal: 0
   priority: 1000
-  blendDistance: 0
+  blendDistance: 0.02
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 46564b67a54293d4786e4915331d6d76, type: 2}
 --- !u!135 &1131447102433255562
@@ -839,6 +864,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1281469345402038307, guid: afd5e22a67a8320489a562c436bc6074, type: 3}
   m_PrefabInstance: {fileID: 298674303861133021}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &8661046812012780314 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 8941653645492164039, guid: afd5e22a67a8320489a562c436bc6074, type: 3}
+  m_PrefabInstance: {fileID: 298674303861133021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1098241134932945354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -945,7 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
 --- !u!1001 &2263841912625580672
@@ -1695,7 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 13
+  _componentIndexCache: 14
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1835,7 +1865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 14
+  _componentIndexCache: 15
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -1944,7 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7eaad30afc0e394499241d95e8a957c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   constantDamage: {fileID: 4543931608220937660}
@@ -1984,7 +2014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 3333115643738874225}
@@ -2002,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 1
@@ -2056,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 6
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 3919714130502515608}
@@ -2073,7 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 7
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8299134870069633189}
@@ -2091,7 +2121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 8
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 4
@@ -2228,7 +2258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 15
+  _componentIndexCache: 16
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
@@ -2279,7 +2309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48317a614c62b9e47be67bb2a56e825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangeWeapon
-  _componentIndexCache: 9
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   spawnPoint: {fileID: 4884054835545564801}
@@ -2296,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050d5689a18cc0543966d3a1421993d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponTrigger
-  _componentIndexCache: 10
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   targetWeapon: {fileID: 8098446815312290814}
@@ -2314,7 +2344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f675565677d8149beaa73cf6777692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargeStatus
-  _componentIndexCache: 11
+  _componentIndexCache: 12
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   <WeaponId>k__BackingField: 2
@@ -2476,6 +2506,7 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 1750614451255156641}
   - {fileID: 1736394960479325595}
+  - {fileID: 8325345091150543223}
   - {fileID: 8980860123513413769}
   - {fileID: 3333115643738874225}
   - {fileID: 8379070486850140609}
@@ -2500,7 +2531,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584316373096158677
+  _initializedTimestamp: -8584314081747452989
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -2700,7 +2731,7 @@ MonoBehaviour:
   - {fileID: 3921835254988541443}
   - {fileID: 3707973112139763967}
   - {fileID: 7492324537578571734}
-  - {fileID: 0}
+  - {fileID: 8661046812012780314}
   - {fileID: 1131447102433255562}
   - {fileID: 2334429616030221824}
   - {fileID: 192110710811171523}
@@ -2850,7 +2881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 12
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 5607037410786639857}
   _networkObjectCache: {fileID: 5607037410786639857}
   _componentConfiguration: 2
