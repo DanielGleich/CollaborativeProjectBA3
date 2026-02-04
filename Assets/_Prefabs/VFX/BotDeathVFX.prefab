@@ -30,7 +30,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6071705327602181597}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -288,7 +288,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
+      scalar: 0.2
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2
@@ -665,7 +665,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 4
     angle: 90
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -982,7 +982,7 @@ ParticleSystem:
         serializedVersion: 2
         minMaxState: 3
         scalar: 35
-        minScalar: 15
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -4938,7 +4938,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6071705327602181597}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -5025,7 +5025,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -5197,7 +5197,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1.5
-      minScalar: 3
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9832,7 +9832,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6071705327602181597}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -9919,7 +9919,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
+      scalar: 0.4
       minScalar: 0.4
       maxCurve:
         serializedVersion: 2
@@ -14727,7 +14727,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6071705327602181597}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -14867,7 +14867,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 20
+      scalar: 10
       minScalar: 2
       maxCurve:
         serializedVersion: 2
@@ -14985,8 +14985,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5
-      minScalar: 1
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15742,22 +15742,22 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
+          time: 0.0057525635
           value: 1
-          inSlope: -1.6647868
-          outSlope: -1.6647868
-          tangentMode: 34
+          inSlope: -1.6866335
+          outSlope: -1.6866335
+          tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.33333334
+          outWeight: 0.2627662
         - serializedVersion: 3
-          time: 0.6006775
+          time: 0.7814636
           value: 0
-          inSlope: -1.6647868
-          outSlope: -1.6647868
-          tangentMode: 34
+          inSlope: -0.7321302
+          outSlope: -0.7321302
+          tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.13625035
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -19662,7 +19662,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6071705327602181597}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -19749,7 +19749,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.15
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19920,7 +19920,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -20296,7 +20296,7 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 0
+    enabled: 1
     type: 4
     angle: 25
     length: 5
@@ -24554,8 +24554,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 473616294696723649}
   - {fileID: 6322878613672718093}
