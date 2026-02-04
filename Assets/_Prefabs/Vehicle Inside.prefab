@@ -2634,6 +2634,8 @@ GameObject:
   - component: {fileID: 1215405232659286946}
   - component: {fileID: 6280565412458744844}
   - component: {fileID: 172794229869698752}
+  - component: {fileID: 5247498916869077978}
+  - component: {fileID: 1738637389462348754}
   m_Layer: 2
   m_Name: WeaponFieldEast
   m_TagString: Untagged
@@ -2848,7 +2850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 5955361238323193145}
-  onIsReady:
+  onIsReadyUpdated:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1664102266721462241}
@@ -2863,12 +2865,101 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5247498916869077978}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTriggerField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1738637389462348754}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUpdateChargedBatteriesCount:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5247498916869077978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405001902521630949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2056681655
+      Data2: 1332600323
+      Data3: 154971809
+      Data4: -813242822
+    Path: event:/SFX/WeaponChargedInside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1738637389462348754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405001902521630949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -781468379
+      Data2: 1216107683
+      Data3: 30271104
+      Data4: -1643700485
+    Path: event:/SFX/Shotinside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2423242843310747188
 GameObject:
   m_ObjectHideFlags: 0
@@ -6738,6 +6829,8 @@ GameObject:
   - component: {fileID: 2773718675763078129}
   - component: {fileID: 6217534925785992709}
   - component: {fileID: 7748173104939710201}
+  - component: {fileID: 1666124084064920907}
+  - component: {fileID: 4168177338761657524}
   m_Layer: 2
   m_Name: WeaponFieldNorth
   m_TagString: Untagged
@@ -6952,12 +7045,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 1636642673871729555}
+  onIsReadyUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1889203090858048554}
+        m_TargetAssemblyTypeName: ConstantRotation, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onIsReady:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664102266721462241}
-        m_TargetAssemblyTypeName: ConstantRotation, Assembly-CSharp
-        m_MethodName: Activate
+      - m_Target: {fileID: 1666124084064920907}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6969,10 +7077,84 @@ MonoBehaviour:
         m_CallState: 2
   onTriggerField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4168177338761657524}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUpdateChargedBatteriesCount:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1666124084064920907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524853797402854699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2056681655
+      Data2: 1332600323
+      Data3: 154971809
+      Data4: -813242822
+    Path: event:/SFX/WeaponChargedInside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &4168177338761657524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524853797402854699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 801910600
+      Data2: 1242690670
+      Data3: -1742471533
+      Data4: -660939321
+    Path: event:/SFX/ChainsawTriggeredInside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6870808639204299518
 GameObject:
   m_ObjectHideFlags: 0
@@ -9223,7 +9405,8 @@ GameObject:
   - component: {fileID: 1911136721582863420}
   - component: {fileID: 6924985190434158711}
   - component: {fileID: 1268045742597726550}
-  - component: {fileID: 3159021799851729803}
+  - component: {fileID: 2770542577486051956}
+  - component: {fileID: 653746382875964188}
   m_Layer: 2
   m_Name: WeaponFieldWest
   m_TagString: Untagged
@@ -9438,16 +9621,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleBatteryUseFieldFeedback
   batteryUseField: {fileID: 2505093858605478732}
-  onIsReady:
+  onIsReadyUpdated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 4530645643412399471}
+        m_TargetAssemblyTypeName: ConstantRotation, Assembly-CSharp
+        m_MethodName: Activate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onIsReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2770542577486051956}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9455,11 +9653,23 @@ MonoBehaviour:
         m_CallState: 2
   onTriggerField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 653746382875964188}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUpdateChargedBatteriesCount:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3159021799851729803
+--- !u!114 &2770542577486051956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9474,11 +9684,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2056681655
+      Data2: 1332600323
+      Data3: 154971809
+      Data4: -813242822
+    Path: event:/SFX/WeaponChargedInside
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 0
@@ -9488,8 +9698,39 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &653746382875964188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193795102589874861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -781468379
+      Data2: 1216107683
+      Data3: 30271104
+      Data4: -1643700485
+    Path: event:/SFX/Shotinside
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &154448716310932361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9702,9 +9943,9 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  OverrideMaxDistance: 10
 --- !u!114 &8820645174704602460
 MonoBehaviour:
   m_ObjectHideFlags: 0
