@@ -2014,15 +2014,20 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 1633072857}
   _networkObjectCache: {fileID: 0}
-  uiParent: {fileID: 1087812576}
-  winnerUI: {fileID: 117132634}
-  loserUI: {fileID: 1770452547}
+  ObjectsToDisableOnStart: []
   rematchButton: {fileID: 1505676027}
   teamSelectionButton: {fileID: 48165150}
-  deathText: {fileID: 2091219780}
   rematchButtonText: {fileID: 1638629002}
-  rematchCounter: {fileID: 431943677}
   OnDeathDelay: 3
+  OnGameEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerWin:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerLose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &515662171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6660,6 +6665,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091219778}
   m_CullTransparentMesh: 1
+--- !u!1001 &2098215521
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.3066463
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2731494
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.32225752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.67665744
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12989472
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.71688575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10647528
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 19.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -93.739
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604511449675583717, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.557
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966480132549851857, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: m_Name
+      value: Dual Health Display
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872154341263831624, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 54c6cbe5b5e482d47827817e63e3d216, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11b707fd6d8599d429db1591f4fbc034, type: 3}
 --- !u!1001 &2118391301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8084,3 +8150,4 @@ SceneRoots:
   - {fileID: 431959790}
   - {fileID: 212098594}
   - {fileID: 2066237680}
+  - {fileID: 2098215521}
