@@ -34,9 +34,9 @@ public class ConstantRotation : MonoBehaviour
     void Update()
     {
         if (useLocalRotation) 
-            target.localEulerAngles += rotationAxis * currentSpeed;
+            transform.RotateAround(transform.position,transform.rotation * rotationAxis, currentSpeed * 360 * Time.deltaTime);
         else
-            target.eulerAngles += rotationAxis * currentSpeed;
+            transform.RotateAround(transform.position, rotationAxis, currentSpeed * 360 * Time.deltaTime);
     }
     public void Activate()
     {
