@@ -83,7 +83,7 @@ public class ChargingPad : NetworkBehaviour
             OverchargedStatus[] chargingStatuses = obj.GetComponentsInChildren<OverchargedStatus>();
             foreach (OverchargedStatus chargingStatus in chargingStatuses)
             {
-                if (chargingStatus.IsOvercharged == false)
+                if (chargingStatus.IsOvercharged.Value == false)
                 {
                     NotifyOverchargeRequest(chargingStatus.GetComponent<NetworkObject>());
                 }
