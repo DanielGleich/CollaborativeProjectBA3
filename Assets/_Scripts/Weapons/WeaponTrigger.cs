@@ -42,11 +42,13 @@ public class WeaponTrigger : NetworkBehaviour
     {
         if (GodMode || chargeStatus.IsOvercharged.Value)
         {
+            Debug.Log($"Force Trigger {teamId}");
             ForceTriggerWeapon(teamId);
             StartCoroutine(Cooldown());
         }
-        else if (IsCooldown == false && chargeStatus.IsPowered.Value)
+        else if (IsCooldown == false && chargeStatus.IsOwner && chargeStatus.IsPowered.Value)
         {
+            Debug.Log($"Normal Trigger {teamId}");
             NotifyWeaponTrigger(teamId);
             chargeStatus.UnchargeWeapon();
             StartCoroutine(Cooldown());
