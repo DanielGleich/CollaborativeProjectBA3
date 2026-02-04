@@ -5,7 +5,7 @@
 			<value>ChainsawTriggeredInside</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{9d4765a2-0d15-4302-8241-5a112f29c49c}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{3bfa652c-9d22-4f78-b2a5-fef6a4f675f1}</destination>
 		</relationship>
@@ -99,7 +102,16 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f54e57e6-fa62-492b-a897-28fe1a68a6ce}" />
-	<object class="MultiSound" id="{66f4e81f-2c33-4d16-8bc7-56022cffb855}" />
+	<object class="MultiSound" id="{66f4e81f-2c33-4d16-8bc7-56022cffb855}">
+		<relationship name="sounds">
+			<destination>{1aa50323-0951-4eb1-bce1-2cecda53cf57}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{c908b649-6735-4c04-8ac6-204203fe3190}" />
 	<object class="MixerBusFader" id="{1524aeeb-9d76-4c13-949c-abd888bed6c7}" />
+	<object class="SingleSound" id="{1aa50323-0951-4eb1-bce1-2cecda53cf57}">
+		<relationship name="audioFile">
+			<destination>{bd8be77a-f40a-4e81-8270-7d83f31fa8b4}</destination>
+		</relationship>
+	</object>
 </objects>
