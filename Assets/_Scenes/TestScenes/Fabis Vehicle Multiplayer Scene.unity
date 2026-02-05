@@ -5866,7 +5866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2560 x 1440
+  m_text: 640 x 480
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7111,17 +7111,11 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 919050511}
   m_ItemImage: {fileID: 0}
-  m_Value: 18
+  m_Value: 0
   m_MultiSelect: 0
   m_Options:
     m_Options:
     - m_Text: 640 x 480
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 720 x 480
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 720 x 576
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 800 x 600
@@ -7130,7 +7124,10 @@ MonoBehaviour:
     - m_Text: 1024 x 768
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 1176 x 664
+    - m_Text: 1152 x 864
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 1280 x 600
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 1280 x 720
@@ -7142,6 +7139,9 @@ MonoBehaviour:
     - m_Text: 1280 x 800
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 1280 x 960
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 1280 x 1024
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7151,34 +7151,19 @@ MonoBehaviour:
     - m_Text: 1366 x 768
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 1440 x 1080
+    - m_Text: 1400 x 1050
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 1600 x 1200
+    - m_Text: 1440 x 900
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 1600 x 900
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 1680 x 1050
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 1920 x 1080
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 1920 x 1200
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 2048 x 1536
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 2560 x 1440
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 2560 x 1600
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 3840 x 2160
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: 4096 x 2160
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
@@ -7452,7 +7437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 2113908190
+      value: 1476327902
       objectReference: {fileID: 0}
     - target: {fileID: 3041604149930584196, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: WasActiveDuringEdit
@@ -7488,7 +7473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966872722425761631, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 3724520406
+      value: 4152277983
       objectReference: {fileID: 0}
     - target: {fileID: 4279769094053900484, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7504,11 +7489,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4848404386006622156, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 4160666071
+      value: 4026384350
       objectReference: {fileID: 0}
     - target: {fileID: 4913584669480179818, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 4252888030
+      value: 3858546166
       objectReference: {fileID: 0}
     - target: {fileID: 5272086665308168913, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7524,7 +7509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536893077240158690, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 3984583167
+      value: 3615287767
       objectReference: {fileID: 0}
     - target: {fileID: 5868302469619365074, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7536,7 +7521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6455270681216212211, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 1870441975
+      value: 1342040575
       objectReference: {fileID: 0}
     - target: {fileID: 6730049000604858040, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7564,7 +7549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8010995884967009930, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 2147479543
+      value: 2138942423
       objectReference: {fileID: 0}
     - target: {fileID: 8055905998111660306, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7572,11 +7557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469997994939167750, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 3481075702
+      value: 4152277470
       objectReference: {fileID: 0}
     - target: {fileID: 8812723254244888517, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: SceneId
-      value: 1971256798
+      value: 1845473271
       objectReference: {fileID: 0}
     - target: {fileID: 8814366283242205320, guid: 2ccd6ac590673194989445d1fa432bda, type: 3}
       propertyPath: m_StaticEditorFlags

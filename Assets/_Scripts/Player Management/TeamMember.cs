@@ -33,6 +33,7 @@ public class TeamMember : NetworkBehaviour
         if (IsOwner)
         {
             localTeamId = CurrentTeam.Value.id;
+            Debug.Log($"You are {CurrentRole.Value} of Team {localTeamId}");
             SetPlayerReadyServerRpc();
         }
     }
