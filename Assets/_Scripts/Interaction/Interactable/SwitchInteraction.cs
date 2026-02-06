@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Triggers one of multiple Unity Events based on Switch Type when interacted with
+/// </summary>
 public class SwitchInteraction : Interactable
 {
     [Header("Settings")]
@@ -10,6 +13,7 @@ public class SwitchInteraction : Interactable
     [SerializeField] private UnityEvent[] OnInteractEvents;
     
     private int currentIndex = 0;
+    
     public override void Interact()
     {
         switch (switchType)

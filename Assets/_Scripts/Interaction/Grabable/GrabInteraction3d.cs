@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PickUpGrabable3d : MonoBehaviour
+public class GrabInteraction3d : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Interaction interaction;

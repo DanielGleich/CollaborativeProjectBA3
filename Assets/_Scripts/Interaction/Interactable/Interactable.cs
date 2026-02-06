@@ -10,4 +10,12 @@ public abstract class Interactable : MonoBehaviour
         OnSelected?.Invoke(highlighted);
     }
     public abstract void Interact();
+
+    protected virtual void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position, "Interactable Gizmo");
+    }
+    
+    [ContextMenu("Trigger Interaction")]
+    private void DebugTriggerInteraction() => Interact();
 }
