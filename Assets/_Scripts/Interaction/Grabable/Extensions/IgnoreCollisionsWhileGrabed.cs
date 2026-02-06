@@ -6,7 +6,7 @@ using UnityEngine;
 public class IgnoreCollisionsWhileGrabed : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PickUpGrabable3d pickUpGrabable3D;
+    [SerializeField] private GrabInteraction3d pickUpGrabable3D;
     [SerializeField] private CharacterController characterController;
 
     private Grabable3d currentGrabable;
@@ -14,7 +14,7 @@ public class IgnoreCollisionsWhileGrabed : MonoBehaviour
     void OnValidate()
     {
         if(!pickUpGrabable3D)
-            pickUpGrabable3D = GetComponent<PickUpGrabable3d>();
+            pickUpGrabable3D = GetComponent<GrabInteraction3d>();
         if(!characterController)
             characterController = GetComponent<CharacterController>();
     }
