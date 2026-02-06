@@ -29,16 +29,16 @@ public class MaterialTweenAnimator : TweenAnimator
     }
     public override void Activate()
     {
-        material.DOFloat(activeValue, materialAttributeName, tweenDuration).From(material.GetFloat(materialAttributeName)).SetEase(ease);
+        material.DOFloat(activeValue, materialAttributeName, tweenDuration).SetEase(ease);
     }
     public override void Deactivate()
     {
-        material.DOFloat(baseValue, materialAttributeName, tweenDuration).From(material.GetFloat(materialAttributeName)).SetEase(ease);
+        material.DOFloat(baseValue, materialAttributeName, tweenDuration).SetEase(ease);
     }
     [ContextMenu("Flash")]
     public void Flash()
     {
-        material.DOFloat(activeValue, materialAttributeName, tweenDuration).From(material.GetFloat(materialAttributeName)).SetEase(ease).OnComplete(Deactivate);
+        material.DOFloat(activeValue, materialAttributeName, tweenDuration).SetEase(ease).OnComplete(Deactivate);
     }
 
     public void SetValue(float value) => material.SetFloat(materialAttributeName, value);
