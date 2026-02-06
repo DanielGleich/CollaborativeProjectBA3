@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9066113890352734727
 Transform:
   m_ObjectHideFlags: 0
@@ -144,7 +144,6 @@ GameObject:
   - component: {fileID: 8134847562452810913}
   - component: {fileID: 6103918971120192494}
   - component: {fileID: 2956793335432522809}
-  - component: {fileID: 7129423858661265683}
   m_Layer: 6
   m_Name: New Battery Cube
   m_TagString: Untagged
@@ -308,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabable3d
   <Rigidbody>k__BackingField: {fileID: 7590624974095172452}
-  <Collider>k__BackingField: {fileID: 7129423858661265683}
+  <Collider>k__BackingField: {fileID: 7948999839458327235}
 --- !u!114 &3755788922200782926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,27 +369,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 6230102621510914127}
   materialIndex: 1
   materialAttributeName: _GlowStrength
---- !u!65 &7129423858661265683
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6180428723034865634}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.65, z: 0.5}
-  m_Center: {x: 0, y: 0.325, z: 0}
 --- !u!1001 &4734498111668473035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battery Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: 244393a98c1f6e945a6fb75e018db2da, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -476,5 +458,10 @@ Transform:
 --- !u!23 &6230102621510914127 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 244393a98c1f6e945a6fb75e018db2da, type: 3}
+  m_PrefabInstance: {fileID: 4734498111668473035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &7948999839458327235 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 3451118302482216456, guid: 244393a98c1f6e945a6fb75e018db2da, type: 3}
   m_PrefabInstance: {fileID: 4734498111668473035}
   m_PrefabAsset: {fileID: 0}
