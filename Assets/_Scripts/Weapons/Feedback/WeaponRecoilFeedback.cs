@@ -3,7 +3,8 @@ using UnityEngine;
 /// <summary>
 /// Triggers Knockback, when a weapon is activated
 /// </summary>
-public class WeaponRecoilFeedback : WeaponFeedback {
+public class WeaponRecoilFeedback : WeaponFeedback
+{
     [SerializeField] private Rigidbody affectedRigidbody;
     [SerializeField] private Transform weaponDirection;
 
@@ -12,7 +13,7 @@ public class WeaponRecoilFeedback : WeaponFeedback {
 
     protected override void WeaponActivated(bool isActivated)
     {
-        if(isActivated)
-            affectedRigidbody.AddForce(-weaponDirection.forward * knockBackForce, ForceMode.Impulse);
+        if (isActivated)
+            affectedRigidbody.AddForceAtPosition(-weaponDirection.forward, weapon.transform.position, ForceMode.Impulse);
     }
 }
