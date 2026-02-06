@@ -44,7 +44,7 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 0.4037736, g: 0.1856149, b: 0.11199003, a: 1}
-  m_Intensity: 0
+  m_Intensity: 0.1
   m_Range: 0.25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: be76e35343ce6ee479075bf68af6c11b, type: 2}
+      objectReference: {fileID: 2100000, guid: f6f7fc1b1348a824b9438f48e9710f5c, type: 2}
     - target: {fileID: 919132149155446097, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
       propertyPath: m_Name
       value: MDL_LightbulbSimple
@@ -208,11 +208,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6022471991607049991}
+      addedObject: {fileID: 5859901894938186562}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6686639943696157781}
+      addedObject: {fileID: 3431255445891670204}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4937381702884271726}
   m_SourcePrefab: {fileID: 100100000, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
+--- !u!23 &5157112235549829524 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
+  m_PrefabInstance: {fileID: 5787173766008550672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6330533431895347963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
@@ -223,29 +231,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31d866d4449c6064db442f468df8f0e2, type: 3}
   m_PrefabInstance: {fileID: 5787173766008550672}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6022471991607049991
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6670185301407369281}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c9f654386721653468a0f87aa95170ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6686639943696157781
+--- !u!114 &5859901894938186562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,11 +240,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 6670185301407369281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
+  tweenDuration: 1
+  ease: 4
+  startActive: 0
+  lightTweenAnimator: {fileID: 3431255445891670204}
+  materialTweenAnimator: {fileID: 4937381702884271726}
+  overrideTweenSettings: 1
+--- !u!114 &3431255445891670204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670185301407369281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff645acfedf11748a4cd328cef707af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightTweenAnimator
+  tweenDuration: 1
+  ease: 4
+  startActive: 0
+  attachedLight: {fileID: 9001800651542479608}
+  baseIntensity: 0
+  activeIntensity: 0.1
+  animateColor: 0
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  activeColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &4937381702884271726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670185301407369281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4c43a5dc95a174c91d02757084be7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaterialTweenAnimator
+  tweenDuration: 1
+  ease: 4
+  startActive: 0
+  meshRenderer: {fileID: 5157112235549829524}
+  materialIndex: 0
+  materialAttributeName: _GlowStrength
+  baseValue: 0
+  activeValue: 1

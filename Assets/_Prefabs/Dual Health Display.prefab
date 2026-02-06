@@ -79,13 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiageticHealthDisplay
   lampAnimators:
-  - {fileID: 3324900132034960800}
-  - {fileID: 226986570047666712}
-  - {fileID: 2914792540322951175}
-  - {fileID: 7376169318452632424}
-  - {fileID: 4600482910728399690}
+  - {fileID: 3234421166588309989}
+  - {fileID: 135381711238092381}
+  - {fileID: 3077647088348011586}
+  - {fileID: 7249661863147271981}
+  - {fileID: 4404134725932762895}
   teamId: 0
-  parameterName: Active
   ceilValues: 0
   debugHealth: 100
   debugMaxHealth: 100
@@ -102,13 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DiageticHealthDisplay
   lampAnimators:
-  - {fileID: 2721356681199458523}
-  - {fileID: 6723017802008938785}
-  - {fileID: 3926811343994089315}
-  - {fileID: 1231970365984910445}
-  - {fileID: 1703472588610371072}
+  - {fileID: 2810985711204856990}
+  - {fileID: 6884428186605135204}
+  - {fileID: 3798863232067306278}
+  - {fileID: 1431658020995153960}
+  - {fileID: 1541744741503963717}
   teamId: 1
-  parameterName: Active
   ceilValues: 1
   debugHealth: 100
   debugMaxHealth: 100
@@ -283,11 +281,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 1069863623454946854}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6723017802008938785 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &6884428186605135204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 1069863623454946854}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &3875757271526614127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,11 +354,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 3875757271526614127}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7376169318452632424 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &7249661863147271981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 3875757271526614127}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &4795428548165538666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,11 +422,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300be407c303815498741c5d99395e9a, type: 3}
---- !u!95 &1231970365984910445 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &1431658020995153960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 4795428548165538666}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!4 &1537515583413141905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
@@ -484,11 +500,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 4915658194657100039}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1703472588610371072 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &1541744741503963717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 4915658194657100039}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &5233005020891508428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1054,11 +1076,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300be407c303815498741c5d99395e9a, type: 3}
---- !u!95 &226986570047666712 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &135381711238092381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 5814839033955845407}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!4 &533931464767100900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
@@ -1126,11 +1154,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 7343902330519539812}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &3926811343994089315 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &3798863232067306278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 7343902330519539812}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &7803661229976884301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1193,11 +1227,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 7803661229976884301}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4600482910728399690 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &4404134725932762895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 7803661229976884301}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &8525363733755439068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1260,11 +1300,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 8525363733755439068}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2721356681199458523 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &2810985711204856990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 8525363733755439068}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!1001 &8928230136895131392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1322,11 +1368,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300be407c303815498741c5d99395e9a, type: 3}
---- !u!95 &2914792540322951175 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &3077647088348011586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 8928230136895131392}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator
 --- !u!4 &3187951075764805115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
@@ -1398,8 +1450,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6330533431895347963, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 9056867853792043687}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &3324900132034960800 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6022471991607049991, guid: 300be407c303815498741c5d99395e9a, type: 3}
+--- !u!114 &3234421166588309989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5859901894938186562, guid: 300be407c303815498741c5d99395e9a, type: 3}
   m_PrefabInstance: {fileID: 9056867853792043687}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LampTweenAnimator

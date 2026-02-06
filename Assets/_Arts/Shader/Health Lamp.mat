@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-233714532757210625
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
-  version: 10
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -21,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Health Lamp
-  m_Shader: {fileID: -6465566751694194690, guid: 93629d7b8c10caa49baa560b42c65b1a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 755fdd182634d2c41b2e9fdf2a550f1e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,6 +24,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Base_Map:
+        m_Texture: {fileID: 2800000, guid: 4b94a389bab8ba04d952066e3aa425b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Smothness_Map:
+        m_Texture: {fileID: 2800000, guid: 4b94a389bab8ba04d952066e3aa425b0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,10 +51,26 @@ Material:
     m_Ints: []
     m_Floats:
     - _GlowStrength: 1
+    - _Invert_Smothness: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Smothness_Multiply: 2.8
+    - _Use_Base_Map: 0
     m_Colors:
-    - _BaseColor: {r: 0.17735845, g: 0.17735845, b: 0.17735845, a: 1}
-    - _GlowColor: {r: 41.662746, g: 9.300881, b: 1.5058814, a: 1}
+    - _BaseColor: {r: 0.10188681, g: 0.10188681, b: 0.10188681, a: 1}
+    - _EmissionColor: {r: 3.4819071, g: 1.6993625, b: 0.59783685, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &6914913531932643187
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
