@@ -193,13 +193,7 @@
             "m_Id": "1124f298025a4ce78e81b9bfc2eb7545"
         },
         {
-            "m_Id": "433f191b0ed247c893b1ee4781ad4e9d"
-        },
-        {
             "m_Id": "3b6f3a8801d24fb9b9599911ff01f1de"
-        },
-        {
-            "m_Id": "0b3e15d4a25046cea0119e21cab81168"
         },
         {
             "m_Id": "0ea7722a4e7b4910b624058de48c26b5"
@@ -930,42 +924,6 @@
         "w": 0.0
     },
     "m_LiteralMode": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
-    "m_ObjectId": "0b3e15d4a25046cea0119e21cab81168",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Property",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -1613.22021484375,
-            "y": 1861.355712890625,
-            "width": 118.4002685546875,
-            "height": 33.60009765625
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "7527cc5d06bd454989550d734240bff2"
-        }
-    ],
-    "synonyms": [],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Property": {
-        "m_Id": "efafaf0262bd4e93bcb5e357e6e605e5"
-    }
 }
 
 {
@@ -2118,43 +2076,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.PositionNode",
-    "m_ObjectId": "433f191b0ed247c893b1ee4781ad4e9d",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Position",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": -1772.8001708984375,
-            "y": 2172.800048828125,
-            "width": 208.0001220703125,
-            "height": 312.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "9464a0ab52d54a56afd28e89805896c5"
-        }
-    ],
-    "synonyms": [
-        "location"
-    ],
-    "m_Precision": 1,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 2,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Space": 0,
-    "m_PositionSource": 0
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
     "m_ObjectId": "440777350bc645b089c16c02a8401b96",
@@ -3060,27 +2981,6 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
-    "m_ObjectId": "7527cc5d06bd454989550d734240bff2",
-    "m_Id": 0,
-    "m_DisplayName": "Vector2",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0
-    },
-    "m_Labels": []
-}
-
-{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
     "m_ObjectId": "753ae4674b01402fa97343fe3f0397dc",
@@ -3550,29 +3450,6 @@
         "w": 0.0
     },
     "m_LiteralMode": false
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
-    "m_ObjectId": "9464a0ab52d54a56afd28e89805896c5",
-    "m_Id": 0,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "m_Labels": []
 }
 
 {
@@ -4120,8 +3997,8 @@
     "m_ObjectId": "a99a9c54ba0949ba88ca47ab8e70059e",
     "m_Title": "Smothness",
     "m_Position": {
-        "x": -1639.2001953125,
-        "y": -42.39994812011719
+        "x": -1639.199951171875,
+        "y": -42.399993896484378
     }
 }
 
@@ -5062,7 +4939,7 @@
     "m_ShaderOutputName": "OutMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.10000000149011612,
+        "x": 0.009999999776482582,
         "y": 1.0
     },
     "m_DefaultValue": {
@@ -5170,8 +5047,8 @@
     "m_ObjectId": "d778e150b84d4988b47b9a12bd960d80",
     "m_Title": "Base Map",
     "m_Position": {
-        "x": -1410.4000244140625,
-        "y": -564.0
+        "x": -1410.39990234375,
+        "y": -563.9999389648438
     }
 }
 

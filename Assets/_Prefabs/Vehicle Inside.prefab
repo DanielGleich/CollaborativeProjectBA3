@@ -2192,8 +2192,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 43.737545, y: 29.926502, z: 8.983131}
-  m_Center: {x: 0, y: 3.380304, z: 0}
+  m_Size: {x: 43.73755, y: 29.926502, z: 13.843084}
+  m_Center: {x: 0, y: 3.3803048, z: 2.4299731}
 --- !u!1 &2076133974618262790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2864,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8139047967559939296}
+        m_TargetAssemblyTypeName: FMODParameterTweenAnimator, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onIsReady:
     m_PersistentCalls:
       m_Calls:
@@ -3435,8 +3447,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.6995854, y: 29.700224, z: 55.633873}
-  m_Center: {x: 0, y: 3.1016257, z: 0}
+  m_Size: {x: 7.352584, y: 29.700224, z: 55.633873}
+  m_Center: {x: -0.17350037, y: 3.1016254, z: 0}
 --- !u!1 &2936378602475626033
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,6 +4099,7 @@ Transform:
   - {fileID: 4413057118675887973}
   - {fileID: 7149615726614833116}
   - {fileID: 4533297759545461352}
+  - {fileID: 2864105229792237252}
   - {fileID: 5550058508637676505}
   - {fileID: 2142604330906544975}
   m_Father: {fileID: 2258060194230724614}
@@ -4142,8 +4155,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.6995854, y: 29.700224, z: 55.633873}
-  m_Center: {x: 0, y: 3.1016257, z: 0}
+  m_Size: {x: 10.673776, y: 29.700224, z: 55.633873}
+  m_Center: {x: -1.4870954, y: 3.1016254, z: 0}
 --- !u!1 &3353490989237828120
 GameObject:
   m_ObjectHideFlags: 0
@@ -7072,6 +7085,18 @@ MonoBehaviour:
           m_StringArgument: Activate
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 261024202554053387}
+        m_TargetAssemblyTypeName: FMODParameterTweenAnimator, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Activate
+          m_BoolArgument: 0
+        m_CallState: 2
   onIsReady:
     m_PersistentCalls:
       m_Calls:
@@ -7483,6 +7508,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7885798918507383457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7380126192919571706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2864105229792237252}
+  - component: {fileID: 1729758208574724907}
+  m_Layer: 0
+  m_Name: Wall Rigth (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2864105229792237252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380126192919571706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.866665, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4624388356690850242}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1729758208574724907
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380126192919571706}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 13.015714, y: 29.700224, z: 25.94296}
+  m_Center: {x: 2.658061, y: 3.1016254, z: 14.845476}
 --- !u!1 &7440238950729914222
 GameObject:
   m_ObjectHideFlags: 0
@@ -8210,8 +8288,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 43.737545, y: 29.926502, z: 8.983131}
-  m_Center: {x: 0, y: 3.380304, z: 0}
+  m_Size: {x: 43.73755, y: 29.926502, z: 13.496206}
+  m_Center: {x: 0, y: 3.3803048, z: -2.256534}
 --- !u!1 &8125328841441761081
 GameObject:
   m_ObjectHideFlags: 0
@@ -9648,6 +9726,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3642083563707846925}
+        m_TargetAssemblyTypeName: FMODParameterTweenAnimator, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onIsReady:
     m_PersistentCalls:
       m_Calls:
@@ -10225,9 +10315,17 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 59485439840981630, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 82593004519414106, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Intensity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 82593004519414106, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightTweenAnimator
@@ -10256,6 +10354,10 @@ PrefabInstance:
     - target: {fileID: 1217142361296266527, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Intensity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217142361296266527, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10321,6 +10423,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2220764873354307450, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightTweenAnimator
       value: 
@@ -10337,6 +10443,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4675417165341940645, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5308558788654976575, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -10344,6 +10454,10 @@ PrefabInstance:
     - target: {fileID: 8151190972258415336, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Intensity
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151190972258415336, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightTweenAnimator
@@ -10934,6 +11048,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5379392877763991767, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1889203090858048554}
+    - targetCorrespondingSourceObject: {fileID: -5379392877763991767, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 261024202554053387}
     - targetCorrespondingSourceObject: {fileID: -6375405995940510796, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6536027299585857296}
@@ -10949,9 +11066,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 41190023146814654, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1664102266721462241}
+    - targetCorrespondingSourceObject: {fileID: 41190023146814654, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8139047967559939296}
     - targetCorrespondingSourceObject: {fileID: -3996701630735453911, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4530645643412399471}
+    - targetCorrespondingSourceObject: {fileID: -3996701630735453911, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3642083563707846925}
     - targetCorrespondingSourceObject: {fileID: -5828718009883626712, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3431615713766167135}
@@ -11080,6 +11203,32 @@ MonoBehaviour:
   activeSpeed: 5
   rotationAxis: {x: 0, y: 1, z: 0}
   useLocalRotation: 1
+--- !u!114 &3642083563707846925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2927538607599884449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1937708da27ed5d41b8dec058292fc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FMODParameterTweenAnimator
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
+  eventReference:
+    Guid:
+      Data1: 795490414
+      Data2: 1227657876
+      Data3: 1475703429
+      Data4: 1298533615
+    Path: event:/SFX/ShredderAmbience
+  paramterName: Volume
+  setParameter: 0
+  baseValue: 0
+  activeValue: 1
 --- !u!4 &3853258155352731328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6147954661524457288, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11315,6 +11464,32 @@ MonoBehaviour:
   activeSpeed: 5
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
+--- !u!114 &261024202554053387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6156675215937900193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1937708da27ed5d41b8dec058292fc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FMODParameterTweenAnimator
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
+  eventReference:
+    Guid:
+      Data1: -2108606050
+      Data2: 1081595992
+      Data3: 737908400
+      Data4: -437904221
+    Path: event:/Ambience/MachineRumble
+  paramterName: 
+  setParameter: 0
+  baseValue: 0
+  activeValue: 1
 --- !u!4 &6558151401784893954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4263591789097388938, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11345,6 +11520,32 @@ MonoBehaviour:
   activeSpeed: 5
   rotationAxis: {x: 0, y: 1, z: 0}
   useLocalRotation: 1
+--- !u!114 &8139047967559939296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969953514940716342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1937708da27ed5d41b8dec058292fc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FMODParameterTweenAnimator
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
+  eventReference:
+    Guid:
+      Data1: 795490414
+      Data2: 1227657876
+      Data3: 1475703429
+      Data4: 1298533615
+    Path: event:/SFX/ShredderAmbience
+  paramterName: 
+  setParameter: 0
+  baseValue: 0
+  activeValue: 1
 --- !u!1 &6983996632336696116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
