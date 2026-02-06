@@ -1,22 +1,21 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class ConstantRotation : MonoBehaviour
+/// <summary>
+/// Blends between multiple rotation speeds
+/// </summary>
+public class ConstantRotationTweenAnimator : TweenAnimator
 {
     [Header("References")]
     [SerializeField] private Transform target;
 
-    [Header("Speed Settings")]
+    [Header("Speed Settings (1 = 1 hole rotation per second)")]
     [SerializeField] private float baseSpeed = 0;
     [SerializeField] private float activeSpeed = 1;
 
     [Header("Rotaion Settings")]
     [SerializeField] private Vector3 rotationAxis = new(0, 1, 0);
     [SerializeField] private bool useLocalRotation = true;
-
-    [Header("Tweening Settings")]
-    [SerializeField, Min(0)] private float tweenTime = .25f;
-    [SerializeField] private Ease ease = Ease.Linear;
 
     private float currentSpeed;
 
@@ -27,7 +26,7 @@ public class ConstantRotation : MonoBehaviour
     }
     private void Awake()
     {
-        currentSpeed = baseSpeed;
+        currentSpeed = startActive? activeSpeed : baseSpeed;
         rotationAxis = rotationAxis.normalized;
     }
     void Update()
@@ -39,21 +38,12 @@ public class ConstantRotation : MonoBehaviour
         else
             target.RotateAround(target.position, rotationAxis, currentSpeed * 360 * Time.deltaTime);
     }
-    public void Activate()
+    public override void Activate()
     {
-        Debug.Log("Activate");
-        DOTween.To(x => currentSpeed = x, currentSpeed, activeSpeed, tweenTime).SetEase(ease);
+        DOTween.To(x => currentSpeed = x, currentSpeed, activeSpeed, tweenDuration).SetEase(ease);
     }
-    public void Deactivate()
+    public override void Deactivate()
     {
-        Debug.Log("Deactivate");
-        DOTween.To(x => currentSpeed = x, currentSpeed, baseSpeed, tweenTime).SetEase(ease);
-    }
-    public void Activate(bool activate)
-    {
-        if (activate)
-            Activate();
-        else
-            Deactivate();
+        DOTween.To(x => currentSpeed = x, currentSpeed, baseSpeed, tweenDuration).SetEase(ease);
     }
 }

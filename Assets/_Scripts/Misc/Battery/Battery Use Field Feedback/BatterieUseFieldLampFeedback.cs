@@ -3,7 +3,7 @@ using UnityEngine;
 public class BatterieUseFieldLampFeedback : BatteryUseFieldFeedback
 {
     [Header("References")]
-    [SerializeField] private Lamp[] lamps;
+    [SerializeField] private LampTweenAnimator[] lamps;
 
     protected override void OnEnable()
     {
