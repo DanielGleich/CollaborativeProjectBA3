@@ -747,7 +747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehilcleCamerasDummy
   teamMember: {fileID: 0}
-  vehicleCamera: {fileID: 0}
 --- !u!114 &8600890430754291021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9918,13 +9917,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 1
+  startActive: 0
   target: {fileID: 2605035172910706805}
   baseSpeed: 1
   activeSpeed: 1
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
-  tweenTime: 0.25
-  ease: 1
 --- !u!4 &2605035172910706805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2320256902469948974, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
@@ -9983,13 +9983,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 1
+  startActive: 0
   target: {fileID: 7037249712328858309}
   baseSpeed: 2
   activeSpeed: 2
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
-  tweenTime: 0.25
-  ease: 1
 --- !u!1001 &4218407205348198242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10090,15 +10091,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 3263806400577985510}
-  materialIndex: 0
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 1
-  updatePreviewOnValidate: 0
 --- !u!4 &4395639120429785225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10b1693922dddb8478587c243da57e91, type: 3}
@@ -10199,15 +10197,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 6681946769092984724}
-  materialIndex: 0
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 1
-  updatePreviewOnValidate: 0
 --- !u!4 &5543975069006742779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10b1693922dddb8478587c243da57e91, type: 3}
@@ -10235,12 +10230,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1217142361296266527, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Intensity
@@ -10287,8 +10298,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2051345731038565227, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Name
@@ -10303,8 +10322,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4675417165341940645, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: m_Intensity
@@ -10319,12 +10346,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: lightTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       propertyPath: lightIntensityRange.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      propertyPath: materialTweenAnimator
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10333,21 +10376,57 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5865549815642462269, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3183127328023513047}
+    - targetCorrespondingSourceObject: {fileID: 5865549815642462269, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5865549815642462269, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 5888308258498038883, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6996214268131448894}
+    - targetCorrespondingSourceObject: {fileID: 5888308258498038883, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 5888308258498038883, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 8611158789659042814, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8750604560056013882}
+    - targetCorrespondingSourceObject: {fileID: 8611158789659042814, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8611158789659042814, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1751879567340600201, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5303530101003133666}
+    - targetCorrespondingSourceObject: {fileID: 1751879567340600201, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1751879567340600201, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1295200582171901619, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8632262104740123361}
+    - targetCorrespondingSourceObject: {fileID: 1295200582171901619, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1295200582171901619, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 1897842168180266854, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1144752756302232765}
+    - targetCorrespondingSourceObject: {fileID: 1897842168180266854, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1897842168180266854, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
 --- !u!1 &2099178235154758734 stripped
 GameObject:
@@ -10882,18 +10961,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -1614662567921363471, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 487219251242457219}
+    - targetCorrespondingSourceObject: {fileID: -1614662567921363471, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1020052781659112176}
     - targetCorrespondingSourceObject: {fileID: -2838040818950054732, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8943176098721558594}
     - targetCorrespondingSourceObject: {fileID: -2838040818950054732, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5791096499545959036}
+    - targetCorrespondingSourceObject: {fileID: -2838040818950054732, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5614662695799365169}
     - targetCorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1984860232745304620}
     - targetCorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9069575979006548184}
+    - targetCorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7885989917613294096}
   m_SourcePrefab: {fileID: 100100000, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
 --- !u!4 &228493236668143918 stripped
 Transform:
@@ -10919,15 +11007,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 2415533993407304431}
-  materialIndex: 1
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 0
-  updatePreviewOnValidate: 0
 --- !u!114 &487219251242457219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10940,8 +11025,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc84967e529acff45931099fb2c82b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenLightCookie
-  spotLight: {fileID: 4521430981413279436}
   screenRenderer: {fileID: 5330023155168449481}
+  spotLight: {fileID: 4521430981413279436}
+  inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
+--- !u!114 &1020052781659112176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702553997761789049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbc961518fea9d49b20733d088e4f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenMaterialFeedback
+  screenRenderer: {fileID: 5330023155168449481}
+  meshRenderer: {fileID: 2415533993407304431}
+  materialIndex: 1
+  screenVariableName: _Screen
   inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
 --- !u!4 &2256491593559836239 stripped
 Transform:
@@ -10970,13 +11072,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
   target: {fileID: 2256491593559836239}
   baseSpeed: 0
   activeSpeed: 5
   rotationAxis: {x: 0, y: 1, z: 0}
   useLocalRotation: 1
-  tweenTime: 2
-  ease: 4
 --- !u!4 &3853258155352731328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6147954661524457288, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -10999,13 +11102,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 1
+  startActive: 0
   target: {fileID: 7888002315468741561}
   baseSpeed: 0
   activeSpeed: 1
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
-  tweenTime: 0.25
-  ease: 1
 --- !u!1 &4086217565701813564 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2838040818950054732, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11025,15 +11129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 4722952391172258980}
-  materialIndex: 1
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 0
-  updatePreviewOnValidate: 0
 --- !u!114 &5791096499545959036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11046,8 +11147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc84967e529acff45931099fb2c82b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenLightCookie
-  spotLight: {fileID: 1672282201061520331}
   screenRenderer: {fileID: 8943176098721558594}
+  spotLight: {fileID: 1672282201061520331}
+  inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
+--- !u!114 &5614662695799365169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086217565701813564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbc961518fea9d49b20733d088e4f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenMaterialFeedback
+  screenRenderer: {fileID: 8943176098721558594}
+  meshRenderer: {fileID: 4722952391172258980}
+  materialIndex: 1
+  screenVariableName: _Screen
   inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
 --- !u!23 &4722952391172258980 stripped
 MeshRenderer:
@@ -11127,13 +11245,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 1
+  startActive: 0
   target: {fileID: 3853258155352731328}
   baseSpeed: 0
   activeSpeed: 10
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
-  tweenTime: 2
-  ease: 1
 --- !u!4 &5260964150668875164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2966423917073054740, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11188,13 +11307,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
   target: {fileID: 8437695473988875976}
   baseSpeed: 0
   activeSpeed: 5
   rotationAxis: {x: 1, y: 0, z: 0}
   useLocalRotation: 1
-  tweenTime: 3
-  ease: 4
 --- !u!4 &6558151401784893954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4263591789097388938, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11217,13 +11337,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b345cfcac016284aad9e8caa9338549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConstantRotation
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
   target: {fileID: 7349856683783396161}
   baseSpeed: 0
   activeSpeed: 5
   rotationAxis: {x: 0, y: 1, z: 0}
   useLocalRotation: 1
-  tweenTime: 2
-  ease: 4
 --- !u!1 &6983996632336696116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 55250732697676476, guid: 33004cf16a41b2244b68363101ea697f, type: 3}
@@ -11243,15 +11364,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 6003163733901058659}
-  materialIndex: 1
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 0
-  updatePreviewOnValidate: 0
 --- !u!114 &9069575979006548184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11264,8 +11382,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc84967e529acff45931099fb2c82b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenLightCookie
-  spotLight: {fileID: 2158507434757252200}
   screenRenderer: {fileID: 1984860232745304620}
+  spotLight: {fileID: 2158507434757252200}
+  inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
+--- !u!114 &7885989917613294096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983996632336696116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbc961518fea9d49b20733d088e4f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenMaterialFeedback
+  screenRenderer: {fileID: 1984860232745304620}
+  meshRenderer: {fileID: 6003163733901058659}
+  materialIndex: 1
+  screenVariableName: _Screen
   inactiveTexture: {fileID: 2800000, guid: 9841d37ad5ff7784181e67d6825562ed, type: 3}
 --- !u!4 &7349856683783396161 stripped
 Transform:
@@ -11526,15 +11661,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScreenRenderer
   renderCamera: {fileID: 0}
   meshRenderer: {fileID: 8938143017258021789}
-  materialIndex: 0
-  screenVariableName: _Screen
   imageResolution: {x: 360, y: 360}
   filterMode: 1
   renderTextureFormat: 0
   updateTime: 0.041666668
   playOnEnable: 0
   ignoreVisibility: 1
-  updatePreviewOnValidate: 0
 --- !u!4 &7800662725990975730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10b1693922dddb8478587c243da57e91, type: 3}
