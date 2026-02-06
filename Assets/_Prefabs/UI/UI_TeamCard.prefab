@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4751417918818103696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1850974477460438463
 RectTransform:
   m_ObjectHideFlags: 0
@@ -498,6 +498,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2360547430072100646, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4627621145306823299, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -595,6 +599,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -630,6 +638,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_TeamScientist
       objectReference: {fileID: 0}
+    - target: {fileID: 6194381909036120907, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037536727829565667, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7160592314418385594, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -649,6 +665,10 @@ PrefabInstance:
     - target: {fileID: 7586375827283712033, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821253591216469484, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -848,6 +868,10 @@ PrefabInstance:
     - target: {fileID: 5061492381450332343, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5406554608710466091, guid: b21681f08e6e93440a69e517352aaf47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
