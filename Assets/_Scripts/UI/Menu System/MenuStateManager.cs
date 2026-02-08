@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Keeps track of current state of the menu and all of the submenus (usable in many different ways like pause menu, level select screen and much more!)
+/// Keeps track of current state of the menu and all of the submenus (usable in many different settings like main menu, pause menu, level select screen and much more!)
 /// </summary>
 public class MenuStateManager : MonoBehaviour
 {
@@ -66,13 +66,13 @@ public class MenuStateManager : MonoBehaviour
         }
         CurrentSubMenu = subMenu;
     }
-    public void ResetActiveMenu() => CurrentSubMenu = StartMenu;
     [ContextMenu("Toggle Menu Active")]
     public void ToggleMenuActive() => SetMenuActive(!MenuIsActive);
+    public void ResetActiveMenu() => CurrentSubMenu = StartMenu;
     public void SetMenuActive(bool active)
     {
         MenuIsActive = active;
-        if(!MenuIsActive && resetOnDisableMenu)
+        if(!active && resetOnDisableMenu)
             ResetActiveMenu();
     }
 }
