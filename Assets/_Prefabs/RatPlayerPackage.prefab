@@ -525,6 +525,7 @@ PrefabInstance:
       propertyPath: 'NetworkBehaviours.Array.data[2]'
       value: 
       objectReference: {fileID: 2559898974285936524}
+      objectReference: {fileID: 2559898974285936524}
     - target: {fileID: -8004416122563423573, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: 'NetworkBehaviours.Array.data[3]'
       value: 
@@ -933,6 +934,10 @@ PrefabInstance:
       propertyPath: _componentIndexCache
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8600890430754291021, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+      propertyPath: _componentIndexCache
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8952406902652911067, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1108,6 +1113,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2806340686415206996, guid: 9f36af02ba87fa64b9b5c2f4ff1efbeb, type: 3}
+--- !u!114 &2559898974285936524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8600890430754291021, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
+  m_PrefabInstance: {fileID: 6114224505815124673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be56194d4f9241e47a8aa10958ab7500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonoBehaiviorOwnershipHandler
 --- !u!114 &2559898974285936524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8600890430754291021, guid: fb19b31e1a334d849a78e950d2414d10, type: 3}
