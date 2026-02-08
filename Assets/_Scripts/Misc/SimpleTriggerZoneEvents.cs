@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Quickly set up events triggerd when entering/ exiting a trigger zone
+/// Triggers Unity Events when entering/ exiting a trigger zone
 /// </summary>
 public class SimpleTriggerZoneEvents : MonoBehaviour
 {

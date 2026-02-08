@@ -15,7 +15,7 @@ public class VehilcleCamerasDummy : NetworkedDummy
             OnComponentFound?.Invoke();
         }
         else
-            Debug.LogError("Component not found");
+            Debug.LogError("Vehicle Cameras not found");
 
     }
 }

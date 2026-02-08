@@ -3,7 +3,8 @@ using UnityEngine;
 /// <summary>
 /// Updates every time the current health of a Health Networking component changes 
 /// </summary>
-public abstract class NetworkedHealthDisplay : MonoBehaviour {
+public abstract class NetworkedHealthDisplay : MonoBehaviour
+{
     [Header("References")]
     [field: SerializeField] private HealthNetworking networkedHealth;
 

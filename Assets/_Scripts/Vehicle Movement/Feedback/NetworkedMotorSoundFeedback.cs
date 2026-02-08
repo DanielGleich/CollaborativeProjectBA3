@@ -34,6 +34,7 @@ public class NetworkedMotorSoundFeedback : NetworkBehaviour {
         vehicleMovement.OnUpdateInputDirection -= SetIntensity;
         Intensity.OnChange -= UpdateFMODVariable;
 
+        eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         eventInstance.release();
     }
     private void UpdateFMODVariable(float prev, float next, bool asServer)

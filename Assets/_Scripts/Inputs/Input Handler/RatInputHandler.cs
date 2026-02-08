@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -60,7 +59,6 @@ public class RatInputHandler : InputHandler, PlayerInputs.IFPSControllsActions
     {
         if(context.performed)
             onThrow?.Invoke();
-
     }
 
     public void OnDuck(InputAction.CallbackContext context)

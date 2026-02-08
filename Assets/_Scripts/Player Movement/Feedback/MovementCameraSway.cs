@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovementCameraTilt : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerMovement movement;
+    [SerializeField] private Movement movement;
 
     [Header("Settings")]
     [SerializeField, Tooltip("x = left & right; y = front & back")] private Vector2 tilt = new Vector2(2f, 0f);
@@ -13,7 +13,7 @@ public class MovementCameraTilt : MonoBehaviour
     void OnValidate()
     {
         if(movement == null)
-            movement = GetComponent<PlayerMovement>();
+            movement = GetComponent<Movement>();
     }
     void Update()
     {

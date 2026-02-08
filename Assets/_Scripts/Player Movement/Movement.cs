@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-public abstract class PlayerMovement : MonoBehaviour
+public abstract class Movement : MonoBehaviour
 {
     protected Camera cam;
 

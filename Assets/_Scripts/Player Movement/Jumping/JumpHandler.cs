@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpHandler : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerMovement movement;
+    [SerializeField] private Movement movement;
     [SerializeField] private GroundedChecker groundedChecker;
 
     [Header("Settings")]

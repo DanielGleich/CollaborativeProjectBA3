@@ -16,6 +16,5 @@ public class DisableRigibodiesIfNotOwner : NetworkBehaviour
           {
                r.isKinematic = true;
           }
-
      }
 }
