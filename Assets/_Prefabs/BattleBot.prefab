@@ -1504,6 +1504,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2651378005617571346}
+    - targetCorrespondingSourceObject: {fileID: 635547659545568360, guid: d0b36822ba99e53458669ec992765942, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3010728440816714715}
     - targetCorrespondingSourceObject: {fileID: 893354580228503223, guid: d0b36822ba99e53458669ec992765942, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4569128027819986911}
@@ -2604,7 +2607,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584313835675323131
+  _initializedTimestamp: -8584310315178775607
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -2808,6 +2811,21 @@ MonoBehaviour:
   - {fileID: 1131447102433255562}
   - {fileID: 2334429616030221824}
   - {fileID: 192110710811171523}
+--- !u!114 &3010728440816714715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415623634265430486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9726a3ab64fa2c641a178dffcc0e238f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  networkedHealth: {fileID: 1750614451255156641}
+  prefab: {fileID: 3756297490162140622, guid: 8dfdc0ee649503041a6b7cd13c3e8afe, type: 3}
+  triggerOnce: 1
 --- !u!1 &7787518170026814472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 156130507383607734, guid: d0b36822ba99e53458669ec992765942, type: 3}
