@@ -4,7 +4,7 @@ using FMODUnity;
 using UnityEngine;
 
 /// <summary>
-/// Ambience/ Music that only plays if you are the owner of this script and you have right team role (avoids hearing ambience special to certain roles at the same time)
+/// Global Ambience/ Music that only plays if you are the owner of this script and you have right team role (avoids hearing ambience special to certain roles at the same time)
 /// </summary>
 public class ClientLocalRoleBasedAudio : NetworkBehaviour
 {

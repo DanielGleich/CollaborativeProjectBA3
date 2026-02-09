@@ -1,5 +1,4 @@
 using FishNet.Connection;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnDeathSpawner : MonoBehaviour
@@ -30,7 +29,6 @@ public class OnDeathSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Debug.Log("A");
         if (triggerOnce && isTriggered) return;
         Instantiate(prefab, gameObject.transform.position, Quaternion.identity);
         isTriggered = true;

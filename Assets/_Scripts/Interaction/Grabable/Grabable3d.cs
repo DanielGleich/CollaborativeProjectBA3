@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class Grabable3d : Interactable
@@ -21,4 +22,10 @@ public class Grabable3d : Interactable
         // DoNothing
     }
     public void ForceDrop() => OnForceDrop?.Invoke();
+
+    protected override void OnDrawGizmos()
+    {
+        if(Collider)
+            Gizmos.DrawIcon(Collider.bounds.center, "Grabable Gizmo", true);
+    }
 }

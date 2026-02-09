@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Decides wich screen is activated & wich cameras output it should show
+/// Decides wich ScreenRenderer is activated & wich cameras output it should show
 /// </summary>
 public class ScreenRendererManager : MonoBehaviour {
 
@@ -32,9 +32,9 @@ public class ScreenRendererManager : MonoBehaviour {
     public void ActivateSingleScreen(int index)
     {
         activeIndex = index;
-        if(!vehilcleCameraDummy.vehicleCamera || activeIndex < 0)
+        if(!vehilcleCameraDummy.VehicleCameras || activeIndex < 0)
             return;
-        screenRenderers[index].RenderCamera = vehilcleCameraDummy.vehicleCamera.cameras[index];
+        screenRenderers[index].RenderCamera = vehilcleCameraDummy.VehicleCameras.cameras[index];
         if(singleActiveScreen)
             DisableAllScreens();
         screenRenderers[index].StartRenderRoutine();
@@ -47,16 +47,16 @@ public class ScreenRendererManager : MonoBehaviour {
     }
     private void SetUpScreenRenderCameras()
     {
-        if(!vehilcleCameraDummy.vehicleCamera)
+        if(!vehilcleCameraDummy.VehicleCameras)
             return;
-        if(screenRenderers.Length > vehilcleCameraDummy.vehicleCamera.cameras.Length)
+        if(screenRenderers.Length > vehilcleCameraDummy.VehicleCameras.cameras.Length)
         {
             Debug.LogError("Not enough vehicle cameras");
             return;
         }
         for (int i = 0; i < screenRenderers.Length; i++)
         {
-            screenRenderers[i].RenderCamera = vehilcleCameraDummy.vehicleCamera.cameras[i];
+            screenRenderers[i].RenderCamera = vehilcleCameraDummy.VehicleCameras.cameras[i];
         }
     }
     public void DisableAllScreens()

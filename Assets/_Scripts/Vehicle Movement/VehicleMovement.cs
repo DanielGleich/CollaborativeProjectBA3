@@ -23,8 +23,8 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField, Tooltip("Decides if the vehicle stops, when the input direction (y) is 0")] private bool stopOnNoInput = true;
     [SerializeField, Range(-1,1), Tooltip("Decides if the vehicle alredy starts with a certain move direction")] private int startMovementInput = 0;
 
-    public event Action<float> OnUpdateInputDirection;
     public float InputDirection {get; private set;}
+    public event Action<float> OnUpdateInputDirection;
 
     void OnValidate()
     {

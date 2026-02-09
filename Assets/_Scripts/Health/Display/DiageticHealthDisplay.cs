@@ -8,11 +8,10 @@ using UnityEngine;
 public class DiageticHealthDisplay : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField, Tooltip("Make sure they are in correct order")] private Animator[] lampAnimators;
+    [SerializeField, Tooltip("Make sure they are in correct order")] private LampTweenAnimator[] lampAnimators;
 
     [Header("Settings")]
     [SerializeField, Min(0)] private int teamId;
-    [SerializeField] private string parameterName;
     [SerializeField, Tooltip("false = round to int (when rounding instead of ceiling the display will show 0 health even bevore a player is dead)")] private bool ceilValues = true;
 
     [Header("Debug")]
@@ -20,12 +19,6 @@ public class DiageticHealthDisplay : MonoBehaviour
     [SerializeField] private float debugMaxHealth = 100;
 
     private HealthNetworking healthNetworking;
-    int parameterHash;
-
-    void Awake()
-    {
-        parameterHash = Animator.StringToHash(parameterName);
-    }
 
     void OnEnable()
     {
@@ -70,7 +63,7 @@ public class DiageticHealthDisplay : MonoBehaviour
 
         for (int i = 0; i < lampAnimators.Length; i++)
         {
-            lampAnimators[i].SetBool(parameterName, i < activeLamps);
+            lampAnimators[i].Activate(i < activeLamps);
         }
     }
 
@@ -82,7 +75,7 @@ public class DiageticHealthDisplay : MonoBehaviour
 
         for (int i = 0; i < lampAnimators.Length; i++)
         {
-            lampAnimators[i].SetBool(parameterHash, i < activeLamps);
+            lampAnimators[i].Activate(i < activeLamps);
         }
     }
 }

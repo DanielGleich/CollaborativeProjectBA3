@@ -7,7 +7,7 @@ using UnityEngine;
 public class MovementFootStepFeedback : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Movement playerMovement;
     [SerializeField, Tooltip("Can be left empty if grounded is not checked")] private GroundedChecker groundedChecker;
 
     [Header("Settings")]

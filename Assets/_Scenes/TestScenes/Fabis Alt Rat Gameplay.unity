@@ -475,22 +475,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 458720928}
   materialIndex: 1
   materialAttributeName: _GlowStrength
---- !u!114 &458720933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458720925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
-  batteryUseField: {fileID: 1112373522}
-  lamps:
-  - {fileID: 2037153955}
-  - {fileID: 2037153954}
 --- !u!1 &481019753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,22 +990,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 708641048}
   materialIndex: 1
   materialAttributeName: _GlowStrength
---- !u!114 &708641053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708641045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
-  batteryUseField: {fileID: 1321767384}
-  lamps:
-  - {fileID: 2037153951}
-  - {fileID: 2037153950}
 --- !u!1 &760262495 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
@@ -1847,21 +1815,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1658263476634947571, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1185440800}
-    - targetCorrespondingSourceObject: {fileID: 1658263476634947571, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1185440803}
     - targetCorrespondingSourceObject: {fileID: -3582836639824774927, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 458720930}
-    - targetCorrespondingSourceObject: {fileID: -3582836639824774927, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 458720933}
     - targetCorrespondingSourceObject: {fileID: 4735249900214097519, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 708641050}
-    - targetCorrespondingSourceObject: {fileID: 4735249900214097519, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 708641053}
   m_SourcePrefab: {fileID: 100100000, guid: 0f51a1a714de9f241a3c42eabd0eea05, type: 3}
 --- !u!1001 &1020556621
 PrefabInstance:
@@ -2254,22 +2213,6 @@ MonoBehaviour:
   meshRenderer: {fileID: 1185440798}
   materialIndex: 1
   materialAttributeName: _GlowStrength
---- !u!114 &1185440803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185440795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a6ba5a5564cbd4a96a013f73052bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatterieUseFieldLampFeedback
-  batteryUseField: {fileID: 984495540}
-  lamps:
-  - {fileID: 2037153953}
-  - {fileID: 2037153952}
 --- !u!1 &1268152873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,145 +3866,6 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
---- !u!1001 &2037153949
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1674222775501392337, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2051345731038565227, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-      propertyPath: m_Name
-      value: LampInside
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
---- !u!114 &2037153950 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1848517362676336629, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
---- !u!114 &2037153951 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 445015120371795940, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
---- !u!114 &2037153952 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2428485338023167419, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
---- !u!114 &2037153953 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9177705030725235745, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
---- !u!114 &2037153954 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 635320425595650903, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
---- !u!114 &2037153955 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8777479881228075344, guid: b537aa526cc4d5446a042e5edbd82ef4, type: 3}
-  m_PrefabInstance: {fileID: 2037153949}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e296c2c7116af04f89f65cc4d343677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Lamp
 --- !u!1001 &8383187816390069881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4134,4 +3938,3 @@ SceneRoots:
   - {fileID: 1940637603}
   - {fileID: 925943247}
   - {fileID: 1020556621}
-  - {fileID: 2037153949}

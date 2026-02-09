@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Camera sway based on mouse position
+/// </summary>
 public class CursorCameraSway : MonoBehaviour
 {
     [Header("Settings")]

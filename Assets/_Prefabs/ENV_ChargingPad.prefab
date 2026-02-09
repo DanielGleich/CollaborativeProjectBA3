@@ -637,13 +637,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4c43a5dc95a174c91d02757084be7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaterialAttributAnimator
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
   meshRenderer: {fileID: 3944131688101659973}
   materialIndex: 3
   materialAttributeName: _GlowStrength
   baseValue: 0
   activeValue: 1
-  tweenDuration: 0.5
-  ease: 4
 --- !u!23 &3944131688101659973 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e2a412095021ea540a3ba8b371621bb2, type: 3}
@@ -766,13 +767,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4c43a5dc95a174c91d02757084be7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaterialAttributAnimator
+  tweenDuration: 0.5
+  ease: 4
+  startActive: 0
   meshRenderer: {fileID: 4106495081763897087}
   materialIndex: 3
   materialAttributeName: _GlowStrength
   baseValue: 0
   activeValue: 1
-  tweenDuration: 0.5
-  ease: 4
 --- !u!4 &2933566677082899856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2849053d043d2854a86108eb7861b1a5, type: 3}

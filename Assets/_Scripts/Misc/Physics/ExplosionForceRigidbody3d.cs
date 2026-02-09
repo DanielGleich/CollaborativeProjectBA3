@@ -35,11 +35,13 @@ public class ExplosionForceRigidbody3d : MonoBehaviour {
             }
         }
     }
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(transform.position + offset, "Explosion Gizmo");
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + offset, radius);
-        Gizmos.DrawIcon(transform.position + offset, "Explosion Gizmo");
-        
     }
 }

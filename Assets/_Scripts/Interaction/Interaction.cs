@@ -65,10 +65,9 @@ public class Interaction : MonoBehaviour
         Ray ray = Cursor.visible? cam.ScreenPointToRay(Mouse.current.position.ReadValue()) : new Ray(cam.transform.position, cam.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayers))
         {
-            if (hit.collider.TryGetComponent(out Interactable interactable))
-            {
-                newInteractable = interactable;
-            }
+            newInteractable = hit.collider.GetComponent<Interactable>();
+            if(!newInteractable && hit.rigidbody)
+                newInteractable = hit.rigidbody.GetComponent<Interactable>();
         }
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, newInteractable ? Color.green : Color.orange);
         return newInteractable;

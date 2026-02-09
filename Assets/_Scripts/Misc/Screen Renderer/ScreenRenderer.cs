@@ -2,15 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manually renders cameras with adjustable resolution, filter mode and (ideal) framrate and displays it on a material
+/// </summary>
 public class ScreenRenderer : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera renderCamera;
-
-    [Header("Material & Shader Settings")]
     [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private int materialIndex;
-    [SerializeField] private string screenVariableName = "_Screen";
 
     [Header("Render Settings")]
     [SerializeField] private Vector2Int imageResolution = new(480, 360);
@@ -20,13 +19,12 @@ public class ScreenRenderer : MonoBehaviour
 
     [Header("Playback Settings")]
     [SerializeField] private bool playOnEnable = false;
-    [SerializeField] private bool ignoreVisibility = true;
+    [SerializeField] private bool ignoreVisibility = false;
 
-    [Header("Preview Settings")]
-    [SerializeField, Tooltip("Show changes everytime you change a value")] private bool updatePreviewOnValidate;
+    public event Action OnUpdateTexture;
     public RenderTexture RenderTexture {get; private set;}
-    private Material material;
 
+    public event Action<Camera> OnSwitchRenderCamera;
     public Camera RenderCamera
     {
         get => renderCamera;
@@ -41,8 +39,6 @@ public class ScreenRenderer : MonoBehaviour
                 StartRenderRoutine();
         }
     }
-    public event Action<Camera> OnSwitchRenderCamera;
-    public event Action OnUpdateTexture;
 
     private bool cameraDisplayActive;
     public event Action<bool> OnActivateCamera;
@@ -62,13 +58,6 @@ public class ScreenRenderer : MonoBehaviour
     {
         if(!meshRenderer)
             meshRenderer = GetComponent<MeshRenderer>();
-        if (updatePreviewOnValidate)
-            StartCoroutine(PreviewRenderTextureRoutine());
-    }
-
-    void Awake()
-    {
-        material = meshRenderer.materials[materialIndex];
     }
 
     void OnEnable()
@@ -105,9 +94,8 @@ public class ScreenRenderer : MonoBehaviour
     }
     public bool VisibleFromCamera(Renderer renderer, Camera camera)
     {
-        // Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-        // return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
-        return true;
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        return GeometryUtility.TestPlanesAABB(planes, renderer.bounds);
     }
     private void CreateRenderTexture(bool useSharedMaterial = false)
     {
@@ -115,29 +103,11 @@ public class ScreenRenderer : MonoBehaviour
         RenderTexture.filterMode = filterMode;
         RenderTexture.wrapMode = TextureWrapMode.Clamp;
         renderCamera.targetTexture = RenderTexture;
-        if (useSharedMaterial)
-            meshRenderer.sharedMaterials[materialIndex].SetTexture(screenVariableName, RenderTexture);
-        else
-            material.SetTexture(screenVariableName, RenderTexture);
+        OnUpdateTexture?.Invoke();
     }
     private void Render()
     {
         if  (ignoreVisibility || VisibleFromCamera(meshRenderer, Camera.main) ||Application.isEditor)
             renderCamera.Render();
-        OnUpdateTexture?.Invoke();
     }
-
-    #region Preview
-    [ContextMenu("Preview Render Texture")]
-    private void PreviewRenderTexture() => StartCoroutine(PreviewRenderTextureRoutine());
-
-    private IEnumerator PreviewRenderTextureRoutine()
-    {
-        if (!(renderCamera && meshRenderer))
-            yield break;
-        yield return null;
-        CreateRenderTexture(true);
-        Render();
-    }
-    #endregion
 }

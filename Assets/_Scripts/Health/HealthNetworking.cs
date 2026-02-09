@@ -124,9 +124,7 @@ public class HealthNetworking : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void OnDeathServerRpc(NetworkConnection c = null)
     {
-        if (IsServerInitialized)
-            OnNetworkedDeath?.Invoke(c);
-        HandleNetworkedDeath();
+        HandleNetworkedDeath(c);
     }
 
     [ObserversRpc]

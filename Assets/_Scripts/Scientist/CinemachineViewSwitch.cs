@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
-/// Switches between multiple Cinemachine cameras by changing the priority 
+/// Switches between multiple cinemachine cameras by changing the priority 
 /// </summary>
 public class CinemachineViewSwitch : MonoBehaviour
 {

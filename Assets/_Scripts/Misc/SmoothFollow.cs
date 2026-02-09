@@ -22,6 +22,6 @@ public class SmoothFollow : MonoBehaviour {
     }
     void Update()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, (Vector3)target.position + offset, ref currentVelocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, target.position + offset, ref currentVelocity, smoothTime);
     }
 }

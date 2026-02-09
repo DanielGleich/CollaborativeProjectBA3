@@ -50,7 +50,7 @@ public class AdaptivMenuMusicFeedback : MonoBehaviour
             eventInstance.setParameterByName(paramterName, subMenuMusicPhase.PhaseValue);
     }
 
-    [ContextMenu("Create SubMenuMusicPhase for every SubMenu in MenuStateManager <i>(Warning: will destroy old values)</i>")]
+    [ContextMenu("Create SubMenuMusicPhase for every SubMenu in MenuStateManager (Warning: will destroy old values)")]
     private void CreateSubMenuMusicPhases()
     {
         if (!menuStateManager)

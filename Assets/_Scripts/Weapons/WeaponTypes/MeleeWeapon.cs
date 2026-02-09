@@ -13,7 +13,7 @@ public class MeleeWeapon : Weapon
     [SerializeField] private float duration = 2f;
     [SerializeField] private bool limitedTime = true;
 
-    void OnValidate()
+    protected override void OnValidate()
     {
         base.OnValidate();
         if(!constantDamage)
@@ -27,7 +27,8 @@ public class MeleeWeapon : Weapon
     protected override void Activate()
     {
         constantDamage.enabled = true;
-        StartCoroutine(ActiveRoutine());
+        if(limitedTime)
+            StartCoroutine(ActiveRoutine());
     }
     public IEnumerator ActiveRoutine()
     {
