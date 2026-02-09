@@ -25,6 +25,11 @@ public class OverchargedStatus : NetworkBehaviour
         OnUseOverchargeRequest?.Invoke(teamId);
     }
 
+    public void RequestUseOvercharge()
+    { 
+        OnUseOverchargeRequest(TeamMember.localTeamId);
+    }
+
     [ServerRpc]
     private void SetOverchargeServerRpc(int teamId)
     {

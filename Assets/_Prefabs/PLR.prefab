@@ -3066,6 +3066,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
+--- !u!114 &3649594176133154209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5364467155551960430, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
+  m_PrefabInstance: {fileID: 8707600914945210575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464248597896186437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6db4eab0883947740b88a490fe89b64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OverchargedStatus
 --- !u!20 &4787456447990864651 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4226604765222200260, guid: ee98a6d73fbf3f646a8310151331c49c, type: 3}
@@ -3138,6 +3149,7 @@ MonoBehaviour:
   - {fileID: 185096347288395125}
   - {fileID: 134718128864304686}
   chargeStatusDummy: {fileID: 8730948079738072225}
+  overchargeStatus: {fileID: 3649594176133154209}
   coolDown: 0.25
   godMode: 0
 --- !u!114 &9221805665698330406 stripped

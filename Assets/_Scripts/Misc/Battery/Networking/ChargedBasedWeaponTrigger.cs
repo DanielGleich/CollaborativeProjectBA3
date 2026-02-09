@@ -6,6 +6,7 @@ public class ChargedBasedWeaponTrigger : MonoBehaviour
     [Header("References")]
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private ChargeStatusDummy chargeStatusDummy;
+    [SerializeField] private OverchargedStatus overchargeStatus;
 
     [Header("Settings")]
     [SerializeField, Min(0)] private float coolDown = .25f;
@@ -26,7 +27,13 @@ public class ChargedBasedWeaponTrigger : MonoBehaviour
             Array.ForEach(weapons, weapon => weapon.TryActivate());
             return;
         }
-        if(Time.time < lastTriggerTime + coolDown)
+        if (overchargeStatus.IsOvercharged.Value)
+        {
+            Array.ForEach(weapons, weapon => weapon.TryActivate());
+            overchargeStatus.RequestUseOvercharge();
+            return;
+        }
+        if (Time.time < lastTriggerTime + coolDown)
         {
             Debug.LogWarning("Cooldown still active");
             return;
