@@ -13,6 +13,11 @@ public enum GameEndReason
     OUTOFARENA
 }
 
+/*<summary>
+ * The GameManager handles the PreGame Countdown, the game start and the game end.
+ * In addition, it also tracks how the game has ended.
+ *</summary>*/
+
 public class GameManager : NetworkSingleton<GameManager>
 {
     protected override bool _perClient => false;
@@ -68,6 +73,17 @@ public class GameManager : NetworkSingleton<GameManager>
                 health.OnNetworkedDeath += HandlePlayerDeath;
             }
         }
+    }
+
+    public void DebugGameEnd()
+    {
+        HandleDebugGameEnd(LocalConnection);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void HandleDebugGameEnd(NetworkConnection c)
+    { 
+        HandlePlayerDeath(c);
     }
 
     [Server]
