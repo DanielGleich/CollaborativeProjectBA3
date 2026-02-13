@@ -103,7 +103,7 @@ public class GameManager : NetworkSingleton<GameManager>
                 winnerTeam = team.Key;
             }
         }
-        Debug.Log($"{IsTesting} - {loserTeam}, {winnerTeam}");
+        Debug.Log($"SERVER: GAME END - LOSER TEAM {loserTeam}, WINNER TEAM {winnerTeam}");
         if (IsTesting || (loserTeam >= 0 && winnerTeam >= 0))
         {
             if (gameEndReason.Value == GameEndReason.NONE)
@@ -170,12 +170,14 @@ public class GameManager : NetworkSingleton<GameManager>
     [ObserversRpc]
     private void NotifyGameOver()
     {
+        Debug.Log($"CLIENT GAME OVER");
         OnGameOver?.Invoke();
     }
 
     [ObserversRpc]
     private void NotifyWinnerTeam(int teamId)
     { 
+        Debug.Log($"CLIENT WINNER TEAM {teamId}");
         OnTeamWins.Invoke(teamId);
     }
 }

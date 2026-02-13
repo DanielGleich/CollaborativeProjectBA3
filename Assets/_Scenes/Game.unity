@@ -2445,7 +2445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765406244181299337, guid: 7d91dba1d7cb2c94dacde92ca88ee10e, type: 3}
       propertyPath: defaultDelay
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7202,6 +7202,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 855601113002912129}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlayerLose:
     m_PersistentCalls:
       m_Calls:
@@ -7216,6 +7228,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2906661519553003033}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5270538309729552267
 GameObject:
