@@ -1,8 +1,11 @@
-using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*<summary>
+ * OverchargedFeedback is responsible for finding out whether a specifics vehicle
+ * is overcharged. Used for VFX/SFX.
+ * </summary>*/
 public class OverchargedFeedback : MonoBehaviour
 {
     public UnityEvent OnOverchargeStart = new UnityEvent();

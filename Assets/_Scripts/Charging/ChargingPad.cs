@@ -4,6 +4,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*<summary>
+ * ChargingPads are responsible for overcharging vehicles.
+ * </summary>*/
+
 public class ChargingPad : NetworkBehaviour
 {
     [Header("References")]

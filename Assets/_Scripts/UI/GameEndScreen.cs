@@ -9,6 +9,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/*<summary>
+ * The GameEndScreen is the UI element which controls win or lose screen 
+ * once the GameManager signals the GameEnd. In addition, it controls the 
+ * rematch votes and also handles the forwarding into other scenes.
+ * </summary>*/
+
 public class GameEndScreen : NetworkBehaviour
 {
     [Header("References")]

@@ -2,6 +2,12 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System;
 
+/*<summary>
+ * OverchargedStatus is an additional status for the vehicle which makes it
+ * possible to trigger all weapons at the same time and ignore the usual 
+ * weapon cooldowns. Overcharging is possible with ChargingPads.
+ * </summary>*/
+
 public class OverchargedStatus : NetworkBehaviour
 {
     public static event Action<int> OnUseOverchargeRequest;

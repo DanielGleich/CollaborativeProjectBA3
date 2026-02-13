@@ -3,6 +3,11 @@ using FishNet.Object.Synchronizing;
 using System.Collections;
 using UnityEngine;
 
+/*<summary>
+ * The ChargingPadManager is responsible for collecting all ChargingPads in play &
+ * activating/deactivating them in defined time intervals.
+ * </summary>*/
+
 public class ChargingPadManager : NetworkSingleton<ChargingPadManager>
 {
     protected override bool _perClient { get; } = false;
