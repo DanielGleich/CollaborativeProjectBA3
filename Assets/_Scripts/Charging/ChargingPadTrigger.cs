@@ -1,6 +1,11 @@
 using System;
 using UnityEngine;
 
+/*<summary>
+ * The ChargingPadTrigger is part of the ChargingPads. 
+ * When a vehicle enters this trigger a signal gets forwarded to the ChargingPad script.
+ * </summary>*/
+
 public class ChargingPadTrigger : MonoBehaviour
 {
     [Header("Settings")]
@@ -9,8 +14,6 @@ public class ChargingPadTrigger : MonoBehaviour
     public event Action<GameObject> OnChargeStart;
     public event Action<GameObject> OnCharging;
     public event Action<GameObject> OnChargeStop;
-
-    // TODO: IMPLEMENT COOLDOWN
 
     private void OnTriggerEnter(Collider other)
     {

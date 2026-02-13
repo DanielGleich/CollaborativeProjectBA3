@@ -13,6 +13,11 @@ public enum GameEndReason
     OUTOFARENA
 }
 
+/*<summary>
+ * The GameManager handles the PreGame Countdown, the game start and the game end.
+ * In addition, it also tracks how the game has ended.
+ *</summary>*/
+
 public class GameManager : NetworkSingleton<GameManager>
 {
     protected override bool _perClient => false;
@@ -70,6 +75,17 @@ public class GameManager : NetworkSingleton<GameManager>
         }
     }
 
+    public void DebugGameEnd()
+    {
+        HandleDebugGameEnd(LocalConnection);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void HandleDebugGameEnd(NetworkConnection c)
+    { 
+        HandlePlayerDeath(c);
+    }
+
     [Server]
     private void HandlePlayerDeath(NetworkConnection playerConnection)
     {
@@ -87,7 +103,7 @@ public class GameManager : NetworkSingleton<GameManager>
                 winnerTeam = team.Key;
             }
         }
-        Debug.Log($"{IsTesting} - {loserTeam}, {winnerTeam}");
+        Debug.Log($"SERVER: GAME END - LOSER TEAM {loserTeam}, WINNER TEAM {winnerTeam}");
         if (IsTesting || (loserTeam >= 0 && winnerTeam >= 0))
         {
             if (gameEndReason.Value == GameEndReason.NONE)
@@ -154,12 +170,14 @@ public class GameManager : NetworkSingleton<GameManager>
     [ObserversRpc]
     private void NotifyGameOver()
     {
+        Debug.Log($"CLIENT GAME OVER");
         OnGameOver?.Invoke();
     }
 
     [ObserversRpc]
     private void NotifyWinnerTeam(int teamId)
     { 
+        Debug.Log($"CLIENT WINNER TEAM {teamId}");
         OnTeamWins.Invoke(teamId);
     }
 }

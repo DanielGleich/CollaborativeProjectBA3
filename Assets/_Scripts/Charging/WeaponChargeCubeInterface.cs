@@ -2,6 +2,12 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*<summary>
+ * The WeaponChargeCubeInterface is the new version of the WeaponChargeInterface.
+ * It is responsible for charging the weapons from the vehicle inside (rats perspective).
+ * The BatteryUseField checks whether enough charged batteries are on the weapon chargers.
+ * </summary>*/
+
 [RequireComponent(typeof(BatteryUseField))]
 public class WeaponChargeCubeInterface : NetworkBehaviour
 {

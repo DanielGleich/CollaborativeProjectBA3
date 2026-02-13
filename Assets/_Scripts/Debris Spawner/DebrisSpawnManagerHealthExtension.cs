@@ -12,6 +12,12 @@ public struct DebrisSpawnRule
     public Vector2Int debrisAmount;
 }
 
+/*<summary>
+ * The DebrisSpawnManagerHealthExtension is a script 
+ * which triggers the DebrisSpawnManager depending on defined 
+ * health conditions of the vehicles.
+ * </summary>*/
+
 [RequireComponent(typeof(DebrisSpawnManager))]
 public class DebrisSpawnManagerHealthExtension : NetworkBehaviour
 {

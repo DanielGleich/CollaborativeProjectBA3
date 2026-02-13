@@ -4,6 +4,12 @@ using FishNet.Object.Synchronizing;
 using System;
 using UnityEngine;
 
+/*<summary>
+ * HealthNetworking is/was supposed to only handle the networking.
+ * Additionally it has a local prediction and loop protecting to handle several
+ * RPCs in a short time.
+ * </summary>*/
+
 public class HealthNetworking : NetworkBehaviour
 {
     [Header("References")]

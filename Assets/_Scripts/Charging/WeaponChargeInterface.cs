@@ -2,6 +2,13 @@ using FishNet.Object;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+/*<summary>
+ * The WeaponChargeInterface is the legacy version of our weapon chargers within the rat vehicle.
+ * When the a physic object of the LayerMask chargeTrigger is in contact with this gameobject the weapon with the weaponid 
+ * becomes charged for scientist.
+ * </summary>*/
+
 public class WeaponChargeInterface : NetworkBehaviour
 {
     [Header("References")]
