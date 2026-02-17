@@ -99,12 +99,10 @@ public class GameEndScreen : NetworkBehaviour
         if (winnerTeamId == TeamMember.localTeamId)
         {
             OnPlayerWin?.Invoke();
-            Debug.Log("Player w");
         }
         else
         {
             OnPlayerLose?.Invoke();
-            Debug.Log("Player l");
         }
     }
 

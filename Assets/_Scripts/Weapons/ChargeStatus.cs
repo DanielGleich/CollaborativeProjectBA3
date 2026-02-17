@@ -80,6 +80,7 @@ public class ChargeStatus : NetworkBehaviour
         {
             NotifyUncharge(teamId);
         }
+        Debug.Log($"{gameObject.transform.root.name} charged weapon {gameObject.name} - Team {teamId}, Weapon {WeaponId}");
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -92,25 +93,35 @@ public class ChargeStatus : NetworkBehaviour
 
         IsOvercharged.Value = newOverchargedValue;
 
-        if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
-        {
-            NotifyCharge(teamId);
-        }
-        else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
-        {
-            NotifyUncharge(teamId);
-        }
+        //if (oldChargedState == false && newChargedState == true) //Only trigger event, When it was not charged before, but is now charged
+        //{
+        //    //NotifyCharge(teamId);
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //}
+        //else if (oldChargedState == true && newChargedState == false) //Only trigger event, When it was charged before, but is not charged anymore
+        //{
+        //    Debug.Log($"{gameObject.transform.root.name} overcharged Team {teamId}");
+        //    //NotifyUncharge(teamId);
+        //}
     }
 
     [ObserversRpc]
     void NotifyCharge(int teamId)
     {
-        OnChargeActive?.Invoke();
+        if (TeamMember.localTeamId == teamId)
+        { 
+            OnChargeActive?.Invoke();
+            Debug.Log($"{teamId} charged {WeaponId}");
+        }
     }
 
     [ObserversRpc]
     void NotifyUncharge(int teamId)
     {
-        OnChargeInactive?.Invoke();
+        if (TeamMember.localTeamId == teamId)
+        { 
+            OnChargeInactive?.Invoke();
+            Debug.Log($"{teamId} uncharged {WeaponId}");
+        }
     }
 }

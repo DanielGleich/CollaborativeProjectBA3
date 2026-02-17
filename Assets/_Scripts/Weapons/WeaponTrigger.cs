@@ -42,11 +42,13 @@ public class WeaponTrigger : NetworkBehaviour
     {
         if (GodMode || chargeStatus.IsOvercharged.Value)
         {
+            Debug.Log($"Force Trigger {teamId}");
             ForceTriggerWeapon(teamId);
             StartCoroutine(Cooldown());
         }
-        else if (IsCooldown == false && chargeStatus.IsPowered.Value)
+        else if (IsCooldown == false && chargeStatus.IsOwner && chargeStatus.IsPowered.Value)
         {
+            Debug.Log($"Normal Trigger {teamId}");
             NotifyWeaponTrigger(teamId);
             chargeStatus.UnchargeWeapon();
             StartCoroutine(Cooldown());
@@ -64,7 +66,8 @@ public class WeaponTrigger : NetworkBehaviour
     public void TriggerWeaponAnimation()
     {
         //Probably needs to be changed if damage is dealt double/quadruple
-        targetWeapon.TryActivate();
+        if (weaponId == 1)
+            targetWeapon.TryActivate();
     }
 
     [ObserversRpc]

@@ -5,7 +5,7 @@
 			<value>StageHazardsTriggered</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1f83f481-4e2d-495c-983a-3b3104966797}</destination>
@@ -96,10 +96,24 @@
 	<object class="MixerBusEffectChain" id="{eeb70d67-3d9b-49e1-9abb-a6f8534b673e}">
 		<relationship name="effects">
 			<destination>{153b20c4-1f9e-46d7-bec6-d74a7ae869ed}</destination>
+			<destination>{62cee56b-0133-4fc8-9b9d-e56f71d459b9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7af769fe-6ba3-40aa-bb11-43cef4ff74e1}" />
-	<object class="MultiSound" id="{9d5b1948-b90e-4b6d-a8f0-f589bfaaa9c1}" />
+	<object class="MultiSound" id="{9d5b1948-b90e-4b6d-a8f0-f589bfaaa9c1}">
+		<property name="volume">
+			<value>-14</value>
+		</property>
+		<relationship name="sounds">
+			<destination>{a298f539-060d-4956-9022-fa53e986d99c}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{8d9a345c-1916-48dc-a2bc-0fd6100d42a3}" />
 	<object class="MixerBusFader" id="{153b20c4-1f9e-46d7-bec6-d74a7ae869ed}" />
+	<object class="SpatialiserEffect" id="{62cee56b-0133-4fc8-9b9d-e56f71d459b9}" />
+	<object class="SingleSound" id="{a298f539-060d-4956-9022-fa53e986d99c}">
+		<relationship name="audioFile">
+			<destination>{7b6220ee-ff6a-4cbb-8d4a-858b6860fcc8}</destination>
+		</relationship>
+	</object>
 </objects>

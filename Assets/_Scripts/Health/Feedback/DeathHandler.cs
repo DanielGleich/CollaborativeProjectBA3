@@ -9,6 +9,9 @@ public class DeathHandler : MonoBehaviour
     [SerializeField, Tooltip("Position of the gameobject replaced by the death prefab")] private Transform spawnPosition;
     [SerializeField] private GameObject deathPrefab;
 
+    [Header("Settings")]
+    [SerializeField] private bool destroyOnDeath = true;
+
     void OnValidate()
     {
         if(!networkedHealth)
@@ -28,7 +31,8 @@ public class DeathHandler : MonoBehaviour
     private void HandleDeath(NetworkConnection c)
     {
         Instantiate(deathPrefab, spawnPosition.position, spawnPosition.rotation);
-        Destroy(gameObject);
+        if(destroyOnDeath)
+            Destroy(gameObject);
     }
 
 }
